@@ -175,6 +175,7 @@ class CommonController extends Controller
 				$skillmodel-> userid = Yii::$app->user->id ;
 				$skillmodel -> save();
 				
+				
 			}
 			
 			
