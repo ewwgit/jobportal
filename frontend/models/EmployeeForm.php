@@ -9,16 +9,17 @@ use common\models\User;
  */
 class EmployeeForm extends Model
 {
-	
 	public $username;
-	public $email;	
+	public $email;
+	public $password;
+	public $confirmpassword;
 	public $name;
 	public $surname;
 	public $gender;
 	public $dateofbirth;
 	public $mobilenumber;
-	
-
+	public $profileimage;
+	public $userid;
 	/*** Educational Details ***/
 	
 	

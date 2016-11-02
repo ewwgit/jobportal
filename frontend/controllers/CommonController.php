@@ -17,6 +17,7 @@ use frontend\models\EmployeeSignup;
 use frontend\models\SignupForm;
 use frontend\models\EmployeePreferences;
 use frontend\models\EmployeeSkills;
+use yii\base\Object;
 
 
 
@@ -26,61 +27,160 @@ class CommonController extends Controller
 	public function actionEmployee()
 	{
 		$model = new EmployeeForm();
-		$educationmodel = new EmployeeEducation();
-		$umodel = User::find ()->Where (['id' => Yii::$app->user->id])->one();
-		$empmodel = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		$edumodel = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$umodel = new SignupForm();
+		$empmodel = new EmployeeSignup();
+		$edumodel = new EmployeeEducation();
+		$jobmodel = new EmployeePreferences();
+		$skillmodel = new EmployeeSkills();
+		
+		$user = User::find ()->Where (['id' => Yii::$app->user->id])->one();
+		$employee = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$education = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$jobpreference = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$skill = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->one();
 		
 		
-		if(!empty($umodel))
+		if(!empty($user))
 		{
-			$model->email = $umodel->email;
+			$model->email = $user->email;
 			
 		}
-		if(!empty($empmodel))
+		if(!empty($employee))
 		{
-			$model->name = $empmodel->name;
-			$model->surname = $empmodel->surname;
-			$model->gender = $empmodel->gender;
-			$model->dateofbirth = $empmodel->dateofbirth;
-			$model->mobilenumber = $empmodel->mobilenumber;	
+			$model->name = $employee->name;
+			$model->surname = $employee->surname;
+			$model->gender = $employee->gender;
+			$model->dateofbirth = $employee->dateofbirth;
+			$model->mobilenumber = $employee->mobilenumber;	
 		}
-		if(!empty($edumodel))
+		if(!empty($education))
 		{
-			$model->highdegree = $edumodel->highdegree;
-			$model->specialization = $edumodel->specialization;
-			$model->university = $edumodel->university;
-			$model->collegename = $edumodel->collegename;
-			$model->passingyear = $edumodel->passingyear;
+			$model->highdegree = $education->highdegree;
+			$model->specialization = $education->specialization;
+			$model->university = $education->university;
+			$model->collegename = $education->collegename;
+			$model->passingyear = $education->passingyear;
 			
 		}
-		if(!empty($jobmodel))
+		if(!empty($jobpreference))
 		{
-			$model->functionalarea = $jobmodel->functionalarea;
-			$model->jobrole = $jobmodel->jobrole;
-			$model->joblocation = $jobmodel->joblocation;
-			$model->experience = $jobmodel->experience;
-			$model->jobtype = $jobmodel->jobtype;
-			$model->expectedsalary = $jobmodel->expectedsalary;
+			$model->functionalarea = $jobpreference->functionalarea;
+			$model->jobrole = $jobpreference->jobrole;
+			$model->joblocation = $jobpreference->joblocation;
+			$model->experience = $jobpreference->experience;
+			$model->jobtype = $jobpreference->jobtype;
+			$model->expectedsalary = $jobpreference->expectedsalary;
 				
 		}
-		if(!empty($skillmodel))
+		if(!empty($skill))
 		{
 			
-			$model->skillname = $skillmodel->skillname;
-			$model->lastused = $skillmodel->lastused;
-			$model->experience = $skillmodel->experience;
+			$model->skillname = $skill->skillname;
+			$model->lastused = $skill->lastused;
+			$model->experience = $skill->experience;
 		}
 		if (($model->load(Yii::$app->request->post())) && ($model->validate()) )
 		{
+			if(!empty($user))
+			{
+				$user->email = $model->email;
+				$user -> save();
+				
+			}
+			else 
+			{
+				$umodel->email = $model->email;
+			}
+			if(!empty($employee))
+			{
+				$employee->name = 	$model->name;
+				$employee->surname = $model->surname;
+				$employee->gender = $model->gender;
+				$employee->dateofbirth = $model->dateofbirth;
+				$employee->mobilenumber = $model->mobilenumber;
+				$employee -> save();
+			}
+			else 
+			{
+				$empmodel->name = $model->name;
+				$empmodel->surname = $model->surname;
+				$empmodel->gender = $model->gender;
+				$empmodel->dateofbirth = $model->dateofbirth;
+				$empmodel->mobilenumber = $model->mobilenumber;	
+				$employee -> save();				
+			}
+			if(!empty($education))
+			{
+				$education->highdegree = $model->highdegree;
+				$education->specialization = $model->specialization;
+				$education->university = $model->university;
+				$education->collegename = $model->collegename;
+				$education->passingyear = $model->passingyear;
+				$education -> userid = Yii::$app->user->id ;
+				$education -> save();
+					
+			}
+			else
+			{
+				$edumodel->highdegree = $model->highdegree;
+			     $edumodel->specialization = $model->specialization;
+				$edumodel->university = $model->university;
+				$edumodel->collegename = $model->collegename;
+				$edumodel->passingyear = $model->passingyear;
+				$edumodel -> userid = Yii::$app->user->id ;
+				$edumodel -> save();
+					
+				
+			}
 			
 			
-			$userid = Yii::$app->user->id ;
-			$model->userid=$userid;
-			$model->save();
+			if(!empty($jobpreference))
+			{
+				$jobpreference->functionalarea = $model->functionalarea;
+				$jobpreference->jobrole = $model->jobrole;
+				$jobpreference->joblocation = $model->joblocation;
+				$jobpreference->experience = $model->experience;
+				$jobpreference->jobtype = $model->jobtype;
+				$jobpreference->expectedsalary = $model->expectedsalary;
+				$jobpreference -> userid = Yii::$app->user->id ;
+				$jobpreference -> save();
+				
 			
+			}
+			else
+			{
+				$jobmodel->functionalarea = $model->functionalarea;
+				$jobmodel->jobrole = $model->jobrole;
+				$jobmodel->joblocation = $model->joblocation;
+				$jobmodel->experience = $model->experience;
+				$jobmodel->jobtype = $model->jobtype;
+				$jobmodel->expectedsalary = $model->expectedsalary;
+				$jobmodel -> userid = Yii::$app->user->id ;
+				$jobmodel -> save();
+			}
+			if(!empty($skill))
+			{
+					
+				$skill->skillname = $model->skillname;
+				$skill->lastused = $model->lastused;
+				$skill->experience = $model->experience;
+				$skill-> userid = Yii::$app->user->id ;
+				$skill -> save();
+			}
+			else {
+				
+				$skillmodel->skillname = $model->skillname;
+				$skillmodel->lastused = $model->lastused;
+				$skillmodel->experience = $model->experience;
+				$skillmodel-> userid = Yii::$app->user->id ;
+				$skillmodel -> save();
+				
+			}
+			
+			
+			
+						   
+		
 		}
 		return $this->render('employee', [
 				'model' => $model,
