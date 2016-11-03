@@ -13,7 +13,10 @@ body{
 width:1000px;
 margin:0 auto;
 font-family:Arial, Helvetica, sans-serif;
-font-size:11px;
+/*font-size:11px;*/
+}
+.box {
+	border-bottom-style: ridge;
 }
 .meta{
 color:#F5F5F5;
@@ -261,3 +264,4 @@ line-height:0px;
 padding:0px;
 font-size:11px
 }
+

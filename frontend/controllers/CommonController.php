@@ -18,6 +18,7 @@ use frontend\models\SignupForm;
 use frontend\models\EmployeePreferences;
 use frontend\models\EmployeeSkills;
 use yii\base\Object;
+use yii\web\UploadedFile;
 
 
 
@@ -32,26 +33,25 @@ class CommonController extends Controller
 		$edumodel = new EmployeeEducation();
 		$jobmodel = new EmployeePreferences();
 		$skillmodel = new EmployeeSkills();
-		
 		$user = User::find ()->Where (['id' => Yii::$app->user->id])->one();
 		$employee = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		$education = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
 		$jobpreference = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$education = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
 		$skill = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->one();
 		
-		
-		if(!empty($user))
+	    if(!(empty($user)))
 		{
-			$model->email = $user->email;
-			
+		$model->email = $user->email;
 		}
-		if(!empty($employee))
+		if(!(empty($employee)))
 		{
 			$model->name = $employee->name;
 			$model->surname = $employee->surname;
 			$model->gender = $employee->gender;
 			$model->dateofbirth = $employee->dateofbirth;
-			$model->mobilenumber = $employee->mobilenumber;	
+			$model->mobilenumber = $employee->mobilenumber;
+			$model->profileimage = $employee->profileimage;
+			
 		}
 		if(!empty($education))
 		{
@@ -60,7 +60,6 @@ class CommonController extends Controller
 			$model->university = $education->university;
 			$model->collegename = $education->collegename;
 			$model->passingyear = $education->passingyear;
-			
 		}
 		if(!empty($jobpreference))
 		{
@@ -70,44 +69,33 @@ class CommonController extends Controller
 			$model->experience = $jobpreference->experience;
 			$model->jobtype = $jobpreference->jobtype;
 			$model->expectedsalary = $jobpreference->expectedsalary;
-				
 		}
 		if(!empty($skill))
 		{
-			
 			$model->skillname = $skill->skillname;
 			$model->lastused = $skill->lastused;
-			$model->experience = $skill->experience;
-		}
+					}
+
 		if (($model->load(Yii::$app->request->post())) && ($model->validate()) )
 		{
-			if(!empty($user))
+		 if(!(empty($employee)))
 			{
-				$user->email = $model->email;
-				$user -> save();
 				
-			}
-			else 
-			{
-				$umodel->email = $model->email;
-			}
-			if(!empty($employee))
-			{
 				$employee->name = 	$model->name;
 				$employee->surname = $model->surname;
 				$employee->gender = $model->gender;
 				$employee->dateofbirth = $model->dateofbirth;
 				$employee->mobilenumber = $model->mobilenumber;
-				$employee -> save();
+				$employee-> save();
 			}
 			else 
 			{
+				
 				$empmodel->name = $model->name;
 				$empmodel->surname = $model->surname;
 				$empmodel->gender = $model->gender;
-				$empmodel->dateofbirth = $model->dateofbirth;
 				$empmodel->mobilenumber = $model->mobilenumber;	
-				$employee -> save();				
+				$empmodel-> save();				
 			}
 			if(!empty($education))
 			{
@@ -116,24 +104,21 @@ class CommonController extends Controller
 				$education->university = $model->university;
 				$education->collegename = $model->collegename;
 				$education->passingyear = $model->passingyear;
-				$education -> userid = Yii::$app->user->id ;
+				$education ->userid = Yii::$app->user->id ;
 				$education -> save();
-					
+				
 			}
 			else
 			{
 				$edumodel->highdegree = $model->highdegree;
-			     $edumodel->specialization = $model->specialization;
+				$edumodel->specialization = $model->specialization;
 				$edumodel->university = $model->university;
 				$edumodel->collegename = $model->collegename;
 				$edumodel->passingyear = $model->passingyear;
-				$edumodel -> userid = Yii::$app->user->id ;
+				$edumodel ->userid = Yii::$app->user->id ;
 				$edumodel -> save();
 					
-				
 			}
-			
-			
 			if(!empty($jobpreference))
 			{
 				$jobpreference->functionalarea = $model->functionalarea;
@@ -144,7 +129,6 @@ class CommonController extends Controller
 				$jobpreference->expectedsalary = $model->expectedsalary;
 				$jobpreference -> userid = Yii::$app->user->id ;
 				$jobpreference -> save();
-				
 			
 			}
 			else
@@ -158,30 +142,32 @@ class CommonController extends Controller
 				$jobmodel -> userid = Yii::$app->user->id ;
 				$jobmodel -> save();
 			}
-			if(!empty($skill))
+		if(!(empty($skill)))
 			{
-					
 				$skill->skillname = $model->skillname;
 				$skill->lastused = $model->lastused;
-				$skill->experience = $model->experience;
-				$skill-> userid = Yii::$app->user->id ;
-				$skill -> save();
+				$skill->userid = Yii::$app->user->id ;
+				$skill-> save();
 			}
 			else {
-				
 				$skillmodel->skillname = $model->skillname;
 				$skillmodel->lastused = $model->lastused;
-				$skillmodel->experience = $model->experience;
-				$skillmodel-> userid = Yii::$app->user->id ;
-				$skillmodel -> save();
-				
-				
-			}
-			
-			
-			
-						   
+				$skillmodel->userid = Yii::$app->user->id ;
+				$skillmodel-> save();
+				}
+		if(!(empty($user)))
+			{
+				$user->email = $model->email;
+				$user-> save();
+				}
+			else 
+			{
+				$umodel->email = $model->email;
+				$umodel-> save();
+				}
 		
+		//	print_r($skillmodel->errors);exit();
+			return Yii::$app->getResponse()->redirect(['site/viewprofile', 'userid' => Yii::$app->user->id ] );
 		}
 		return $this->render('employee', [
 				'model' => $model,

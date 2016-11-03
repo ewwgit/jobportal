@@ -31,10 +31,10 @@ class EmployeeSkills extends \yii\db\ActiveRecord
     {
         return [
         		
-            [[ 'skillname', 'lastused', 'skillexperience'], 'required'],
-           // [['regid'], 'integer'],
-            [['skillname', 'skillexperience'], 'string', 'max' => 100],
-        		[[ 'skillname', 'lastused' ,'skillexperience','userid'], 'safe'],
+            [[ 'skillname', 'lastused'], 'required'],
+          
+          //  [['skillname', 'skillexperience'], 'string', 'max' => 100],
+        		[[ 'skillname', 'lastused' ,'userid'], 'safe'],
         ];
     }
 
@@ -47,7 +47,7 @@ class EmployeeSkills extends \yii\db\ActiveRecord
             
             'skillname' => 'Skillname',
             'lastused' => 'Lastused',
-           	'skillexperience' => 'Skillexperience',
+          
         	'userid' => 'Userid',
         										
         		

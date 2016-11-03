@@ -57,7 +57,7 @@ AppAsset::register($this);
                <li><a href="<?= Url::to(['/user/jobprofile'])?>" title="jobprofile">PreProfile</a></li>-->
                 
                
-                <li><a href="<?= Url::to(['/site/viewprofile'])?>" title="viewprofile">View</a></li>
+                <li><a href="<?= Url::to(['site/viewprofile'])?>" title="viewprofile">View</a></li>
                <li><a href="<?= Url::to(['/site/logout'])?>"
             data-method="post" title="">Logout</a></li>
             <?php } ?>

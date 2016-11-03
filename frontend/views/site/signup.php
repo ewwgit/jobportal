@@ -1,11 +1,15 @@
 <?php
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use dosamigos\datepicker\DatePicker;
+
+ 
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\SignupForm */
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+
 
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
@@ -34,10 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  
                  
                  
-                 <?php 
-                 use dosamigos\datepicker\DatePicker;
                  
-                 ?>
                   
                 <?= $form->field($model, 'dateofbirth')->widget(
     DatePicker::className(), [
