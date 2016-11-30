@@ -15,11 +15,7 @@ use yii\db\ActiveRecord;
  * @property string $password
  */
 class EmployeeSignup extends \yii\db\ActiveRecord {
-	public $highdegree;
-	public $specialization;
-	public $university;
-	public $collegename;
-	public $passingyear;
+	
 	/**
 	 * @inheritdoc
 	 */

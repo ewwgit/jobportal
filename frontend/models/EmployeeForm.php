@@ -10,6 +10,7 @@ use Yii;
  * Signup form
  */
 class EmployeeForm extends Model {
+	
 	public $username;
 	public $email;
 	public $password;
@@ -42,11 +43,50 @@ class EmployeeForm extends Model {
 	public $jobtype;
 	public $expectedsalary;
 	
+	
+	/*** Project Details ***/
+	
+	
+	public $projecttitle;
+	public $projectstartdate;
+	public $projectenddate;
+	public $projectlocation;
+	public $employementtype;
+	public $projectdescription;
+	public $role;
+	public $roledescription;
+	public $teamsize;
+	public $skillsused;
+	
+
+	
 	/**
 	 * * Skills Details **
 	 */
 	public $skillname;
 	public $lastused;
+	public $skillexperience;
+	
+	/**** Employer Details**/
+	
+	
+	public $employername;
+	public $employertype;
+	public $designation;
+	
+	/**** Other Details***/
+	
+	
+	public $language;
+	public $proficiencylevel;
+	public $ability;
+	
+	
+	public $resume;
+	
+	
+	
+	
 	
 	public function rules() {
 		return [
@@ -76,8 +116,22 @@ class EmployeeForm extends Model {
 								'expectedsalary',
 								
 								'skillname',
-								'lastused'
+								'lastused',
+								'skillexperience',
 								
+								
+								'projecttitle',
+								'projectstartdate',
+								'projectenddate',
+								'projectlocation',
+								'employementtype',
+								'projectdescription',
+								'role',
+								'roledescription',
+								'teamsize',
+								'skillsused',
+								
+							
 								
 								
 								
@@ -87,6 +141,8 @@ class EmployeeForm extends Model {
 						'required'
 				],
 				
+				
+			
 				[
 						[
 								'email',
@@ -111,7 +167,21 @@ class EmployeeForm extends Model {
 								'expectedsalary',
 								
 								'skillname',
-								'lastused'
+								'lastused',
+								'skillexperience',
+								
+								
+								'employername',
+								'employertype',
+								'designation',
+								
+								'language',
+								'proficiencylevel',
+								'ability',
+							
+								
+								
+								'resume',
 						
 						],
 						'safe'

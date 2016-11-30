@@ -19,6 +19,7 @@ class EmployeeSkills extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
     public static function tableName()
     {
         return 'employee_skills';
@@ -31,10 +32,10 @@ class EmployeeSkills extends \yii\db\ActiveRecord
     {
         return [
         		
-            [[ 'skillname', 'lastused'], 'required'],
+            [[ 'skillname', 'lastused','skillexperience'], 'required'],
           
           //  [['skillname', 'skillexperience'], 'string', 'max' => 100],
-        		[[ 'skillname', 'lastused' ,'userid'], 'safe'],
+        		[[ 'skillname', 'lastused','skillexperience' ,'userid'], 'safe'],
         ];
     }
 
@@ -47,6 +48,7 @@ class EmployeeSkills extends \yii\db\ActiveRecord
             
             'skillname' => 'Skillname',
             'lastused' => 'Lastused',
+        	'skillexperience' => 'Skillexperience',	
           
         	'userid' => 'Userid',
         										

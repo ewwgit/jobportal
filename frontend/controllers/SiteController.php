@@ -15,6 +15,9 @@ use frontend\models\EmployeeSignup;
 use frontend\models\ContactForm;
 use frontend\models\EmployeePreferences;
 use frontend\models\EmployeeSkills;
+use frontend\models\EmployeeProjects;
+use frontend\models\EmployeeEmployer;
+use frontend\models\EmployeeLanguages;
 use frontend\models\EmployeeEducation;
 use common\models\User;
 use yii\web\UploadedFile;
@@ -220,9 +223,17 @@ class SiteController extends Controller
     	$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
     		
     	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-    		 
+    	//$skillmodel = EmployeeSkills::find()->select(['skillname', 'userid' => Yii::$app->user->id])->distinct();
+    	//print_r($skillmodel->skillname);exit();
+    	/* $skillname=  count($skillmodel->skillname);
+    	print_r($skillname);exit(); */
+    	$projectmodel =   EmployeeProjects :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+    	$employermodel =   EmployeeEmployer :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+    	
+    	$languagemodel =   EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->user->id])->one();
     
-    	return $this->render('/site/viewprofile', ['empmodel' => $empmodel,'umodel' => $umodel,'edumodel' => $edumodel, 'jobmodel' => $jobmodel, 'skillmodel' => $skillmodel]);
+    	return $this->render('/site/viewprofile', ['empmodel' => $empmodel,'umodel' => $umodel,'edumodel' => $edumodel, 'jobmodel' => $jobmodel, 'skillmodel' => $skillmodel,
+    			'projectmodel' => $projectmodel, 'employermodel' => $employermodel, 'languagemodel' => $languagemodel]);
     }
     
     
