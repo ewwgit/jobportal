@@ -123,11 +123,14 @@ AppAsset::register($this);
 		       <li><a href="<?= Url::to(['/site/login'])?>" title="login">Employee-login</a></li>
 		        <!-- <li><a href="resume.html">Upload Resume</a></li> -->
 		         <li><a href="<?= Url::to(['/site/signup'])?>" title="signup">Employee-Signup</a></li>
+		         <li><a href="<?= Url::to(['/employercompany/empsite/signup'])?>" title="viewprofile">EMPLOYER</a></li>
 	        </ul>
 	        <?php }else { ?>
 	        <ul class="nav navbar-nav">
 	        <li><a href="<?= Url::to(['/common/employee'])?>" title="viewprofile">EmployeeProfile</a></li>
-	         <li><a href="<?= Url::to(['site/viewprofile'])?>" title="viewprofile">View</a></li>
+	         <li><a href="<?= Url::to(['site/viewprofile'])?>" title="viewprofile">EmployeeView</a></li>
+	         <li><a href="<?= Url::to(['/employercompany/empcommon/jobpostingslist'])?>" title="viewprofile">EmployerJobPosting</a></li>
+			    <li><a href="<?= Url::to(['/employercompany/empcommon/employer'])?>" title="viewprofile">EmployerDetails</a></li>
                <li><a href="<?= Url::to(['/site/logout'])?>"
             data-method="post" title="">Logout</a></li>
             </ul>
