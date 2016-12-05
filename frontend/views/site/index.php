@@ -4,420 +4,341 @@
 
 $this->title = 'My Yii Application';
 ?>
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
 <head>
-<title>Seeking an Job Portal Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Seeking Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<link href='//fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-<!----font-Awesome----->
-<link href="css/font-awesome.css" rel="stylesheet"> 
-<!----font-Awesome----->
-</head>
-<body>
 
-<div class="banner">
-	<div class="container">
-		<div id="search_wrapper">
-		 <div id="search_form" class="clearfix">
-		 <h1>Start your job search</h1>
-		    <p>
-			 <input type="text" class="text" placeholder=" " value="Enter Keyword(s)" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Keyword(s)';}">
-			 <input type="text" class="text" placeholder=" " value="Location" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Location';}">
-			 <label class="btn2 btn-2 btn2-1b"><input type="submit" value="Find Jobs"></label>
-			</p>
-            <h2 class="title">top Countries &amp; searches</h2>
-         </div>
-		 <div id="city_1" class="clearfix">
-			 <ul class="orange">
-			 <li>
-			 <a href="#">Japan</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Kenya Jobs">Kenya</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Australia Jobs">Australia</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Poland Jobs">Poland</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Oman Jobs">Oman</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Pakistan jobs">Pakistan</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Saudi Arbia Jobs">Saudi Arbia</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Doha Jobs">Doha</a>
-			 </li>
-			 </ul>
-			 <ul class="orange">
-			 <li>
-			 <a href="#" title="Russia Jobs">Russia</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Germany Jobs">Germany</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Canada Jobs">Canada</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Hong Kong Jobs">Hong Kong</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Spain Jobs">Spain</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Thailand Jobs">Thailand</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Norway Jobs">Norway</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Srilanka Jobs">Srilanka</a>
-			 </li>
-			 </ul>
-			 <ul class="blue">
-			 <li>
-			 <a href="#" title="Information Technology">Mexico</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Fresher">Fresher</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Engineering">Engineering</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Finance Jobs">Finance</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Teaching">Teaching</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Software">Software</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Accounting">Accounting</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Data Entry">Data Entry</a>
-			 </li>
-			 </ul>
-			 <ul class="blue">
-			 <li>
-			 <a href="#" title="Marketing Jobs">Marketing </a>
-			 </li>
-			 <li>
-			 <a href="#" title="Freelancer">Freelancer</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Internet Jobs">Internet</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Sales">Sales</a>
-			 </li>
-			  <li>
-			 <a href="#" title="Legal">Legal</a>
-			 </li>
-			 <li>
-			 <a href="#" title="HR">HR</a>
-			 </li>
-			 <li>
-			 <a href="#" title="MBA">MBA</a>
-			 </li>
-			 <li>
-			 <a href="#" title="Pharma">Pharma</a>
-			 </li>
-			 </ul>
-	     </div>
-       </div>
-   </div> 
-</div>	
-<div class="container">
-  <div class="grid_1">
-	 <h3>Featured Employers</h3>
-	 <div class="nbs-flexisel-container"><div class="nbs-flexisel-inner">
-	   <ul id="flexiselDemo3"  class="nbs-flexisel-ul" style="left: -154px;">
-	      <li class="nbs-flexisel-item" style="width: 154px;"><img src="images/c1.gif"  class="img-responsive" /></li>
-		  <li class="nbs-flexisel-item" style="width: 154px;"><img src="images/c2.gif"  class="img-responsive" /></li>
-		  <li class="nbs-flexisel-item" style="width: 154px;"><img src="images/c3.gif"  class="img-responsive" /></li>
-		  <li class="nbs-flexisel-item" style="width: 154px;"><img src="images/c4.gif"  class="img-responsive" /></li>
-		  <li class="nbs-flexisel-item" style="width: 154px;"><img src="images/c5.gif"  class="img-responsive" /></li>
-		  <li class="nbs-flexisel-item" style="width: 154px;"><img src="images/c6.gif"  class="img-responsive" /></li>	
-	    </ul>
-	    <div class="nbs-flexisel-nav-left" style="top: -10px;"></div>
-	    <div class="nbs-flexisel-nav-right" style="top: -10px;"></div>
-	    </div></div>
-	    <script type="text/javascript">
-		 $(window).load(function() {
-			$("#flexiselDemo3").flexisel({
-				visibleItems: 6,
-				animationSpeed: 1000,
-				autoPlay:false,
-				autoPlaySpeed: 3000,    		
-				pauseOnHover: true,
-				enableResponsiveBreakpoints: true,
-		    	responsiveBreakpoints: { 
-		    		portrait: { 
-		    			changePoint:480,
-		    			visibleItems: 1
-		    		}, 
-		    		landscape: { 
-		    			changePoint:640,
-		    			visibleItems: 2
-		    		},
-		    		tablet: { 
-		    			changePoint:768,
-		    			visibleItems: 3
-		    		}
-		    	}
-		    });
-		    
-		});
-	   </script>
-	   <script type="text/javascript" src="js/jquery.flexisel.js"></script>
-	 </div>
-	 <div class="single">  
-	   <div class="col-md-4">
-	   	  <div class="col_3">
-	   	  	<h3>Todays Jobs</h3>
-	   	  	<ul class="list_1">
-	   	  		<li><a href="#">Department of Health - Western Australia</a></li>
-	   	  		<li><a href="#">Australian Nursing Agency currently require experiences</a></li>		
-	   	  		<li><a href="#">Russia Nursing Agency currently require experiences</a></li>
-	   	  		<li><a href="#">The Government of Western Saudi Arbia</a></li>		
-	   	  		<li><a href="#">Department of Health - Western Australia</a></li>
-	   	  		<li><a href="#">Australian Nursing Agency currently require experiences</a></li>		
-	   	  		<li><a href="#">Russia Nursing Agency currently require experiences</a></li>
-	   	  		<li><a href="#">The Scientific Publishing Services in Saudi Arbia</a></li>	
-	   	  		<li><a href="#">BPO Private Limited in Canada</a></li>		
-	   	  		<li><a href="#">Executive Tracks Associates in Pakistan</a></li>
-	   	  		<li><a href="#">Pyramid IT Consulting Pvt. Ltd. in Pakistan</a></li>						
-	   	  	</ul>
-	   	  </div>
-	   	  <div class="col_3">
-	   	  	<h3>Jobs by Category</h3>
-	   	  	<ul class="list_2">
-	   	  		<li><a href="#">Railway Recruitment</a></li>
-	   	  		<li><a href="#">Air Force Jobs</a></li>		
-	   	  		<li><a href="#">Police Jobs</a></li>
-	   	  		<li><a href="#">Intelligence Bureau Jobs</a></li>		
-	   	  		<li><a href="#">Army Jobs</a></li>
-	   	  		<li><a href="#">Navy Jobs</a></li>		
-	   	  		<li><a href="#">BSNL Jobs</a></li>
-	   	  		<li><a href="#">Software Jobs</a></li>	
-	   	  		<li><a href="#">Research Jobs</a></li>								
-	   	  	</ul>
-	   	  </div>
-	   	  <div class="widget">
-	        <h3>Take The Seeking Poll!</h3>
-    	        <div class="widget-content"> 
-                 <div class="seeking-answer">
-			    	<span class="seeking-answer-group">
-		    			<span class="seeking-answer-input">
-		    			   <input class="seeking-radiobutton" type="radio">
-		    			</span>
-		    			<label for="" class="seeking-input-label">
-		    				<span class="seeking-answer-span">Frequently</span>
-		    			</label>
-		    		</span>
-			    	<span class="seeking-answer-group">
-		    			<span class="seeking-answer-input">
-		    			   <input class="seeking-radiobutton" type="radio">
-		    			</span>
-		    			<label for="" class="seeking-input-label">
-		    				<span class="seeking-answer-span">Interviewing</span>
-		    			</label>
-		    		</span>
-			        <span class="seeking-answer-group">
-		    			<span class="seeking-answer-input">
-		    			   <input class="seeking-radiobutton" type="radio">
-		    			</span>
-		    			<label for="" class="seeking-input-label">
-		    				<span class="seeking-answer-span">Leaving a familiar workplace</span>
-		    			</label>
-		    		</span>
-		    		<div class="seeking_vote">
-		    		  <a class="seeking-vote-button">Vote</a>
-		    		</div>
-			     </div>
-    	       </div>
-    	</div>
-	 </div>
-	   <div class="col-md-8">
-	      <div class="col_1">
-   	        <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/a1.jpg" class="img-responsive" alt=""/></a>
-			</div>
-			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">It is a long established fact</a></h4>
-				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
-				<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-				<div class="social">	
-					<a class="btn_1" href="#">
-						<i class="fa fa-facebook fb"></i>
-						<span class="share1 fb">Share</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-twitter tw"></i>
-						<span class="share1">Tweet</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
-					</a>
-			   </div>
-			</div>
-			<div class="clearfix"> </div>
-		   </div>
-		   <div class="col_1">
-   	         <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/a2.jpg" class="img-responsive" alt=""/></a>
-			</div>
-			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">Lorem Ipsum is simply dummy</a></h4>
-				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
-				<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-				<div class="social">	
-					<a class="btn_1" href="#">
-						<i class="fa fa-facebook fb"></i>
-						<span class="share1 fb">Share</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-twitter tw"></i>
-						<span class="share1">Tweet</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
-					</a>
-			   </div>
-			</div>
-			<div class="clearfix"> </div>
-		   </div>
-		   <div class="col_1">
-   	        <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/a3.jpg" class="img-responsive" alt=""/></a>
-			</div>
-			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">There are many variations</a></h4>
-				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
-				<p>YBut I must explain to you how all this mistaken idea of denouncing pleasure.</p>
-				<div class="social">	
-					<a class="btn_1" href="#">
-						<i class="fa fa-facebook fb"></i>
-						<span class="share1 fb">Share</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-twitter tw"></i>
-						<span class="share1">Tweet</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
-					</a>
-			   </div>
-			</div>
-			<div class="clearfix"> </div>
-		   </div>
-		   <div class="col_1">
-   	         <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/a4.jpg" class="img-responsive" alt=""/></a>
-			</div>
-			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">Contrary to popular belief</a></h4>
-				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
-				<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
-				<div class="social">	
-					<a class="btn_1" href="#">
-						<i class="fa fa-facebook fb"></i>
-						<span class="share1 fb">Share</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-twitter tw"></i>
-						<span class="share1">Tweet</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
-					</a>
-			   </div>
-			</div>
-			<div class="clearfix"> </div>
-		   </div>
-		   <div class="col_1">
-   	         <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/a5.jpg" class="img-responsive" alt=""/></a>
-			</div>
-			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">At vero eos et accusamus</a></h4>
-				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
-				<p>On the other hand, we denounce with righteous indignation and dislike men.</p>
-				<div class="social">	
-					<a class="btn_1" href="#">
-						<i class="fa fa-facebook fb"></i>
-						<span class="share1 fb">Share</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-twitter tw"></i>
-						<span class="share1">Tweet</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
-					</a>
-			   </div>
-			</div>
-			<div class="clearfix"> </div>
-		   </div>
-		   <div class="col_2">
-   	         <div class="col-sm-4 row_2">
-				<a href="single.html"><img src="images/a6.jpg" class="img-responsive" alt=""/></a>
-			</div>
-			<div class="col-sm-8 row_1">
-				<h4><a href="single.html">On the other hand</a></h4>
-				<h6>SIt is a long <span class="dot">·</span> Jul. 31, 2015</h6>
-				<p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-				<div class="social">	
-					<a class="btn_1" href="#">
-						<i class="fa fa-facebook fb"></i>
-						<span class="share1 fb">Share</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-twitter tw"></i>
-						<span class="share1">Tweet</span>								
-					</a>
-					<a class="btn_1" href="#">
-						<i class="fa fa-google-plus google"></i>
-						<span class="share1 google">Share</span>
-					</a>
-			   </div>
-			  </div>
-			<div class="clearfix"> </div>
-		   </div>
-	   </div>
-	   <div class="clearfix"> </div>
-	 </div>
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<title>Work Scout</title>
+
+<!-- Mobile Specific Metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/colors/green.css" id="colors">
+
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+<div id="wrapper"> 
+  
+  <!-- Header
+================================================== -->
+ 
+  <div class="clearfix"></div>
+  
+  <!-- Banner
+================================================== -->
+ 
+  
+  <!-- Content
+================================================== --> 
+  
+  <!-- Categories -->
+  <div class="container">
+    <div class="sixteen columns">
+      <h3 class="margin-bottom-25">Popular Categories</h3>
+      <ul id="popular-categories">
+        <li><a href="#"><i class="ln  ln-icon-Bar-Chart"></i> Accounting / Finance</a></li>
+        <li><a href="#"><i class="ln ln-icon-Car"></i> Automotive Jobs</a></li>
+        <li><a href="#"><i class="ln ln-icon-Worker"></i> Construction / Facilities</a></li>
+        <li><a href="#"><i class="ln ln-icon-Student-Female"></i> Education Training</a></li>
+        <li><a href="#"><i class="ln  ln-icon-Medical-Sign"></i> Healthcare</a></li>
+        <li><a href="#"><i class="ln  ln-icon-Plates"></i> Restaurant / Food Service</a></li>
+        <li><a href="#"><i class="ln  ln-icon-Globe"></i> Transportation / Logistics</a></li>
+        <li><a href="#"><i class="ln  ln-icon-Laptop-3"></i> Telecommunications</a></li>
+      </ul>
+      <div class="clearfix"></div>
+      <div class="margin-top-30"></div>
+      <a href="browse-categories.html" class="button centered">Browse All Categories</a>
+      <div class="margin-bottom-50"></div>
+    </div>
+  </div>
+  <div class="container"> 
+    
+    <!-- Recent Jobs -->
+    <div class="eleven columns">
+      <div class="padding-right">
+        <h3 class="margin-bottom-25">Recent Jobs</h3>
+        <ul class="job-list">
+          <li class="highlighted"><a href="job-page.html"> <img src="images/job-list-logo-01.png" alt="">
+            <div class="job-list-content">
+              <h4>Marketing Coordinator - SEO / SEM Experience <span class="full-time">Full-Time</span></h4>
+              <div class="job-icons"> <span><i class="fa fa-briefcase"></i> King</span> <span><i class="fa fa-map-marker"></i> Sydney</span> <span><i class="fa fa-money"></i> $100 / hour</span> </div>
+            </div>
+            </a>
+            <div class="clearfix"></div>
+          </li>
+          <li><a href="job-page.html"> <img src="images/job-list-logo-02.png" alt="">
+            <div class="job-list-content">
+              <h4>Core PHP Developer for Site Maintenance <span class="part-time">Part-Time</span></h4>
+              <div class="job-icons"> <span><i class="fa fa-briefcase"></i> Cubico</span> <span><i class="fa fa-map-marker"></i> London</span> <span><i class="fa fa-money"></i> $50 / hour</span> </div>
+            </div>
+            </a>
+            <div class="clearfix"></div>
+          </li>
+          <li><a href="job-page.html"> <img src="images/job-list-logo-03.png" alt="">
+            <div class="job-list-content">
+              <h4>Restaurant Team Member - Crew <span class="full-time">Full-Time</span></h4>
+              <div class="job-icons"> <span><i class="fa fa-briefcase"></i> King</span> <span><i class="fa fa-map-marker"></i> Sydney</span> <span><i class="fa fa-money"></i> $15 / hour</span> </div>
+            </div>
+            </a>
+            <div class="clearfix"></div>
+          </li>
+          <li><a href="job-page.html"> <img src="images/job-list-logo-04.png" alt="">
+            <div class="job-list-content">
+              <h4>Power Systems User Experience Designer <span class="internship">Internship</span></h4>
+              <div class="job-icons"> <span><i class="fa fa-briefcase"></i> Hexagon</span> <span><i class="fa fa-map-marker"></i> London</span> <span><i class="fa fa-money"></i> $75 / hour</span> </div>
+            </div>
+            </a>
+            <div class="clearfix"></div>
+          </li>
+          <li><a href="job-page.html"> <img src="images/job-list-logo-05.png" alt="">
+            <div class="job-list-content">
+              <h4>iPhone / Android Music App Development <span class="temporary">Temporary</span></h4>
+              <div class="job-icons"> <span><i class="fa fa-briefcase"></i> Mates</span> <span><i class="fa fa-map-marker"></i> New York</span> <span><i class="fa fa-money"></i> $115 / hour</span> </div>
+            </div>
+            </a>
+            <div class="clearfix"></div>
+          </li>
+        </ul>
+        <a href="browse-jobs.html" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
+        <div class="margin-bottom-55"></div>
+      </div>
+    </div>
+    
+    <!-- Job Spotlight -->
+    <div class="five columns">
+      <h3 class="margin-bottom-5">Job Spotlight</h3>
+      
+      <!-- Navigation -->
+      <div class="showbiz-navigation">
+        <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+        <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+      </div>
+      <div class="clearfix"></div>
+      
+      <!-- Showbiz Container -->
+      <div id="job-spotlight" class="showbiz-container">
+        <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
+          <div class="overflowholder">
+            <ul>
+              <li>
+                <div class="job-spotlight"> <a href="#">
+                  <h4>Social Media: Advertising Coordinator <span class="part-time">Part-Time</span></h4>
+                  </a> <span><i class="fa fa-briefcase"></i> Mates</span> <span><i class="fa fa-map-marker"></i> New York</span> <span><i class="fa fa-money"></i> $20 / hour</span>
+                  <p>As advertising & content coordinator, you will support our social media team in producing high quality social content for a range of media channels.</p>
+                  <a href="job-page.html" class="button">Apply For This Job</a> </div>
+              </li>
+              <li>
+                <div class="job-spotlight"> <a href="#">
+                  <h4>Prestashop / WooCommerce Product Listing <span class="freelance">Freelance</span></h4>
+                  </a> <span><i class="fa fa-briefcase"></i> King</span> <span><i class="fa fa-map-marker"></i> London</span> <span><i class="fa fa-money"></i> $25 / hour</span>
+                  <p>Etiam suscipit tellus ante, sit amet hendrerit magna varius in. Pellentesque lorem quis enim venenatis pellentesque.</p>
+                  <a href="job-page.html" class="button">Apply For This Job</a> </div>
+              </li>
+              <li>
+                <div class="job-spotlight"> <a href="#">
+                  <h4>Logo Design <span class="freelance">Freelance</span></h4>
+                  </a> <span><i class="fa fa-briefcase"></i> Hexagon</span> <span><i class="fa fa-map-marker"></i> Sydney</span> <span><i class="fa fa-money"></i> $10 / hour</span>
+                  <p>Proin ligula neque, pretium et ipsum eget, mattis commodo dolor. Etiam tincidunt libero quis commodo.</p>
+                  <a href="job-page.html" class="button">Apply For This Job</a> </div>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Testimonials -->
+  <div id="testimonials"> 
+    <!-- Slider -->
+    <div class="container">
+      <div class="sixteen columns">
+        <div class="testimonials-slider">
+          <ul class="slides">
+            <li>
+              <p>I have already heard back about the internship I applied through Job Finder, that's the fastest job reply I've ever gotten and it's so much better than waiting weeks to hear back. <span>Collis Ta’eed, Envato</span></p>
+            </li>
+            <li>
+              <p>Nam eu eleifend nulla. Duis consectetur sit amet risus sit amet venenatis. Pellentesque pulvinar ante a tincidunt placerat. Donec dapibus efficitur arcu, a rhoncus lectus egestas elementum. <span>John Doe</span></p>
+            </li>
+            <li>
+              <p>Maecenas congue sed massa et porttitor. Duis placerat commodo ex, ut faucibus est facilisis ac. Donec eleifend arcu sed sem posuere aliquet. Etiam lorem metus, suscipit vel tortor vitae. <span>Tom Smith</span></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Infobox -->
+  <div class="infobox">
+    <div class="container">
+      <div class="sixteen columns">Start Building Your Own Job Board Now <a href="my-account.html">Get Started</a></div>
+    </div>
+  </div>
+  <h3 class="centered-headline">Clients Who Have Trusted Us <span>The list of clients who have put their trust in us includes:</span></h3>
+  <div class="clearfix"></div>
+  <div class="container">
+    <div class="sixteen columns"> 
+      
+      <!-- Navigation / Left -->
+      <div class="one carousel column">
+        <div id="showbiz_left_2" class="sb-navigation-left-2"><i class="fa fa-angle-left"></i></div>
+      </div>
+      
+      <!-- ShowBiz Carousel -->
+      <div id="our-clients" class="showbiz-container fourteen carousel columns" > 
+        
+        <!-- Portfolio Entries -->
+        <div class="showbiz our-clients" data-left="#showbiz_left_2" data-right="#showbiz_right_2">
+          <div class="overflowholder">
+            <ul>
+              <!-- Item -->
+              <li><img src="images/logo-01.png" alt="" /></li>
+              <li><img src="images/logo-02.png" alt="" /></li>
+              <li><img src="images/logo-03.png" alt="" /></li>
+              <li><img src="images/logo-04.png" alt="" /></li>
+              <li><img src="images/logo-05.png" alt="" /></li>
+              <li><img src="images/logo-06.png" alt="" /></li>
+              <li><img src="images/logo-07.png" alt="" /></li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      
+      <!-- Navigation / Right -->
+      <div class="one carousel column">
+        <div id="showbiz_right_2" class="sb-navigation-right-2"><i class="fa fa-angle-right"></i></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer
+================================================== -->
+
+  
+  <!-- Back To Top Button -->
+  <div id="backtotop"><a href="#"></a></div>
+</div>
+<!-- Wrapper / End --> 
+
+<!-- Scripts
+================================================== --> 
+<script src="scripts/jquery-2.1.3.min.js"></script> 
+<script src="scripts/custom.js"></script> 
+<script src="scripts/jquery.superfish.js"></script> 
+<script src="scripts/jquery.themepunch.tools.min.js"></script> 
+<script src="scripts/jquery.themepunch.revolution.min.js"></script> 
+<script src="scripts/jquery.themepunch.showbizpro.min.js"></script> 
+<script src="scripts/jquery.flexslider-min.js"></script> 
+<script src="scripts/chosen.jquery.min.js"></script> 
+<script src="scripts/jquery.magnific-popup.min.js"></script> 
+<script src="scripts/waypoints.min.js"></script> 
+<script src="scripts/jquery.counterup.min.js"></script> 
+<script src="scripts/jquery.jpanelmenu.js"></script> 
+<script src="scripts/stacktable.js"></script> 
+<script src="scripts/headroom.min.js"></script> 
+
+<!-- Style Switcher
+================================================== --> 
+<script src="scripts/switcher.js"></script>
+<div id="style-switcher">
+  <h2>Style Switcher <a href="#"></a></h2>
+  <div>
+    <h3>Predefined Colors</h3>
+    <ul class="colors" id="color1">
+      <li><a href="#" class="green" title="Green"></a></li>
+      <li><a href="#" class="blue" title="Blue"></a></li>
+      <li><a href="#" class="orange" title="Orange"></a></li>
+      <li><a href="#" class="navy" title="Navy"></a></li>
+      <li><a href="#" class="yellow" title="Yellow"></a></li>
+      <li><a href="#" class="peach" title="Peach"></a></li>
+      <li><a href="#" class="beige" title="Beige"></a></li>
+      <li><a href="#" class="purple" title="Purple"></a></li>
+      <li><a href="#" class="celadon" title="Celadon"></a></li>
+      <li><a href="#" class="pink" title="Pink"></a></li>
+      <li><a href="#" class="red" title="Red"></a></li>
+      <li><a href="#" class="brown" title="Brown"></a></li>
+      <li><a href="#" class="cherry" title="Cherry"></a></li>
+      <li><a href="#" class="cyan" title="Cyan"></a></li>
+      <li><a href="#" class="gray" title="Gray"></a></li>
+      <li><a href="#" class="olive" title="Olive"></a></li>
+    </ul>
+    <h3>Layout Style</h3>
+    <div class="layout-style">
+      <select id="layout-style">
+        <option value="2">Wide</option>
+        <option value="1">Boxed</option>
+      </select>
+    </div>
+    <h3>Header Style</h3>
+    <div class="layout-style">
+      <select id="header-style">
+        <option value="1">Style 1</option>
+        <option value="2">Style 2</option>
+        <option value="3">Style 3</option>
+      </select>
+    </div>
+    <h3>Background Image</h3>
+    <ul class="colors bg" id="bg">
+      <li><a href="#" class="bg1"></a></li>
+      <li><a href="#" class="bg2"></a></li>
+      <li><a href="#" class="bg3"></a></li>
+      <li><a href="#" class="bg4"></a></li>
+      <li><a href="#" class="bg5"></a></li>
+      <li><a href="#" class="bg6"></a></li>
+      <li><a href="#" class="bg7"></a></li>
+      <li><a href="#" class="bg8"></a></li>
+      <li><a href="#" class="bg9"></a></li>
+      <li><a href="#" class="bg10"></a></li>
+      <li><a href="#" class="bg11"></a></li>
+      <li><a href="#" class="bg12"></a></li>
+      <li><a href="#" class="bg13"></a></li>
+      <li><a href="#" class="bg14"></a></li>
+      <li><a href="#" class="bg15"></a></li>
+      <li><a href="#" class="bg16"></a></li>
+    </ul>
+    <h3>Background Color</h3>
+    <ul class="colors bgsolid" id="bgsolid">
+      <li><a href="#" class="green-bg" title="Green"></a></li>
+      <li><a href="#" class="blue-bg" title="Blue"></a></li>
+      <li><a href="#" class="orange-bg" title="Orange"></a></li>
+      <li><a href="#" class="navy-bg" title="Navy"></a></li>
+      <li><a href="#" class="yellow-bg" title="Yellow"></a></li>
+      <li><a href="#" class="peach-bg" title="Peach"></a></li>
+      <li><a href="#" class="beige-bg" title="Beige"></a></li>
+      <li><a href="#" class="purple-bg" title="Purple"></a></li>
+      <li><a href="#" class="red-bg" title="Red"></a></li>
+      <li><a href="#" class="pink-bg" title="Pink"></a></li>
+      <li><a href="#" class="celadon-bg" title="Celadon"></a></li>
+      <li><a href="#" class="brown-bg" title="Brown"></a></li>
+      <li><a href="#" class="cherry-bg" title="Cherry"></a></li>
+      <li><a href="#" class="cyan-bg" title="Cyan"></a></li>
+      <li><a href="#" class="gray-bg" title="Gray"></a></li>
+      <li><a href="#" class="olive-bg" title="Olive"></a></li>
+    </ul>
+  </div>
+  <div id="reset"><a href="#" class="button color">Reset</a></div>
 </div>
 </body>
-</html>	
+</html>
