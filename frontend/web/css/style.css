@@ -81,7 +81,8 @@ body a{
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
-    min-height:630px;	
+    min-height:630px;
+   
 }
 .banner_1{
 	background:url(../images/banner_1.jpg)no-repeat center top;
@@ -89,7 +90,8 @@ body a{
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
-    min-height:200px;	
+    min-height:200px;
+    min-width:1349px;	
 }
 #search_wrapper1{
 	margin-top:3em;
@@ -452,6 +454,7 @@ a.seeking-vote-button:hover{
 .footer{
 	padding:2em 0;
 	background:#444;
+	
 }
 .footer_bottom{
 	padding:2em 0;
@@ -2049,6 +2052,7 @@ p.sm_1{
 }
 .banner {
     min-height: 500px;
+   
 }	
 .addr dl dt {
     min-width: 120px;

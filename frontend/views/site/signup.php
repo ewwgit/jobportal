@@ -53,8 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    </div> 
 </div>	
 
-
-    <div class="row">
+<div class="row">
         <div class="col-lg-5">
         
         <div class="section-title">

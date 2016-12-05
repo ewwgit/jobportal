@@ -168,7 +168,8 @@ class SiteController extends Controller
         	$dateofbirth = date('Y-m-d', strtotime($model->dateofbirth));
         	$mobilenumber=$model->mobilenumber;
         	$model->profileimage = UploadedFile::getInstance($model,'profileimage');
-        	$profileimage=$model->profileimage;                                                                                                   
+        	$imageName = time().$model->profileimage->name;
+        	$profileimage = '/frontend/web/profileimages/'.$imageName;
         	
         	
         	
@@ -180,15 +181,15 @@ class SiteController extends Controller
         		$model->profileimage->saveAs('profileimages/'.$imageName );
         		$model->profileimage = 'profileimages/'.$imageName;
         	}
-        	 
+        
         	
-        	/* $userid = Yii::$app->user->id ;
+        	 /* $userid = Yii::$app->user->id ;
         	$model->userid=$userid;
-        	$userids=$model->userid; */
-        	
+        	$userids=$model->userid; 
+ */        	
         	Yii::$app->db->createCommand()->insert('employee_signup', [
         			'name' => $name,'surname' => $surname, 'gender' => $gender, 'dateofbirth' => $dateofbirth,
-        			'mobilenumber' => $mobilenumber,'profileimage' => $profileimage])->execute();
+        			'mobilenumber' => $mobilenumber,'profileimage' => $profileimage,])->execute();
         	
         	
             if ($user = $model->signup()) {

@@ -45,8 +45,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            </div>
 		</div>
    </div> 
-</div>	
-    <div class="section-title">
+</div>
+</div>
+<div class="section-title">
                             <h3>LogIn to your Account</h3>
                         </div>
     
@@ -68,7 +69,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
 
             <?php ActiveForm::end(); ?>
-        </div>
-        
-        </body>
-        </html>
+			</body>
+			</html>

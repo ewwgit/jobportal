@@ -263,46 +263,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <h1>Add Your Other Details or Known Languages</h1>
     
-      <table class="form-table" id="customFields">
-     <tr><td> <?= $form->field($model, 'language')->textInput(['autofocus' => true]) ?></td>
-      <td><?= $form->field($model, 'proficiencylevel')->dropDownList(['Beginner' =>'Beginner','Proficient' => 'Proficient','Expert' => 'Expert',
-          ],['prompt'=>'Select']) ?></td>
+    
+      <?= $form->field($model, 'language')->textInput(['autofocus' => true]) ?>
+      <?= $form->field($model, 'proficiencylevel')->dropDownList(['Beginner' =>'Beginner','Proficient' => 'Proficient','Expert' => 'Expert',
+          ],['prompt'=>'Select']) ?>
           
-       <td><?= $form->field($model, 'ability')->checkboxList(['Read' => 'Read','Write' => 'Write',
-		   'Speak' => 'Speak',])?>   </td>
+       <?= $form->field($model, 'ability')->checkboxList(['Read' => 'Read','Write' => 'Write',
+		   'Speak' => 'Speak',])?>   
           
-       <td><a href="javascript:void(0);" class="addCF">AddMore</a></td></tr>
-       </table>
-       
-       
-          <div id="dynamiccon" style="display: none;">
-       
-       
-           <table class="form-table" id="customFields">
-     <tr><td> <?= $form->field($model, 'language')->textInput(['autofocus' => true]) ?></td>
-      <td><?= $form->field($model, 'proficiencylevel')->dropDownList(['Beginner' =>'Beginner','Proficient' => 'Proficient','Expert' => 'Expert',
-          ],['prompt'=>'Select']) ?></td>
-          
-       <td><?= $form->field($model, 'ability')->checkboxList(['Read' => 'Read','Write' => 'Write',
-		   'Speak' => 'Speak',])?>   </td>
-          
-        <td><a href="javascript:void(0);" class="remCF">Remove</a></td> 	
-       </table>
-       
-       </div>
-        <script src="js/jquery.js" type="text/javascript"></script>
-   <script type="text/javascript">
-     $(document).ready(function(){
-	$(".addCF").on('click',function(){
-		var dync = $('#dynamiccon').html();
-		//console.log(dync);
-		$("#customFields").append(dync);
-	});
-    $("#customFields").on('click','.remCF',function(){
-        $(this).parent().parent().remove();
-    });
-});
-	</script>
+        
        
        
        
