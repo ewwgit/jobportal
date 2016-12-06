@@ -90,6 +90,9 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+    	
+    	$this->layout= '@app/views/layouts/innerpagemain';
+    	
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -156,6 +159,9 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
+    	
+    	$this->layout= '@app/views/layouts/innerpagemain';
+    	
         $model = new SignupForm();
        //$employeesignup = new EmployeeSignup();
         if ($model->load(Yii::$app->request->post())) {
@@ -163,16 +169,18 @@ class SiteController extends Controller
         	//print_r(Yii::$app->request->post());exit();
         
         	$name = $model->name;
+        	//print_r($name);exit();
         	$surname = $model->surname;
         	$gender = $model->gender;
         	$dateofbirth = date('Y-m-d', strtotime($model->dateofbirth));
         	$mobilenumber=$model->mobilenumber;
         	$model->profileimage = UploadedFile::getInstance($model,'profileimage');
+        	//print_r($model->profileimage);exit();
         	$imageName = time().$model->profileimage->name;
         	$profileimage = '/frontend/web/profileimages/'.$imageName;
         	
         	
-        	
+        	//print_r($imageName);exit();
 
         	if(!(empty($model->profileimage)))
         	{
