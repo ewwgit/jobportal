@@ -25,6 +25,7 @@ class EmpcommonController extends Controller
 
 	public function actionEmployer()
 	{
+		$this->layout= '@app/views/layouts/employermain';
 		$model = new EmployerForm ();
 		$employerSignup = new EmployerSignup ();
 		$employermodel = new Employer ();
@@ -49,6 +50,7 @@ class EmpcommonController extends Controller
 		$model->dateofbirth = $employeData->dateofbirth;
 		$model->mobilenumber = $employeData->mobilenumber;
 		$model->address = $employeData->address;
+		
 		}
 		if(!(empty($userData))){
 		$model->username = $userData->username;
@@ -100,7 +102,7 @@ class EmpcommonController extends Controller
 	
 		if (($model->load(Yii::$app->request->post())) && ($model->validate()) )
 		{
-			
+			//print_r($model->load(Yii::$app->request->post()));exit;
 			if(!(empty($employeData))){
 				$employeData->name = $model->name;
 				$employeData->designation = $model->designation;
@@ -110,6 +112,7 @@ class EmpcommonController extends Controller
 				$employeData->dateofbirth = $companyDataa;
 				$employeData->mobilenumber = $model->mobilenumber;
 				$employeData->address = $model->address;
+				
 				//$employeData ->employerid = Yii::$app->user->id ;
 				$employeData-> save();
 			}
@@ -245,12 +248,16 @@ class EmpcommonController extends Controller
 			
 		
 		}
+		
 		return $this->render('comview', [
 				'model' => $model,
+				
 		]);
+		
 	}
 	public function actionEmployercommonview()
 	{
+		$this->layout= '@app/views/layouts/employermain';
 		$model = new EmployerForm ();
 		$model = User::find ()->where ( [ 'id' => Yii::$app->user->id ] )->one ();
 		$employemodel = Employer :: find ()->where ( [ 'userid' => Yii::$app->user->id ] )->one ();
@@ -267,6 +274,7 @@ class EmpcommonController extends Controller
 	}
 	public function actionCreate()
 	{
+		$this->layout= '@app/views/layouts/employermain';
 	   $model = new EmployerJobpostings();
 	//   $postings = EmployerJobpostings :: find()->all();
 	
@@ -298,6 +306,7 @@ class EmpcommonController extends Controller
 	
 	public function actionJobpostingslist()
 	{
+		$this->layout= '@app/views/layouts/employermain';
 		$searchModel = new JobpostSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 	
@@ -308,6 +317,7 @@ class EmpcommonController extends Controller
 	}
 	public function actionJobpostingsview($id)
 	{
+		$this->layout= '@app/views/layouts/employermain';
 		$postings = $this->findModel($id);
 		return $this->render('jobpostingsview',['postings'=>$postings,
 	
@@ -315,6 +325,7 @@ class EmpcommonController extends Controller
 	}
 		public function actionView($id)
 		{
+			$this->layout= '@app/views/layouts/employermain';
 			$model = $this->findModel($id);
 			return $this->render('postingview', [
 					'model' => $model,
@@ -322,12 +333,14 @@ class EmpcommonController extends Controller
 		}
 		public function actionDelete($id)
 		{
+			$this->layout= '@app/views/layouts/employermain';
 			$this->findModel($id)->delete();
 			Yii::$app->getSession()->setFlash('success', ' successfully  Delete jobposting');
 			return Yii::$app->getResponse()->redirect(['employercompany/empcommon/jobpostingslist']);
 		}
 		public function actionUpdate($id)
 		{
+			$this->layout= '@app/views/layouts/employermain';
 			$model = $this->findModel($id);
 			$postings = EmployerJobpostings :: find()->one();
 			if ($model->load(Yii::$app->request->post()) && $model->save()) {

@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
-$this->title = 'UserProfile';
+$this->title = 'Employer Profile';
 $this->params ['breadcrumbs'] [] = [
 		'label' => 'Signup',
 		'url' => [ 'index' ] ];
@@ -24,7 +24,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
  <table id="vertical-1">
 
  <div><?php echo  $postings->company_name;  ?></div>
- <tr><img src="/jobportal/frontend/web/images/f1.jpg"><?php echo  $postings->experience;  ?></tr>&nbsp;&nbsp;
+ <tr><img src="/jobportal/frontend/web/images/tick1.jpg"><?php echo  $postings->experience;  ?></tr>&nbsp;&nbsp;
  <tr><img src="/jobportal/frontend/web/images/art.png"><?php echo  $postings->state; $postings->city; $postings->country;  ?></tr><br><br>
  <tr>Salry:<?php echo  $postings->CTC;  ?></tr>
  <div class="form-group box" >

@@ -18,54 +18,16 @@ $this->params['breadcrumbs'][] = $this->title;
      <p>
         <?= Html::a('Create postings', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    
+ 
      <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+        		
         		'rolecategory',
          		'skills',
-//         		[
-//         		'attribute'=>'skills',
-//         		'filter'=>ArrayHelper::map(EmployerJobpostings::find()->asArray()->all(), 'id', 'skills'),
-//         		],
-//         		[
-//         		'attribute'=>'skills',
-//         		'filter'=>Html::ActiveDropdownlist($searchModel,'id',ArrayHelper::map(EmployerJobpostings::find()->asArray()->all(), 'id', 'skills')),
-//         		],
-//         		[
-        		
-//         		'attribute' => 'id',
-//         		'filter' => EmployerJobpostings::skills($searchModel->skills), //Country Id/name from SearchModel --- you can add condition if isset($searchModel->country) then show else [] blank array
-//         		'value' => function($data){
-//         			return EmployerJobpostings::skills($data->id);
-//         		}
-//         		],
-//         		[
-//         		'attribute'=>'skills',
-//         		'filter'=>array("ID1"=>"skills1","ID2"=>"skills2"),
-//         		],
-        		
-//         		[
-//         		'attribute'=>'skills',
-//         		'width'=>'250px',
-//         		'value'=>function ($model, $key, $index, $widget) {
-//         			return $model->category->skills;
-//         		},
-//         		'filterType'=>GridView::FILTER_SELECT2,
-//         		'filter'=>ArrayHelper::map(Categories::find()->orderBy('skills')->asArray()->all(), 'id', 'skills'),
-//         		'filterWidgetOptions'=>[
-//         				'pluginOptions'=>['allowClear'=>true],
-//         		],
-//         		'filterInputOptions'=>['placeholder'=>'Any skills']
-//         		],
-//         		Select2::widget([
-//         				'name' => 'ObjectSearch[skills]',
-//         				'data' => Object::typeNames(),
-//         				'initValueText' => $searchModel->skills,
-//         				// ... other params
-//         		]),
         		'designation',
         		'experience',
         		//'Description',

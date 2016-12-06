@@ -77,8 +77,12 @@ class EmpsiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+    	$this->layout= '@app/views/layouts/employermain';
+    	
+    	return $this->render('index');
     }
+
+   
 
     /**
      * Logs in a user.
@@ -90,11 +94,12 @@ class EmpsiteController extends Controller
     	/* if (!\Yii::$app->user->isGuest) {
     		return $this->goHome();
     	} */
-    
+    	$this->layout= '@app/views/layouts/employermain';
     	$model = new LoginForm();
     	if ($model->load(Yii::$app->request->post()) && $model->login()) {
     		
     		//return $this->goBack();
+    		//$this->layout = "employermain";
     		//return $this->redirect ( '/employercompany/empcommon/employer');
     		return Yii::$app->getResponse()->redirect(['employercompany/empcommon/employer', 'userid' => Yii::$app->user->id ] );
     	} else {
@@ -112,7 +117,7 @@ class EmpsiteController extends Controller
      */
     public function actionLogout()
     {
-    
+    	$this->layout= '@app/views/layouts/employermain';
     	
         Yii::$app->user->logout();
 
@@ -126,6 +131,7 @@ class EmpsiteController extends Controller
      */
     public function actionContact()
     {
+    	$this->layout= '@app/views/layouts/employermain';
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
@@ -149,6 +155,7 @@ class EmpsiteController extends Controller
      */
     public function actionAbout()
     {
+    	$this->layout= '@app/views/layouts/employermain';
         return $this->render('about');
     }
 
@@ -162,6 +169,7 @@ class EmpsiteController extends Controller
 //      	}
     	$model = new EmployerSignup();
     	//$employeesignup = new EmployeeSignup();
+    	$this->layout= '@app/views/layouts/employermain';
     	if ($model->load(Yii::$app->request->post())) {
     		 
     		//print_r(Yii::$app->request->post());exit();
@@ -172,7 +180,7 @@ class EmpsiteController extends Controller
         	$gender=$model->gender;
         	$designation=$model->designation;
         	$address=$model->address;
-        //	$userid=$model->userid = Yii::$app->user->id ;
+
         	
         	
         	
@@ -183,7 +191,10 @@ class EmpsiteController extends Controller
     		if ($user = $model->signup()) {
     			//return $this->goHome();
     			//return $this->redirect ('login');
-    			return Yii::$app->getResponse()->redirect(['employercompany/empsite/login', 'userid' => Yii::$app->user->id ] );
+    			//$this->layout = "employermain";
+    			$this->layout= '@app/views/layouts/employermain';
+    			
+    			//return Yii::$app->getResponse()->redirect(['employercompany/empsite/login', 'userid' => Yii::$app->user->id ] );
     			if (Yii::$app->getUser()->login($user)) {
     				return $this->goHome();
     			}
@@ -202,6 +213,7 @@ class EmpsiteController extends Controller
   
     public function actionViewprofile()
     {
+    	$this->layout= '@app/views/layouts/employermain';
        //*******profile*****//
     	//$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
     	//$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
@@ -248,6 +260,7 @@ class EmpsiteController extends Controller
     
     public function actionMounika(){
     	
+    	$this->layout= '@app/views/layouts/employermain';
     		$model = new EmployerSignup ();
     	
     		$userData = User::find ()->where ( [
@@ -278,6 +291,7 @@ class EmpsiteController extends Controller
     		    	}
              public function actionRequestPasswordReset()
     {
+    	$this->layout= '@app/views/layouts/employermain';
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) 
         {
@@ -301,6 +315,7 @@ class EmpsiteController extends Controller
      */
     public function actionResetPassword($token)
     {
+    	$this->layout= '@app/views/layouts/employermain';
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {
@@ -319,6 +334,7 @@ class EmpsiteController extends Controller
     }
     public function actionEmpsite()
     {
+    	$this->layout= '@app/views/layouts/employermain';
     	$model = new EmployerSignup();
     	$this->empsite = 'viewprofile';
     
