@@ -194,9 +194,9 @@ class EmpsiteController extends Controller
     			//$this->layout = "employermain";
     			$this->layout= '@app/views/layouts/employermain';
     			
-    			//return Yii::$app->getResponse()->redirect(['employercompany/empsite/login', 'userid' => Yii::$app->user->id ] );
+    			return Yii::$app->getResponse()->redirect(['employercompany/empsite/login', 'userid' => Yii::$app->user->id ] );
     			if (Yii::$app->getUser()->login($user)) {
-    				return $this->goHome();
+    				//return $this->goHome();
     			}
     		}
     	}
