@@ -27,7 +27,8 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
- <header class="transparent sticky-header full-width">
+   <header class="transparent sticky-header full-width">
+  <!-- <header class="sticky-header">  -->
     <div class="container">
       <div class="sixteen columns"> 
         
@@ -38,7 +39,9 @@ AppAsset::register($this);
         
         <!-- Menu -->
         <nav id="navigation" class="menu">
+         <?php  if (Yii::$app->user->isGuest) { ?> 
           <ul id="responsive">
+         
             <li><a href="<?php echo Yii::$app->getHomeUrl(); ?>">Home</a> </li>
             <li><a href="#">About Us</a> </li>
             
@@ -76,9 +79,19 @@ AppAsset::register($this);
           </ul>
           <ul class="float-right">
             <li><a href="<?= Url::to(['/site/signup'])?>" title="signup"><i class="fa fa-user"></i> Sign Up</a></li>
-            <li><a href="Candidates-login.html"><i class="fa fa-lock"></i> Log In</a></li>
+            <li><a href="<?= Url::to(['/site/login'])?>" title="login"><i class="fa fa-lock"></i> Log In</a></li>
             <li><a href="empolyer.html"><i class="fa fa-user"></i>Employer Zone</a></li>
+                 
           </ul>
+            
+ <?php }else { ?>
+               <ul id="responsive" class="float-right">
+               <li><a href="<?= Url::to(['/common/employee'])?>" title="viewprofile">EmployeeProfile</a></li>
+                 <li><a href="<?= Url::to(['/site/logout'])?>"
+            data-method="post" title="">Logout</a></li>
+            </ul>
+               <?php } ?>
+             
         </nav>
         
         <!-- Navigation -->
@@ -86,34 +99,18 @@ AppAsset::register($this);
       </div>
     </div>
   </header>
-   <div id="banner" class="with-transparent-header parallax background" style="background-image: url(images/banner-home-02.jpg)" data-img-width="2000"     data-img-height="1330" data-diff="300">
-    <div class="container" >
-      <div class="sixteen columns">
-        <div class="search-container"> 
-          
-          <!-- Form -->
-          <h2>Find job</h2>
-          <input type="text" class="ico-01" placeholder="job title, keywords or company name" value=""/>
-          <input type="text" class="ico-02" placeholder="city, province or region" value=""/>
-          <button><i class="fa fa-search"></i></button>
-          
-          <!-- Browse Jobs -->
-          <div class="browse-jobs"> Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a> </div>
-          
-          <!-- Announce -->
-          <div class="announce"> We’ve over <strong>15 000</strong> job offers for you! </div>
-        </div>
-      </div>
-    </div>
-  </div>
-	
-	<div class="container" style="width: 100%;">
+   <div class="clearfix"></div>
+   
+	<div class="container" style="width: 100%;" >
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
+    
+    
+    
     
 <div class="margin-top-15"></div>
   <div id="footer"> 
