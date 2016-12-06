@@ -219,6 +219,7 @@ class SiteController extends Controller
 
     public function actionViewprofile()
     {
+    	$this->layout= '@app/views/layouts/innerpagemain';
     
     	$umodel = User::find ()->Where (['id' => Yii::$app->user->id])->one();
     
