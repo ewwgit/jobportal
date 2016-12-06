@@ -34,6 +34,8 @@ class CommonController extends Controller
 	
 	public function actionEmployee()
 	{
+		
+		$this->layout= '@app/views/layouts/innerpagemain';
 		$model = new EmployeeForm();
 		$umodel = new SignupForm();
 		$empmodel = new EmployeeSignup();
