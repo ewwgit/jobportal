@@ -80,7 +80,7 @@ AppAsset::register($this);
           <ul class="float-right">
             <li><a href="<?= Url::to(['/site/signup'])?>" title="signup"><i class="fa fa-user"></i> Sign Up</a></li>
             <li><a href="<?= Url::to(['/site/login'])?>" title="login"><i class="fa fa-lock"></i> Log In</a></li>
-            <li><a href="<?= Url::to(['/employercompany/empsite/signup'])?>"><i class="fa fa-user"></i>Employer Zone</a></li>
+            <li><a href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-user"></i>Employer Zone</a></li>
                  
           </ul>
             
