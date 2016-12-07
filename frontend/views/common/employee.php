@@ -10,6 +10,9 @@ $this->title = 'UserProfileUpdate';
 {
  color: #333 !important;
 }
+select {
+	height: 40px !important;
+}
 </style>
 	<div id="titlebar" class="single">
 		<div class="container">
@@ -305,7 +308,7 @@ $this->title = 'UserProfileUpdate';
 									</div>
 											<div class="form">
 												<h5>Ability</h5>
-										<?=$form->field ( $model, 'ability' )->checkboxList ( [ 'Read' => 'Read','Write' => 'Write','Speak' => 'Speak' ] )->label ( false )?>
+										<?=$form->field ( $model, 'ability' )->inline()->checkboxList ( [ 'Read' => 'Read','Write' => 'Write','Speak' => 'Speak' ] )->label ( false )?>
 									</div>
 											<a href="javascript:void(0);" class="button gray remCF2"
 												style="text-decoration: none; margin-top: 1em;"><i
@@ -332,8 +335,7 @@ $this->title = 'UserProfileUpdate';
 				</div>
 				<div class="clearfix"></div>
 				<div class="divider margin-top-0 padding-reset"></div>
-				<?= Html::submitButton('Save', ['class' => 'button big margin-top-5', 'name' => 'save-button']) ?>
-					<i class="fa fa-arrow-circle-right"></i>
+				<?= Html::submitButton('Save', ['class' => 'button big margin-top-5', 'name' => 'save-button','style' => 'float:right']) ?>
 				
 			</div>
 		</div>
