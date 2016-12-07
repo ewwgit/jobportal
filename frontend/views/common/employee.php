@@ -370,9 +370,8 @@ label.upload-btn i {
 				</div>
 				<div class="clearfix"></div>
 				<div class="divider margin-top-0 padding-reset"></div>
-				<a href="#" style="float: right;" class="button big margin-top-5">Save
+				<?= Html::submitButton('Save', ['class' => 'button big margin-top-5', 'name' => 'save-button']) ?>
 					<i class="fa fa-arrow-circle-right"></i>
-				</a>
 			</div>
 		</div>
 		<script src="js/jquery.js" type="text/javascript"></script>
