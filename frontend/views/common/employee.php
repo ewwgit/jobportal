@@ -41,7 +41,7 @@ label.upload-btn i {
 </head>
 
 <body>
-<div id="wrapper"> 
+
 
 <div id="titlebar" class="single">
     <div class="container">
@@ -62,19 +62,23 @@ label.upload-btn i {
 
 
 
-<div class="container"> 
+  <div class="container"> 
     
     <!-- Submit Page -->
     <div class="sixteen columns">
+    <?php $form = ActiveForm::begin(['id' => 'form-employee','action' => Yii::$app->getUrlManager()->createUrl('common/employee')]); ?>
       <div class="submit-page" style="padding:0px;">
         <div class="container">
+        
           <div class="col-md-3 col-sm-3 col-xs-3 profile_img">
+          
             <div class="form">
-              <h5>Upload Your Profile image</h5>
+             <h5>Upload Your Profile image</h5>
               
     <img class='image' src="<?php echo Yii::getAlias('/jobportal').$model->profileimage; ?>" width="100" height="100">
     </img>
- <?= $form->field($model, 'profileimage')->fileInput(['maxlength' => true]) ?>
+ <?= $form->field($model, 'profileimage')->fileInput(['maxlength' => true])->label(false) ?>
+              </div>
           </div>
           <div class="col-md-9">
             <div class="row">
@@ -98,19 +102,19 @@ label.upload-btn i {
                   <!-- Title -->
                   <div class="form">
                     <h5>Email</h5>
-                      <?= $form->field($model, 'email')->textInput(['autofocus' => true])->label(false) ?>
+                     <?= $form->field($model, 'email')->textInput(['autofocus' => true])->label(false) ?>
                   </div>
                   
                   <!-- Location -->
                   <div class="form">
                     <h5> Gender</h5>
                     <form role="form">
-                      <?= $form->field($model, 'gender')->radioList(['male'=>'male','female'=>'female'],['prompt' =>'<---select gender--->'])->label(false)?>
+                     <?= $form->field($model, 'gender')->radioList(['male'=>'male','female'=>'female'],['prompt' =>'<---select gender--->'])->label(false)?>
                     </form>
                   </div>
                   <div class="form-group">
                     <h5>Date of Birth</h5>
-                     <?= $form->field($model, 'dateofbirth')->widget(
+                   <?= $form->field($model, 'dateofbirth')->widget(
               DatePicker::className(), [
                 'inline' => true, 
            		'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
@@ -121,7 +125,7 @@ label.upload-btn i {
                   </div>
                   <div class="form">
                     <h5>Mobile No</h5>
-                     <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])->label(false) ?>
+                   <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])->label(false) ?>
                   </div>
                 </div>
               </div>
@@ -132,7 +136,7 @@ label.upload-btn i {
                   </div>
                   <div class="form">
                     <h5>Highdegree</h5>
-                     <?= $form->field($model, 'highdegree')->dropDownList(['B-Tech/B.E.' => 'B-Tech/B.E.', 'B.Sc' => 'B.Sc',
+                   <?= $form->field($model, 'highdegree')->dropDownList(['B-Tech/B.E.' => 'B-Tech/B.E.', 'B.Sc' => 'B.Sc',
           		              'B.Ed' => 'B.Ed','BDS' =>'BDS','BFA' => 'BFA', 'B.Pharma' => 'B.Pharma',
           		              'B.A' => 'B.A','B.Com' => 'B.Com','BCA' => 'BCA','Other' => 'Other'],
                               ['prompt'=>'select your Highdegree'])->label(false) ?>
@@ -150,13 +154,13 @@ label.upload-btn i {
                   <!-- Email -->
                   <div class="form">
                     <h5>University</h5>
-                     <?= $form->field($model, 'university')->textInput(['autofocus' => true])->label(false) ?>
+                    <?= $form->field($model, 'university')->textInput(['autofocus' => true])->label(false) ?>
                   </div>
                   
                   <!-- Title -->
                   <div class="form">
                     <h5>Collegename</h5>
-                     <?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false) ?>
+                    <?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false) ?>
                   </div>
                   <div class="form">
                     <h5>Passingyear</h5>
@@ -179,29 +183,31 @@ label.upload-btn i {
                   </div>
                   <div class="form">
                     <h5>Jobrole</h5>
-                     <?= $form->field($model, 'jobrole')->dropDownList(['Software Developer' => 'Software Developer','System Analyst' => 'System Analyst',
+                      <?= $form->field($model, 'jobrole')->dropDownList(['Software Developer' => 'Software Developer','System Analyst' => 'System Analyst',
           		'Project Lead' => 'Project Lead','Testing Engineer' =>'Testing Engineer','Database Designer' => 'Database Designer',
           		'Product Manager' => 'Product Manager','System Admin' => 'System Admin'],['prompt'=>'select your jobrole'])->label(false) ?>
                   </div>
                   <div class="form">
                     <h5>Job Location</h5>
-                     <?= $form->field($model, 'joblocation')->dropDownList(['Hyderabad/Secundrabad' => 'Hyderabad/Secundrabad','Banglore' => 'Banglore',
+                   <?= $form->field($model, 'joblocation')->dropDownList(['Hyderabad/Secundrabad' => 'Hyderabad/Secundrabad','Banglore' => 'Banglore',
           		'Chennai' => 'Chennai','Mumbai' =>'Mumbai','Pune' => 'Pune',
           		'Gurgon' => 'Gurgon','Delhi' => ' Delhi'],['prompt'=>'select your joblocation'])->label(false) ?>
                   </div>
                   <div class="form">
                     <h5>Experience</h5>
-                   <?= $form->field($model, 'experience')->dropDownList(['Fresher' => 'Fresher','1 year' => '1 year',
+                    <?= $form->field($model, 'experience')->dropDownList(['Fresher' => 'Fresher','1 year' => '1 year',
           		'2 year' => '2 year','3 year' =>'3 year','4 year' => '4 year',
           		'5 year' => '5 year','6 year' => ' 6 year'],['prompt'=>'select your experience'])->label(false) ?>
                   </div>
                   <div class="form">
                     <h5> Job Type</h5>
-                    	<?= $form->field($model, 'jobtype')->radioList(['fulltime'=>'fulltime','parttime'=>'parttime'],['prompt' =>'<---select jobtype--->'])->label(false) ?>
+                    <form role="form">
+                      <?= $form->field($model, 'jobtype')->radioList(['fulltime'=>'fulltime','parttime'=>'parttime'],['prompt' =>'<---select jobtype--->'])->label(false) ?>
+                    </form>
                   </div>
                   <div class="form">
                     <h5>Expected Salary</h5>
-                   <?= $form->field($model, 'expectedsalary')->textInput(['autofocus' => true])->label(false) ?>
+                    <?= $form->field($model, 'expectedsalary')->textInput(['autofocus' => true])->label(false) ?>
                   </div>
                 </div>
               </div>
@@ -212,14 +218,13 @@ label.upload-btn i {
                   </div>
                   <div class="form">
                     <h5>Project Title</h5>
-                     <?= $form->field($model, 'projecttitle')->textInput(['autofocus' => true])->label(false) ?>
-     
+                    <?= $form->field($model, 'projecttitle')->textInput(['autofocus' => true])->label(false) ?>
                   </div>
                   
                   <!-- Email -->
                   <div class="form">
                     <h5> Project Start Date</h5>
-                      <?= $form->field($model, 'projectstartdate')->widget(
+                    <?= $form->field($model, 'projectstartdate')->widget(
               DatePicker::className(), [
                 'inline' => true, 
            		'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
@@ -227,14 +232,12 @@ label.upload-btn i {
                 'autoclose' => true,
                 'format' => 'dd-M-yyyy' ]
     		                 ])->label(false);?>
-               
-                 
                   </div>
                   
                   <!-- Email -->
                   <div class="form">
                     <h5> Project End Date</h5>
-                     <?= $form->field($model, 'projectenddate')->widget(
+                    <?= $form->field($model, 'projectenddate')->widget(
               DatePicker::className(), [
                 'inline' => true, 
            		'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
@@ -242,40 +245,41 @@ label.upload-btn i {
                 'autoclose' => true,
                 'format' => 'dd-M-yyyy' ]
     		                 ])->label(false);?>
-               
                   </div>
                   
                   <!-- Title -->
                   <div class="form">
                     <h5>Project Location</h5>
-                     <?= $form->field($model, 'projectlocation')->textInput(['autofocus' => true])->label(false) ?>  
+                    <?= $form->field($model, 'projectlocation')->textInput(['autofocus' => true])->label(false) ?>  
                   </div>
                   <div class="form">
                     <h5> Employement Type</h5>
-                     <?= $form->field($model, 'employementtype')->radioList(['FullTime'=>'FullTime','PartTime'=>'PartTime','ContractualProject' =>'ContractualProject'])->label(false)?>
+                    <form role="form">
+                      <?= $form->field($model, 'employementtype')->radioList(['FullTime'=>'FullTime','PartTime'=>'PartTime','ContractualProject' =>'ContractualProject'])->label(false)?>
                     </form>
                   </div>
                   <div class="form">
                     <h5> Project Description</h5>
-                   <?= $form->field($model, 'projectdescription')->textArea(['rows' => '3']) ?>
+                    <?= $form->field($model, 'projectdescription')->textArea(['rows' => '3'])->label(false) ?>
                   </div>
                   <div class="form">
                     <h5>Role</h5>
-                      <?= $form->field($model, 'role')->dropDownList(['Domain Expert' =>'Domain Expert','Sr project leader' => 'Sr project leader','solution architect' => 'solution architect','quality analyst' => 'quality analyst',
-          		'databse architect' => 'databse architect','system admin' =>'system admin','project leader' => 'project leader','Programmer' => 'Programmer','test engineer'=>'test engineer','Other' =>'Other'],['prompt'=>'Select']) ?>
+                    <?= $form->field($model, 'role')->dropDownList(['Domain Expert' =>'Domain Expert','Sr project leader' => 'Sr project leader','solution architect' => 'solution architect','quality analyst' => 'quality analyst',
+          		'databse architect' => 'databse architect','system admin' =>'system admin','project leader' => 'project leader','Programmer' => 'Programmer','test engineer'=>'test engineer','Other' =>'Other'],['prompt'=>'Select'])->label(false) ?>
+                  </div>
                   </div>
                   <div class="form">
                     <h5> Role Description</h5>
-                     <?= $form->field($model, 'roledescription')->textArea(['rows' => '3']) ?>
+                     <?= $form->field($model, 'roledescription')->textArea(['rows' => '3'])->label(false) ?>
                   </div>
                   <div class="form">
                     <h5>Teamsize</h5>
-                   <?= $form->field($model, 'teamsize')->dropDownList(['1' =>'1','2' => '2','3' => '3','4' => '4','5' => '5','6' =>'6','7'=>'7',
-          		'8' => '8','9' =>'9','10' => '10','11' => '11','12'=>'12'],['prompt'=>'Select']) ?> 
+                       <?= $form->field($model, 'teamsize')->dropDownList(['1' =>'1','2' => '2','3' => '3','4' => '4','5' => '5','6' =>'6','7'=>'7',
+          		'8' => '8','9' =>'9','10' => '10','11' => '11','12'=>'12'],['prompt'=>'Select'])->label(false) ?> 
                   </div>
                   <div class="form">
                     <h5>Skills Used</h5>
-                   <?= $form->field($model, 'skillsused')->textInput(['autofocus' => true]) ?>  
+                      <?= $form->field($model, 'skillsused')->textInput(['autofocus' => true]) ?>  
                   </div>
                 </div>
               </div>
@@ -286,9 +290,9 @@ label.upload-btn i {
                   <div class="title-underlined">
                     <h4>Add Your Skills Details</h4>
                   </div>
-                  <div class="form">
-                   
-      <table class="form-table" id="customFields1">
+                  
+                  
+                  <table class="form-table" id="customFields1">
           <tr><td><?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true]) ?></td>
             
           <td> <?= $form->field($model, 'lastused[]')->dropDownList(['2016' => '2016', '2015' => '2015','2014' => '2014','2013' =>'2013',
@@ -304,9 +308,8 @@ label.upload-btn i {
           <td><a href="javascript:void(0);" class="addCF1">AddSkill</a></td></tr>
           
      </table>
-     
-     
-      
+    
+    
     <div id="dynamiccontent" style="display: none;">
     
        <table class="form-table" id="customFields1">
@@ -340,12 +343,9 @@ label.upload-btn i {
     });
 });
 	</script>
-     
-     
-     
-     
-     
-                  
+
+            		        
+                 
               </div>
               <div class="col-md-6">
                 <div class="margin-bottom-20">
@@ -354,17 +354,18 @@ label.upload-btn i {
                   </div>
                   <div class="form">
                     <h5>Employer Name</h5>
-                   <?= $form->field($model, 'employername')->textInput(['autofocus' => true]) ?>
+                    <?= $form->field($model, 'employername')->textInput(['autofocus' => true])->label(false) ?>
                   </div>
                   <div class="form">
                     <h5> Employer Type</h5>
                     <form role="form" style="margin-top:1.3em;">
-                       <?= $form->field($model, 'employertype')->radioList(['CurrentEmployer'=>'CurrentEmployer','PreviousEmployer'=>'PreviousEmployer','OtherEmployer' =>'OtherEmployer'])?>
+                     <?= $form->field($model, 'employertype')->radioList(['CurrentEmployer'=>'CurrentEmployer','PreviousEmployer'=>'PreviousEmployer','OtherEmployer' =>'OtherEmployer'])->label(false)?>
+         
                     </form>
                   </div>
                   <div class="form">
                     <h5>Designation</h5>
-                 <?= $form->field($model, 'designation')->textInput(['autofocus' => true]) ?>
+                     <?= $form->field($model, 'designation')->textInput(['autofocus' => true])->label(false) ?>
                   </div>
                 </div>
               </div>
@@ -377,23 +378,21 @@ label.upload-btn i {
                   </div>
                   <div class="form">
                     <h5>Language</h5>
-                   <?= $form->field($model, 'language')->textInput(['autofocus' => true]) ?>
+                     <?= $form->field($model, 'language')->textInput(['autofocus' => true])->label(false) ?>
                   </div>
                   <div class="form">
                     <h5> Proficiencylevel</h5>
-                   <?= $form->field($model, 'proficiencylevel')->dropDownList(['Beginner' =>'Beginner','Proficient' => 'Proficient','Expert' => 'Expert',
-          ],['prompt'=>'Select']) ?>
-          
+                     <?= $form->field($model, 'proficiencylevel')->dropDownList(['Beginner' =>'Beginner','Proficient' => 'Proficient','Expert' => 'Expert',
+          ],['prompt'=>'Select'])->label(false) ?>
                   </div>
                   <div class="form">
                     <h5> Ability</h5>
                     <form role="form" style="">
                        <?= $form->field($model, 'ability')->checkboxList(['Read' => 'Read','Write' => 'Write',
-		   'Speak' => 'Speak',])?>   
-          
+		   'Speak' => 'Speak',])->label(false)?>   
                     </form>
                   </div>
-                  <a href="#" class="button gray " style="text-decoration:none; margin-top:1em;"><i class="fa fa-plus-circle"></i> Add Skills</a> </div>
+                 
               </div>
               <div class="col-md-6">
                 <div class="margin-bottom-20">
@@ -402,9 +401,9 @@ label.upload-btn i {
                   </div>
                   <div class="form">
                     <h5>Resume</h5>
-                   <?= $form->field($model, 'resume')->fileInput(['maxlength' => true])->label(false) ?>
+                    <?= $form->field($model, 'resume')->fileInput(['maxlength' => true]) ?>
   <lable>Support File Format .doc,.pdf upto 5 mb.</lable><br>
-  <lable> Note:This Resume only visible to Milstone Profiles to Employers.</lable>
+  <lable> Note:This Resume only visible to Milstone Profiles to Employers.</lable> </div>
                 </div>
               </div>
             </div>
@@ -412,74 +411,21 @@ label.upload-btn i {
         </div>
         <div class="clearfix"></div>
         <div class="divider margin-top-0 padding-reset"></div>
-         <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'save-button']) ?>
+    <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'save-button']) ?><i class="fa fa-arrow-circle-right"></i> </div>
+       
     </div>
+     <?php ActiveForm::end(); ?>
   </div>
-  
+  </div>
+
+
+
+
   <!-- Footer
 ================================================== -->
-  <div class="margin-top-60"></div>
-  <div id="footer"> 
-    <!-- Main -->
-    <div class="container">
-      <div class="seven columns">
-        <h4>About</h4>
-        <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
-        <a href="#" class="button">Get Started</a> </div>
-      <div class="three columns">
-        <h4>Company</h4>
-        <ul class="footer-links">
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Our Blog</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Hiring Hub</a></li>
-        </ul>
-      </div>
-      <div class="three columns">
-        <h4>Press</h4>
-        <ul class="footer-links">
-          <li><a href="#">In the News</a></li>
-          <li><a href="#">Press Releases</a></li>
-          <li><a href="#">Awards</a></li>
-          <li><a href="#">Testimonials</a></li>
-          <li><a href="#">Timeline</a></li>
-        </ul>
-      </div>
-      <div class="three columns">
-        <h4>Browse</h4>
-        <ul class="footer-links">
-          <li><a href="#">Freelancers by Category</a></li>
-          <li><a href="#">Freelancers in USA</a></li>
-          <li><a href="#">Freelancers in UK</a></li>
-          <li><a href="#">Freelancers in Canada</a></li>
-          <li><a href="#">Freelancers in Australia</a></li>
-          <li><a href="#">Find Jobs</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <!-- Bottom -->
-    <div class="container">
-      <div class="footer-bottom">
-        <div class="sixteen columns">
-          <h4>Follow Us</h4>
-          <ul class="social-icons">
-            <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-            <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-            <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-            <li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
-          </ul>
-          <div class="copyrights">©  Copyright 2015 by <a href="#">Work Scout</a>. All Rights Reserved.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+
   
-  <!-- Back To Top Button -->
-  <div id="backtotop"><a href="#"></a></div>
-</div>
+
 <!-- Wrapper / End --> 
 
 <!-- Scripts
@@ -587,17 +533,7 @@ label.upload-btn i {
   <div id="reset"><a href="#" class="button color">Reset</a></div>
 </div>
 </body>
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker9,#datetimepicker10,#datetimepicker11').datetimepicker({
-			 useCurrent: false
-			});
-   
 
-		
-    });
-	
-</script>
 </html>
 
 
@@ -609,9 +545,5 @@ label.upload-btn i {
 
 
 
-
-
-
-       
 
 
