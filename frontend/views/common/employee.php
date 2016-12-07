@@ -2,6 +2,8 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use kartik\date\DatePicker;
+
+$this->title = 'UserProfileUpdate';
 ?>
 <style>
 .required
@@ -35,11 +37,10 @@ use kartik\date\DatePicker;
 							<h5>Upload Your Profile image</h5>
 							<img class='image'
 								src="<?php echo Yii::getAlias('/jobportal').$model->profileimage; ?>"
-								width="100" height="100"> </img> <label class="upload-btn">
+								width="100" height="100"> </img> 
                 
             <?= $form->field($model, 'profileimage')->fileInput(['maxlength' => true])->label(false)?>
-                <i class="fa fa-upload"></i> Browse
-							</label> <span class="fake-input">No file selected</span>
+               
 						</div>
 					</div>
 					<div class="col-md-9">
@@ -320,11 +321,9 @@ use kartik\date\DatePicker;
 									</div>
 									<div class="form">
 										<h5>Resume</h5>
-										<label class="upload-btn">
+										
                       <?= $form->field($model, 'resume')->fileInput(['maxlength' => true])->label(false)?>
-                      <i class="fa fa-upload"></i> Browse
-										</label> <span class="fake-input">No file selected</span>
-
+                     
 									</div>
 								</div>
 							</div>
@@ -338,7 +337,7 @@ use kartik\date\DatePicker;
 				
 			</div>
 		</div>
-		<script src="js/jquery.js" type="text/javascript"></script>
+		<script src="scripts/jquery.js" type="text/javascript"></script>
 		<script type="text/javascript">
      $(document).ready(function(){
 	$(".addCF1").on('click',function(){

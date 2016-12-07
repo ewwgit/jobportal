@@ -2,56 +2,18 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use dosamigos\datepicker\DatePicker;
-
+use yii\helpers\Url;
  
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\SignupForm */
-
+$this->title = 'Signup';
 
 
 
 ?>
 
-<!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
-<!--<![endif]-->
-<head>
-
-<!-- Basic Page Needs
-================================================== -->
-<meta charset="utf-8">
-<title>Work Scout</title>
-
-<!-- Mobile Specific Metas
-================================================== -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<!-- CSS
-================================================== -->
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/colors/green.css" id="colors">
-
-
-<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-</head>
-<style>
-
-label.radio-inline{display:inline-block;}
-label.upload-btn i{color:#fff !important; margin-right:20px !important;}
-
-</style>
-
-
-
-<body>
  
   <div class="clearfix"></div>
 
@@ -75,8 +37,8 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
   <div class="container">
     <div class="my-account">
       <ul class="tabs-nav">
-        <li class=""><a href="#tab1">Login</a></li>
-        <li><a href="#tab2">Register</a></li>
+        <li class=""><a href="<?= Url::to(['/site/login'])?>" title="login">Login</a></li>
+        <li><a href="<?= Url::to(['/site/signup'])?>" title="signup">Register</a></li>
       </ul>
       <div class="tabs-container"> 
 
@@ -270,5 +232,3 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
   </div>
   <div id="reset"><a href="#" class="button color">Reset</a></div>
 </div>
-</body>
-</html>

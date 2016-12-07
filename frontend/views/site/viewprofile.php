@@ -2,41 +2,9 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
-
+$this->title = 'UserProfile';
 ?>
-<!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
-<!--<![endif]-->
-<head>
 
-<!-- Basic Page Needs
-================================================== -->
-<meta charset="utf-8">
-<title>Work Scout</title>
-
-<!-- Mobile Specific Metas
-================================================== -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<!-- CSS
-================================================== -->
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/colors/green.css" id="colors">
-
-<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-</head>
-
-<body>
-
-  
-  <!-- Header
-================================================== -->
   
  
   <!-- Titlebar
@@ -411,16 +379,3 @@ use yii\helpers\Url;
   </div>
   <div id="reset"><a href="#" class="button color">Reset</a></div>
 </div>
-</body>
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker9,#datetimepicker10,#datetimepicker11').datetimepicker({
-			 useCurrent: false
-			});
-   
-
-		
-    });
-	
-</script>
-</html>
