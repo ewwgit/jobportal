@@ -91,11 +91,10 @@ $this->title = 'Signup';
 					<p class="form-row form-row-wide">				
 					
 					<div class="form">
-						<label for="password2">Profileimage</label> <label
-							class="upload-btn"><i class="fa fa-upload"></i>
+						<label for="password2">Profileimage</label> 
 				    <?= $form->field($model, 'profileimage')->fileInput(['maxlength' => true])->label(false)?>
-				     Browse
-				</label> <span class="fake-input">No file selected</span>
+				   
+				
 					</div>
 					</p>
 					<p class="form-row">

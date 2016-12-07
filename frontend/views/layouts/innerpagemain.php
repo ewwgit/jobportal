@@ -34,7 +34,7 @@ AppAsset::register($this);
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="index.html"><img src="images/logo.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="images/logo.png" alt="Work Scout" /></a></h1>
         </div>
         
         <!-- Menu -->
@@ -79,7 +79,7 @@ AppAsset::register($this);
           <ul class="float-right">
             <li><a href="<?= Url::to(['/site/signup'])?>" title="signup"><i class="fa fa-user"></i> Sign Up</a></li>
             <li><a href="<?= Url::to(['/site/login'])?>" title="login"><i class="fa fa-lock"></i> Log In</a></li>
-            <li><a href="empolyer.html"><i class="fa fa-user"></i>Employer Zone</a></li>
+            <li><a href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-user"></i>Employer Zone</a></li>
           </ul>
           <?php }else { ?>
                <ul id="responsive" class="float-right">
