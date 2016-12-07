@@ -107,14 +107,12 @@ label.upload-btn i {
 									<!-- Location -->
 									<div class="form">
 										<h5>Gender</h5>
-										<form role="form">
 											<?= $form->field($model, 'gender')->inline()->radioList(['male'=>'Male','female'=>'Female'],['prompt' =>'<---select gender--->'])->label(false)?>
-										</form>
 									</div>
 									<div class="form-group">
 										<h5>Date of Birth</h5>
 										
-										<?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] );?>
+										<?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
 									</div>
 									<div class="form">
 										<h5>Mobile No</h5>
@@ -180,9 +178,7 @@ label.upload-btn i {
 									</div>
 									<div class="form">
 										<h5>Job Type</h5>
-										<form role="form">
 											<?= $form->field($model, 'jobtype')->inline()->radioList(['fulltime'=>'Fulltime','parttime'=>'Parttime'],['prompt' =>'<---select jobtype--->'])->label(false)?>
-										</form>
 									</div>
 									<div class="form">
 										<h5>Expected Salary</h5>
@@ -203,14 +199,14 @@ label.upload-btn i {
 									<!-- Email -->
 									<div class="form">
 										<h5>Project Start Date</h5>
-										<?=$form->field ( $model, 'projectstartdate' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter project start date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] );?>
+										<?=$form->field ( $model, 'projectstartdate' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter project start date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
 										
 									</div>
 
 									<!-- Email -->
 									<div class="form">
 										<h5>Project End Date</h5>
-										<?=$form->field ( $model, 'projectenddate' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter project end date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] );?>
+										<?=$form->field ( $model, 'projectenddate' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter project end date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
 										
 									</div>
 
@@ -221,9 +217,7 @@ label.upload-btn i {
 									</div>
 									<div class="form">
 										<h5>Employement Type</h5>
-										<form role="form">
 											<?= $form->field($model, 'employementtype')->inline()->radioList(['FullTime'=>'FullTime','PartTime'=>'PartTime','ContractualProject' =>'ContractualProject'])->label(false)?>
-										</form>
 									</div>
 									<div class="form">
 										<h5>Project Description</h5>
@@ -243,7 +237,7 @@ label.upload-btn i {
 									</div>
 									<div class="form">
 										<h5>Skills Used</h5>
-										<?= $form->field($model, 'skillsused')->textInput(['autofocus' => true])?>
+										<?= $form->field($model, 'skillsused')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 								</div>
 							</div>
@@ -257,15 +251,15 @@ label.upload-btn i {
 									<div class="form-table" id="customFields1">
 										<div class="form">
 											<h5>Skill Name</h5>
-										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true])?>
+										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 										<div class="form">
 											<h5>Last Used</h5>
-										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'prompt' => 'select your skill lastused year ' ] )?>
+										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'prompt' => 'select your skill lastused year ' ] )->label(false)?>
 									</div>
 										<div class="form">
 											<h5>Skill Experience</h5>
-										<?=$form->field ( $model, 'skillexperience[]' )->dropDownList ( [ '0 year' => '0 year','< 1 year' => '< 1 year','1 year' => '1 year','< 2 years' => '< 2 years','2 years' => '2 years','< 3 years' => '< 3 years','3 years' => '3 years','< 4 years' => '< 4 years','4 years' => '4 years','< 5 years' => '< 5 years','5 years' => '5 years','< 6 years' => '< 6 years','6 years' => '6 years','7 years' => '7 years' ], [ 'prompt' => 'select your skillexperience ' ] )?>
+										<?=$form->field ( $model, 'skillexperience[]' )->dropDownList ( [ '0 year' => '0 year','< 1 year' => '< 1 year','1 year' => '1 year','< 2 years' => '< 2 years','2 years' => '2 years','< 3 years' => '< 3 years','3 years' => '3 years','< 4 years' => '< 4 years','4 years' => '4 years','< 5 years' => '< 5 years','5 years' => '5 years','< 6 years' => '< 6 years','6 years' => '6 years','7 years' => '7 years' ], [ 'prompt' => 'select your skillexperience ' ] )->label(false)?>
 									</div>
 										<a href="javascript:void(0);" class="button gray addCF1"
 											style="text-decoration: none; margin-top: 1em;"><i
