@@ -63,20 +63,20 @@ $this->title = 'Signup';
                 
                <p class="form-row form-row-wide">
               <label for="username">Gender: <i class="fa fa-user"></i>
-              <?= $form->field($model, 'gender')->radioList(['male' =>'male' , 'female' =>'female'],['prompt' =>'<---select gender--->']) ?>
+              <?= $form->field($model, 'gender')->radioList(['male' =>'male' , 'female' =>'female'],['prompt' =>'<---select gender--->'])->label(false) ?>
               </label>
             </p>
                 
               <p class="form-row form-row-wide">
               <label for="username">Designation: <i class="fa fa-user"></i>
-              <?= $form->field($model, 'designation')->dropDownList(['Java Developer' =>'Java Developer' , 'Tester' =>'Tester', 'Designer' =>'Designer' , 'Administrator' =>'Administrator' , 'Software Engineer' =>'Software Engineer' , 'Web Developer' =>'Web Developer' , 'Php Developer' =>'Php Developer'],['prompt' =>'select designation']) ?>                  
+              <?= $form->field($model, 'designation')->dropDownList(['Java Developer' =>'Java Developer' , 'Tester' =>'Tester', 'Designer' =>'Designer' , 'Administrator' =>'Administrator' , 'Software Engineer' =>'Software Engineer' , 'Web Developer' =>'Web Developer' , 'Php Developer' =>'Php Developer'],['prompt' =>'select designation'])->label(false) ?>                 
        
               </label>
             </p>
                 
                 <p class="form-row form-row-wide">
               <label for="username">Address: <i class="fa fa-user"></i>
-              <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
+              <?= $form->field($model, 'address')->textarea(['rows' => 6])->label(false) ?>
        
               </label>
             </p>
