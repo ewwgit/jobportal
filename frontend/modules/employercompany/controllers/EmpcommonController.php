@@ -105,6 +105,7 @@ class EmpcommonController extends Controller
 			//print_r($model->load(Yii::$app->request->post()));exit;
 			if(!(empty($employeData))){
 				$employeData->name = $model->name;
+				//print_r($employeData->name);exit;
 				$employeData->designation = $model->designation;
 				$employeData->gender = $model->gender;
 				//$employeData = date('Y-m-d', strtotime($model->dateofbirth));
@@ -113,7 +114,7 @@ class EmpcommonController extends Controller
 				$employeData->mobilenumber = $model->mobilenumber;
 				$employeData->address = $model->address;
 				
-				//$employeData ->employerid = Yii::$app->user->id ;
+				$employeData ->userid = Yii::$app->user->id ;
 				$employeData-> save();
 			}
 			
@@ -121,6 +122,7 @@ class EmpcommonController extends Controller
 			{
 			
 				$employermodel->name = $model->name;
+				//print_r($employeData->name);exit;
 				$employermodel->designation = $model->designation;
 				$employermodel->gender = $model->gender;
 				//$employermodel = date('Y-m-d', strtotime($model->dateofbirth));

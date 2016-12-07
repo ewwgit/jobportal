@@ -19,6 +19,7 @@ class EmployeeSignup extends \yii\db\ActiveRecord {
 	/**
 	 * @inheritdoc
 	 */
+	public $userid;
 	public static function tableName() {
 		return 'employee_signup';
 	}
@@ -76,7 +77,7 @@ class EmployeeSignup extends \yii\db\ActiveRecord {
 	 */
 	public function attributeLabels() {
 		return [ 
-				'userid' => 'Userid',
+				'id' => 'id',
 				'name' => 'Name',
 				'surname' => 'Surname',
 				'gender' => 'Gender',
