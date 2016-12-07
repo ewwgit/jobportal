@@ -23,12 +23,12 @@ use yii\helpers\Url;
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
 			 <p class="form-row form-row-wide">
-					<label for="username">Username: <i class="fa fa-user"></i>
+					<label for="username">Username: 
               <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label(false)?>
               </label>
 				</p>
 				<p>
-					<label for="username">Password: <i class="fa fa-user"></i>
+					<label for="username">Password: 
 
                 <?= $form->field($model, 'password')->passwordInput()->label(false)?>
 				 </label>
@@ -44,7 +44,7 @@ use yii\helpers\Url;
 				
 				
 				<div style="color: #999; margin: 1em 0">
-           <?= Html::a('Lost Your Password?', ['empsite/request-password-reset']) ?>.
+           <?= Html::a('Lost Your Password?', ['empsite/request-password-reset']) ?>
                 </div>
 				</p>
             <?php ActiveForm::end(); ?>
