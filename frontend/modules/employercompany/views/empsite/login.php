@@ -33,11 +33,12 @@ use yii\helpers\Url;
                 <?= $form->field($model, 'password')->passwordInput()->label(false)?>
 				 </label>
 				</p>
+				<?= $form->field($model, 'rememberMe')->checkbox()?>
 				<p class="form-row">
                     <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button','class' => 'button border fw margin-top-10'])?>
 
 
-                <?= $form->field($model, 'rememberMe')->checkbox()?>
+                
 				
 
                 
