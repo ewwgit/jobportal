@@ -1,51 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-// use dosamigos\datepicker\DatePicker;
 use kartik\date\DatePicker;
-
 ?>
-
-<!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
-<!--<![endif]-->
-<head>
-
-<!-- Basic Page Needs
-================================================== -->
-<meta charset="utf-8">
-<title>Work Scout</title>
-
-<!-- Mobile Specific Metas
-================================================== -->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<!-- CSS
-================================================== -->
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/colors/green.css" id="colors">
-
-<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<style>
-label.radio-inline {
-	display: inline-block;
-}
-
-label.upload-btn i {
-	color: #fff !important;
-}
-</style>
-</head>
-
-<body>
-
-
 	<div id="titlebar" class="single">
 		<div class="container">
 			<div class="sixteen columns">
@@ -370,8 +327,9 @@ label.upload-btn i {
 				</div>
 				<div class="clearfix"></div>
 				<div class="divider margin-top-0 padding-reset"></div>
-				<?= Html::submitButton('Save', ['class' => 'button big margin-top-5', 'name' => 'save-button']) ?>
+				<a href="#" style="float: right;" class="button big margin-top-5">Save
 					<i class="fa fa-arrow-circle-right"></i>
+				</a>
 			</div>
 		</div>
 		<script src="js/jquery.js" type="text/javascript"></script>
@@ -518,9 +476,7 @@ label.upload-btn i {
 			<a href="#" class="button color">Reset</a>
 		</div>
 	</div>
-</body>
 
-</html>
 
 
 
