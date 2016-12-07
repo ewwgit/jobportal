@@ -308,7 +308,7 @@ class EmpcommonController extends Controller
 	
 	public function actionJobpostingslist()
 	{
-		$this->layout= '@app/views/layouts/employermain';
+		$this->layout= '@app/views/layouts/employerinner';
 		$searchModel = new JobpostSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 	

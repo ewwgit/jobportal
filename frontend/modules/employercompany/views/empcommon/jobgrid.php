@@ -6,6 +6,7 @@ use frontend\models\Employerjobpostings;
 use frontend\models\EmployerSkills;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
+use yii\widgets\ListView;
 
 $this->title = 'JOB Posting List';
 $this->params['breadcrumbs'][] = $this->title;
@@ -14,67 +15,60 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 <section class="invoice">
- <h2><i class="fa fa-dashboard"></i> <?= Html::encode($this->title) ?></h2>
-     <p>
-        <?= Html::a('Create postings', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    
  
-     <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-        		
-        		'rolecategory',
-         		'skills',
-        		'designation',
-        		'experience',
-        		//'Description',
-        		//'jobtype',
-        		'gender',
-        	     //'address',
-        		//'company_name',
-        		'company_type',
-        		'industry_type',
-        		'dateofestablishment',
-                 //	'country',
-                 //	'state',
-                 //	'city',
-                 //	'zipcode',
-          		['class' => 'yii\grid\ActionColumn',
-        		'template' => '{view} {update} {delete} {POST}',
-        		'buttons' => [
-        				'view' => function ($url,$data) {
-        					$url = Url::to(['empcommon/view','id'=>$data->id]);
-        					return Html::a(
-        							'<span class="glyphicon glyphicon-eye-open"></span>',
-        							$url);
-        				},
-        				'update' => function ($url,$data) {
-        				$url = Url::to(['empcommon/update','id'=>$data->id]);
-        				return Html::a(
-        						'<span class="glyphicon glyphicon-pencil"></span>',
-        						$url);
-        				},
-        				'delete' => function ($url,$data) {
-        				$url = Url::to(['empcommon/delete','id'=>$data->id]);
-        				return Html::a(
-        						'<span class="glyphicon glyphicon-trash"></span>',
-        						$url);
-        				},
-        				'POST'=> function ($url,$data) {
-        				$url = Url::to(['empcommon/jobpostingsview','id'=>$data->id]);
-        				return Html::a(
-        						'<span>post</span>',
-        						$url);
-        				},
-        		
-        				],
-        				],
-        ],
-    ]); ?>
-
+     <p>
+        <?= Html::a('Create postings', ['create'], ['class' => 'button']) ?>
+    </p>
 </section>
+
+<div class="sixteen columns">
+
+		<p class="margin-bottom-25">Your listings are shown in the table below. Expired listings will be automatically removed after 30 days.</p>
+
+		<table class="stacktable small-only"><tbody><tr class="st-space"><td></td><td></td></tr><tr class="st-new-item"><td class="st-key"><i class="fa fa-file-text"></i> Title</td><td class="st-val st-head-row"><a href="#">Marketing Coordinator - SEO / SEM Experience <span class="pending">(Pending Approval)</span></a></td></tr><tr><td class="st-key"><i class="fa fa-check-square-o"></i> Filled?</td><td class="st-val">-</td></tr><tr><td class="st-key"><i class="fa fa-calendar"></i> Date Posted</td><td class="st-val">September 30, 2015</td></tr><tr><td class="st-key"><i class="fa fa-calendar"></i> Date Expires</td><td class="st-val">October 10, 2015</td></tr><tr><td class="st-key"><i class="fa fa-user"></i> Applications</td><td class="st-val">-</td></tr><tr><td class="st-key"></td><td class="st-val">
+					<a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
+				</td></tr><tr class="st-space"><td></td><td></td></tr><tr class="st-new-item"><td class="st-key"><i class="fa fa-file-text"></i> Title</td><td class="st-val st-head-row"><a href="#">Web Developer - Front End Web Development, Relational Databases</a></td></tr><tr><td class="st-key"><i class="fa fa-check-square-o"></i> Filled?</td><td class="st-val">-</td></tr><tr><td class="st-key"><i class="fa fa-calendar"></i> Date Posted</td><td class="st-val">September 30, 2015</td></tr><tr><td class="st-key"><i class="fa fa-calendar"></i> Date Expires</td><td class="st-val">October 10, 2015</td></tr><tr><td class="st-key"><i class="fa fa-user"></i> Applications</td><td class="st-val"><a href="manage-applications.html" class="button">Show (4)</a></td></tr><tr><td class="st-key"></td><td class="st-val">
+					<a href="#"><i class="fa fa-pencil"></i> Edit</a>
+					<a href="#"><i class="fa  fa-check "></i> Mark Filled</a>
+					<a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
+				</td></tr><tr class="st-space"><td></td><td></td></tr><tr class="st-new-item"><td class="st-key"><i class="fa fa-file-text"></i> Title</td><td class="st-val st-head-row"><a href="#">Power Systems User Experience Designer</a></td></tr><tr><td class="st-key"><i class="fa fa-check-square-o"></i> Filled?</td><td class="st-val"><i class="fa fa-check"></i></td></tr><tr><td class="st-key"><i class="fa fa-calendar"></i> Date Posted</td><td class="st-val">May 16, 2015</td></tr><tr><td class="st-key"><i class="fa fa-calendar"></i> Date Expires</td><td class="st-val">June 30, 2015</td></tr><tr><td class="st-key"><i class="fa fa-user"></i> Applications</td><td class="st-val"><a href="manage-applications.html" class="button">Show (9)</a></td></tr><tr><td class="st-key"></td><td class="st-val">
+					<a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
+				</td></tr></tbody></table><table class="manage-table responsive-table stacktable large-only">
+
+			<tbody><tr>
+				<th><i class="fa fa-file-text"></i> Title</th>
+				<th><i class="fa fa-check-square-o"></i> Filled?</th>
+				<th><i class="fa fa-calendar"></i> Date Posted</th>
+				<th><i class="fa fa-calendar"></i> Date Expires</th>
+				<th><i class="fa fa-user"></i> Applications</th>
+				<th></th>
+			</tr>
+					
+				
+			
+			
+
+			<?php 
+			echo ListView::widget( [
+					'dataProvider' => $dataProvider,
+					'itemView' => '_jobslist',
+					'viewParams' => [],
+					'pager' => [
+							 
+							'prevPageLabel' => 'PREV',
+							'nextPageLabel' => 'NEXT',
+							'maxButtonCount' => 5,
+							 
+					],
+					'layout' => "{items}\n{pager}",
+			] );
+			?>
+			
+
+		</tbody></table>
+
+		
+
+	</div>
 </div>
 
