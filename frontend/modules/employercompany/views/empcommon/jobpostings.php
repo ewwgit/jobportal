@@ -1,13 +1,20 @@
 <?php
-use dosamigos\datepicker\DatePicker;
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
-
 
 $this->title = '';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<style>
+.required
+{
+ color: #333 !important;
+}
+select {
+ height: 40px !important;
+}
+</style>
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
     <div class="container"> 
@@ -37,49 +44,44 @@ $this->params['breadcrumbs'][] = $this->title;
                   </div>
                   <!-- Email -->
                   <div class="form">
-                    <h5> company name</h5>
-                  <?= $form->field($model, 'company_name')->textInput(['autofocus' => true])->label(false) ?>			
+                    
+                  <?= $form->field($model, 'company_name')->textInput(['autofocus' => true]) ?>			
                   </div>
                   
                   <!-- Email -->
                   <div class="form">
-                    <h5>dateofestablishment</h5>
-                  <?= $form->field($model, 'dateofestablishment')->widget(
-                 DatePicker::className(), [
-                'inline' => true, 
-           		'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
-                'clientOptions' => [
-                'autoclose' => true,
-                'format' => 'dd-M-yyyy' ]])->label(false) ?>
+                   
+                  
+                <?=$form->field ( $model, 'dateofestablishment' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] );?>
                   </div>
                   
                   <!-- Title -->
                   <div class="form">
-                    <h5>country</h5>
-                   <?= $form->field($model, 'country')->dropDownList(['Afghanistan' =>'Afghanistan' , 'Brazil' =>'Brazil', 'Bulgaria' =>'Bulgaria' , 'Canada' =>'Canada' , 'India' =>'India' , 'United Kingdom' =>'United Kingdom' , 'USA' =>'USA' , 'Rome' =>'Rome'],['prompt' =>'select'])->label(false) ?>
+                    
+                   <?= $form->field($model, 'country')->dropDownList(['Afghanistan' =>'Afghanistan' , 'Brazil' =>'Brazil', 'Bulgaria' =>'Bulgaria' , 'Canada' =>'Canada' , 'India' =>'India' , 'United Kingdom' =>'United Kingdom' , 'USA' =>'USA' , 'Rome' =>'Rome'],['prompt' =>'select']) ?>
                   </div>
                   
                   <!-- Location -->
                   <div class="form">
-                    <h5> state</h5>
-                    <form role="form">
-                    <?= $form->field($model, 'state')->dropDownList(['Himachal Pradesh' =>'Himachal Pradesh' , 'Andrapradesh' =>'Andrapradesh', 'Italy' =>'Italy' , 'California' =>'California' , 'Sweden' =>'Sweden' , 'Newyork' =>'Newyork' , 'parise' =>'parise'],['prompt' =>'select'])->label(false)?>
-                    </form>
+                    
+                   
+                    <?= $form->field($model, 'state')->dropDownList(['Himachal Pradesh' =>'Himachal Pradesh' , 'Andrapradesh' =>'Andrapradesh', 'Italy' =>'Italy' , 'California' =>'California' , 'Sweden' =>'Sweden' , 'Newyork' =>'Newyork' , 'parise' =>'parise'],['prompt' =>'select'])?>
+                    
                   </div>
                   <div class="form-group">
-                    <h5>city</h5>
-                   <?= $form->field($model, 'city')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select'])->label(false);?>
+                    
+                   <?= $form->field($model, 'city')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select']);?>
                   </div>
                   <div class="form">
-                    <h5>zipcode</h5>
-                  <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true])->label(false) ?>
+                    
+                  <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true]) ?>
                   </div>
                    <div class="form">
-                    <h5>CTC</h5>
-                  <?= $form->field($model, 'CTC')->textInput(['autofocus' => true])->label(false) ?>
+                   
+                  <?= $form->field($model, 'CTC')->textInput(['autofocus' => true]) ?>
                   </div>
                    <div class="form">
-                    <h5>skills</h5>
+                    
                   <div class="input-group control-group after-add-more">
       	  <?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])?>	
           
@@ -98,7 +100,67 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
           </div>
         </div>	
-        <script type="text/javascript">
+        
+
+                  </div>
+                  
+                    <div class="form">
+                    
+                  <?= $form->field($model, 'designation') ?>
+                  </div>
+                   <div class="form">
+                    
+                  <?= $form->field($model, 'experience')->dropDownList(['0 year' => '0 year', '< 1 year' => '< 1 year','1 year' => '1 year','< 2 years' =>'< 2 years','2 years' => '2 years','< 3 years' =>'< 3 years','3 years' => '3 years', '< 4 years'=>'< 4 years','4 years' => '4 years','< 5 years' =>'< 5 years','5 years' => '5 years', '< 6 years' => '< 6 years','6 years'=>'6 years', '7 years' =>'7 years',]) ?>
+                  </div>
+                   <div class="form">
+                    
+                  <?= $form->field($model, 'rolecategory')->dropDownList(['Software Developer' => 'Software Developer','System Analyst' => 'System Analyst',
+          		'Project Lead' => 'Project Lead','Testing Engineer' =>'Testing Engineer','Database Designer' => 'Database Designer',
+          		'Product Manager' => 'Product Manager','System Admin' => ' System Admin'],['prompt'=>'select your jobrole']) ?>
+                  </div>
+                   <div class="form">
+                    
+                  <?= $form->field($model, 'Description')->textarea(['rows' => 6]) ?>
+                  </div>
+                   <div class="form">
+                    
+                   <?= $form->field($model, 'jobtype')->radioList(['full time' =>'full time' , 'part time' =>'part time'],['prompt' =>'select']) ?>
+                  </div>
+                   <div class="form">
+                   
+                 <?= $form->field($model, 'gender')->radioList(['Male' =>'Male' , 'Femail' =>'Femail'],['prompt' =>'select']) ?>
+                  </div>
+                   <div class="form">
+                    
+                 <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
+                  </div>
+                  
+                  <div class="form">
+                    
+                  <?= $form->field($model, 'company_type')->dropDownList(['consultant' => 'consultant','corporate' => 'corporate'],['prompt'=>'select your jobrole']) ?>
+                  </div>
+                  <div class="form">
+                    
+                  <?= $form->field($model, 'industry_type')->dropDownList(['Advertising/Event Management/PR' => 'Advertising/Event Management/PR','Machinery/Equipment Manufacturing/Industrial Products' => 'Machinery/Equipment Manufacturing/Industrial Products'
+          		],['prompt'=>'select your jobrole']) ?>
+                  </div>
+                                  
+                </div>
+              </div>
+             
+<div class="form-group" style="width: 100%; float: left;">
+                    <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                </div>
+                
+ 
+ 
+ <?php ActiveForm::end(); ?>
+      		 
+       		 </div>
+       		 </div>
+  </div>
+  
+  <script type="text/javascript">
 
     $(document).ready(function() {
 
@@ -114,56 +176,6 @@ $this->params['breadcrumbs'][] = $this->title;
     });
 
 </script>
-
-                  </div>
-                  
-                    <div class="form">
-                    <h5>designation</h5>
-                  <?= $form->field($model, 'designation')->label(false) ?>
-                  </div>
-                   <div class="form">
-                    <h5>experience</h5>
-                  <?= $form->field($model, 'experience')->dropDownList(['0 year' => '0 year', '< 1 year' => '< 1 year','1 year' => '1 year','< 2 years' =>'< 2 years','2 years' => '2 years','< 3 years' =>'< 3 years','3 years' => '3 years', '< 4 years'=>'< 4 years','4 years' => '4 years','< 5 years' =>'< 5 years','5 years' => '5 years', '< 6 years' => '< 6 years','6 years'=>'6 years', '7 years' =>'7 years',])->label(false) ?>
-                  </div>
-                   <div class="form">
-                    <h5>rolecategory</h5>
-                  <?= $form->field($model, 'rolecategory')->dropDownList(['Software Developer' => 'Software Developer','System Analyst' => 'System Analyst',
-          		'Project Lead' => 'Project Lead','Testing Engineer' =>'Testing Engineer','Database Designer' => 'Database Designer',
-          		'Product Manager' => 'Product Manager','System Admin' => ' System Admin'],['prompt'=>'select your jobrole'])->label(false) ?>
-                  </div>
-                   <div class="form">
-                    <h5>Description</h5>
-                  <?= $form->field($model, 'Description')->textarea(['rows' => 6])->label(false) ?>
-                  </div>
-                   <div class="form">
-                    <h5>jobtype</h5>
-                   <?= $form->field($model, 'jobtype')->radioList(['full time' =>'full time' , 'part time' =>'part time'],['prompt' =>'select']) ?>
-                  </div>
-                   <div class="form">
-                    <h5>gender</h5>
-                 <?= $form->field($model, 'gender')->radioList(['Male' =>'Male' , 'Femail' =>'Femail'],['prompt' =>'select']) ?>
-                  </div>
-                   <div class="form">
-                    <h5>address</h5>
-                 <?= $form->field($model, 'address')->textarea(['rows' => 6])->label(false) ?>
-                  </div>
-                                  
-                </div>
-              </div>
-             
-<div class="form-group">
-                    <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
-                
- 
- 
- <?php ActiveForm::end(); ?>
-      		 
-       		 </div>
-       		 </div>
-  </div>
-  
-  
 
        		 
        		 

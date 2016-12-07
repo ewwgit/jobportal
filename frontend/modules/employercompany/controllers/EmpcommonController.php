@@ -280,8 +280,9 @@ class EmpcommonController extends Controller
 	   $model = new EmployerJobpostings();
 	//   $postings = EmployerJobpostings :: find()->all();
 	
-	   if (($model->load(Yii::$app->request->post())) && ($model->validate()) )
+	   if (($model->load(Yii::$app->request->post())) && $model->validate() )
 	   {
+	  
 	  // 	$postings = EmployerJobpostings :: find()->one();
 	   	
 	   
@@ -298,8 +299,14 @@ class EmpcommonController extends Controller
         $model->skills=$comma_separated;
  	 	 
  	    $model->save();
+ 	   
 	   Yii::$app->getSession()->setFlash('success', ' successfully  create jobposting');
 	   return Yii::$app->getResponse()->redirect(['employercompany/empcommon/jobpostingslist'] );
+	  	   }
+	  	   else {
+	  	   	return $this->render('jobpostings', [
+	  	   		'model' => $model,
+	  	   ]);
 	  	   }
 	  	   return $this->render('jobpostings', [
 	  	   		'model' => $model,
