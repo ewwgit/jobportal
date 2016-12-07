@@ -25,7 +25,7 @@ class EmpcommonController extends Controller
 
 	public function actionEmployer()
 	{
-		$this->layout= '@app/views/layouts/employermain';
+		$this->layout= '@app/views/layouts/employerinner';
 		$model = new EmployerForm ();
 		$employerSignup = new EmployerSignup ();
 		$employermodel = new Employer ();
@@ -276,7 +276,7 @@ class EmpcommonController extends Controller
 	}
 	public function actionCreate()
 	{
-		$this->layout= '@app/views/layouts/employermain';
+		$this->layout= '@app/views/layouts/employerinner';
 	   $model = new EmployerJobpostings();
 	//   $postings = EmployerJobpostings :: find()->all();
 	
