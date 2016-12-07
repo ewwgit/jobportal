@@ -25,14 +25,24 @@ class EmployerJobpostings extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'id',
-        	'skills' => 'skills',
-            'designation' => 'designation',
-        	'experience' => 'experience',
+        	'skills' => 'Skills',
+            'designation' => 'Designation',
+        	'experience' => 'Experience',
         	'Description' => 'Description',
-        	'jobtype' => 'jobtype',
-        	'gender' => 'gender',
-        	'address' => 'address',
+        	'jobtype' => 'Jobtype',
+        	'gender' => 'Gender',
+        	'address' => 'Address',
         	'roleid' => 'Roleid',
+        	'CTC' => 'CTC',
+        	'rolecategory'=> 'Rolecategory',
+        	'company_name'=>'Company name',
+        	'company_type'=>'Company type',
+        	'industry_type'=>'Industry type',
+        	'dateofestablishment'=>'Dateofestablishment',
+        	'country'=>'Country',
+        	'state'=>'State',
+        	'city'=>'City',
+        	'zipcode'=>'Zipcode'
         ];
     }
 //     public static skills($skills){
