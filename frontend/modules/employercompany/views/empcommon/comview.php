@@ -213,7 +213,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
                    
                       <?= $form->field($model, 'companytype')->radioList(['corporate' =>'corporate' , 'consultant' =>'consultant'],['prompt' =>'<---select--->'])->label(false);?>
                     </div>
-							</div>
+							
 							<div class="form">
 								<h5>jobtype</h5>
 								<div class="select-grid">
@@ -275,6 +275,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
    <?php ActiveForm::end(); ?>
     </div>
 
+</div>
 </div>
 
 

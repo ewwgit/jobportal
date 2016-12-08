@@ -117,7 +117,7 @@ class EmployeeForm extends Model {
 								
 								'skillname',
 								'lastused',
-								'skillexperience',
+							  //'skillexperience',
 								
 								
 								'projecttitle',
@@ -129,7 +129,7 @@ class EmployeeForm extends Model {
 								'role',
 								'roledescription',
 								'teamsize',
-								'skillsused',
+							  //'skillsused',
 								
 							
 								

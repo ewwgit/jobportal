@@ -308,9 +308,7 @@ class EmpcommonController extends Controller
 	  	   		'model' => $model,
 	  	   ]);
 	  	   }
-	  	   return $this->render('jobpostings', [
-	  	   		'model' => $model,
-	  	   ]);
+	  	  
 	}
 	
 	public function actionJobpostingslist()

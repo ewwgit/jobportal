@@ -254,11 +254,8 @@ $this->params ['breadcrumbs'] [] = $this->title;
 				</div>
 			</div>
 			<div class="divider margin-top-0 padding-reset"></div>
-			<div class="form-group">
-       <?= Html::a('update', ['/employercompany/empcommon/employer'], ['class'=>'btn btn-primary'])?>
-    </div>
-			<a href="#" style="float: right;" class="button big margin-top-5 ">Update
-				Resume <i class="fa fa-arrow-circle-right"></i>
+			
+			<a href="#" style="float: right;" class="button big margin-top-5 "><i class="fa fa-arrow-circle-right"><?= Html::a('update', ['/employercompany/empcommon/employer'])?></i>
 			</a>
 		</div>
 	</div>
