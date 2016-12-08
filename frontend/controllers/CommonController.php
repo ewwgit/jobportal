@@ -58,7 +58,8 @@ class CommonController extends Controller
 		//print_r($jobpreference);exit();
 		$education = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
 		$project = EmployeeProjects :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		$skill = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$skill = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->all();
+		$model->allSkills = $skill;
 		//print_r($skill);exit();
 		
 	    // print_r($skill->skillname);exit();
@@ -76,7 +77,7 @@ class CommonController extends Controller
 		
 		if(!(empty($employee)))
 		{
-			$model->profileimage = $employee->profileimage;
+			$model->profileimagenew = $employee->profileimage;
 			//print_r($model->profileimage);exit();
 			$model->name = $employee->name;
 			$model->surname = $employee->surname;
@@ -134,12 +135,12 @@ class CommonController extends Controller
 		/*employee skills details*/
 		
 		
-		if(!empty($skill))
+		/* if(!empty($skill))
 		{
 			$model->skillname = $skill->skillname;
 			$model->lastused = $skill->lastused;
 			$model->skillexperience = $skill->skillexperience;
-		}
+		} */
 		
 		
 		/*employee employement details*/
@@ -181,12 +182,12 @@ class CommonController extends Controller
 			
 		}
 		
-		if(!empty($resume))
+		/* if(!empty($resume))
 		{
 			
 			$model->resume = $resume->resume;
 			
-		}
+		} */
 
 		
 		 /*insert values from fields to dtabse*/
@@ -208,12 +209,12 @@ class CommonController extends Controller
 				$employee->dateofbirth =$employeedateofbirth;
 				$employee->mobilenumber = $model->mobilenumber;
 				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
-			
-				$profileimage=$model->profileimage;
-				//print_r($model->profileimage);exit();
-				$imageName = time().$model->profileimage->name;
+				
 				if(!(empty($model->profileimage)))
-				{
+				{	
+					$profileimage=$model->profileimage;
+					//print_r($model->profileimage);exit();
+					$imageName = time().$model->profileimage->name;
 					$imageName = time().$model->profileimage->name;
 					//print_r($imageName);exit();
 					$model->profileimage->saveAs('profileimages/'.$imageName );
@@ -222,9 +223,10 @@ class CommonController extends Controller
 					 
 					$model->profileimage = 'profileimages/'.$imageName;
 					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
+					$profileimage = '/frontend/web/profileimages/'.$imageName;
+					$employee->profileimage = $profileimage;
 				}
-				 $profileimage = '/frontend/web/profileimages/'.$imageName;
-				$employee->profileimage = $profileimage;   
+				  
 				$employee-> save();
 				
 			}
@@ -241,9 +243,10 @@ class CommonController extends Controller
 				
 				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
 				
-			 	$imageName = time().$model->profileimage->name;
+				
 				if(!(empty($model->profileimage)))
 				{
+					
 					$imageName = time().$model->profileimage->name;
 					//print_r($imageName);exit();
 					$model->profileimage->saveAs('profileimages/'.$imageName );
@@ -252,9 +255,10 @@ class CommonController extends Controller
 					
 					$model->profileimage = 'profileimages/'.$imageName;
 					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
+					$profileimage = '/frontend/web/profileimages/'.$imageName;
+					$empmodel->profileimage = $profileimage;
 				}
-				 $profileimage = '/frontend/web/profileimages/'.$imageName;
-				$empmodel->profileimage = $profileimage;   
+				
 				$empmodel-> save();
 			
 			}
@@ -362,7 +366,8 @@ class CommonController extends Controller
 			
 		   if(!(empty($skill)))
 			{
-			
+				
+			 EmployeeSkills::deleteAll( ['userid' => Yii::$app->user->id]);
 			 $skillname= $model->skillname;
 			    //print_r($model->skillname);exit();
 			    
@@ -376,6 +381,7 @@ class CommonController extends Controller
 					//$newskillname = array();
 					if(!empty($skillnameary))
 					{
+						
 						for ($i=0;$i< count($skillnameary); $i++)
 						{
 							if(($skillnameary[$i] != '') && ($lastusedary[$i] != '') && ($skillexperienceary[$i] != ''))
@@ -462,8 +468,10 @@ class CommonController extends Controller
 				
 				if(!(empty($language)))
 				{
-					$language->language = $model->language;
-					$language->proficiencylevel = $model->proficiencylevel;
+					EmployeeLanguages::deleteAll( ['userid' => Yii::$app->user->id]);
+					//echo $model->language;exit();
+					$languagemodel->language = $model->language;
+					$languagemodel->proficiencylevel = $model->proficiencylevel;
 					$langability = $model->ability;
 					if(isset($langability))
 					{
@@ -475,11 +483,13 @@ class CommonController extends Controller
 						}
 							
 					}
-					$language->ability = $langabilitystr;
+					$languagemodel->ability = $langabilitystr;
 					
 					
-					$language->userid = Yii::$app->user->id ;
-					$language-> save();
+					$languagemodel->userid = Yii::$app->user->id ;
+					
+					$languagemodel-> save();
+					/* print_r($language);exit(); */
 				}
 				else {
 					$languagemodel->language = $model->language;
@@ -508,8 +518,10 @@ class CommonController extends Controller
 				
 				if(!(empty($resume)))
 				{
-					
 					$model->resume = UploadedFile::getInstance($model,'resume');
+					if(!(empty($model->resume)))
+					{
+					
 					$res=$model->resume;
 				  //print_r($model->profileimage);exit();
 				  $resumeName = time().$model->resume->name;
@@ -528,11 +540,15 @@ class CommonController extends Controller
 				$resume->resume = $res;
 				$resume->userid = Yii::$app->user->id;
 				$resume-> save();
+					}
 				
 				}
 				else
 				{
 					$model->resume = UploadedFile::getInstance($model,'resume');
+					if(!(empty($model->resume)))
+					{
+					
 						$res=$model->resume;
 				//print_r($model->resume);exit();
 				$resumeName = time().$model->resume->name;
@@ -551,6 +567,7 @@ class CommonController extends Controller
 				$resumemodel->resume = $res; 
 				$resumemodel->userid = Yii::$app->user->id ;
 				$resumemodel-> save();
+					}
 				}
 					
 				

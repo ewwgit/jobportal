@@ -30,7 +30,7 @@ select {
 	</div>
 
 	<div class="container"> 
-    <?php $form = ActiveForm::begin(['id' => 'form-employee','action' => Yii::$app->getUrlManager()->createUrl('common/employee')]); ?>
+    <?php $form = ActiveForm::begin(['id' => 'form-employee']); ?>
     <!-- Submit Page -->
 		<div class="sixteen columns">
 			<div class="submit-page" style="padding: 0px;">
@@ -39,7 +39,7 @@ select {
 						<div class="form">
 							<h5>Upload Your Profile image</h5>
 							<img class='image'
-								src="<?php echo Yii::getAlias('/jobportal').$model->profileimage; ?>"
+								src="<?php echo Yii::getAlias('/jobportal').$model->profileimagenew; ?>"
 								width="100" height="100"> </img> 
                 
             <?= $form->field($model, 'profileimage')->fileInput(['maxlength' => true])->label(false)?>
@@ -215,6 +215,30 @@ select {
 									<div class="title-underlined">
 										<h4>Add Your Skills Details</h4>
 									</div>
+									<?php if(!empty($model->allSkills)){?>
+									<div id="alreadyinfo" >
+									<?php foreach ($model->allSkills as $alreadySkills){?>
+										<div class="form-table" id="customFields1">
+											<div class="form">
+												<h5>Skill Name</h5>
+										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true,'value' => $alreadySkills->skillname])?>
+									</div>
+											<div class="form">
+												<h5>Last Used</h5>
+										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'options' => [$alreadySkills->lastused => ['Selected'=>'selected']],'prompt' => 'select your skill lastused year ' ] )?>
+									</div>
+											<div class="form">
+												<h5>Skill Experience</h5>
+										<?=$form->field ( $model, 'skillexperience[]' )->dropDownList ( [ '0 year' => '0 year','< 1 year' => '< 1 year','1 year' => '1 year','< 2 years' => '< 2 years','2 years' => '2 years','< 3 years' => '< 3 years','3 years' => '3 years','< 4 years' => '< 4 years','4 years' => '4 years','< 5 years' => '< 5 years','5 years' => '5 years','< 6 years' => '< 6 years','6 years' => '6 years','7 years' => '7 years' ], [  'options' => [$alreadySkills->skillexperience => ['Selected'=>'selected']],'prompt' => 'select your skillexperience ' ] )?>
+									</div>
+											<a href="javascript:void(0);" class="button gray remCF"
+												style="text-decoration: none; margin-top: 1em;"><i
+												class="fa fa-plus-circle"></i> Remove</a>
+										</div>
+										<?php }?>
+									</div>
+									<?php }else{ ?>
+									
 									<div class="form-table" id="customFields1">
 										<div class="form">
 											<h5>Skill Name</h5>
@@ -228,10 +252,12 @@ select {
 											<h5>Skill Experience</h5>
 										<?=$form->field ( $model, 'skillexperience[]' )->dropDownList ( [ '0 year' => '0 year','< 1 year' => '< 1 year','1 year' => '1 year','< 2 years' => '< 2 years','2 years' => '2 years','< 3 years' => '< 3 years','3 years' => '3 years','< 4 years' => '< 4 years','4 years' => '4 years','< 5 years' => '< 5 years','5 years' => '5 years','< 6 years' => '< 6 years','6 years' => '6 years','7 years' => '7 years' ], [ 'prompt' => 'select your skillexperience ' ] )->label(false)?>
 									</div>
-										<a href="javascript:void(0);" class="button gray addCF1"
+										
+									</div>
+									<?php } ?>
+									<a href="javascript:void(0);" class="button gray addCF1"
 											style="text-decoration: none; margin-top: 1em;"><i
 											class="fa fa-plus-circle"></i> Add Skills</a>
-									</div>
 									<div id="dynamiccontent" style="display: none;">
 										<div class="form-table" id="customFields1">
 											<div class="form">
