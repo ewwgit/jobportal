@@ -23,6 +23,7 @@ class EmployeeForm extends Model {
 	public $dateofbirth;
 	public $mobilenumber;
 	public $profileimage;
+	public $profileimagenew;
 	public $userid;
 	/**
 	 * * Educational Details **
@@ -66,6 +67,8 @@ class EmployeeForm extends Model {
 	public $skillname;
 	public $lastused;
 	public $skillexperience;
+	public $allSkills;
+	
 	
 	/**** Employer Details**/
 	
@@ -117,7 +120,7 @@ class EmployeeForm extends Model {
 								
 								'skillname',
 								'lastused',
-							  //'skillexperience',
+								'skillexperience',
 								
 								
 								'projecttitle',
@@ -129,7 +132,7 @@ class EmployeeForm extends Model {
 								'role',
 								'roledescription',
 								'teamsize',
-							  //'skillsused',
+								'skillsused',
 								
 							
 								
