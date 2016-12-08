@@ -57,7 +57,7 @@ AppAsset::register($this);
 <style>
 
 label.radio-inline{display:inline-block;}
-label.upload-btn i{color:#fff !important; margin-right:20px !important;}
+label.upload-btn i{color:#fff !important; margin-right:2px !important;}
 
 
 </style>
@@ -74,7 +74,7 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="index.html"><img src="images/logo.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="images/logo.png" alt="Work Scout" /></a></h1>
         </div>
       
          <nav id="navigation" class="menu" >

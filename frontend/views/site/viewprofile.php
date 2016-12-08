@@ -11,7 +11,7 @@ $this->title = 'UserProfile';
 ================================================== -->
   <div id="titlebar" class="single">
     <div class="container">
-      <div class="sixteen columns">
+      <div class="twelve columns">
         <h2>Profile Information</h2>
         <nav id="breadcrumbs">
           <ul>
@@ -21,6 +21,14 @@ $this->title = 'UserProfile';
           </ul>
         </nav>
       </div>
+      <div class="col-md-3 right_side_buttons">
+       <div class="row">
+		<a href="<?= Url::to(['/common/employee'])?>"><i title="Edit your profile"
+					class="fa fa-edit" style="font-size: 18px; margin-top: 25px;"></i> Edit Profile</a>
+			
+		</ul>
+	</div>
+	</div>
     </div>
   </div>
   
@@ -247,15 +255,15 @@ $this->title = 'UserProfile';
                     <tbody>
                       <tr>
                         <td>Language :</td>
-                        <td><?php echo  $languagemodel->language ;?></td>
+                        <td><?php //echo  $languagemodel->language ;?></td>
                       </tr>
                       <tr>
                         <td>Proficiency Level :</td>
-                        <td><?php echo  $languagemodel->proficiencylevel;  ?></td>
+                        <td><?php// echo  $languagemodel->proficiencylevel;  ?></td>
                       </tr>
                       <tr>
                         <td>Your Language Ability :</td>
-                        <td><?php echo  $languagemodel->ability;  ?></td>
+                        <td><?php //echo  $languagemodel->ability;  ?></td>
                       </tr>
                     </tbody>
                   </table>
@@ -265,7 +273,7 @@ $this->title = 'UserProfile';
           </div>
         </div>
          <div class="divider margin-top-0 padding-reset"></div>
-         <?= Html::a('update', ['/common/employee'], ['class'=>'btn btn-primary']) ?> <i class="fa fa-arrow-circle-right"></i></div>
+         
     </div>
   </div>
   

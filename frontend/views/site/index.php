@@ -57,7 +57,7 @@ $this->title = 'My Yii Application';
           <div class="browse-jobs"> Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a> </div>
           
           <!-- Announce -->
-          <div class="announce"> We’ve over <strong>15 000</strong> job offers for you! </div>
+          <div class="announce"> We've over <strong>15 000</strong> job offers for you! </div>
         </div>
       </div>
     </div>
