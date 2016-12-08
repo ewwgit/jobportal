@@ -80,30 +80,48 @@ select {
                    
                   <?= $form->field($model, 'CTC')->textInput(['autofocus' => true]) ?>
                   </div>
-                   <div class="form">
-                    
-                  <div class="input-group control-group after-add-more">
-      	  <?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])?>	
-          
-          <div class="input-group-btn"> 
-            <button class="btn btn-success add-more" type="button" style="margin-top: 25px;"><i class="glyphicon glyphicon-plus"></i> Add</button>
-          </div>
-        </div>
-
-       
-         <div class="copy hide">
-          <div class="control-group input-group" style="margin-top:10px">
-          
-            <?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])?>	
-            <div class="input-group-btn"> 
-              <button class="btn btn-danger remove" type="button" style="margin-top: 25px;"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-            </div>
-          </div>
-        </div>	
-        
-
-                  </div>
+                  <?php if(!empty($model->allSkills)){?>
+									<div id="alreadyinfo" >
+									<?php foreach ($model->allSkills as $alreadySkills){?>
+										<div class="form-table" id="customFields1">
+											<div class="form">
+												
+										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true,'value' => $alreadySkills->skillname])?>
+									</div>
+											
+											<a href="javascript:void(0);" class="button gray remCF"
+												style="text-decoration: none; margin-top: 1em;"><i
+												class="fa fa-plus-circle"></i> Remove</a>
+										</div>
+										<?php }?>
+									</div>
+									<?php }else{ ?>
+									
+									<div class="form-table" id="customFields1">
+										<div class="form">
+											
+										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])?>
+									</div>
+										
+									</div>
+									<?php } ?>
+									<a href="javascript:void(0);" class="button gray addCF1"
+											style="text-decoration: none; margin-top: 1em;"><i
+											class="fa fa-plus-circle"></i> Add Skills</a>
+									<div id="dynamiccontent" style="display: none;">
+										<div class="form-table" id="customFields1">
+											<div class="form">
+												
+										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])?>
+									</div>
+											
+											<a href="javascript:void(0);" class="button gray remCF"
+												style="text-decoration: none; margin-top: 1em;"><i
+												class="fa fa-plus-circle"></i> Remove</a>
+										</div>
+									</div>
                   
+
                     <div class="form">
                     
                   <?= $form->field($model, 'designation') ?>
@@ -147,35 +165,47 @@ select {
                                   
                 </div>
               </div>
-             
-<div class="form-group" style="width: 100%; float: left;">
-                    <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
+              </div>
+             </div>
+             </div>
+             </div>
+            </div>
+<div class="clearfix"></div>
+				<div class="divider margin-top-0 padding-reset"></div>
+				<div class="form-group">
+                    <?= Html::submitButton('Save', ['class' => 'button big margin-top-5', 'name' => 'signup-button']) ?>
                 
- 
+                
+ </div>
  
  <?php ActiveForm::end(); ?>
       		 
        		 </div>
-       		 </div>
+       		 
   </div>
+
   
-  <script type="text/javascript">
-
-    $(document).ready(function() {
-
-      $(".add-more").click(function(){ 
-          var html = $(".copy").html();
-          $(".after-add-more").after(html);
-      });
-
-      $("body").on("click",".remove",function(){ 
-          $(this).parents(".control-group").remove();
-      });
-
+ <script src="scripts/jquery.js" type="text/javascript"></script>
+		<script type="text/javascript">
+     $(document).ready(function(){
+	$(".addCF1").on('click',function(){
+		var dync = $('#dynamiccontent').html();
+		//console.log(dync);
+		$("#customFields1").append(dync);
+	});
+    $("#customFields1").on('click','.remCF',function(){
+        $(this).parent().remove();
     });
 
-</script>
-
+    $(".addCF2").on('click',function(){
+		var dync = $('#dynamiccontent-lan').html();
+		//console.log(dync);
+		$("#customFields1-lan").append(dync);
+	});
+    $("#customFields1-lan").on('click','.remCF2',function(){
+        $(this).parent().remove();
+    });
+});
+	</script> 
        		 
        		 

@@ -273,7 +273,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 		<div class="divider margin-top-0 padding-reset"></div>
 
 		<div class="form-group">
-        <?= Html::submitButton('Update', ['class' => 'btn btn-primary', 'name' => 'signup-button','class' => 'button border fw margin-top-10'])?>
+        <?= Html::submitButton('Update', [ 'name' => 'signup-button','class' => 'btn btn-primary button border fw margin-top-10'])?>
         </div>
    <?php ActiveForm::end(); ?>
     </div>
