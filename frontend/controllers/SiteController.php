@@ -167,49 +167,64 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
         	
         	//print_r(Yii::$app->request->post());exit();
-        
-        	$name = $model->name;
-        	//print_r($name);exit();
-        	$surname = $model->surname;
-        	$gender = $model->gender;
-        	$dateofbirth = date('Y-m-d', strtotime($model->dateofbirth));
-        	$mobilenumber=$model->mobilenumber;
-        	$model->profileimage = UploadedFile::getInstance($model,'profileimage');
-        	//print_r($model->profileimage);exit();
-        	$imageName = time().$model->profileimage->name;
-        	$profileimage = '/frontend/web/profileimages/'.$imageName;
         	
         	
-        	//print_r($imageName);exit();
+        	
 
-        	if(!(empty($model->profileimage)))
-        	{
+        	if ($user = $model->signup()) {
+        		 
+        		
+        		
+        		
+        		$name = $model->name;
+        		//print_r($name);exit();
+        		$surname = $model->surname;
+        		$gender = $model->gender;
+        		$dateofbirth = date('Y-m-d', strtotime($model->dateofbirth));
+        		$mobilenumber=$model->mobilenumber;
+        		$model->profileimage = UploadedFile::getInstance($model,'profileimage');
+        		//print_r($model->profileimage);exit();
         		$imageName = time().$model->profileimage->name;
+        		$profileimage = '/frontend/web/profileimages/'.$imageName;
+        		 
+        		 
         		//print_r($imageName);exit();
-        		$model->profileimage->saveAs('profileimages/'.$imageName );
-        		$model->profileimage = 'profileimages/'.$imageName;
+        		
+        		if(!(empty($model->profileimage)))
+        		{
+        			$imageName = time().$model->profileimage->name;
+        			//print_r($imageName);exit();
+        			$model->profileimage->saveAs('profileimages/'.$imageName );
+        			$model->profileimage = 'profileimages/'.$imageName;
+        		}
+        		
+        		 
+        		/* $userid = Yii::$app->user->id ;
+        		 $model->userid=$userid;
+        		 $userids=$model->userid;
+        		 
+        		 
+        		 */
+        		
+        		
+        		$id = Yii::$app->db->getLastInsertID();
+        		//print_r($id);exit();
+        		
+        		Yii::$app->db->createCommand()->insert('employee_signup', [
+        				'name' => $name,'surname' => $surname, 'gender' => $gender, 'dateofbirth' => $dateofbirth,
+        				'mobilenumber' => $mobilenumber,'profileimage' => $profileimage,'userid'=>$id])->execute();
+        	
+        		return $this->goHome();
+        		 
+        		if (Yii::$app->getUser()->login($user)) {
+        	
+        			return $this->goHome();
+        		}
         	}
         
         	
-        	 /* $userid = Yii::$app->user->id ;
-        	$model->userid=$userid;
-        	$userids=$model->userid; 
- */        	
-        	Yii::$app->db->createCommand()->insert('employee_signup', [
-        			'name' => $name,'surname' => $surname, 'gender' => $gender, 'dateofbirth' => $dateofbirth,
-        			'mobilenumber' => $mobilenumber,'profileimage' => $profileimage,])->execute();
         	
-        	
-            if ($user = $model->signup()) {
-            	
-            
-            	return $this->goHome();
-            	
-                 if (Yii::$app->getUser()->login($user)) {
-                 	
-                    return $this->goHome();
-                } 
-            }  
+       
         }
 
         return $this->render('signup', [

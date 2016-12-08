@@ -173,31 +173,35 @@ class EmpsiteController extends Controller
     	if ($model->load(Yii::$app->request->post())) {
     		 
     		//print_r(Yii::$app->request->post());exit();
-    
-    		$name=$model->name;
-        	$mobilenumber=$model->mobilenumber;
-        	$dateofbirth=$model->dateofbirth;
-        	$gender=$model->gender;
-        	$designation=$model->designation;
-        	$address=$model->address;
-
-        	
-        	
-        	
-        	Yii::$app->db->createCommand()->insert('employer', [
-        			'name' => $name,'mobilenumber' => $mobilenumber, 'gender' => $gender,'designation' => $designation, 'dateofbirth' => $dateofbirth,
-        		'address' => $address])->execute();
-    		 
+               
     		if ($user = $model->signup()) {
     			//return $this->goHome();
     			//return $this->redirect ('login');
     			//$this->layout = "employermain";
     			$this->layout= '@app/views/layouts/employermain';
     			
+
+    			$name=$model->name;
+    			$mobilenumber=$model->mobilenumber;
+    			$dateofbirth=$model->dateofbirth;
+    			$gender=$model->gender;
+    			$designation=$model->designation;
+    			$address=$model->address;
+    			
+    			$id = Yii::$app->db->getLastInsertID();
+    			 
+    			 
+    			Yii::$app->db->createCommand()->insert('employer', [
+    					'name' => $name,'mobilenumber' => $mobilenumber, 'gender' => $gender,'designation' => $designation, 'dateofbirth' => $dateofbirth,
+    					'address' => $address,'userid' => $id])->execute();
+    			 
+    			 
     			return Yii::$app->getResponse()->redirect(['employercompany/empsite/login', 'userid' => Yii::$app->user->id ] );
     			if (Yii::$app->getUser()->login($user)) {
     				//return $this->goHome();
     			}
+
+    	
     		}
     	}
     
