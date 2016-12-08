@@ -24,7 +24,8 @@ $this->params ['breadcrumbs'] [] = $this->title;
  <table id="vertical-1">
 
  <div><?php echo  $postings->company_name;  ?></div>
- <tr><img src="/jobportal/frontend/web/images/tick1.jpg"><?php echo  $postings->experience;  ?></tr>&nbsp;&nbsp;
+ <tr><img src="/jobportal/frontend/web/images/tick1.jpg"><?php echo  $postings->Min_Experience;  ?></tr>&nbsp;&nbsp;
+ <tr><img src="/jobportal/frontend/web/images/tick1.jpg"><?php echo  $postings->Max_Experience;  ?></tr>&nbsp;&nbsp;
  <tr><img src="/jobportal/frontend/web/images/art.png"><?php echo  $postings->state; $postings->city; $postings->country;  ?></tr><br><br>
  <tr>Salry:<?php echo  $postings->CTC;  ?></tr>
  <div class="form-group box" >
