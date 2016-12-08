@@ -295,6 +295,8 @@ class EmpcommonController extends Controller
  	   		$comma_separated = implode(",", $array);
 
  	   	   	}
+ 	   	   	
+ 	   	$model->startDate = date("Y-m-d H:i:s");
 
         $model->skills=$comma_separated;
  	 	 
