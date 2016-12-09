@@ -110,7 +110,7 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
         <nav id="breadcrumbs">
           <ul>
             <li>You are here:</li>
-            <li><a href="#">Home</a></li>
+            <li><a href="<?php echo Yii::$app->getHomeUrl(); ?>">Home</a></li>
             <li>Candidates Login</li>
           </ul>
         </nav>

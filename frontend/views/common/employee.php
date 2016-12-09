@@ -42,7 +42,7 @@ select {
 						<img class='image'
 							src="<?php echo Yii::getAlias('/jobportal').$model->profileimagenew; ?>"
 							width="100" height="100"> </img> 
-            <?=$form->field ( $model, 'profileimage' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' => [ 'browseLabel' => 'Profile Image' ] ] )->label ( false );?>
+            <?=$form->field ( $model, 'profileimage' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => 'Profile Image', 'allowedFileExtensions'=>['jpg','png'] ]] ] )->label ( false );?>
            
                
 						</div>
@@ -351,8 +351,25 @@ select {
 								</div>
 								<div class="form">
 									<h5>Resume</h5>
-										
-                      <?= $form->field($model, 'resume')->fileInput(['maxlength' => true])->label(false)?>
+											
+                      <?php
+							
+							echo $form->field ( $model, 'resume' )->widget ( FileInput::classname (), [ 
+									'options' => [ 
+											'accept' => 'csv/*' 
+									],
+									'pluginOptions' => [ 
+											'browseClass' => 'btn btn-primary',
+											'uploadClass' => 'btn btn-info',
+											'removeClass' => 'btn btn-danger',
+											'browseLabel' =>  'Browse',
+											'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',
+											// change here: below line is added just to hide upload button. Its up to you to add this code or not.
+											'showUpload' => false ,
+											'showPreview' => false,
+									] 
+							] )->label ( false );
+							?>
                      
 									</div>
 							</div>

@@ -68,7 +68,7 @@ select {
 								<div class="form-group">
 									
 										
-									 <?= $form->field($model, 'gender')->radioList(['male'=>'male','female'=>'female'],['prompt' =>'<---select gender--->'])?>
+									 <?= $form->field($model, 'gender')->inline()->radioList(['male'=>'Male','female'=>'Female'],['prompt' =>'<---select gender--->'])?>
 									</div>
 								<div class="form">
 									
@@ -155,7 +155,7 @@ select {
 								<!-- Email -->
 								<div class="form">
 									
-									  <?= $form->field($model, 'job_type')->radioList(['full time' =>'full time' , 'part time' =>'part time'],['prompt' =>'select'])?>
+									  <?= $form->field($model, 'job_type')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time'],['prompt' =>'select'])?>
 									</div>
 
 								<!-- Email -->
@@ -175,7 +175,7 @@ select {
 									</div>
 								<div class="form">
 									
-									 <?= $form->field($model, 'shift_timings')->radioList(['DayShift' =>'DayShift' , 'NightShift' =>'NightShift'])?>
+									 <?= $form->field($model, 'shift_timings')->inline()->radioList(['DayShift' =>'DayShift' , 'NightShift' =>'NightShift'])?>
 									</div>
 								<div class="form">
 									
@@ -207,11 +207,11 @@ select {
 									</div>
 									<div class="form">
 									
-										 <?= $form->field($model, 'companytype')->radioList(['corporate' =>'corporate' , 'consultant' =>'consultant'],['prompt' =>'<---select--->']);?>
+										 <?= $form->field($model, 'companytype')->inline()->radioList(['corporate' =>'Corporate' , 'consultant' =>'Consultant'],['prompt' =>'<---select--->']);?>
 									</div>
 									<div class="form">
 									
-										   <?= $form->field($model, 'jobtype')->radioList(['full time' =>'full time' , 'part time' =>'part time'],['prompt' =>'select']);?>
+										   <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time'],['prompt' =>'select']);?>
 									</div>
 								
 							</div>
