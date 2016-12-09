@@ -107,47 +107,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 								<div class="title-underlined">
 									<h4>Employer Company Profile</h4>
 								</div>
-								<table class="table table-user-information ">
-									<tbody>
-										<tr>
-											<td>Company name:</td>
-											<td><?php echo $jobmodel->company_name; ?></td>
-										</tr>
-										<tr>
-											<td>Company type:</td>
-											<td><?php echo $jobmodel->company_type; ?></td>
-										</tr>
-
-										<tr>
-											<td>Industry type:</td>
-											<td><?php echo $jobmodel->industry_type; ?></td>
-										</tr>
-										<tr>
-											<td>Dateofestablishment:</td>
-											<td><?php echo $jobmodel->dateofestablishment; ?></td>
-										</tr>
-										<tr>
-											<td>Location:</td>
-											<td><?php echo $jobmodel->location; ?></td>
-										</tr>
-										<tr>
-											<td>Country:</td>
-											<td><?php echo $jobmodel->country; ?></td>
-										</tr>
-										<tr>
-											<td>State:</td>
-											<td><?php echo $jobmodel->state; ?></td>
-										</tr>
-										<tr>
-											<td>City:</td>
-											<td><?php echo $jobmodel->city; ?></td>
-										</tr>
-										<tr>
-											<td>Zipcode:</td>
-											<td><?php echo $jobmodel->zipcode; ?></td>
-										</tr>
-									</tbody>
-								</table>
+								
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -254,8 +214,9 @@ $this->params ['breadcrumbs'] [] = $this->title;
 				</div>
 			</div>
 			<div class="divider margin-top-0 padding-reset"></div>
-			
-			<a href="#" style="float: right;" class="button big margin-top-5 "><i class="fa fa-arrow-circle-right"><?= Html::a('update', ['/employercompany/empcommon/employer'])?></i>
+
+			<a href="#" style="float: right;" class="button big margin-top-5 "><i
+				class="fa fa-arrow-circle-right"><?= Html::a('update', ['/employercompany/empcommon/employer'])?></i>
 			</a>
 		</div>
 	</div>
