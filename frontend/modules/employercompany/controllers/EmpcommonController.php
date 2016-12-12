@@ -21,6 +21,7 @@ use frontend\models\EmployerForm;
 use frontend\models\EmployerJobpostings;
 use frontend\models\JobpostSearch;
 
+
 class EmpcommonController extends Controller {
 	public function actionEmployer() {
 		$this->layout = '@app/views/layouts/employerinner';
@@ -122,21 +123,23 @@ class EmpcommonController extends Controller {
 				$employeData->mobilenumber = $model->mobilenumber;
 				$employeData->address = $model->address;
 				
-				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
 				
+				$employeData->profileimage = UploadedFile::getInstance ( $model, 'profileimage' );
 				
-				if(!(empty($model->profileimage)))
+				print_r($employeData->profileimage);exit();
+				
+				if(!(empty($employeData->profileimage)))
 				{
-					$profileimage=$model->profileimage;
-					//print_r($model->profileimage);exit();
-					$imageName = time().$model->profileimage->name;
+					$profileimage=$employeData->profileimage;
+				//	print_r($employeData->profileimage);exit();
+					$imageName = time().$employeData->profileimage->name;
 					//$imageName = time().$model->profileimage->name;
 					//print_r($imageName);exit();
-					$model->profileimage->saveAs('profileimages/'.$imageName );
+					$employeData->profileimage->saveAs('profileimages/'.$imageName );
 					//$profileimage->saveAs(Yii::app()->basePath.'/.profileimages.//'.$imageName);
 					//print_r(basePath.'/.profileimages.//'.$imageName);exit();
 				
-					$model->profileimage = 'profileimages/'.$imageName;
+					$employeData->profileimage = 'profileimages/'.$imageName;
 					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$employeData->profileimage = $profileimage;
@@ -159,20 +162,20 @@ class EmpcommonController extends Controller {
 				$employermodel->mobilenumber = $model->mobilenumber;
 				$employermodel->address = $model->address;
 				$employermodel->userid = Yii::$app->user->id;
-				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
-				print_r($model->profileimage );
+				$employermodel->profileimage = UploadedFile::getInstance($model,'profileimage');
+				//print_r($employermodel->profileimage );exit;
 				
 				
-				if(!(empty($model->profileimage)))
+				if(!(empty($employermodel->profileimage)))
 				{
 						
-					$imageName = time().$model->profileimage->name;
-					print_r($imageName);exit();
-					$model->profileimage->saveAs('profileimages/'.$imageName );
+					$imageName = time().$employermodel->profileimage->name;
+					//print_r($imageName);exit();
+					$employermodel->profileimage->saveAs('profileimages/'.$imageName );
 					//$profileimage->saveAs(Yii::app()->basePath.'/.profileimages.//'.$imageName);
 					//print_r(basePath.'/.profileimages.//'.$imageName);exit();
 						
-					$model->profileimage = 'profileimages/'.$imageName;
+					$employermodel->profileimage = 'profileimages/'.$imageName;
 					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$employermodel->profileimage = $profileimage;
@@ -292,12 +295,11 @@ class EmpcommonController extends Controller {
 				$preferencesModel->save ();
 			}
 			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  updated' );
-			// return $this->goBack();
-			// return $this->redirect ( '/employercompany/empcommon/employer');
-			return Yii::$app->getResponse ()->redirect ( [ 
-					'employercompany/empcommon/employercommonview',
-					'userid' => Yii::$app->user->id 
-			] );
+		
+// 			return Yii::$app->getResponse ()->redirect ( [ 
+// 					'employercompany/empcommon/employercommonview',
+// 					'userid' => Yii::$app->user->id 
+// 			] );
 		}
 		
 		return $this->render ( 'comview', [ 
