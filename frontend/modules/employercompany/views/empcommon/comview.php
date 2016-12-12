@@ -29,9 +29,10 @@ select {
 					<div class="form">
 						<h5>Upload Your Profile image</h5>
 						<img class='image'
-							src="#"
+							src="<?php echo Yii::getAlias('/jobportal').$model->profileimagenew; ?>"
 							width="100" height="100"> </img> 
-         
+            <?=$form->field ( $model, 'profileimage' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => 'Profile Image', 'allowedFileExtensions'=>['jpg','png','jpeg'] ]] ] )->label ( false );?>
+           
                
 						</div>
 				</div>
