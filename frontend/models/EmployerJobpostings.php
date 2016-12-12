@@ -17,7 +17,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'rolecategory',
 								'skills',
 								'designation',
-							
+								
 								'Description',
 								'jobtype',
 								'gender',
@@ -29,9 +29,9 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'country',
 								'state',
 								'city',
-								'zipcode' ,
+								'zipcode',
 								'Min_Experience',
-								'Max_Experience'
+								'Max_Experience' 
 						],
 						'required' 
 				],
@@ -41,7 +41,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'rolecategory',
 								'skills',
 								'designation',
-							
+								
 								'Description',
 								'jobtype',
 								'gender',
@@ -59,8 +59,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 						],
 						'safe' 
 				] 
-		]
-		;
+		];
 	}
 	public function attributeLabels() {
 		return [ 
