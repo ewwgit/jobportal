@@ -64,7 +64,8 @@ class CommonController extends Controller
 		
 	    // print_r($skill->skillname);exit();
 		$employer = EmployeeEmployer :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		$language = EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$language = EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->user->id])->all();
+		$model->alllanguages = $language;
 		$resume = EmployeeResume :: find ()->Where (['userid' => Yii::$app->user->id])->one();
 		
 		
@@ -156,7 +157,7 @@ class CommonController extends Controller
 		
 		/*employee known languages details*/
 		
-		if(!empty($language))
+		/* if(!empty($language))
 		{
 			$model->language = $language->language;
 			$model->proficiencylevel = $language->proficiencylevel;
@@ -174,14 +175,14 @@ class CommonController extends Controller
 				}
 				
 			}
-		
+		 */
 			/* $newlanguageary['Read'] = 'Read';
 			  $newlanguageary['Speak'] = 'Speak'; */
-			
+		/* 	
 			$model->ability =$newlanguageary;
 			
 		}
-		
+		 */
 		/* if(!empty($resume))
 		{
 			
@@ -468,51 +469,80 @@ class CommonController extends Controller
 				
 				if(!(empty($language)))
 				{
-					EmployeeLanguages::deleteAll( ['userid' => Yii::$app->user->id]);
-					//echo $model->language;exit();
-					$languagemodel->language = $model->language;
-					$languagemodel->proficiencylevel = $model->proficiencylevel;
-					$langability = $model->ability;
-					if(isset($langability))
+					
+			 EmployeeLanguages::deleteAll( ['userid' => Yii::$app->user->id]);
+			 $language= $model->language;
+			    //print_r($model->skillname);exit();
+			    
+				if(isset($language))
+				{
+					$languageary=$model->language;
+					$proficiencyary=$model->proficiencylevel;
+					$langabilityary=$model->ability;
+					//print_r($model->ability);exit();
+					//print_r($skillnameary);exit();
+					//$newskillname = array();
+					if(!empty($languageary))
 					{
-						$langabilityary=$model->ability;
-						if(!empty($langabilityary))
+						
+						for ($i=0;$i< count($languageary); $i++)
 						{
-							$langabilitystr = implode(",",$langabilityary);
+							if(($languageary[$i] != '') && ($proficiencyary[$i] != '') && ($langabilityary[$i] != ''))
+							{
+							$languagemodelnew = new EmployeeLanguages();
+							$languagemodelnew->language = $languageary[$i];
+							$languagemodelnew->proficiencylevel = $proficiencyary[$i];
+							$languagemodelnew->ability =$langabilityary[$i];
+							$languagemodelnew->userid = Yii::$app->user->id ;
+							$languagemodelnew->save();
+							}
+							
 								
 						}
-							
+				
 					}
-					$languagemodel->ability = $langabilitystr;
-					
-					
-					$languagemodel->userid = Yii::$app->user->id ;
-					
-					$languagemodel-> save();
-					/* print_r($language);exit(); */
+						
+				}
+		
+             
 				}
 				else {
-					$languagemodel->language = $model->language;
-					//print_r($model->language);exit();
-					$languagemodel->proficiencylevel = $model->proficiencylevel;
+			
+			 $language= $model->language;
+			   // print_r($model->language);exit();
+			    
+				if(isset($language))
+				{
+					$languageary=$model->language;
+					//print_r($model->proficiencylevel);exit();
+					$proficiencyary=$model->proficiencylevel;
+					//print_r($model->ability);exit();
+					$langabilityary=$model->ability;
 					
-					$langability = $model->ability;
-					if(isset($langability))
+					//print_r($skillnameary);exit();
+					//$newskillname = array();
+					if(!empty($languageary))
 					{
-						$langabilityary=$model->ability;
-						if(!empty($langabilityary))
+						
+						for ($i=0;$i< count($languageary); $i++)
 						{
-							$langabilitystr = implode(",",$langabilityary);
-					
-						}
+							if(($languageary[$i] != '') && ($proficiencyary[$i] != '') && ($langabilityary[$i] != ''))
+							{
+							$languagemodelnew = new EmployeeLanguages();
+							$languagemodelnew->language = $languageary[$i];
+							$languagemodelnew->proficiencylevel = $proficiencyary[$i];
+							$languagemodelnew->ability =$langabilityary[$i];
+							$languagemodelnew->userid = Yii::$app->user->id ;
+							$languagemodelnew->save();
+							}
 							
+								
+						}
+				
 					}
-					
-					$languagemodel->ability = $langabilitystr;
-					
-					
-					$languagemodel->userid = Yii::$app->user->id ;
-					$languagemodel-> save();
+						
+				}
+		
 				}
 				
 				

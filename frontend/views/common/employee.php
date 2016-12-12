@@ -222,15 +222,15 @@ select {
 										<div class="form-table" id="customFields1">
 										<div class="form">
 											<h5>Skill Name</h5>
-										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true,'value' => $alreadySkills->skillname])?>
+										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true,'value' => $alreadySkills->skillname])->label(false)?>
 									</div>
 										<div class="form">
 											<h5>Last Used</h5>
-										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'options' => [$alreadySkills->lastused => ['Selected'=>'selected']],'prompt' => 'select your skill lastused year ' ] )?>
+										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'options' => [$alreadySkills->lastused => ['Selected'=>'selected']],'prompt' => 'select your skill lastused year ' ] )->label ( false )?>
 									</div>
 										<div class="form">
 											<h5>Skill Experience</h5>
-										<?=$form->field ( $model, 'skillexperience[]' )->dropDownList ( [ '0 year' => '0 year','< 1 year' => '< 1 year','1 year' => '1 year','< 2 years' => '< 2 years','2 years' => '2 years','< 3 years' => '< 3 years','3 years' => '3 years','< 4 years' => '< 4 years','4 years' => '4 years','< 5 years' => '< 5 years','5 years' => '5 years','< 6 years' => '< 6 years','6 years' => '6 years','7 years' => '7 years' ], [  'options' => [$alreadySkills->skillexperience => ['Selected'=>'selected']],'prompt' => 'select your skillexperience ' ] )?>
+										<?=$form->field ( $model, 'skillexperience[]' )->dropDownList ( [ '0 year' => '0 year','< 1 year' => '< 1 year','1 year' => '1 year','< 2 years' => '< 2 years','2 years' => '2 years','< 3 years' => '< 3 years','3 years' => '3 years','< 4 years' => '< 4 years','4 years' => '4 years','< 5 years' => '< 5 years','5 years' => '5 years','< 6 years' => '< 6 years','6 years' => '6 years','7 years' => '7 years' ], [  'options' => [$alreadySkills->skillexperience => ['Selected'=>'selected']],'prompt' => 'select your skillexperience ' ] )->label ( false )?>
 									</div>
 										<a href="javascript:void(0);" class="button gray remCF"
 											style="text-decoration: none; margin-top: 1em;"><i
@@ -263,15 +263,15 @@ select {
 									<div class="form-table" id="customFields1">
 										<div class="form">
 											<h5>Skill Name</h5>
-										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true])?>
+										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 										<div class="form">
 											<h5>Last Used</h5>
-										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'prompt' => 'select your skill lastused year ' ] )?>
+										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'prompt' => 'select your skill lastused year ' ] )->label(false)?>
 									</div>
 										<div class="form">
 											<h5>Skill Experience</h5>
-										<?=$form->field ( $model, 'skillexperience[]' )->dropDownList ( [ '0 year' => '0 year','< 1 year' => '< 1 year','1 year' => '1 year','< 2 years' => '< 2 years','2 years' => '2 years','< 3 years' => '< 3 years','3 years' => '3 years','< 4 years' => '< 4 years','4 years' => '4 years','< 5 years' => '< 5 years','5 years' => '5 years','< 6 years' => '< 6 years','6 years' => '6 years','7 years' => '7 years' ], [ 'prompt' => 'select your skillexperience ' ] )?>
+										<?=$form->field ( $model, 'skillexperience[]' )->dropDownList ( [ '0 ' => '0 ','< 1' => '< 1 ','1' => '1','< 2' => '< 2','2' => '2','< 3 ' => '< 3','3' => '3 ','< 4 ' => '< 4 ','4' => '4','< 5' => '< 5','5' => '5','< 6' => '< 6','6' => '6','7' => '7' ], [ 'prompt' => 'select your skillexperience in years' ] )->label(false)?>
 									</div>
 										<a href="javascript:void(0);" class="button gray remCF"
 											style="text-decoration: none; margin-top: 1em;"><i
@@ -306,32 +306,60 @@ select {
 								<div class="title-underlined">
 									<h4>Add Your Other Details or Known Languages</h4>
 								</div>
+								<?php if(!empty($model->alllanguages)){?>
+									<div id="alreadyinfo">
+									<?php foreach ($model->alllanguages as $alreadylanguage){?>
 								<div class="form-table" id="customFields1-lan">
 									<div class="form">
 										<h5>Language</h5>
-										 <?= $form->field($model, 'language')->textInput(['autofocus' => true])->label(false)?>
+										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true,'value' => $alreadylanguage->language])->label(false)?>
 									</div>
 									<div class="form">
 										<h5>Proficiencylevel</h5>
-										<?=$form->field ( $model, 'proficiencylevel' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
+										<?=$form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'options' => [$alreadylanguage->proficiencylevel => ['Selected'=>'selected']], 'prompt' => 'Select' ] )->label ( false )?>
+									</div>
+									<div class="form">
+										<h5>Ability</h5>
+										<?=$form->field ( $model, 'ability' )->inline()->checkboxList ( [ 'Read' => 'Read','Write' => 'Write','Speak' => 'Speak' ] ,[ 'options' => [$alreadylanguage->ability => ['Selected'=>'selected']]])->label ( false )?>
+									</div>
+									<a href="javascript:void(0);" class="button gray remCF2"
+											style="text-decoration: none; margin-top: 1em;"><i
+											class="fa fa-plus-circle"></i> Remove</a>
+								</div>
+								<?php }?>
+									</div>
+									<?php }else{ ?>
+									<div class="form-table" id="customFields1-lan">
+									<div class="form">
+										<h5>Language</h5>
+										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+									<div class="form">
+										<h5>Proficiencylevel</h5>
+										<?=$form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
 									</div>
 									<div class="form">
 										<h5>Ability</h5>
 										<?=$form->field ( $model, 'ability' )->inline()->checkboxList ( [ 'Read' => 'Read','Write' => 'Write','Speak' => 'Speak' ] )->label ( false )?>
 									</div>
-									<a href="javascript:void(0);" class="button gray addCF2"
+									</div>
+									
+									<?php }?>
+										<a href="javascript:void(0);" class="button gray addCF2"
 										style="text-decoration: none; margin-top: 1em;"><i
-										class="fa fa-plus-circle"></i> Add Skills</a>
-								</div>
+										class="fa fa-plus-circle"></i> Add Language</a>
+									
+									
+								
 								<div id="dynamiccontent-lan" style="display: none;">
 									<div class="form-table" id="customFields1-lan">
 										<div class="form">
 											<h5>Language</h5>
-										 <?= $form->field($model, 'language')->textInput(['autofocus' => true])->label(false)?>
+										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 										<div class="form">
 											<h5>Proficiencylevel</h5>
-										<?=$form->field ( $model, 'proficiencylevel' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
+										<?=$form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
 									</div>
 										<div class="form">
 											<h5>Ability</h5>
@@ -341,8 +369,9 @@ select {
 											style="text-decoration: none; margin-top: 1em;"><i
 											class="fa fa-plus-circle"></i> Remove</a>
 									</div>
-								</div>
+								
 							</div>
+						</div>
 						</div>
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
@@ -351,7 +380,7 @@ select {
 								</div>
 								<div class="form">
 									<h5>Resume</h5>
-											
+										
                       <?php
 							
 							echo $form->field ( $model, 'resume' )->widget ( FileInput::classname (), [ 
@@ -408,123 +437,4 @@ select {
     <?php ActiveForm::end(); ?>
   </div>
 
-
-
-
-<!-- Footer
-================================================== -->
-
-
-
-<!-- Wrapper / End -->
-
-<!-- Scripts
-================================================== -->
-<script src="scripts/jquery-2.1.3.min.js"></script>
-<script src="scripts/custom.js"></script>
-<script src="scripts/jquery.superfish.js"></script>
-<script src="scripts/jquery.themepunch.tools.min.js"></script>
-<script src="scripts/jquery.themepunch.revolution.min.js"></script>
-<script src="scripts/jquery.themepunch.showbizpro.min.js"></script>
-<script src="scripts/jquery.flexslider-min.js"></script>
-<script src="scripts/chosen.jquery.min.js"></script>
-<script src="scripts/jquery.magnific-popup.min.js"></script>
-<script src="scripts/waypoints.min.js"></script>
-<script src="scripts/jquery.counterup.min.js"></script>
-<script src="scripts/jquery.jpanelmenu.js"></script>
-<script src="scripts/stacktable.js"></script>
-<script src="scripts/headroom.min.js"></script>
-<script src="scripts/vendor-datepicker.js"></script>
-<script src="scripts/vendor-date.js"></script>
-
-<!-- WYSIWYG Editor -->
-<script type="text/javascript"
-	src="scripts/jquery.sceditor.bbcode.min.js"></script>
-<script type="text/javascript" src="scripts/jquery.sceditor.js"></script>
-
-<!-- Style Switcher
-================================================== -->
-<script src="scripts/switcher.js"></script>
-<div id="style-switcher">
-	<h2>
-		Style Switcher <a href="#"></a>
-	</h2>
-	<div>
-		<h3>Predefined Colors</h3>
-		<ul class="colors" id="color1">
-			<li><a href="#" class="green" title="Green"></a></li>
-			<li><a href="#" class="blue" title="Blue"></a></li>
-			<li><a href="#" class="orange" title="Orange"></a></li>
-			<li><a href="#" class="navy" title="Navy"></a></li>
-			<li><a href="#" class="yellow" title="Yellow"></a></li>
-			<li><a href="#" class="peach" title="Peach"></a></li>
-			<li><a href="#" class="beige" title="Beige"></a></li>
-			<li><a href="#" class="purple" title="Purple"></a></li>
-			<li><a href="#" class="celadon" title="Celadon"></a></li>
-			<li><a href="#" class="pink" title="Pink"></a></li>
-			<li><a href="#" class="red" title="Red"></a></li>
-			<li><a href="#" class="brown" title="Brown"></a></li>
-			<li><a href="#" class="cherry" title="Cherry"></a></li>
-			<li><a href="#" class="cyan" title="Cyan"></a></li>
-			<li><a href="#" class="gray" title="Gray"></a></li>
-			<li><a href="#" class="olive" title="Olive"></a></li>
-		</ul>
-		<h3>Layout Style</h3>
-		<div class="layout-style">
-			<select id="layout-style">
-				<option value="2">Wide</option>
-				<option value="1">Boxed</option>
-			</select>
-		</div>
-		<h3>Header Style</h3>
-		<div class="layout-style">
-			<select id="header-style">
-				<option value="1">Style 1</option>
-				<option value="2">Style 2</option>
-				<option value="3">Style 3</option>
-			</select>
-		</div>
-		<h3>Background Image</h3>
-		<ul class="colors bg" id="bg">
-			<li><a href="#" class="bg1"></a></li>
-			<li><a href="#" class="bg2"></a></li>
-			<li><a href="#" class="bg3"></a></li>
-			<li><a href="#" class="bg4"></a></li>
-			<li><a href="#" class="bg5"></a></li>
-			<li><a href="#" class="bg6"></a></li>
-			<li><a href="#" class="bg7"></a></li>
-			<li><a href="#" class="bg8"></a></li>
-			<li><a href="#" class="bg9"></a></li>
-			<li><a href="#" class="bg10"></a></li>
-			<li><a href="#" class="bg11"></a></li>
-			<li><a href="#" class="bg12"></a></li>
-			<li><a href="#" class="bg13"></a></li>
-			<li><a href="#" class="bg14"></a></li>
-			<li><a href="#" class="bg15"></a></li>
-			<li><a href="#" class="bg16"></a></li>
-		</ul>
-		<h3>Background Color</h3>
-		<ul class="colors bgsolid" id="bgsolid">
-			<li><a href="#" class="green-bg" title="Green"></a></li>
-			<li><a href="#" class="blue-bg" title="Blue"></a></li>
-			<li><a href="#" class="orange-bg" title="Orange"></a></li>
-			<li><a href="#" class="navy-bg" title="Navy"></a></li>
-			<li><a href="#" class="yellow-bg" title="Yellow"></a></li>
-			<li><a href="#" class="peach-bg" title="Peach"></a></li>
-			<li><a href="#" class="beige-bg" title="Beige"></a></li>
-			<li><a href="#" class="purple-bg" title="Purple"></a></li>
-			<li><a href="#" class="red-bg" title="Red"></a></li>
-			<li><a href="#" class="pink-bg" title="Pink"></a></li>
-			<li><a href="#" class="celadon-bg" title="Celadon"></a></li>
-			<li><a href="#" class="brown-bg" title="Brown"></a></li>
-			<li><a href="#" class="cherry-bg" title="Cherry"></a></li>
-			<li><a href="#" class="cyan-bg" title="Cyan"></a></li>
-			<li><a href="#" class="gray-bg" title="Gray"></a></li>
-			<li><a href="#" class="olive-bg" title="Olive"></a></li>
-		</ul>
-	</div>
-	<div id="reset">
-		<a href="#" class="button color">Reset</a>
-	</div>
-</div>
 

@@ -83,6 +83,7 @@ class EmployeeForm extends Model {
 	public $language;
 	public $proficiencylevel;
 	public $ability;
+	public $alllanguages;
 	
 	
 	public $resume;
