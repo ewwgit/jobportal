@@ -46,7 +46,7 @@ select {
 								<!-- Email -->
 								<div class="form">
 									
-										<?= $form->field($model, 'name')->textInput(['autofocus' => true, 'placeholder' => 'Name'])?>
+										<?= $form->field($model, 'name')->textInput(['autofocus' => true])?>
 									</div>
 
 								<!-- Email -->
@@ -58,7 +58,7 @@ select {
 								<!-- Title -->
 								<div class="form">
 									
-										<?= $form->field($model, 'email')->textInput(['autofocus' => true,'placeholder' => 'Email'])?>
+										<?= $form->field($model, 'email')->textInput(['autofocus' => true])?>
 									</div>
 
 								<!-- Location -->

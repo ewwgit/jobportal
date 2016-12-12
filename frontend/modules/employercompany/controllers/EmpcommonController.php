@@ -298,10 +298,10 @@ class EmpcommonController extends Controller {
 			}
 			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  updated' );
 		
-// 			return Yii::$app->getResponse ()->redirect ( [ 
-// 					'employercompany/empcommon/employercommonview',
-// 					'userid' => Yii::$app->user->id 
-// 			] );
+ 			return Yii::$app->getResponse ()->redirect ( [ 
+ 					'employercompany/empcommon/employercommonview',
+ 					'userid' => Yii::$app->user->id 
+ 			] );
 		}
 		
 		return $this->render ( 'comview', [ 

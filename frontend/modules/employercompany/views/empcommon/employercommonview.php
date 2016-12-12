@@ -19,7 +19,9 @@ $this->params ['breadcrumbs'] [] = $this->title;
 			<div class="container">
 				<div class="col-md-3 col-sm-3 col-xs-3 profile_img">
 					<div class="resume-titlebar">
-						<img src="<?php echo Yii::getAlias('/jobportal').$employemodel->profileimagenew; ?>" alt="">
+						<img
+							src="<?php echo Yii::getAlias('/jobportal').$employemodel->profileimage; ?>"
+							alt="">
 					</div>
 				</div>
 				<div class="col-md-9">
@@ -107,7 +109,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 								<div class="title-underlined">
 									<h4>Employer Company Profile</h4>
 								</div>
-								
+
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -154,9 +156,6 @@ $this->params ['breadcrumbs'] [] = $this->title;
 											<td>Jobtype:</td>
 											<td><?php echo  $skillsmodel->jobtype;  ?></td>
 										</tr>
-
-
-
 									</tbody>
 								</table>
 							</div>
@@ -208,16 +207,10 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									</tbody>
 								</table>
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="divider margin-top-0 padding-reset"></div>
-
-			<a href="#" style="float: right;" class="button big margin-top-5 "><i
-				class="fa fa-arrow-circle-right"><?= Html::a('update', ['/employercompany/empcommon/employer'])?></i>
-			</a>
 		</div>
 	</div>
 </div>
