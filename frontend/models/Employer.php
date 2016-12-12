@@ -44,7 +44,7 @@ class Employer extends \yii\db\ActiveRecord {
 								'designation',
 								'profileimage',
 						],
-						'required' 
+						'required','on' => 'signup' 
 				],
 				// [['name', 'gender', 'mobilenumber', 'designation', 'address', 'dateofbirth'], 'required'],
 				[ 

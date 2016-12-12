@@ -80,23 +80,23 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Highest Degree:</td>
-											<td><?php echo  $edumodel->higherdegree ;?></td>
+											<td><?php echo isset($edumodel->higherdegree) ? $edumodel->higherdegree : '';?></td>
 										</tr>
 										<tr>
 											<td>Highest Degree Specialization:</td>
-											<td><?php echo  $edumodel->specialization;  ?></td>
+											<td><?php echo isset($edumodel->specialization) ? $edumodel->specialization : '';?></td>
 										</tr>
 										<tr>
 											<td>Your University:</td>
-											<td><?php echo  $edumodel->university;  ?></td>
+											<td><?php echo isset($edumodel->university) ? $edumodel->university : '';?></td>
 										</tr>
 										<tr>
 											<td>Your College Name:</td>
-											<td><?php echo  $edumodel->collegename;  ?></td>
+											<td><?php echo isset($edumodel->collegename) ? $edumodel->collegename : '';?></td>
 										</tr>
 										<tr>
 											<td>Passing Year:</td>
-											<td><?php echo  $edumodel->passingyear;  ?></td>
+											<td><?php echo isset($edumodel->passingyear) ? $edumodel->passingyear : '';?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -113,40 +113,40 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Company name:</td>
-											<td><?php echo $jobmodel->company_name; ?></td>
+											<td><?php echo isset($jobmodel->company_name) ? $jobmodel->company_name : '';?></td>
 										</tr>
 										<tr>
 											<td>Company type:</td>
-											<td><?php echo $jobmodel->company_type; ?></td>
+											<td><?php echo isset($jobmodel->company_type) ? $jobmodel->company_type : '';?></td>
 										</tr>
 
 										<tr>
 											<td>Industry type:</td>
-											<td><?php echo $jobmodel->industry_type; ?></td>
+											<td><?php echo isset($jobmodel->industry_type) ? $jobmodel->industry_type : '';?></td>
 										</tr>
 										<tr>
 											<td>Dateofestablishment:</td>
-											<td><?php echo $jobmodel->dateofestablishment; ?></td>
+											<td><?php echo isset($jobmodel->dateofestablishment) ? $jobmodel->dateofestablishment : '';?></td>
 										</tr>
 										<tr>
 											<td>Location:</td>
-											<td><?php echo $jobmodel->location; ?></td>
+											<td><?php echo isset($jobmodel->location) ? $jobmodel->location : '';?></td>
 										</tr>
 										<tr>
 											<td>Country:</td>
-											<td><?php echo $jobmodel->country; ?></td>
+											<td><?php echo isset($jobmodel->country) ? $jobmodel->country : '';?></td>
 										</tr>
 										<tr>
 											<td>State:</td>
-											<td><?php echo $jobmodel->state; ?></td>
+											<td><?php echo isset($jobmodel->state) ? $jobmodel->state : '';?></td>
 										</tr>
 										<tr>
 											<td>City:</td>
-											<td><?php echo $jobmodel->city; ?></td>
+											<td><?php echo isset($jobmodel->city) ? $jobmodel->city : '';?></td>
 										</tr>
 										<tr>
 											<td>Zipcode:</td>
-											<td><?php echo $jobmodel->zipcode; ?></td>
+											<td><?php echo isset($jobmodel->zipcode) ? $jobmodel->zipcode : '';?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -161,15 +161,15 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Expected salary:</td>
-											<td><?php echo  $preferencesmodel->expected_salary ;?></td>
+											<td><?php echo isset($preferencesmodel->expected_salary) ? $preferencesmodel->expected_salary : '';?></td>
 										</tr>
 										<tr>
 											<td>Job location:</td>
-											<td><?php echo  $preferencesmodel->job_location;  ?></td>
+											<td><?php echo isset($preferencesmodel->job_location) ? $preferencesmodel->job_location : '';?></td>
 										</tr>
 										<tr>
 											<td>Job role:</td>
-											<td><?php echo  $preferencesmodel->job_role;  ?></td>
+											<td><?php echo isset($preferencesmodel->job_role) ? $preferencesmodel->job_role : '';?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -186,15 +186,15 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Requirment:</td>
-											<td><?php echo  $skillsmodel->requirment ;?></td>
+											<td><?php echo isset($skillsmodel->requirment) ? $skillsmodel->requirment  : '';?></td>
 										</tr>
 										<tr>
 											<td>Companytype:</td>
-											<td><?php echo  $skillsmodel->companytype;  ?></td>
+											<td><?php echo isset($skillsmodel->companytype) ? $skillsmodel->companytype  : '';?></td>
 										</tr>
 										<tr>
 											<td>Jobtype:</td>
-											<td><?php echo  $skillsmodel->jobtype;  ?></td>
+											<td><?php echo isset($skillsmodel->jobtype) ? $skillsmodel->jobtype  : '';?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -209,39 +209,39 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Job title:</td>
-											<td><?php echo  $employmentmodel->job_title ;?></td>
+											<td><?php echo isset($employmentmodel->job_title) ? $employmentmodel->job_title  : '';?></td>
 										</tr>
 										<tr>
 											<td>Job type:</td>
-											<td><?php echo  $employmentmodel->job_type;  ?></td>
+											<td><?php echo isset($employmentmodel->job_type) ? $employmentmodel->job_type  : '';?></td>
 										</tr>
 										<tr>
 											<td>Job description:</td>
-											<td><?php echo  $employmentmodel->job_description;  ?></td>
+											<td><?php echo isset($employmentmodel->job_description) ? $employmentmodel->job_description  : '';?></td>
 										</tr>
 										<tr>
 											<td>Experience:</td>
-											<td><?php echo  $employmentmodel->experience ;?></td>
+											<td><?php echo isset($employmentmodel->experience) ? $employmentmodel->experience  : '';?></td>
 										</tr>
 										<tr>
 											<td>No of openings:</td>
-											<td><?php echo  $employmentmodel->no_of_openings;  ?></td>
+											<td><?php echo isset($employmentmodel->no_of_openings) ? $employmentmodel->no_of_openings  : '';?></td>
 										</tr>
 										<tr>
 											<td>Work location:</td>
-											<td><?php echo  $employmentmodel->work_location;  ?></td>
+											<td><?php echo isset($employmentmodel->work_location) ? $employmentmodel->work_location  : '';?></td>
 										</tr>
 										<tr>
 											<td>Shift timings:</td>
-											<td><?php echo  $employmentmodel->shift_timings ;?></td>
+											<td><?php echo isset($employmentmodel->shift_timings) ? $employmentmodel->shift_timings  : '';?></td>
 										</tr>
 										<tr>
 											<td>Weekly days:</td>
-											<td><?php echo  $employmentmodel->weekly_days;  ?></td>
+											<td><?php echo isset($employmentmodel->weekly_days) ? $employmentmodel->weekly_days  : '';?></td>
 										</tr>
 										<tr>
 											<td>Salary:</td>
-											<td><?php echo  $employmentmodel->salary;  ?></td>
+											<td><?php echo isset($employmentmodel->salary) ? $employmentmodel->salary  : '';?></td>
 										</tr>
 
 									</tbody>

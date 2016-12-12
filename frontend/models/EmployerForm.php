@@ -71,7 +71,7 @@ class EmployerForm extends Model {
 	public $profileimagenew;
 	public function rules() {
 		return [ 
-				[ 
+				/* [ 
 						[ 
 						
 						'name',
@@ -121,7 +121,7 @@ class EmployerForm extends Model {
 						
 						],
 						'required' 
-				],
+				], */
 				[
 				['profileimage'],'file'],
 				

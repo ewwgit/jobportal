@@ -150,6 +150,7 @@ class EmpcommonController extends Controller {
 				
 				//$employeData->userid = Yii::$app->user->id;
 				$employeData->save ();
+				//print_r($employeData->errors);exit();
 			} 
 
 			else {

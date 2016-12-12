@@ -175,6 +175,7 @@ class EmpsiteController extends Controller {
 		
 		// }
 		$model = new EmployerSignup ();
+		$model->scenario = 'signup';
 		// $employeesignup = new EmployeeSignup();
 		$this->layout = '@app/views/layouts/employermain';
 		if ($model->load ( Yii::$app->request->post () )) {
