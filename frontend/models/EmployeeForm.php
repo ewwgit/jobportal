@@ -11,6 +11,9 @@ use Yii;
  */
 class EmployeeForm extends Model {
 	
+	public $readchk;
+	public $ability;
+	public $empablty;
 	public $username;
 	public $email;
 	public $password;
@@ -82,7 +85,7 @@ class EmployeeForm extends Model {
 	
 	public $language;
 	public $proficiencylevel;
-	public $ability;
+	
 	public $alllanguages;
 	
 	
@@ -94,6 +97,7 @@ class EmployeeForm extends Model {
 	
 	public function rules() {
 		return [
+				[['empablty','ability','readchk'],'safe'	],
 				[
 						[
 							
@@ -181,11 +185,9 @@ class EmployeeForm extends Model {
 								
 								'language',
 								'proficiencylevel',
-								'ability',
-							
 								
+								'resume'
 								
-								'resume',
 						
 						],
 						'safe'

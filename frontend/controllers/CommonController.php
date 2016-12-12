@@ -479,6 +479,7 @@ class CommonController extends Controller
 					$languageary=$model->language;
 					$proficiencyary=$model->proficiencylevel;
 					$langabilityary=$model->ability;
+					
 					//print_r($model->ability);exit();
 					//print_r($skillnameary);exit();
 					//$newskillname = array();
@@ -489,10 +490,11 @@ class CommonController extends Controller
 						{
 							if(($languageary[$i] != '') && ($proficiencyary[$i] != '') && ($langabilityary[$i] != ''))
 							{
+								$abilitystring = implode(",",$langabilityary[$i]);
 							$languagemodelnew = new EmployeeLanguages();
 							$languagemodelnew->language = $languageary[$i];
 							$languagemodelnew->proficiencylevel = $proficiencyary[$i];
-							$languagemodelnew->ability =$langabilityary[$i];
+							$languagemodelnew->ability =$abilitystring;
 							$languagemodelnew->userid = Yii::$app->user->id ;
 							$languagemodelnew->save();
 							}
@@ -509,7 +511,7 @@ class CommonController extends Controller
 				else {
 			
 			 $language= $model->language;
-			   // print_r($model->language);exit();
+			    //print_r($model->language);exit();
 			    
 				if(isset($language))
 				{
@@ -528,12 +530,14 @@ class CommonController extends Controller
 						{
 							if(($languageary[$i] != '') && ($proficiencyary[$i] != '') && ($langabilityary[$i] != ''))
 							{
+							$abilitystring = implode(",",$langabilityary[$i]);
 							$languagemodelnew = new EmployeeLanguages();
 							$languagemodelnew->language = $languageary[$i];
 							$languagemodelnew->proficiencylevel = $proficiencyary[$i];
-							$languagemodelnew->ability =$langabilityary[$i];
+							$languagemodelnew->ability =$abilitystring;
 							$languagemodelnew->userid = Yii::$app->user->id ;
 							$languagemodelnew->save();
+							//print_r($languagemodelnew->errors);exit();
 							}
 							
 								

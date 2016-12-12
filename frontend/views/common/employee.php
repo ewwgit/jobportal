@@ -306,69 +306,89 @@ select {
 								<div class="title-underlined">
 									<h4>Add Your Other Details or Known Languages</h4>
 								</div>
+								
+								<?php $p=0;?>
 								<?php if(!empty($model->alllanguages)){?>
 									<div id="alreadyinfo">
 									<?php foreach ($model->alllanguages as $alreadylanguage){?>
-								<div class="form-table" id="customFields1-lan">
+								<div class="form-table" id="customFields1-lan" >
+								
 									<div class="form">
 										<h5>Language</h5>
 										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true,'value' => $alreadylanguage->language])->label(false)?>
 									</div>
 									<div class="form">
 										<h5>Proficiencylevel</h5>
-										<?=$form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'options' => [$alreadylanguage->proficiencylevel => ['Selected'=>'selected']], 'prompt' => 'Select' ] )->label ( false )?>
+										<?= $form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'options' => [$alreadylanguage->proficiencylevel => ['Selected'=>'selected']], 'prompt' => 'Select' ] )->label ( false )?>
 									</div>
 									<div class="form">
 										<h5>Ability</h5>
-										<?=$form->field ( $model, 'ability' )->inline()->checkboxList ( [ 'Read' => 'Read','Write' => 'Write','Speak' => 'Speak' ] ,[ 'options' => [$alreadylanguage->ability => ['Selected'=>'selected']]])->label ( false )?>
+										<?php 
+										$checkedAry = explode(",",$alreadylanguage->ability);
+										$model->ability[$p] = $checkedAry;?>
+										<?= $form->field($model, 'ability['.$p.']')->inline(true)->checkboxList(['Read' => 'Read','Write' => 'Write', 'Speak' => 'Speak']) ?>
 									</div>
+									
 									<a href="javascript:void(0);" class="button gray remCF2"
 											style="text-decoration: none; margin-top: 1em;"><i
 											class="fa fa-plus-circle"></i> Remove</a>
 								</div>
+								<?php $p++;?>
 								<?php }?>
 									</div>
 									<?php }else{ ?>
-									<div class="form-table" id="customFields1-lan">
+									<div class="form-table" id="customFields1-lan" >
+									
 									<div class="form">
 										<h5>Language</h5>
 										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 									<div class="form">
 										<h5>Proficiencylevel</h5>
-										<?=$form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
+										<?= $form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
 									</div>
-									<div class="form">
+									
+									<div class="form abilitycls">
 										<h5>Ability</h5>
-										<?=$form->field ( $model, 'ability' )->inline()->checkboxList ( [ 'Read' => 'Read','Write' => 'Write','Speak' => 'Speak' ] )->label ( false )?>
+										<?= $form->field($model, 'ability[0]')->inline(true)->checkboxList(['Read' => 'Read','Write' => 'Write', 'Speak' => 'Speak'])->label(false) ?>
 									</div>
+									
+									
+									
 									</div>
 									
 									<?php }?>
+									
+									<div id="dynamiccontent-lannew" style="display: none;">
+									<div class="form-table" >
+									
+									<div class="form">
+										<h5>Language</h5>
+										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+									<div class="form">
+										<h5>Proficiencylevel</h5>
+										<?= $form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
+									</div>
+									
+									
+									
+									<div class="dyncabilityinner"></div>
+									<a href="javascript:void(0);" class="button gray remCF2"
+											style="text-decoration: none; margin-top: 1em;"><i
+											class="fa fa-plus-circle"></i> Remove</a>
+									</div>
+									</div>
+									
+									</div>
+									
 										<a href="javascript:void(0);" class="button gray addCF2"
 										style="text-decoration: none; margin-top: 1em;"><i
 										class="fa fa-plus-circle"></i> Add Language</a>
 									
 									
 								
-								<div id="dynamiccontent-lan" style="display: none;">
-									<div class="form-table" id="customFields1-lan">
-										<div class="form">
-											<h5>Language</h5>
-										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true])->label(false)?>
-									</div>
-										<div class="form">
-											<h5>Proficiencylevel</h5>
-										<?=$form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
-									</div>
-										<div class="form">
-											<h5>Ability</h5>
-										<?=$form->field ( $model, 'ability' )->inline()->checkboxList ( [ 'Read' => 'Read','Write' => 'Write','Speak' => 'Speak' ] )->label ( false )?>
-									</div>
-										<a href="javascript:void(0);" class="button gray remCF2"
-											style="text-decoration: none; margin-top: 1em;"><i
-											class="fa fa-plus-circle"></i> Remove</a>
-									</div>
+								
 								
 							</div>
 						</div>
@@ -425,9 +445,15 @@ select {
     });
 
     $(".addCF2").on('click',function(){
-		var dync = $('#dynamiccontent-lan').html();
+        var k = $('.abilitycls').length;
+        var muchk = '<div class="form abilitycls"><h5>Ability</h5><div class="form-group field-employeeform-ability-'+k+'"><div><input type="hidden" name="EmployeeForm[ability]['+k+']" value=""><div id="employeeform-ability-'+k+'"><label class="checkbox-inline"><input type="checkbox" name="EmployeeForm[ability]['+k+'][]" value="Read"> Read</label><label class="checkbox-inline"><input type="checkbox" name="EmployeeForm[ability]['+k+'][]" value="Write"> Write</label><label class="checkbox-inline"><input type="checkbox" name="EmployeeForm[ability]['+k+'][]" value="Speak"> Speak</label></div><p class="help-block help-block-error"></p></div></div></div>';
+        //$( "#dynamiccontent-lannew" ).find('.dyncabilityinner').html(muchk);
+       var dyid = "dynactid"+k;
+        $('.dyncabilityinner').html('<div id="'+dyid+'"></div>');
+        var dync = $('#dynamiccontent-lannew').html();
 		//console.log(dync);
 		$("#customFields1-lan").append(dync);
+		$("#"+dyid).html(muchk);
 	});
     $("#customFields1-lan").on('click','.remCF2',function(){
         $(this).parent().remove();

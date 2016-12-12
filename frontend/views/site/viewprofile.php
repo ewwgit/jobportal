@@ -230,6 +230,7 @@ $this->title = 'UserProfile';
                   <div  class="title-underlined">
                     <h4>Your Employer Details</h4>
                   </div>
+                  
                   <table class="table table-user-information ">
                     <tbody>
                       <tr>
@@ -255,15 +256,15 @@ $this->title = 'UserProfile';
                     <tbody>
                       <tr>
                         <td>Language :</td>
-                        <td><?php echo  $languagemodel->language ;?></td>
+                        <td><?php echo isset($languagemodel->language) ? $languagemodel->language : '';?></td>
                       </tr>
                       <tr>
                         <td>Proficiency Level :</td>
-                        <td><?php echo  $languagemodel->proficiencylevel;  ?></td>
+                        <td><?php echo isset($languagemodel->proficiencylevel) ? $languagemodel->proficiencylevel : '';  ?></td>
                       </tr>
                       <tr>
                         <td>Your Language Ability :</td>
-                        <td><?php echo  $languagemodel->ability;  ?></td>
+                        <td><?php echo isset($languagemodel->ability) ? $languagemodel->ability : '';   ?></td>
                       </tr>
                     </tbody>
                   </table>
