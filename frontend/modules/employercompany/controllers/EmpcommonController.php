@@ -125,8 +125,10 @@ class EmpcommonController extends Controller {
 				
 				
 				$employeData->profileimage = UploadedFile::getInstance ( $model, 'profileimage' );
+				//$imageName = time () . $employeData->profileimage->name;
+				//$profileimage = '/frontend/web/profileimages/' . $imageName;
 				
-				print_r($employeData->profileimage);exit();
+				//print_r($profileimage);exit();
 				
 				if(!(empty($employeData->profileimage)))
 				{
