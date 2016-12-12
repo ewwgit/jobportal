@@ -62,6 +62,7 @@ class EmpcommonController extends Controller {
 			$model->dateofbirth = $employeData->dateofbirth;
 			$model->mobilenumber = $employeData->mobilenumber;
 			$model->address = $employeData->address;
+			$model->profileimagenew = $employeData->profileimage;
 		}
 		if (! (empty ( $userData ))) {
 			$model->username = $userData->username;
@@ -116,11 +117,31 @@ class EmpcommonController extends Controller {
 				// print_r($employeData->name);exit;
 				$employeData->designation = $model->designation;
 				$employeData->gender = $model->gender;
-				// $employeData = date('Y-m-d', strtotime($model->dateofbirth));
 				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofbirth ) );
 				$employeData->dateofbirth = $companyDataa;
 				$employeData->mobilenumber = $model->mobilenumber;
 				$employeData->address = $model->address;
+				
+				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
+				
+				
+				if(!(empty($model->profileimage)))
+				{
+					$profileimage=$model->profileimage;
+					//print_r($model->profileimage);exit();
+					$imageName = time().$model->profileimage->name;
+					//$imageName = time().$model->profileimage->name;
+					//print_r($imageName);exit();
+					$model->profileimage->saveAs('profileimages/'.$imageName );
+					//$profileimage->saveAs(Yii::app()->basePath.'/.profileimages.//'.$imageName);
+					//print_r(basePath.'/.profileimages.//'.$imageName);exit();
+				
+					$model->profileimage = 'profileimages/'.$imageName;
+					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
+					$profileimage = '/frontend/web/profileimages/'.$imageName;
+					$employeData->profileimage = $profileimage;
+					//print_r($profileimage);exit;
+				}
 				
 				//$employeData->userid = Yii::$app->user->id;
 				$employeData->save ();
@@ -138,6 +159,26 @@ class EmpcommonController extends Controller {
 				$employermodel->mobilenumber = $model->mobilenumber;
 				$employermodel->address = $model->address;
 				$employermodel->userid = Yii::$app->user->id;
+				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
+				print_r($model->profileimage );
+				
+				
+				if(!(empty($model->profileimage)))
+				{
+						
+					$imageName = time().$model->profileimage->name;
+					print_r($imageName);exit();
+					$model->profileimage->saveAs('profileimages/'.$imageName );
+					//$profileimage->saveAs(Yii::app()->basePath.'/.profileimages.//'.$imageName);
+					//print_r(basePath.'/.profileimages.//'.$imageName);exit();
+						
+					$model->profileimage = 'profileimages/'.$imageName;
+					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
+					$profileimage = '/frontend/web/profileimages/'.$imageName;
+					$employermodel->profileimage = $profileimage;
+				}
+				
+				
 				$employermodel->save ();
 			}
 			
@@ -158,14 +199,17 @@ class EmpcommonController extends Controller {
 // 				 $companyData ->userid = Yii::$app->user->id ;
 				$companyData->save ();
 			} 
+			
 
 			else {
 				
 				$companyModel->company_name = $model->company_name;
-				//print_r($model->company_name);exit();
+				
 				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofestablishment ) );
 				$companyModel->dateofestablishment = $companyDataa;
+				
 				$companyModel->company_type = $model->company_type;
+			
 				$companyModel->industry_type = $model->industry_type;
 				$companyModel->location = $model->location;
 				$companyModel->country = $model->country;
