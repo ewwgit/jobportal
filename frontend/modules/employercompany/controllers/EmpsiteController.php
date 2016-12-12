@@ -111,8 +111,9 @@ class EmpsiteController extends Controller {
 			// return $this->goBack();
 			// $this->layout = "employermain";
 			// return $this->redirect ( '/employercompany/empcommon/employer');
+			
 			return Yii::$app->getResponse ()->redirect ( [ 
-					'employercompany/empcommon/employer',
+					'employercompany/empcommon/employercommonview',
 					'userid' => Yii::$app->user->id 
 			] );
 		} else {
