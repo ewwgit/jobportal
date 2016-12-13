@@ -66,7 +66,7 @@ $this->title = 'UserProfile';
                       </tr>
                       <tr>
                         <td>Your Email :</td>
-                        <td> <?php echo  isset($umodel->email)? $empmodel->email : 'Not Mentioned' ;    ?></td>
+                        <td> <?php echo  isset($umodel->email)? $umodel->email : 'Not Mentioned' ;    ?></td>
                       </tr>
                       <tr>
                         <td>Gender :</td>
