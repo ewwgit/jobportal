@@ -42,7 +42,11 @@ $this->title = 'Signup';
 		</ul>
 		<div class="tabs-container">
 
-          <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+          <?php $form = ActiveForm::begin([ 
+		'options' => [ 
+				'enctype' => 'multipart/form-data' 
+		] 
+]); ?>
          
           <p class="form-row form-row-wide">
             
