@@ -41,8 +41,16 @@ class EmployerSignup extends Model {
 				],
 				[ 
 						'username',
-						'required' 
+						'required','on' => 'signup' 
 				],
+				[
+				        'name',
+				        'trim'
+						],
+				[
+				        'name',
+				        'required','on' => 'signup'
+						],
 				[ 
 						'username',
 						'unique',
@@ -62,7 +70,7 @@ class EmployerSignup extends Model {
 				],
 				[ 
 						'email',
-						'required' 
+						'required' ,'on' => 'signup'
 				],
 				[ 
 						'email',
@@ -82,19 +90,52 @@ class EmployerSignup extends Model {
 				
 				[ 
 						'password',
-						'required' 
+						'required' ,'on' => 'signup'
 				],
 				[ 
 						'password',
 						'string',
 						'min' => 6 
 				],
-				[
-				[
-						'profileimage'
+				[ 
+						[ 
+								'profileimage' 
+						],
+						'file' 
 				],
-				'file'
-								],
+ 				[
+ 				'mobilenumber',
+				'required','on' => 'signup'
+ 						],
+				[
+				'mobilenumber',
+				'integer'
+						],
+// 				[
+// 				'gender',
+// 				'required','on' => 'signup'
+// 						],
+				[
+				'address',
+				'required','on' => 'signup'
+						],
+				[
+				'dateofbirth',
+				'required','on' => 'signup'
+						],
+				[
+				'designation',
+				'required','on' => 'signup'
+						],
+				[
+				'designation',
+				'required','on' => 'signup'
+						],
+// 				[
+// 				'profileimage',
+// 				'required','on' => 'signup'
+// 						],
+				['profileimage', 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg'],
 				[ 
 						[ 
 								'username',
@@ -104,8 +145,9 @@ class EmployerSignup extends Model {
 								'address',
 								'gender',
 								'dateofbirth',
-								'designation' ,
-								'create_date'
+								'designation',
+								'create_date' ,
+								'profileimage'
 						],
 						'safe' 
 				] 

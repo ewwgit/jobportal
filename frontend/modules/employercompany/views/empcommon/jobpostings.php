@@ -27,12 +27,7 @@ select {
 
 					<div class="col-md-3 col-sm-3 col-xs-3 profile_img">
 
-						<div class="form">
-							<h5>Upload Your Profile image</h5>
-							<label class="upload-btn"> <input type="file" multiple /> <i
-								class="fa fa-upload"></i> Browse
-							</label> <span class="fake-input">No file selected</span>
-						</div>
+						
 
 					</div>
 					<div class="col-md-9">

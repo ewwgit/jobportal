@@ -169,11 +169,7 @@ class EmpsiteController extends Controller {
 		return $this->render ( 'about' );
 	}
 	public function actionSignup() {
-		// if(Yii::$app->user->id = '')
-		// {
-		// return $this->goHome();
 		
-		// }
 		$model = new EmployerSignup ();
 		$model->scenario = 'signup';
 		// $employeesignup = new EmployeeSignup();
@@ -234,9 +230,12 @@ class EmpsiteController extends Controller {
 			}
 		}
 		
+			
+		
 		return $this->render ( 'signup', [ 
 				'model' => $model 
 		] );
+		
 	}
 	/**
 	 * Requests password reset.

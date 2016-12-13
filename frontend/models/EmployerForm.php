@@ -71,7 +71,7 @@ class EmployerForm extends Model {
 	public $profileimagenew;
 	public function rules() {
 		return [ 
-				/* [ 
+				[ 
 						[ 
 						
 						'name',
@@ -104,6 +104,7 @@ class EmployerForm extends Model {
 						'dateofestablishment',
 						'company_type',
 						'industry_type',
+						'job_type',
 						'location',
 						'country',
 						'state',
@@ -115,13 +116,23 @@ class EmployerForm extends Model {
 						'university',
 						'specialization',
 						'higherdegree'
-						
-						// // 'username',
-						// // 'email'
+					
 						
 						],
 						'required' 
-				], */
+				], 
+				['name',
+				'match',
+				'pattern' =>'/^[a-zA-Z0-9]+$/',
+				'message' => 'username can only contain alphanumeric characters.'
+						],
+				[ 
+						[ 
+								'zipcode' 
+						],
+						'integer' 
+				],
+				
 				[
 				['profileimage'],'file'],
 				
@@ -172,8 +183,7 @@ class EmployerForm extends Model {
 								'specialization',
 								'higherdegree' 
 						]
-						// 'username',
-						// 'email'
+					
 						
 						,
 						'safe' 

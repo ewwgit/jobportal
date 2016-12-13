@@ -119,7 +119,8 @@ select {
 									</div>
 								<div class="form">
 									
-										<?= $form->field($model, 'passingyear')->textInput(['autofocus' => true])?>
+											<?= $form->field($model, 'passingyear')->dropDownList(['2010' => '2010', ' 2011' => '2011','2012' => '2012','2013' =>'2013', '2014'=>'2014',' 2015' =>' 2015' ,'2016' => ' 2016', '2017' =>'2017',])?>
+									
 									</div>
 							</div>
 						</div>
@@ -142,7 +143,8 @@ select {
 								
 								<div class="form">
 									
-										<?= $form->field($model, 'expected_salary')->textInput(['autofocus' => true])?>
+										<?= $form->field($model, 'expected_salary')->dropDownList(['20-30' => '20k-30k', ' 30-40' => '30k-40k','50-60' => '50k-60k','60-70' =>'60k-70k', '70-80'=>'70k-80k',' 80-90' =>'80k-90k' ,])?>
+								
 									</div>
 							</div>
 						</div>
