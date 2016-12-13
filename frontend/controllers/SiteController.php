@@ -184,7 +184,7 @@ class SiteController extends Controller
         		$mobilenumber=$model->mobilenumber;
         		$model->profileimage = UploadedFile::getInstance($model,'profileimage');
         		//print_r($model->profileimage);exit();
-        		$imageName = time().$model->profileimage->name;
+        		$imageName = time().$model->profileimage;
         		$profileimage = '/frontend/web/profileimages/'.$imageName;
         		 
         		 
@@ -247,7 +247,7 @@ class SiteController extends Controller
     		
     	$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
     		
-    	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+    	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->all();
     	//$skillmodel = EmployeeSkills::find()->select(['skillname', 'userid' => Yii::$app->user->id])->distinct();
     	//print_r($skillmodel->skillname);exit();
     	/* $skillname=  count($skillmodel->skillname);
@@ -255,7 +255,7 @@ class SiteController extends Controller
     	$projectmodel =   EmployeeProjects :: find ()->Where (['userid' => Yii::$app->user->id])->one();
     	$employermodel =   EmployeeEmployer :: find ()->Where (['userid' => Yii::$app->user->id])->one();
     	
-    	$languagemodel =   EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+    	$languagemodel =   EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->user->id])->all();
     
     	return $this->render('/site/viewprofile', ['empmodel' => $empmodel,'umodel' => $umodel,'edumodel' => $edumodel, 'jobmodel' => $jobmodel, 'skillmodel' => $skillmodel,
     			'projectmodel' => $projectmodel, 'employermodel' => $employermodel, 'languagemodel' => $languagemodel]);
