@@ -234,7 +234,7 @@ select {
 									</div>
 										<a href="javascript:void(0);" class="button gray remCF"
 											style="text-decoration: none; margin-top: 1em;"><i
-											class="fa fa-plus-circle"></i> Remove</a>
+											class="fa fa-minus-circle"></i> Remove</a>
 									</div>
 										<?php }?>
 									</div>
@@ -275,7 +275,7 @@ select {
 									</div>
 										<a href="javascript:void(0);" class="button gray remCF"
 											style="text-decoration: none; margin-top: 1em;"><i
-											class="fa fa-plus-circle"></i> Remove</a>
+											class="fa fa-minus-circle"></i> Remove</a>
 									</div>
 								</div>
 							</div>
@@ -376,7 +376,7 @@ select {
 									<div class="dyncabilityinner"></div>
 									<a href="javascript:void(0);" class="button gray remCF2"
 											style="text-decoration: none; margin-top: 1em;"><i
-											class="fa fa-plus-circle"></i> Remove</a>
+											class="fa fa-minus-circle"></i> Remove</a>
 									</div>
 									</div>
 									
@@ -391,8 +391,6 @@ select {
 								
 								
 							</div>
-						</div>
-						</div>
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">

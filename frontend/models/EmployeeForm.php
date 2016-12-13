@@ -127,6 +127,10 @@ class EmployeeForm extends Model {
 								'lastused',
 								'skillexperience',
 								
+								'language',
+								'proficiencylevel',
+								'ability',
+								
 								
 								'projecttitle',
 								'projectstartdate',
@@ -149,7 +153,14 @@ class EmployeeForm extends Model {
 						'required'
 				],
 				
-				
+				[
+						'email',
+						'email',
+				],
+				[
+						'mobilenumber',
+						'number',
+				],
 			
 				[
 						[

@@ -94,6 +94,14 @@ class SignupForm extends Model {
 						'string',
 						'min' => 6 
 				],
+				[
+						'mobilenumber',
+						'required',
+				],
+				[
+						'mobilenumber',
+						'number',
+				],
 				
 				[ 
 						[ 

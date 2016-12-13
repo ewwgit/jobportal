@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use kartik\date\DatePicker;
 use yii\helpers\Url;
+use kartik\file\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -92,7 +93,8 @@ $this->title = 'Signup';
 					
 					<div class="form">
 						<label for="password2">Profileimage</label> 
-				    <?= $form->field($model, 'profileimage')->fileInput(['maxlength' => true])->label(false)?>
+					<?=$form->field ( $model, 'profileimage' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => 'Profile Image', 'allowedFileExtensions'=>['jpg','png'] ]] ] )->label ( false );?>
+				   
 				   
 				
 					</div>
