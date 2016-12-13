@@ -210,7 +210,7 @@ class CommonController extends Controller
 				$employee->dateofbirth =$employeedateofbirth;
 				$employee->mobilenumber = $model->mobilenumber;
 				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
-				
+				//print_r($model->profileimage);exit();
 				if(!(empty($model->profileimage)))
 				{	
 					$profileimage=$model->profileimage;
@@ -228,8 +228,8 @@ class CommonController extends Controller
 					$employee->profileimage = $profileimage;
 				}
 				  
-				$employee-> save();
-				
+				$employee->update();
+				//print_r($empmodel->errors);exit();
 			}
 			else 
 			{
@@ -243,7 +243,7 @@ class CommonController extends Controller
 				
 				
 				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
-				
+				//print_r($model->profileimage);exit();
 				
 				if(!(empty($model->profileimage)))
 				{
@@ -259,8 +259,10 @@ class CommonController extends Controller
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$empmodel->profileimage = $profileimage;
 				}
-				
+				$empmodel->userid = Yii::$app->user->id ;
+				//print_r($empmodel);exit();
 				$empmodel-> save();
+				//print_r($empmodel->errors);exit();
 			
 			}
 			

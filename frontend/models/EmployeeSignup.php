@@ -19,7 +19,7 @@ class EmployeeSignup extends \yii\db\ActiveRecord {
 	/**
 	 * @inheritdoc
 	 */
-	public $userid;
+	
 	public static function tableName() {
 		return 'employee_signup';
 	}
