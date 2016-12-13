@@ -25,9 +25,12 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         ),
         'k' => 
         array (
+            'kartik\\select2\\' => 15,
             'kartik\\plugins\\fileinput\\' => 25,
+            'kartik\\plugins\\checkbox\\' => 24,
             'kartik\\file\\' => 12,
             'kartik\\date\\' => 12,
+            'kartik\\checkbox\\' => 16,
             'kartik\\base\\' => 12,
         ),
         'd' => 
@@ -77,9 +80,17 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+        'kartik\\select2\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2',
+        ),
         'kartik\\plugins\\fileinput\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/bootstrap-fileinput',
+        ),
+        'kartik\\plugins\\checkbox\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/bootstrap-checkbox-x',
         ),
         'kartik\\file\\' => 
         array (
@@ -88,6 +99,10 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         'kartik\\date\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-datepicker',
+        ),
+        'kartik\\checkbox\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-checkbox-x',
         ),
         'kartik\\base\\' => 
         array (
