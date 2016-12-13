@@ -49,8 +49,11 @@ $this->title = 'UserProfile';
               <div class="col-md-6">
                 <div class="margin-bottom-20">
                   <div  class="title-underlined">
+                  
                     <h4>Personal Profile</h4>
                   </div>
+     
+                
                   <table class="table table-user-information ">
                     <tbody>
                       <tr>
@@ -86,27 +89,29 @@ $this->title = 'UserProfile';
                   <div  class="title-underlined">
                     <h4>Education Details</h4>
                   </div>
-                  <table class="table table-user-information ">
+                  
+                 <table class="table table-user-information ">
                     <tbody>
                       <tr>
                         <td >Highest Degree :</td>
-                        <td><?php echo  $edumodel->highdegree ;?></td>
+                     
+                        <td><?php echo  isset($edumodel->highdegree) ? $edumodel->highdegree : 'Not Mentioned' ;?></td>
                       </tr>
                       <tr>
                         <td>Highest Degree Specialization :</td>
-                        <td><?php echo  $edumodel->specialization;  ?></td>
+                        <td><?php echo  isset($edumodel->specialization) ? $edumodel->specialization : 'Not Mentioned' ; ?></td>
                       </tr>
                       <tr>
                         <td>Your University :</td>
-                        <td><?php echo  $edumodel->university;  ?></td>
+                        <td><?php echo  isset($edumodel->university) ? $edumodel->university : 'Not Mentioned' ; ?></td>
                       </tr>
                       <tr>
                         <td>Your College Name :</td>
-                        <td><?php echo  $edumodel->collegename;  ?></td>
+                        <td><?php echo  isset($edumodel->collegename) ? $edumodel->collegename : 'Not Mentioned' ; ?></td>
                       </tr>
                       <tr>
                         <td>Passing Year</td>
-                        <td><?php echo  $edumodel->passingyear;  ?></td>
+                        <td><?php echo  isset($edumodel->passingyear) ? $edumodel->passingyear : 'Not Mentioned' ; ?></td>
                       </tr>
                     </tbody>
                   </table>
@@ -119,57 +124,91 @@ $this->title = 'UserProfile';
                   <div  class="title-underlined">
                     <h4>Your Job Preferences Details</h4>
                   </div>
+             
                   <table class="table table-user-information ">
                     <tbody>
                       <tr>
                         <td> FunctionalArea :</td>
-                        <td><?php echo  $jobmodel->functionalarea ;?></td>
+                        <td><?php echo isset($jobmodel->functionalarea) ?  $jobmodel->functionalarea : 'Not Mentioned'  ;?></td>
                       </tr>
                       <tr>
                         <td>JobRole :</td>
-                        <td><?php echo  $jobmodel->jobrole;  ?></td>
+                        <td><?php echo isset( $jobmodel->jobrole) ?  $jobmodel->jobrole : 'Not Mentioned'  ;  ?></td>
                       </tr>
                       <tr>
                         <td>Preferd Location :</td>
-                        <td><?php echo  $jobmodel->joblocation;  ?></td>
+                        <td><?php echo isset( $jobmodel->joblocation) ?  $jobmodel->joblocation : 'Not Mentioned'  ; ?></td>
                       </tr>
                       <tr>
                         <td>Your Selected Expeience :</td>
-                        <td><?php echo  $jobmodel->experience;  ?></td>
+                        <td><?php echo isset( $jobmodel->experience) ?  $jobmodel->experience : 'Not Mentioned'  ;?></td>
                       </tr>
                       <tr>
                         <td>Job Type :</td>
-                        <td><?php echo  $jobmodel->jobtype;  ?></td>
+                        <td><?php echo isset( $jobmodel->jobtype) ?  $jobmodel->jobtype : 'Not Mentioned'  ; ?></td>
                       </tr>
                       <tr>
                         <td>Your Expected Salary :</td>
-                        <td><?php echo  $jobmodel->expectedsalary;  ?></td>
+                        <td><?php echo  isset($jobmodel->expectedsalary) ?  $jobmodel->expectedsalary : 'Not Mentioned'  ;  ?></td>
                       </tr>
                     </tbody>
                   </table>
+                  
+                  
                 </div>
               </div>
-              <div class="col-md-6">
+              </div>
+              <div class="row">
+              <div class="col-md-12">
                 <div class="margin-bottom-20">
                   <div  class="title-underlined">
                     <h4>Your Job Skills Details</h4>
                   </div>
-                  <table class="table table-user-information ">
+                  	<?php if(!empty($skillmodel)){?>
+                  	<div>
+                  	 <table class="table table-user-information ">
+                  	 <tbody>
+                      <tr>
+                       <td style="width: 30% !important;"> Your SkillName :</td>
+                          <td style="width: 30% !important;">Lastused :</td>
+                            <td style="width: 30% !important;">Your Skill Experience :</td>
+                            </tr>
+                  <?php foreach ($skillmodel as $alreadySkills){?>
+                 
+                   
+                       <tr>
+                        <td style="width: 30% !important;"><?php echo  $alreadySkills->skillname ;?></td>
+                     
+                     
+                        <td style="width: 30% !important;"><?php echo  $alreadySkills->lastused; ?></td>
+                      
+                       
+                        <td style="width: 30% !important;"><?php echo  $alreadySkills->skillexperience ;?></td>
+                         </tr>
+                      
+                         <?php }?>
+                          </tbody>
+                  </table>
+                  
+                 </div>
+                  
+                  <?php }else{ ?>
+                   <table class="table table-user-information ">
                     <tbody>
                       <tr>
                         <td> Your SkillName :</td>
-                        <td><?php echo  $skillmodel->skillname ;?></td>
-                      </tr>
-                      <tr>
+                        <td><?php echo  'Not Mentioned' ;?></td>
+                 
                         <td>Lastused :</td>
-                        <td><?php echo  $skillmodel->lastused ;?></td>
-                      </tr>
-                      <tr>
+                        <td><?php echo 'Not Mentioned' ;?></td>
+                     
                         <td>Your Skill Experience :</td>
-                        <td><?php echo  $skillmodel->skillexperience ;?></td>
+                        <td><?php echo  'Not Mentioned' ;?></td>
                       </tr>
                     </tbody>
                   </table>
+                  <?php } ?>
+                  
                 </div>
               </div>
             </div>
@@ -183,43 +222,43 @@ $this->title = 'UserProfile';
                     <tbody>
                       <tr>
                         <td>Project Title :</td>
-                        <td><?php echo  $projectmodel->prjtitle ;?></td>
+                        <td><?php echo isset( $projectmodel->prjtitle) ? $projectmodel->prjtitle : 'Not Mentioned' ;?></td>
                       </tr>
                       <tr>
                         <td>Project Startting Date :</td>
-                        <td><?php echo  $projectmodel->prjstartdate;  ?></td>
+                        <td><?php echo isset( $projectmodel->prjstartdate)  ? $projectmodel->prjstartdate : 'Not Mentioned' ;  ?></td>
                       </tr>
                       <tr>
                         <td>Project Ending Date :</td>
-                        <td><?php echo  $projectmodel->prjenddate;  ?></td>
+                        <td><?php echo  isset($projectmodel->prjenddate) ? $projectmodel->prjenddate : 'Not Mentioned' ; ?></td>
                       </tr>
                       <tr>
                         <td>Project Location :</td>
-                        <td><?php echo  $projectmodel->prjlocation;  ?></td>
+                        <td><?php echo isset( $projectmodel->prjlocation) ? $projectmodel->prjlocation : 'Not Mentioned' ;  ?></td>
                       </tr>
                       <tr>
                         <td>Project Employement Type :</td>
-                        <td><?php echo  $projectmodel->emptype;  ?></td>
+                        <td><?php echo  isset($projectmodel->emptype) ? $projectmodel->emptype : 'Not Mentioned' ;  ?></td>
                       </tr>
                       <tr>
                         <td>Project Description :</td>
-                        <td><?php echo  $projectmodel->prjdescription;  ?></td>
+                        <td><?php echo  isset($projectmodel->prjdescription) ? $projectmodel->prjdescription : 'Not Mentioned' ; ?></td>
                       </tr>
                       <tr>
                         <td>Project Role :</td>
-                        <td><?php echo  $projectmodel->prjrole;  ?></td>
+                        <td><?php echo  isset($projectmodel->prjrole) ? $projectmodel->prjrole : 'Not Mentioned' ; ?></td>
                       </tr>
                       <tr>
                         <td>Role Description :</td>
-                        <td><?php echo  $projectmodel->prjroledescription;  ?></td>
+                        <td><?php echo  isset($projectmodel->prjroledescription) ? $projectmodel->prjroledescription : 'Not Mentioned' ;  ?></td>
                       </tr>
                       <tr>
                         <td>Project Team Size :</td>
-                        <td><?php echo  $projectmodel->teamsize;  ?></td>
+                        <td><?php echo isset( $projectmodel->teamsize) ? $projectmodel->teamsize : 'Not Mentioned' ;  ?></td>
                       </tr>
                       <tr>
                         <td>Skills Used In Project :</td>
-                        <td><?php echo  $projectmodel->prjskills;  ?></td>
+                        <td><?php echo  isset($projectmodel->prjskills) ? $projectmodel->prjskills : 'Not Mentioned' ;  ?></td>
                       </tr>
                     </tbody>
                   </table>
@@ -235,41 +274,70 @@ $this->title = 'UserProfile';
                     <tbody>
                       <tr>
                         <td>Your Employer :</td>
-                        <td><?php echo  $employermodel->employername ;?></td>
+                        <td><?php echo isset($employermodel->employername) ? $employermodel->employername : 'Not Mentioned'; ?></td>
                       </tr>
                       <tr>
                         <td>Employer Type :</td>
-                        <td><?php echo  $employermodel->employertype;  ?></td>
+                        <td><?php echo isset( $employermodel->employertype) ? $employermodel->employertype : 'Not Mentioned';  ?></td>
                       </tr>
                       <tr>
                         <td>Employer Designation :</td>
-                        <td><?php echo  $employermodel->designation;  ?></td>
-                      </tr>
+                        <td><?php echo  isset($employermodel->designation)  ? $employermodel->designation : 'Not Mentioned';  ?></td>
+                      </tr> 
                     </tbody>
                   </table>
                 </div>
+                </div>
+                </div>
+                   <div class="row">
+              <div class="col-md-12">
+             
                 <div class="margin-bottom-20">
                   <div  class="title-underlined">
                     <h4>Your Known Language Details</h4>
                   </div>
-                  <table class="table table-user-information ">
+                  	<?php if(!empty($languagemodel)){?>
+                  	 <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                        <td>Language :</td>
-                        <td><?php echo isset($languagemodel->language) ? $languagemodel->language : '';?></td>
-                      </tr>
+                  	       <td style="width: 30% !important;">Language :</td>
+                  	            <td style="width: 30% !important;">Proficiency Level :</td>
+                  	            <td style="width: 30% !important;">Ability:</td>
+                  	            </tr>
+                  <?php foreach ($languagemodel as $alreadylanguages){?>
+                 
+                       <tr>
+                         <td style="width: 30% !important;"><?php echo  $alreadylanguages->language ;?></td>
+                    
+                       
+                        <td style="width: 30% !important;"><?php echo  $alreadylanguages->proficiencylevel ;  ?></td>
+                    
+                       
+                         <td style="width: 30% !important;"><?php echo  $alreadylanguages->ability;   ?></td>
+                      </tr> 
+                  
+                    <?php }?>
+                    </tbody>
+                  </table>
+                  <?php }else{ ?>
+                   <table class="table table-user-information ">
+                    <tbody>
                       <tr>
-                        <td>Proficiency Level :</td>
-                        <td><?php echo isset($languagemodel->proficiencylevel) ? $languagemodel->proficiencylevel : '';  ?></td>
-                      </tr>
-                      <tr>
-                        <td>Your Language Ability :</td>
-                        <td><?php echo isset($languagemodel->ability) ? $languagemodel->ability : '';   ?></td>
+                        <td>Language :</th>
+                        <td><?php echo 'Not Mentioned';?></td>
+                    
+                        <th>Proficiency Level :</th>
+                        <td><?php echo  'Not Mentioned';  ?></td>
+                    
+                        <th>Your Language Ability :</th>
+                        <td><?php echo 'Not Mentioned';   ?></td>
                       </tr>
                     </tbody>
                   </table>
+                    <?php } ?>
                 </div>
-              </div>
+              
+            </div>
             </div>
           </div>
         </div>
