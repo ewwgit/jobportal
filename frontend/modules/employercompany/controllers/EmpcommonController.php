@@ -124,24 +124,25 @@ class EmpcommonController extends Controller {
 				$employeData->address = $model->address;
 				
 				
-				$employeData->profileimage = UploadedFile::getInstance ( $model, 'profileimage' );
+				$model->profileimage = UploadedFile::getInstance ( $model, 'profileimage' );
+				
 				//$imageName = time () . $employeData->profileimage->name;
 				//$profileimage = '/frontend/web/profileimages/' . $imageName;
 				
 				//print_r($profileimage);exit();
 				
-				if(!(empty($employeData->profileimage)))
+				if(!(empty($model->profileimage)))
 				{
-					$profileimage=$employeData->profileimage;
+					$profileimage=$model->profileimage;
 				//	print_r($employeData->profileimage);exit();
-					$imageName = time().$employeData->profileimage->name;
+					$imageName = time().$model->profileimage->name;
 					//$imageName = time().$model->profileimage->name;
 					//print_r($imageName);exit();
-					$employeData->profileimage->saveAs('profileimages/'.$imageName );
+					$model->profileimage->saveAs('profileimages/'.$imageName );
 					//$profileimage->saveAs(Yii::app()->basePath.'/.profileimages.//'.$imageName);
 					//print_r(basePath.'/.profileimages.//'.$imageName);exit();
 				
-					$employeData->profileimage = 'profileimages/'.$imageName;
+					$model->profileimage = 'profileimages/'.$imageName;
 					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$employeData->profileimage = $profileimage;
@@ -165,20 +166,20 @@ class EmpcommonController extends Controller {
 				$employermodel->mobilenumber = $model->mobilenumber;
 				$employermodel->address = $model->address;
 				$employermodel->userid = Yii::$app->user->id;
-				$employermodel->profileimage = UploadedFile::getInstance($model,'profileimage');
+				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
 				//print_r($employermodel->profileimage );exit;
 				
 				
-				if(!(empty($employermodel->profileimage)))
+				if(!(empty($model->profileimage)))
 				{
 						
-					$imageName = time().$employermodel->profileimage->name;
+					$imageName = time().$model->profileimage->name;
 					//print_r($imageName);exit();
-					$employermodel->profileimage->saveAs('profileimages/'.$imageName );
+					$model->profileimage->saveAs('profileimages/'.$imageName );
 					//$profileimage->saveAs(Yii::app()->basePath.'/.profileimages.//'.$imageName);
 					//print_r(basePath.'/.profileimages.//'.$imageName);exit();
 						
-					$employermodel->profileimage = 'profileimages/'.$imageName;
+					$model->profileimage = 'profileimages/'.$imageName;
 					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$employermodel->profileimage = $profileimage;

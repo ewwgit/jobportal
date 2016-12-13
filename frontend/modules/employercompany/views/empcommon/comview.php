@@ -20,7 +20,11 @@ select {
 
 
 <div class="container"> 
-    <?php $form = ActiveForm::begin(['id' => 'form-employee']); ?>
+    <?php $form = ActiveForm::begin([ 
+		'options' => [ 
+				'enctype' => 'multipart/form-data' 
+		] 
+]); ?>
     <!-- Submit Page -->
 	<div class="sixteen columns">
 		<div class="submit-page" style="padding: 0px;">
@@ -32,7 +36,7 @@ select {
 							src="<?php echo Yii::getAlias('/jobportal').$model->profileimagenew; ?>"
 							width="100" height="100"> </img> 
             <?=$form->field ( $model, 'profileimage' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => 'Profile Image', 'allowedFileExtensions'=>['jpg','png','jpeg'] ]] ] )->label ( false );?>
-           
+            
                
 						</div>
 				</div>
