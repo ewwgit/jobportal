@@ -31,7 +31,11 @@ select {
 </div>
 
 <div class="container"> 
-    <?php $form = ActiveForm::begin(['id' => 'form-employee']); ?>
+    <?php $form = ActiveForm::begin([ 
+		'options' => [ 
+				'enctype' => 'multipart/form-data' 
+		] 
+]); ?>
     <!-- Submit Page -->
 	<div class="sixteen columns">
 		<div class="submit-page" style="padding: 0px;">
