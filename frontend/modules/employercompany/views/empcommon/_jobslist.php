@@ -13,7 +13,7 @@ use yii\helpers\BaseStringHelper;
 	<td class="title"><?= $model['startDate'];?></td>	
 	
 	<td class="centered"><a
-		href="<?= Url::to(['/employercompany/empcommon/view','id'=>$model->id])?>"
+		href="<?= Url::to(['/employercompany/empcommon/jobpostingsview','id'=>$model->id])?>"
 		class="button">Show (4)</a></td>
 	<td class="action"><a
 		href="<?= Url::to(['/employercompany/empcommon/update','id'=>$model->id])?>"><i
