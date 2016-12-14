@@ -14,7 +14,7 @@ use yii\helpers\BaseStringHelper;
 	
 	<td class="centered"><a
 		href="<?= Url::to(['/employercompany/empcommon/jobpostingsview','id'=>$model->id])?>"
-		class="button">Show (4)</a></td>
+		class="button">view</a></td>
 	<td class="action"><a
 		href="<?= Url::to(['/employercompany/empcommon/update','id'=>$model->id])?>"><i
 			class="fa fa-pencil"></i> Edit</a> <a href="#"><i
