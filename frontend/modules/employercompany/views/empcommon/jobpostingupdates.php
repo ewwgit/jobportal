@@ -114,15 +114,16 @@ select {
 						</div>
 					</div>
 				</div>
+				<div class="clearfix"></div>
+		<div class="divider margin-top-0 padding-reset"></div>
+		
+                    <?= Html::submitButton('Save', ['class' => 'button big margin-top-5','style' => 'float:right', 'name' => 'signup-button'])?>
+                            
+ 
 
 			</div>
 		</div>
-		<div class="clearfix"></div>
-		<div class="divider margin-top-0 padding-reset"></div>
-		<div class="form-group">
-                    <?= Html::submitButton('Save', ['class' => 'button big margin-top-5','style' => 'float:right', 'name' => 'signup-button'])?>
-                            
- </div>
+		
  
  <?php ActiveForm::end(); ?>
       		 

@@ -72,16 +72,17 @@ $this->params ['breadcrumbs'] [] = $this->title;
 											<td>Address:</td>
 											<td><?php echo  $postings->address;  ?></td>
 										</tr>
+										
 									</tbody>
 								</table>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="margin-bottom-20">
+							<div class="margin-bottom-20"style="margin-top: 33px;">
 								<div class="title-underlined">
-									<h4>Job posting detail view</h4>
+									<h4></h4>
 								</div>
-								<table class="table table-user-information ">
+								<table class="table table-user-information " >
 									<tbody>
 										<tr>
 											<td>Skills:</td>
@@ -121,13 +122,15 @@ $this->params ['breadcrumbs'] [] = $this->title;
 						</div>
 					</div>
 				</div>
+				<div class="clearfix"></div>
+			<div class="divider margin-top-0 padding-reset"></div>
+          <?= Html::a('Back', ['/employercompany/empcommon/jobpostingslist'], ['class'=>'btn btn-primary button border fw margin-top-10'])?>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="form-group">
-          <?= Html::a('Back', ['/employercompany/empcommon/jobpostingslist'], ['class'=>'btn btn-primary'])?>
-    </div>
+
+   
 
 
