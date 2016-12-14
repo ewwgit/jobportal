@@ -255,8 +255,8 @@ td {
                   	 <tbody>
                       <tr>
                        <td style="width: 40% !important; font-weight: bold;"> SkillName :</td>
-                          <td style="width: 30% !important; font-weight: bold;">Lastused :</td>
-                            <td style="width: 30% !important; font-weight: bold;">Experience :</td>
+                          <td style="width: 25% !important; font-weight: bold;">Lastused :</td>
+                            <td style="width: 32% !important; font-weight: bold;">Experience :</td>
                             </tr>
                   <?php foreach ($skillmodel as $alreadySkills){?>
                  
@@ -265,10 +265,10 @@ td {
                         <td style="width: 40% !important;"><?php echo  $alreadySkills->skillname ;?></td>
                      
                      
-                        <td style="width: 30% !important;"><?php echo  $alreadySkills->lastused; ?></td>
+                        <td style="width: 25% !important;"><?php echo  $alreadySkills->lastused; ?></td>
                       
                        
-                        <td style="width: 30% !important;"><?php echo  $alreadySkills->skillexperience ;?></td>
+                        <td style="width: 32% !important;"><?php echo  $alreadySkills->skillexperience ;?></td>
                          </tr>
                       
                          <?php }?>
@@ -308,7 +308,7 @@ td {
                       <tr>
                   	       <td style="width: 25% !important; font-weight: bold;">Language :</td>
                   	            <td style="width: 35% !important; font-weight: bold;">Proficiency Level :</td>
-                  	            <td style="width: 40% !important; font-weight: bold;">Ability:</td>
+                  	            <td style="width: 38% !important; font-weight: bold;">Ability:</td>
                   	            </tr>
                   <?php foreach ($languagemodel as $alreadylanguages){?>
                  
@@ -319,7 +319,7 @@ td {
                         <td style="width: 35% !important;"><?php echo  $alreadylanguages->proficiencylevel ;  ?></td>
                     
                        
-                         <td style="width: 40% !important;"><?php echo  $alreadylanguages->ability;   ?></td>
+                         <td style="width: 38% !important;"><?php echo  $alreadylanguages->ability;   ?></td>
                       </tr> 
                   
                     <?php }?>
