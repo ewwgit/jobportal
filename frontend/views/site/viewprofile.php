@@ -281,14 +281,14 @@ td {
                    <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                        <td> Your SkillName :</td>
-                        <td><?php echo  'Not Mentioned' ;?></td>
+                        <td style="width: 40% !important; font-weight: bold;">SkillName :</td>
+                        <td style="width: 40% !important;"><?php echo  'Not Mentioned' ;?></td>
                  
-                        <td>Lastused :</td>
-                        <td><?php echo 'Not Mentioned' ;?></td>
+                        <td style="width: 25% !important; font-weight: bold;">Lastused :</td>
+                        <td style="width: 25% !important;"><?php echo 'Not Mentioned' ;?></td>
                      
-                        <td>Your Skill Experience :</td>
-                        <td><?php echo  'Not Mentioned' ;?></td>
+                        <td style="width: 32% !important; font-weight: bold;">Experience :</td>
+                        <td style="width: 32% !important;"><?php echo  'Not Mentioned' ;?></td>
                       </tr>
                     </tbody>
                   </table>
@@ -329,14 +329,14 @@ td {
                    <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                        <td>Language :</th>
-                        <td><?php echo 'Not Mentioned';?></td>
+                        <td style="width: 25% !important; font-weight: bold;">Language :</th>
+                        <td style="width: 25% !important;"><?php echo 'Not Mentioned';?></td>
                     
-                        <th>Proficiency Level :</th>
-                        <td><?php echo  'Not Mentioned';  ?></td>
+                        <th style="width: 35% !important; font-weight: bold;">Proficiency Level :</th>
+                        <td style="width: 35% !important;"><?php echo  'Not Mentioned';  ?></td>
                     
-                        <th>Your Language Ability :</th>
-                        <td><?php echo 'Not Mentioned';   ?></td>
+                        <th style="width: 38% !important; font-weight: bold;">Ability :</th>
+                        <td style="width: 38% !important;"><?php echo 'Not Mentioned';   ?></td>
                       </tr>
                     </tbody>
                   </table>
