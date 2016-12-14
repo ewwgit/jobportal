@@ -1,7 +1,3 @@
-Jobpostingupdates
-
-
-
 <?php
 use kartik\date\DatePicker;
 use yii\helpers\Html;
