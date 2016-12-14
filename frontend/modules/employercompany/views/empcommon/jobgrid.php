@@ -32,10 +32,11 @@ $this->params ['breadcrumbs'] [] = $this->title;
     ]); ?>
   
     <nobr>
-        Designation:<?= $form->field($searchModel, 'designation')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'), ['prompt'=>Yii::t('yii', 'search designation...')])  ?>
-        Experience:<?= $form->field($searchModel, 'Min_Experience')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'), ['prompt'=>Yii::t('yii', 'search Experience...')])  ?>
-        Skills:<?= $form->field($searchModel, 'skills')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'), ['prompt'=>Yii::t('yii', 'search 	skills...')])  ?>
-        <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
+       <?= $form->field($searchModel, 'company_name')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'), ['prompt'=>Yii::t('yii', 'COMPANYNAME')])  ?>
+        <?= $form->field($searchModel, 'designation')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'), ['prompt'=>Yii::t('yii', 'DESIGNATION')])  ?>
+        <?= $form->field($searchModel, 'Min_Experience')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'), ['prompt'=>Yii::t('yii', 'EXPERIENCE')])  ?>
+        <?= $form->field($searchModel, 'skills')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'), ['prompt'=>Yii::t('yii', 'SKILLS')])  ?>
+          <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
     </nobr>
          <?php ActiveForm::end(); ?>
  
