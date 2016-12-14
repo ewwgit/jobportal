@@ -109,3 +109,9 @@ select {
 		</div>
 	</div>
 </div>
+<style>
+.required{
+color:black;
+
+}
+</style>
