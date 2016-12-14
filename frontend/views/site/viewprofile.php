@@ -10,6 +10,9 @@ $this->title = 'UserProfile';
 	border: none;
 	/* width: 100%; */
 }
+td {
+	width: 49% !important;
+}
 
 </style>  
  

@@ -20,5 +20,5 @@ use yii\helpers\BaseStringHelper;
 			class="fa fa-pencil"></i> Edit</a> <a href="#"><i
 			class="fa  fa-check "></i> Mark Filled</a> <a
 		href="<?= Url::to(['/employercompany/empcommon/delete','id'=>$model->id])?>"
-		class="delete"><i class="fa fa-remove"></i> Delete</a></td>
+		class="delete"><i class="fa fa-trash"></i> Delete</a></td>
 </tr>
