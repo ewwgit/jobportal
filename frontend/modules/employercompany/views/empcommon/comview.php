@@ -78,7 +78,7 @@ select {
 								<div class="form">
 									
 								 
-								  <?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ] ])?>
+								  <?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true , 'todayHighlight' => true,   'type' => DatePicker::TYPE_COMPONENT_APPEND,] ])?>
 									</div>
 									<div class="form">
 									
@@ -143,7 +143,7 @@ select {
 								
 								<div class="form">
 									
-										<?= $form->field($model, 'expected_salary')->dropDownList(['20-30' => '20k-30k', ' 30-40' => '30k-40k','50-60' => '50k-60k','60-70' =>'60k-70k', '70-80'=>'70k-80k',' 80-90' =>'80k-90k' ,])?>
+										<?= $form->field($model, 'expected_salary')->dropDownList(['20k-30k' => '20k-30k', ' 30k-40k' => '30k-40k','50k-60k' => '50k-60k','60k-70k' =>'60k-70k', '70k-80k'=>'70k-80k',' 80k-90k' =>'80k-90k' ,])?>
 								
 									</div>
 							</div>

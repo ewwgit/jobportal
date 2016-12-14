@@ -4,11 +4,14 @@ use yii\web\View;
 use yii\helpers\Url;
 use yii\helpers\BaseStringHelper;
 ?>
+
 <tr>
 	<td class="title"><a href="#"><?= $model['designation'];?></a></td>
+	<td class="title"><a href="#"><?= $model['skills'];?></a></td>	
+	<td class="title"><a href="#"><?= $model['Min_Experience'];?></a></td>	
 	<td class="centered">-</td>
-	<td>September 30, 2015</td>
-	<td>October 10, 2015</td>
+	<td class="title"><a href="#"><?= $model['startDate'];?></a></td>	
+	
 	<td class="centered"><a
 		href="<?= Url::to(['/employercompany/empcommon/view','id'=>$model->id])?>"
 		class="button">Show (4)</a></td>

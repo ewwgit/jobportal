@@ -32,41 +32,26 @@ class JobpostSearch extends EmployerJobpostings {
 						],
 						'safe' 
 				] 
-		]
-		;
+		];
 	}
 	public function scenarios() {
-		// bypass scenarios() implementation in the parent class
 		return Model::scenarios ();
 	}
 	public function search($params) {
-		if (isset ( $params ['id'] ) && ($params ['id'] != 0)) {
-			$query = EmployerJobpostings::find ()->where ( [ 
-					'skills' => $params ['id'] 
-			] );
-		} else {
-			$query = EmployerJobpostings::find ();
-		}
-		if (isset ( $params ['limit'] ) && ($params ['limit'] != 0)) {
-			$pagesize = $params ['limit'];
-		} else {
-			$pagesize = 25;
-		}
+		$query = EmployerJobpostings::find ();
 		
 		$dataProvider = new ActiveDataProvider ( [ 
-				'query' => $query,
-				'pagination' => [ 
-						'pageSize' => 25 
-				] 
-		] );
+				'query' => $query 
+		]
+		 );
 		
 		$this->load ( $params );
 		
 		if (! $this->validate ()) {
-			// uncomment the following line if you do not want to return any records when validation fails
-			// $query->where('0=1');
+			
 			return $dataProvider;
 		}
+		
 		
 		$query->andFilterWhere ( [ 
 				'like',

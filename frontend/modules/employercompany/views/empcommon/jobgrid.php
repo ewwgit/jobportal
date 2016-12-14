@@ -6,18 +6,40 @@ use frontend\models\EmployerSkills;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ListView;
+use frontend\models\JobpostSearch;
+
+use yii\bootstrap\ActiveForm;
 
 $this->title = 'JOB Posting List';
 $this->params ['breadcrumbs'] [] = $this->title;
 ?>
 <div class="coachingvideoapi-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+   
 <section class="invoice">
 
 		<p>
         <?= Html::a('Create postings', ['create'], ['class' => 'button'])?>
-    </p>
+      
+        
+  <?php $form = ActiveForm::begin([
+        'action' => Url::to(['jobpostingslist']),
+        'method' => 'get',
+        'options' => ['class' => 'form-inline form-group form-group-sm col-xs-12'],
+        'fieldConfig' => [
+            'template' => "{input}",
+        ],
+    ]); ?>
+  
+    <nobr>
+        Designation:<?= $form->field($searchModel, 'designation')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'), ['prompt'=>Yii::t('yii', 'search designation...')])  ?>
+        Experience:<?= $form->field($searchModel, 'Min_Experience')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'), ['prompt'=>Yii::t('yii', 'search Experience...')])  ?>
+        Skills:<?= $form->field($searchModel, 'skills')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'), ['prompt'=>Yii::t('yii', 'search 	skills...')])  ?>
+        <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
+    </nobr>
+         <?php ActiveForm::end(); ?>
+ 
+    </p> 
 	</section>
 
 	<div class="sixteen columns">
@@ -37,6 +59,8 @@ $this->params ['breadcrumbs'] [] = $this->title;
 							SEO / SEM Experience <span class="pending">(Pending Approval)</span>
 					</a></td>
 				</tr>
+				
+				
 				<tr>
 					<td class="st-key"><i class="fa fa-check-square-o"></i> Filled?</td>
 					<td class="st-val">-</td>
@@ -129,9 +153,11 @@ $this->params ['breadcrumbs'] [] = $this->title;
 			<tbody>
 				<tr>
 					<th><i class="fa fa-file-text"></i> Title</th>
+					<th><i class="fa fa-file-text"></i> Skills</th>
+					<th><i class="fa fa-calendar"></i> Experience</th>
 					<th><i class="fa fa-check-square-o"></i> Filled?</th>
 					<th><i class="fa fa-calendar"></i> Date Posted</th>
-					<th><i class="fa fa-calendar"></i> Date Expires</th>
+					
 					<th><i class="fa fa-user"></i> Applications</th>
 					<th></th>
 				</tr>
@@ -142,6 +168,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 
 			<?php 
 			echo ListView::widget( [
+					
 					'dataProvider' => $dataProvider,
 					'itemView' => '_jobslist',
 					'viewParams' => [],
@@ -155,6 +182,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 					'layout' => "{items}\n{pager}",
 			] );
 			?>
+			
 			
 
 		</tbody>

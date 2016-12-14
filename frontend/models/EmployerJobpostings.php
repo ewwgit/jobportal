@@ -35,6 +35,9 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 						],
 						'required' 
 				],
+				[
+						['zipcode',],'integer'
+				],
 				[ 
 						[ 
 								'CTC',

@@ -112,75 +112,65 @@ class EmpcommonController extends Controller {
 		}
 		
 		if (($model->load ( Yii::$app->request->post () )) && ($model->validate ())) {
-			// print_r($model->load(Yii::$app->request->post()));exit;
+			
 			if (! (empty ( $employeData ))) {
 				$employeData->name = $model->name;
-				// print_r($employeData->name);exit;
 				$employeData->designation = $model->designation;
 				$employeData->gender = $model->gender;
 				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofbirth ) );
 				$employeData->dateofbirth = $companyDataa;
 				$employeData->mobilenumber = $model->mobilenumber;
 				$employeData->address = $model->address;
-				
-				
+		
 				$model->profileimage = UploadedFile::getInstance ( $model, 'profileimage' );
-				
-				//$imageName = time () . $employeData->profileimage->name;
-				//$profileimage = '/frontend/web/profileimages/' . $imageName;
-				
-				//print_r($profileimage);exit();
+			
 				
 				if(!(empty($model->profileimage)))
 				{
 					$profileimage=$model->profileimage;
-				//	print_r($employeData->profileimage);exit();
+			
 					$imageName = time().$model->profileimage->name;
-					//$imageName = time().$model->profileimage->name;
-					//print_r($imageName);exit();
+				
 					$model->profileimage->saveAs('profileimages/'.$imageName );
-					//$profileimage->saveAs(Yii::app()->basePath.'/.profileimages.//'.$imageName);
-					//print_r(basePath.'/.profileimages.//'.$imageName);exit();
 				
 					$model->profileimage = 'profileimages/'.$imageName;
-					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
+				
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$employeData->profileimage = $profileimage;
-					//print_r($profileimage);exit;
+				
 				}
 				
-				//$employeData->userid = Yii::$app->user->id;
+			
 				$employeData->save ();
-				//print_r($employeData->errors);exit();
+			
 			} 
 
 			else {
 				
 				$employermodel->name = $model->name;
-				 //print_r($employermodel->name);exit;
+				
 				$employermodel->designation = $model->designation;
 				$employermodel->gender = $model->gender;
-				// $employermodel = date('Y-m-d', strtotime($model->dateofbirth));
+			
 				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofbirth ) );
 				$employermodel->dateofbirth = $companyDataa;
 				$employermodel->mobilenumber = $model->mobilenumber;
 				$employermodel->address = $model->address;
 				$employermodel->userid = Yii::$app->user->id;
 				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
-				//print_r($employermodel->profileimage );exit;
+				
 				
 				
 				if(!(empty($model->profileimage)))
 				{
 						
 					$imageName = time().$model->profileimage->name;
-					//print_r($imageName);exit();
+				
 					$model->profileimage->saveAs('profileimages/'.$imageName );
-					//$profileimage->saveAs(Yii::app()->basePath.'/.profileimages.//'.$imageName);
-					//print_r(basePath.'/.profileimages.//'.$imageName);exit();
+				
 						
 					$model->profileimage = 'profileimages/'.$imageName;
-					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
+				
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$employermodel->profileimage = $profileimage;
 				}
@@ -193,7 +183,7 @@ class EmpcommonController extends Controller {
 			if (! (empty ( $companyData ))) {
 				
 				$companyData->company_name = $model->company_name;
-				//print_r($companyData->company_name);exit();
+			
 				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofestablishment ) );
 				$companyData->dateofestablishment = $companyDataa;
 				$companyData->company_type = $model->company_type;
@@ -203,7 +193,7 @@ class EmpcommonController extends Controller {
 				$companyData->state = $model->state;
 				$companyData->city = $model->city;
 				$companyData->zipcode = $model->zipcode;
-// 				 $companyData ->userid = Yii::$app->user->id ;
+
 				$companyData->save ();
 			} 
 			
@@ -224,9 +214,9 @@ class EmpcommonController extends Controller {
 				$companyModel->city = $model->city;
 				$companyModel->zipcode = $model->zipcode;
 				$companyModel->userid = Yii::$app->user->id;
-				//print_r($companyModel->userid);exit;
+			
 				$companyModel->save ();
-				// print_r($companyModel);exit;
+			
 			}
 			if (! (empty ( $educationData ))) {
 				$educationData->higherdegree = $model->higherdegree;
@@ -271,9 +261,7 @@ class EmpcommonController extends Controller {
 				$employmentData->save ();
 			} else {
 				$employmentModel->job_title = $model->job_title;
-				// print_r($model->job_title);exit;
 				$employmentModel->job_type = $model->job_type;
-				// print_r($model->job_type);exit;
 				$employmentModel->job_description = $model->job_description;
 				$employmentModel->experience = $model->experience;
 				$employmentModel->no_of_openings = $model->no_of_openings;
@@ -283,8 +271,8 @@ class EmpcommonController extends Controller {
 				$employmentModel->salary = $model->salary;
 				$employmentModel->userid = Yii::$app->user->id;
 				$employmentModel->save ();
-				// print_r($employmentModel->errors);exit;
-				// print_r($employmentModel);exit;
+				//print_r($employmentModel);exit;
+			
 			}
 			if (! (empty ( $preferencesData ))) {
 				$preferencesData->expected_salary = $model->expected_salary;
@@ -323,11 +311,11 @@ class EmpcommonController extends Controller {
 		$jobmodel = EmployerCompany::find ()->Where ( [ 
 				'userid' => Yii::$app->user->id 
 		] )->one ();
-		//print_r($jobmodel);exit;
+	
 		$edumodel = EmployerEducation::find ()->Where ( [ 
 				'userid' => Yii::$app->user->id 
 		] )->one ();
-		// print_r($model);exit;
+	
 		$skillsmodel = EmployerSkills::find ()->Where ( [ 
 				'userid' => Yii::$app->user->id 
 		] )->one ();
@@ -351,11 +339,11 @@ class EmpcommonController extends Controller {
 	public function actionCreate() {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployerJobpostings ();
-		// $postings = EmployerJobpostings :: find()->all();
+	
 		
 		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
 			
-			// $postings = EmployerJobpostings :: find()->one();
+	
 			
 			$skill = $model->skills;
 			
@@ -382,16 +370,7 @@ class EmpcommonController extends Controller {
 			] );
 		}
 	}
-	public function actionJobpostingslist() {
-		$this->layout = '@app/views/layouts/employerinner';
-		$searchModel = new JobpostSearch ();
-		$dataProvider = $searchModel->search ( Yii::$app->request->queryParams );
-		
-		return $this->render ( 'jobgrid', [ 
-				'searchModel' => $searchModel,
-				'dataProvider' => $dataProvider 
-		] );
-	}
+
 	public function actionJobpostingsview($id) {
 		$this->layout = '@app/views/layouts/employerinner';
 		$postings = $this->findModel ( $id );
@@ -467,6 +446,18 @@ class EmpcommonController extends Controller {
 	// 'model' => $model,
 	// ]);
 	// }
+	public function actionJobpostingslist() {
+		$this->layout = '@app/views/layouts/employerinner';
+				
+		$searchModel = new JobpostSearch();
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		
+		
+		return $this->render('jobgrid', [
+				'dataProvider' => $dataProvider,
+				'searchModel' => $searchModel
+		]);
+	}
 	protected function findModel($id) {
 		if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
 			return $model;

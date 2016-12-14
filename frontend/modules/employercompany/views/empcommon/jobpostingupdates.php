@@ -30,13 +30,13 @@ $this->params ['breadcrumbs'] [] = $this->title;
 										<h4>Employer Job Postings</h4>
 									</div>
 									<!-- Email -->
-									<div class="form">
+									<div class="form required">
                     
                <?= $form->field($postings, 'company_name')->textInput(['autofocus' => true],['value' => $postings->company_name])?>			
                   </div>
 
 									<!-- Email -->
-									<div class="form">
+									<div class="form required">
                    
                   
               <?= $form->field($postings, 'company_type')->radioList(['corporate' =>'corporate' , 'consultant' =>'consultant'],['prompt' =>'select'],['value' => $postings->company_type])?>
@@ -118,6 +118,11 @@ $this->params ['breadcrumbs'] [] = $this->title;
       		 
        		 </div>
 </div>
+<style>
+.required {
+    color: #282828;
+}
+</style>
 
 
 
