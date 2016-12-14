@@ -46,8 +46,8 @@ select {
 									<!-- Email -->
 									<div class="form">
                    
-                  
-                <?=$form->field ( $model, 'dateofestablishment' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] );?>
+                <?=$form->field ( $model, 'dateofestablishment' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter Establish date ...' ],'pluginOptions' => [ 'autoclose' => true ,'format' => 'yyyy-mm-dd',] ] )->label(false);?>  
+            
                   </div>
 
 									<!-- Title -->
@@ -121,9 +121,9 @@ select {
                     
                   <?= $form->field($model, 'designation')?>
                   </div>
-									<div class="form" style="width: 136px;">
-                  <?= $form->field($model, 'Max_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?>
-                  <?= $form->field($model, 'Min_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?>
+									<div class="form">
+                  <div class="col-md-6" style="padding-left: 0px;"><?= $form->field($model, 'Max_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></div>
+                  <div class="col-md-6"><?= $form->field($model, 'Min_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></div>
                   </div>
 									<div class="form">
                     
@@ -135,11 +135,11 @@ select {
                   </div>
 									<div class="form">
                     
-                   <?= $form->field($model, 'jobtype')->radioList(['full time' =>'full time' , 'part time' =>'part time'],['prompt' =>'select'])?>
+                   <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time'],['prompt' =>'select'])?>
                   </div>
 									<div class="form">
                    
-                 <?= $form->field($model, 'gender')->radioList(['Male' =>'Male' , 'Femail' =>'Femail'],['prompt' =>'select'])?>
+                 <?= $form->field($model, 'gender')->inline()->radioList(['Male' =>'Male' , 'Female' =>'Female'],['prompt' =>'select'])?>
                   </div>
 									<div class="form">
                     

@@ -4,8 +4,14 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 $this->title = 'UserProfile';
 ?>
+<style>
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
+	.table>tbody>tr>td, .table>tfoot>tr>td {
+	border: none;
+	/* width: 100%; */
+}
 
-  
+</style>  
  
   <!-- Titlebar
 ================================================== -->
@@ -157,62 +163,32 @@ $this->title = 'UserProfile';
                   
                 </div>
               </div>
-              </div>
-              <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="margin-bottom-20">
                   <div  class="title-underlined">
-                    <h4>Your Job Skills Details</h4>
+                    <h4>Your Employer Details</h4>
                   </div>
-                  	<?php if(!empty($skillmodel)){?>
-                  	<div>
-                  	 <table class="table table-user-information ">
-                  	 <tbody>
-                      <tr>
-                       <td style="width: 30% !important;"> Your SkillName :</td>
-                          <td style="width: 30% !important;">Lastused :</td>
-                            <td style="width: 30% !important;">Your Skill Experience :</td>
-                            </tr>
-                  <?php foreach ($skillmodel as $alreadySkills){?>
-                 
-                   
-                       <tr>
-                        <td style="width: 30% !important;"><?php echo  $alreadySkills->skillname ;?></td>
-                     
-                     
-                        <td style="width: 30% !important;"><?php echo  $alreadySkills->lastused; ?></td>
-                      
-                       
-                        <td style="width: 30% !important;"><?php echo  $alreadySkills->skillexperience ;?></td>
-                         </tr>
-                      
-                         <?php }?>
-                          </tbody>
-                  </table>
                   
-                 </div>
-                  
-                  <?php }else{ ?>
-                   <table class="table table-user-information ">
+                  <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                        <td> Your SkillName :</td>
-                        <td><?php echo  'Not Mentioned' ;?></td>
-                 
-                        <td>Lastused :</td>
-                        <td><?php echo 'Not Mentioned' ;?></td>
-                     
-                        <td>Your Skill Experience :</td>
-                        <td><?php echo  'Not Mentioned' ;?></td>
+                        <td>Your Employer :</td>
+                        <td><?php echo isset($employermodel->employername) ? $employermodel->employername : 'Not Mentioned'; ?></td>
                       </tr>
+                      <tr>
+                        <td>Employer Type :</td>
+                        <td><?php echo isset( $employermodel->employertype) ? $employermodel->employertype : 'Not Mentioned';  ?></td>
+                      </tr>
+                      <tr>
+                        <td>Employer Designation :</td>
+                        <td><?php echo  isset($employermodel->designation)  ? $employermodel->designation : 'Not Mentioned';  ?></td>
+                      </tr> 
                     </tbody>
                   </table>
-                  <?php } ?>
-                  
+                </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
+              <div class="row">
               <div class="col-md-6">
                 <div class="margin-bottom-20">
                   <div  class="title-underlined">
@@ -264,33 +240,60 @@ $this->title = 'UserProfile';
                   </table>
                 </div>
               </div>
+
               <div class="col-md-6">
                 <div class="margin-bottom-20">
                   <div  class="title-underlined">
-                    <h4>Your Employer Details</h4>
+                    <h4>Your Job Skills Details</h4>
                   </div>
+                  	<?php if(!empty($skillmodel)){?>
+                  	<div>
+                  	 <table class="table table-user-information ">
+                  	 <tbody>
+                      <tr>
+                       <td style="width: 40% !important; font-weight: bold;"> SkillName :</td>
+                          <td style="width: 30% !important; font-weight: bold;">Lastused :</td>
+                            <td style="width: 30% !important; font-weight: bold;">Experience :</td>
+                            </tr>
+                  <?php foreach ($skillmodel as $alreadySkills){?>
+                 
+                   
+                       <tr>
+                        <td style="width: 40% !important;"><?php echo  $alreadySkills->skillname ;?></td>
+                     
+                     
+                        <td style="width: 30% !important;"><?php echo  $alreadySkills->lastused; ?></td>
+                      
+                       
+                        <td style="width: 30% !important;"><?php echo  $alreadySkills->skillexperience ;?></td>
+                         </tr>
+                      
+                         <?php }?>
+                          </tbody>
+                  </table>
                   
-                  <table class="table table-user-information ">
+                 </div>
+                  
+                  <?php }else{ ?>
+                   <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                        <td>Your Employer :</td>
-                        <td><?php echo isset($employermodel->employername) ? $employermodel->employername : 'Not Mentioned'; ?></td>
+                        <td> Your SkillName :</td>
+                        <td><?php echo  'Not Mentioned' ;?></td>
+                 
+                        <td>Lastused :</td>
+                        <td><?php echo 'Not Mentioned' ;?></td>
+                     
+                        <td>Your Skill Experience :</td>
+                        <td><?php echo  'Not Mentioned' ;?></td>
                       </tr>
-                      <tr>
-                        <td>Employer Type :</td>
-                        <td><?php echo isset( $employermodel->employertype) ? $employermodel->employertype : 'Not Mentioned';  ?></td>
-                      </tr>
-                      <tr>
-                        <td>Employer Designation :</td>
-                        <td><?php echo  isset($employermodel->designation)  ? $employermodel->designation : 'Not Mentioned';  ?></td>
-                      </tr> 
                     </tbody>
                   </table>
+                  <?php } ?>
+                  
                 </div>
-                </div>
-                </div>
-                   <div class="row">
-              <div class="col-md-12">
+              </div>
+              <div class="col-md-6">
              
                 <div class="margin-bottom-20">
                   <div  class="title-underlined">
@@ -300,20 +303,20 @@ $this->title = 'UserProfile';
                   	 <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                  	       <td style="width: 30% !important;">Language :</td>
-                  	            <td style="width: 30% !important;">Proficiency Level :</td>
-                  	            <td style="width: 30% !important;">Ability:</td>
+                  	       <td style="width: 25% !important; font-weight: bold;">Language :</td>
+                  	            <td style="width: 35% !important; font-weight: bold;">Proficiency Level :</td>
+                  	            <td style="width: 40% !important; font-weight: bold;">Ability:</td>
                   	            </tr>
                   <?php foreach ($languagemodel as $alreadylanguages){?>
                  
                        <tr>
-                         <td style="width: 30% !important;"><?php echo  $alreadylanguages->language ;?></td>
+                         <td style="width: 25% !important;"><?php echo  $alreadylanguages->language ;?></td>
                     
                        
-                        <td style="width: 30% !important;"><?php echo  $alreadylanguages->proficiencylevel ;  ?></td>
+                        <td style="width: 35% !important;"><?php echo  $alreadylanguages->proficiencylevel ;  ?></td>
                     
                        
-                         <td style="width: 30% !important;"><?php echo  $alreadylanguages->ability;   ?></td>
+                         <td style="width: 40% !important;"><?php echo  $alreadylanguages->ability;   ?></td>
                       </tr> 
                   
                     <?php }?>

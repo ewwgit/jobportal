@@ -84,7 +84,7 @@ select {
 								<div class="form-group">
 									<h5>Date of Birth</h5>
 										
-										<?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
+										<?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ,'format' => 'yyyy-mm-dd',] ] )->label(false);?>
 									</div>
 								<div class="form">
 									<h5>Mobile No</h5>
@@ -155,6 +155,23 @@ select {
 								<div class="form">
 									<h5>Expected Salary</h5>
 										<?= $form->field($model, 'expectedsalary')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+							</div>
+							<div class="margin-bottom-20">
+								<div class="title-underlined">
+									<h4>Add Your Employer Details</h4>
+								</div>
+								<div class="form">
+									<h5>Employer Name</h5>
+										<?= $form->field($model, 'employername')->textInput(['autofocus' => true,'placeholder' => 'Employer Name'])->label(false)?>
+									</div>
+								<div class="form">
+									<h5>Employer Type</h5>
+											<?= $form->field($model, 'employertype')->inline()->radioList(['CurrentEmployer'=>'CurrentEmployer','PreviousEmployer'=>'PreviousEmployer','OtherEmployer' =>'OtherEmployer'])->label(false)?>
+									</div>
+								<div class="form">
+									<h5>Designation</h5>
+										<?= $form->field($model, 'designation')->textInput(['autofocus' => true,'placeholder' => 'Designation'])->label(false)?>
 									</div>
 							</div>
 						</div>
@@ -284,27 +301,6 @@ select {
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="margin-bottom-20">
-								<div class="title-underlined">
-									<h4>Add Your Employer Details</h4>
-								</div>
-								<div class="form">
-									<h5>Employer Name</h5>
-										<?= $form->field($model, 'employername')->textInput(['autofocus' => true,'placeholder' => 'Employer Name'])->label(false)?>
-									</div>
-								<div class="form">
-									<h5>Employer Type</h5>
-											<?= $form->field($model, 'employertype')->inline()->radioList(['CurrentEmployer'=>'CurrentEmployer','PreviousEmployer'=>'PreviousEmployer','OtherEmployer' =>'OtherEmployer'])->label(false)?>
-									</div>
-								<div class="form">
-									<h5>Designation</h5>
-										<?= $form->field($model, 'designation')->textInput(['autofocus' => true,'placeholder' => 'Designation'])->label(false)?>
-									</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">

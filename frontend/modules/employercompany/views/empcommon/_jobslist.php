@@ -6,11 +6,11 @@ use yii\helpers\BaseStringHelper;
 ?>
 
 <tr>
-	<td class="title"><a href="#"><?= $model['designation'];?></a></td>
-	<td class="title"><a href="#"><?= $model['skills'];?></a></td>	
-	<td class="title"><a href="#"><?= $model['Min_Experience'];?></a></td>	
+	<td class="title"><?= $model['designation'];?></td>
+	<td class="title"><?= $model['skills'];?></td>	
+	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered">-</td>
-	<td class="title"><a href="#"><?= $model['startDate'];?></a></td>	
+	<td class="title"><?= $model['startDate'];?></td>	
 	
 	<td class="centered"><a
 		href="<?= Url::to(['/employercompany/empcommon/view','id'=>$model->id])?>"
