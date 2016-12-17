@@ -3,6 +3,15 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use frontend\models\JobpostSearch;
+
+use frontend\models\Employerjobpostings;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
+use yii\widgets\ListView;
+
 ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -49,11 +58,37 @@ $this->title = 'My Yii Application';
           
           <!-- Form -->
           <h2>Find job</h2>
-          <input type="text" class="ico-01" placeholder="job title, keywords or company name" value=""/>
-          <input type="text" class="ico-02" placeholder="city, province or region" value=""/>
-          <button><i class="fa fa-search"></i></button>
           
+          
+          
+           <?php $form = ActiveForm::begin([
+        'action' => Url::to(['index']),
+        'method' => 'get',
+        'options' => ['class' => 'form-inline form-group form-group-sm col-xs-12'],
+        'fieldConfig' => [
+            'template' => "{input}",
+        ],
+    ]); ?>
+  
+    <nobr>
+       <?= $form->field($searchModel, 'company_name')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'), ['prompt'=>Yii::t('yii', 'COMPANYNAME')])  ?>
+        <?= $form->field($searchModel, 'designation')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'), ['prompt'=>Yii::t('yii', 'DESIGNATION')])  ?>
+        <?= $form->field($searchModel, 'Min_Experience')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'), ['prompt'=>Yii::t('yii', 'EXPERIENCE')])  ?>
+        <?= $form->field($searchModel, 'skills')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'), ['prompt'=>Yii::t('yii', 'SKILLS')])  ?>
+          <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
+    </nobr>
+         <?php ActiveForm::end(); ?>
+                
+           
+       
+         <!--   <input type="text" class="ico-01" placeholder="job title, keywords or company name" value=""/>
+          <input type="text" class="ico-02" placeholder="city, province or region" value=""/> 
+         <button><i class="fa fa-search"></i></button>-->
+          
+             
+     
           <!-- Browse Jobs -->
+       
           <div class="browse-jobs"> Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a> </div>
           
           <!-- Announce -->
@@ -68,6 +103,42 @@ $this->title = 'My Yii Application';
 ================================================== --> 
   
   <!-- Categories -->
+  
+  
+  
+     
+          <div class="sixteen columns">
+    <p class="margin-bottom-25">Your listings are shown in the table
+      below. Expired listings will be automatically removed after 30 days.</p>
+    <table class="manage-table responsive-table stacktable large-only">
+      <tbody>
+        <tr>
+          <th><i class="fa fa-file-text"></i> Title</th>
+          <th><i class="fa fa-file-text"></i> Skills</th>
+          <th><i class="fa fa-calendar"></i> Experience</th>
+          <th><i class="fa fa-check-square-o"></i> Filled?</th>
+          <th><i class="fa fa-calendar"></i> Date Posted</th>
+          <th><i class="fa fa-user"></i> Applications</th>
+          <th></th>
+        </tr>
+        <?php 
+			echo ListView::widget( [
+					'dataProvider' => $dataProvider,
+					'itemView' => 'jobsview',
+					'viewParams' => [],
+					'pager' => [
+							 
+							'prevPageLabel' => 'PREV',
+							'nextPageLabel' => 'NEXT',
+							'maxButtonCount' => 5,
+							 
+					],
+					'layout' => "{items}\n{pager}",
+			] );
+			?>
+      </tbody>
+    </table>
+  </div>
   <div class="container">
     <div class="sixteen columns">
       <h3 class="margin-bottom-25">Popular Categories</h3>

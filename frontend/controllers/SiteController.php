@@ -19,6 +19,9 @@ use frontend\models\EmployeeProjects;
 use frontend\models\EmployeeEmployer;
 use frontend\models\EmployeeLanguages;
 use frontend\models\EmployeeEducation;
+use frontend\models\EmployerJobpostings;
+use frontend\models\JobpostSearch;
+
 use common\models\User;
 use yii\web\UploadedFile;
 /**
@@ -80,8 +83,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
-    }
+    	
+    	
+    	$searchModel = new JobpostSearch();
+    	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    	
+    	
+    	return $this->render('index', [
+    			'dataProvider' => $dataProvider,
+    			'searchModel' => $searchModel
+    	]);
+    	}
+    	
 
     /**
      * Logs in a user.
@@ -313,4 +326,11 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    protected function findModel($id) {
+    	if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
+    		return $model;
+    	} else {
+    		throw new NotFoundHttpException ( 'The requested page does not exist.' );
+    	}
+}
 }
