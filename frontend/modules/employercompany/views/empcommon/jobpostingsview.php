@@ -78,7 +78,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="margin-bottom-20"style="margin-top: 33px;">
+							<div class="margin-bottom-20"style="margin-top: 36px;">
 								<div class="title-underlined">
 									<h4></h4>
 								</div>

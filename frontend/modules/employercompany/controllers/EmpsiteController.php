@@ -107,11 +107,8 @@ class EmpsiteController extends Controller {
 		$this->layout = '@app/views/layouts/employermain';
 		$model = new LoginForm ();
 		if ($model->load ( Yii::$app->request->post () ) && $model->login ()) {
-			
 			// return $this->goBack();
-			// $this->layout = "employermain";
-			// return $this->redirect ( '/employercompany/empcommon/employer');
-			
+			Yii::$app->getSession ()->setFlash ( 'success', ' successfully   login ' );
 			return Yii::$app->getResponse ()->redirect ( [ 
 					'employercompany/empcommon/employercommonview',
 					'userid' => Yii::$app->user->id 
@@ -172,42 +169,35 @@ class EmpsiteController extends Controller {
 		
 		$model = new EmployerSignup ();
 		$model->scenario = 'signup';
-		// $employeesignup = new EmployeeSignup();
+		
 		$this->layout = '@app/views/layouts/employermain';
 		if ($model->load ( Yii::$app->request->post () )) {
 			
-			// print_r(Yii::$app->request->post());exit();
+			
 			
 			if ($user = $model->signup ()) {
-				// return $this->goHome();
-				// return $this->redirect ('login');
-				// $this->layout = "employermain";
+			
 				$this->layout = '@app/views/layouts/employermain';
 				
 				$name = $model->name;
 				$mobilenumber = $model->mobilenumber;
 				$dateofbirth = date ( 'Y-m-d', strtotime ( $model->dateofbirth ) );
-				//$dateofbirth = $model->dateofbirth;
 				$gender = $model->gender;
 				$designation = $model->designation;
 				$address = $model->address;
-				
 				$model->profileimage = UploadedFile::getInstance ( $model, 'profileimage' );
-				// print_r($model->profileimage);exit();
+				
 				$imageName = time () . $model->profileimage->name;
 				$profileimage = '/frontend/web/profileimages/' . $imageName;
 				
-				// print_r($imageName);exit();
-				
 				if (! (empty ( $model->profileimage ))) {
 					$imageName = time () . $model->profileimage->name;
-					// print_r($imageName);exit();
+					
 					$model->profileimage->saveAs ( 'profileimages/' . $imageName );
 					$model->profileimage = 'profileimages/' . $imageName;
 				}
 				$date=$model->create_date = date ( "Y-m-d H:i:s" );
 				$userid = Yii::$app->db->getLastInsertID ();
-				
 				Yii::$app->db->createCommand ()->insert ( 'employer', [ 
 						'name' => $name,
 						'mobilenumber' => $mobilenumber,
@@ -219,24 +209,21 @@ class EmpsiteController extends Controller {
 						'userid' => $userid ,
 						'create_date'=>$date
 				] )->execute ();
-				
+				Yii::$app->getSession ()->setFlash ( 'success', ' successfully   Registered ' );
 				return Yii::$app->getResponse ()->redirect ( [ 
 						'employercompany/empsite/login',
 						'userid' => Yii::$app->user->id 
 				] );
 				if (Yii::$app->getUser ()->login ( $user )) {
-					// return $this->goHome();
+					
 				}
 			}
 		}
-		
-			
-		
+	
 		return $this->render ( 'signup', [ 
 				'model' => $model 
 		] );
-		
-	}
+			}
 	/**
 	 * Requests password reset.
 	 *
@@ -244,47 +231,23 @@ class EmpsiteController extends Controller {
 	 */
 	public function actionViewprofile() {
 		$this->layout = '@app/views/layouts/employermain';
-		// *******profile*****//
-		// $model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
-		// $model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
-		
+	
 		$userData = User::find ()->where ( [ 
 				'id' => Yii::$app->user->id 
 		] )->one ();
-		// print_r($userData);exit;
-		// $employeData = Employer::find ()->where ( [
-		// 'id' => Yii::$app->user->id
-		// ] )->one ();
-		// print_r($employeData);exit;
 		$model->username = $userData ['username'];
 		
 		$model->email = $userData ['email'];
 		$model->name = $employeData ['name'];
-		// print_r($model->name);exit;
-		// $model->designation = $employeData ['designation'];
-		// $model->gender = $employeData ['gender'];
-		// $model->dateofbirth = $employeData ['dateofbirth'];
-		// $model->mobilenumber = $employeData ['mobilenumber'];
-		// $model->address = $employeData ['address'];
+		
 		
 		$employeData = Employer::find ()->Where ( [ 
 				'id' => Yii::$app->user->id 
 		] )->one ();
 		
-		// $edumodel = EmployerEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		// print_r($edumodel);
-		// exit();
-		
-		// // $jobmodel = EmployerCompany :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		
-		// $jobmodel = EmployerPreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		
-		// $skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		
-		return $this->render ( '/site/viewprofile', [  // 'empmodel' => $empmodel,
-		                                            // upmodel' => $umodel,
+		return $this->render ( '/site/viewprofile', [  
 				'model' => $model,
-				// //'edumodel' => $edumodel,
+				
 				'employeData' => $employeData 
 		] );
 	}
@@ -300,18 +263,18 @@ class EmpsiteController extends Controller {
 				'id' => Yii::$app->user->id 
 		] )->one ();
 		
-		// print_r($employeData);exit;
+		
 		$model->username = $userData ['username'];
 		$model->email = $userData ['email'];
-		// print_r($model->email);exit;
+		
 		$model->name = $employeData ['name'];
-		// print_r($model->name);exit;
+		
 		$model->designation = $employeData ['designation'];
 		$model->gender = $employeData ['gender'];
 		$model->dateofbirth = $employeData ['dateofbirth'];
 		$model->mobilenumber = $employeData ['mobilenumber'];
 		$model->address = $employeData ['address'];
-		// print_r($model->error);exit;
+		
 		
 		$jobmodel = EmployerCompany::find ()->Where ( [ 
 				'userid' => Yii::$app->user->id 
@@ -336,7 +299,7 @@ class EmpsiteController extends Controller {
 			if ($model->sendEmail ()) {
 				Yii::$app->session->setFlash ( 'success', 'Check your email for further instructions.' );
 				return $this->goHome ();
-				// prin_r($model->errors);exit();
+				
 			} else {
 				Yii::$app->session->setFlash ( 'error', 'Sorry, we are unable to reset password for email provided.' );
 			}

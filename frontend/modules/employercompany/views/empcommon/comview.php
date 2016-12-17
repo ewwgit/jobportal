@@ -210,17 +210,9 @@ select {
 								</div>
 									<div class="form">
 									
-										  <?= $form->field($model, 'requirment')->textInput(['autofocus' => true]);?>
+										  <?= $form->field($model, 'skill')->textInput(['autofocus' => true]);?>
 									</div>
-									<div class="form">
 									
-										 <?= $form->field($model, 'companytype')->inline()->radioList(['corporate' =>'Corporate' , 'consultant' =>'Consultant'],['prompt' =>'<---select--->']);?>
-									</div>
-									<div class="form">
-									
-										   <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time'],['prompt' =>'select']);?>
-									</div>
-								
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -234,7 +226,7 @@ select {
 									</div>
 								<div class="form">
 									
-											<?= $form->field($model, 'company_type')->inline()->radioList(['CurrentEmployer'=>'CurrentEmployer','PreviousEmployer'=>'PreviousEmployer','OtherEmployer' =>'OtherEmployer'])?>
+											<?= $form->field($model, 'employer_type')->inline()->radioList(['CurrentEmployer'=>'CurrentEmployer','PreviousEmployer'=>'PreviousEmployer','OtherEmployer' =>'OtherEmployer'])?>
 									</div>
 								<div class="form">
 									

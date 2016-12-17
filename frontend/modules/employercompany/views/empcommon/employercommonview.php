@@ -128,8 +128,8 @@ $this->params ['breadcrumbs'] [] = $this->title;
 											<td><?php echo isset($jobmodel->company_name) ? $jobmodel->company_name : '';?></td>
 										</tr>
 										<tr>
-											<td>Company type:</td>
-											<td><?php echo isset($jobmodel->company_type) ? $jobmodel->company_type : '';?></td>
+											<td>Employer type:</td>
+											<td><?php echo isset($jobmodel->employer_type) ? $jobmodel->employer_type : '';?></td>
 										</tr>
 
 										<tr>
@@ -196,18 +196,12 @@ $this->params ['breadcrumbs'] [] = $this->title;
 								</div>
 								<table class="table table-user-information ">
 									<tbody>
-										<tr>
-											<td>Requirment:</td>
-											<td><?php echo isset($skillsmodel->requirment) ? $skillsmodel->requirment  : '';?></td>
+									
+									<tr>
+											<td>skill's:</td>
+											<td><?php echo isset($skillsModel->skill) ? $skillsModel->skill : '';?></td>
 										</tr>
-										<tr>
-											<td>Companytype:</td>
-											<td><?php echo isset($skillsmodel->companytype) ? $skillsmodel->companytype  : '';?></td>
-										</tr>
-										<tr>
-											<td>Jobtype:</td>
-											<td><?php echo isset($skillsmodel->jobtype) ? $skillsmodel->jobtype  : '';?></td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
@@ -235,10 +229,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 											<td>Experience:</td>
 											<td><?php echo isset($employmentmodel->experience) ? $employmentmodel->experience  : '';?></td>
 										</tr>
-										<tr>
-											<td>No of openings:</td>
-											<td><?php echo isset($employmentmodel->no_of_openings) ? $employmentmodel->no_of_openings  : '';?></td>
-										</tr>
+										
 										<tr>
 											<td>Work location:</td>
 											<td><?php echo isset($employmentmodel->work_location) ? $employmentmodel->work_location  : '';?></td>

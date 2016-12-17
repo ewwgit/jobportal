@@ -27,35 +27,35 @@ class EmployerSkills extends \yii\db\ActiveRecord {
 	 */
 	public function rules() {
 		return [ 
-				[ 
-						[ 
-								'requirment',
-								'companytype',
-								'jobtype',
-								'userid' 
-						],
-						'required' 
-				],
+// 				[ 
+// 						[ 
+// 								'skillname',
+// 								'lastused',
+// 								'skillexperience',
+// 								'userid' 
+// 						],
+// 						'required' 
+// 				],
 				[ 
 						[ 
 								'userid' 
 						],
 						'integer' 
 				],
+// 				[ 
+// 						[ 
+// 								'	',
+// 								'companytype',
+// 								'jobtype' 
+// 						],
+// 						'string',
+// 						'max' => 220 
+// 				],
 				[ 
 						[ 
-								'requirment',
-								'companytype',
-								'jobtype' 
-						],
-						'string',
-						'max' => 220 
-				],
-				[ 
-						[ 
-								'requirment',
-								'companytype',
-								'jobtype',
+								'skill',
+// 								'lastused',
+// 								'skillexperience',
 								'userid' 
 						],
 						'safe' 
@@ -69,9 +69,9 @@ class EmployerSkills extends \yii\db\ActiveRecord {
 	public function attributeLabels() {
 		return [ 
 				'sid' => 'Sid',
-				'requirment' => 'Requirment',
-				'companytype' => 'company type',
-				'jobtype' => 'jobtype',
+				'skillname' => 'skill',
+				'lastused' => 'lastused',
+				'skillexperience' => 'skillexperience',
 				'userid' => 'Userid' 
 		];
 	}

@@ -26,7 +26,7 @@ class EmployerForm extends Model {
 	 */
 	public $company_name;
 	public $dateofestablishment;
-	public $company_type;
+	public $employer_type;
 	public $industry_type;
 	public $location;
 	public $country;
@@ -55,9 +55,9 @@ class EmployerForm extends Model {
 	/**
 	 * EmployerSkills
 	 */
-	public $requirment;
-	public $companytype;
-	public $jobtype;
+	public $skill;
+	public $lastused;
+	public $skillexperience;
 	/**
 	 * Employer
 	 */
@@ -81,17 +81,17 @@ class EmployerForm extends Model {
 						'address',
 						'dateofbirth',
 						
-						'requirment',
-						'companytype',
-						'jobtype',
+// 						'skill',
+// 						'lastused',
+// 						'skillexperience',
 						
 						'salary',
 						'weekly_days',
 						'shift_timings',
 						'work_location',
-						'no_of_openings',
+						//'no_of_openings',
 						'experience',
-						'jobtype',
+						//'jobtype',
 						'job_description',
 						'job_title',
 						'job_role',
@@ -102,7 +102,7 @@ class EmployerForm extends Model {
 						
 						'company_name',
 						'dateofestablishment',
-						'company_type',
+						'employer_type',
 						'industry_type',
 						'job_type',
 						'location',
@@ -147,17 +147,17 @@ class EmployerForm extends Model {
 								'profileimage',
 								'profileimagenew',
 								
-								'requirment',
-								'companytype',
-								'jobtype',
+							'skill',
+						'lastused',
+						'skillexperience',
 								
 								'salary',
 								'weekly_days',
 								'shift_timings',
 								'work_location',
-								'no_of_openings',
+								//'no_of_openings',
 								'experience',
-								'jobtype',
+							//	'jobtype',
 								'job_description',
 								'job_title',
 								'job_type',
@@ -169,7 +169,7 @@ class EmployerForm extends Model {
 								
 								'company_name',
 								'dateofestablishment',
-								'company_type',
+								'employer_type',
 								'industry_type',
 								'location',
 								'country',

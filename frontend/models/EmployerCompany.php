@@ -32,7 +32,7 @@ class EmployerCompany extends \yii\db\ActiveRecord {
 						[ 
 								'company_name',
 								'dateofestablishment',
-								'company_type',
+								'employer_type',
 								'industry_type',
 								'location',
 								'country',
@@ -51,7 +51,7 @@ class EmployerCompany extends \yii\db\ActiveRecord {
 				[ 
 						[ 
 								'company_name',
-								'company_type',
+								'employer_type',
 								'industry_type',
 								'location',
 								'country',
@@ -66,7 +66,7 @@ class EmployerCompany extends \yii\db\ActiveRecord {
 						[ 
 								'company_name',
 								'dateofestablishment',
-								'company_type',
+								'employer_type',
 								'industry_type',
 								'location',
 								'country',
@@ -90,7 +90,7 @@ class EmployerCompany extends \yii\db\ActiveRecord {
 				'id' => 'ID',
 				'company_name' => 'Company Name',
 				'dateofestablishment' => 'Dateofestablishment',
-				'company_type' => 'Company Type',
+				'employer_type' => 'Employer Type',
 				'industry_type' => 'Industry Type',
 				'location' => 'Location',
 				'country' => 'Country',

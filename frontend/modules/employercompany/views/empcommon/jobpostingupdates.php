@@ -75,9 +75,9 @@ select {
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div class="margin-bottom-20">
+								<div class="margin-bottom-20" style="margin-top: 36px;">
 									<div class="title-underlined">
-										<h4>Employer Job Postings</h4>
+										<h4></h4>
 									</div>
 									<table class="table table-user-information ">
 										<tbody>

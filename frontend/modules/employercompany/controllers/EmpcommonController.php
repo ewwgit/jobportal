@@ -74,7 +74,7 @@ class EmpcommonController extends Controller {
 			$model->company_name = $companyData->company_name;
 			$model->industry_type = $companyData->industry_type;
 			$model->dateofestablishment = $companyData->dateofestablishment;
-			$model->company_type = $companyData->company_type;
+			$model->employer_type = $companyData->employer_type;
 			$model->location = $companyData->location;
 			$model->country = $companyData->country;
 			$model->state = $companyData->state;
@@ -88,18 +88,15 @@ class EmpcommonController extends Controller {
 			$model->collegename = $educationData->collegename;
 			$model->passingyear = $educationData->passingyear;
 		}
-		if (! (empty ( $skillsData ))) {
-			$model->requirment = $skillsData->requirment;
-			$model->companytype = $skillsData->companytype;
-			$model->jobtype = $skillsData->jobtype;
-		}
+ 		if (! (empty ( $skillsData ))) {
+ 			$model->skill = $skillsData->skill;
+ 	 		}
 		
 		if (! (empty ( $employmentData ))) {
 			$model->job_title = $employmentData->job_title;
 			$model->job_type = $employmentData->job_type;
 			$model->job_description = $employmentData->job_description;
 			$model->experience = $employmentData->experience;
-			$model->no_of_openings = $employmentData->no_of_openings;
 			$model->work_location = $employmentData->work_location;
 			$model->shift_timings = $employmentData->shift_timings;
 			$model->weekly_days = $employmentData->weekly_days;
@@ -186,7 +183,7 @@ class EmpcommonController extends Controller {
 			
 				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofestablishment ) );
 				$companyData->dateofestablishment = $companyDataa;
-				$companyData->company_type = $model->company_type;
+				$companyData->employer_type = $model->employer_type;
 				$companyData->industry_type = $model->industry_type;
 				$companyData->location = $model->location;
 				$companyData->country = $model->country;
@@ -236,24 +233,23 @@ class EmpcommonController extends Controller {
 				$educationModel->save ();
 				
 			}
-			if (! (empty ( $skillsData ))) {
-				$skillsData->requirment = $model->requirment;
-				$skillsData->companytype = $model->companytype;
-				$skillsData->jobtype = $model->jobtype;
-				$skillsData->save ();
+			
+ 			if (! (empty ( $skillsData ))) {
+ 				$skillsData->skill = $model->skill;
+ 				//print_r($model->skill);
+ 				$skillsData->userid = Yii::$app->user->id;
+                $skillsData->save ();
 			} else {
-				$skillsModel->requirment = $model->requirment;
-				$skillsModel->companytype = $model->companytype;
-				$skillsModel->jobtype = $model->jobtype;
-				$skillsModel->userid = Yii::$app->user->id;
-				$skillsModel->save ();
+				$skillsModel->skill = $model->skill;
+				//print_r($model->skill);exit;
+ 				$skillsModel->userid = Yii::$app->user->id;
+ 				$skillsModel->save ();
 			}
 			if (! (empty ( $employmentData ))) {
 				$employmentData->job_title = $model->job_title;
 				$employmentData->job_type = $model->job_type;
 				$employmentData->job_description = $model->job_description;
 				$employmentData->experience = $model->experience;
-				$employmentData->no_of_openings = $model->no_of_openings;
 				$employmentData->work_location = $model->work_location;
 				$employmentData->shift_timings = $model->shift_timings;
 				$employmentData->weekly_days = $model->weekly_days;
@@ -264,7 +260,6 @@ class EmpcommonController extends Controller {
 				$employmentModel->job_type = $model->job_type;
 				$employmentModel->job_description = $model->job_description;
 				$employmentModel->experience = $model->experience;
-				$employmentModel->no_of_openings = $model->no_of_openings;
 				$employmentModel->work_location = $model->work_location;
 				$employmentModel->shift_timings = $model->shift_timings;
 				$employmentModel->weekly_days = $model->weekly_days;
