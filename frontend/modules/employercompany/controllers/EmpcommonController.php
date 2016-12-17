@@ -166,10 +166,10 @@ class EmpcommonController extends Controller {
 				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
 				$employermodel->skills = $model->skills;
 				//print_r($model->skills);exit;
-			     $skill = $model->skills;
+			     $employermodel = $model->skills;
 				//print_r($skill);exit;
 					
-				if (! Empty ( $skill )) {
+				if (! Empty ( $employermodel )) {
 					$array = $model->skills;
 					$comma_separated = implode ( ",",$array );
 				}

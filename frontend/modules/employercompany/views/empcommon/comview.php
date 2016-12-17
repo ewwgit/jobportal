@@ -176,11 +176,11 @@ select {
 								<!-- Title -->
 								<div class="form">
 									
-									 <?= $form->field($model, 'experience')->dropDownList(['6Months' =>'6Months' , '1year' =>'1year', '2years' =>'2years' , '3years' =>'3years' , '4years' =>'4years'],['prompt' =>'select','id' => 'employeeform-highdegree'])?> 
+									 <?= $form->field($model, 'experience')->dropDownList(['6Months' =>'6Months' , '1year' =>'1year', '2years' =>'2years' , '3years' =>'3years' , '4years' =>'4years'],['prompt' =>'select','id' => 'employerform-highdegree'])?> 
 									</div>
 								<div class="form">
 									
-										 <?= $form->field($model, 'no_of_openings')->dropDownList(['10' =>'10' , '20' =>'20', '20' =>'20' , '50' =>'50' , '100' =>'100'],['prompt' =>'select','id' => 'employeeform-highdegree'])?>
+										 <?= $form->field($model, 'no_of_openings')->dropDownList(['10' =>'10' , '20' =>'20', '20' =>'20' , '50' =>'50' , '100' =>'100'],['prompt' =>'select','id' => 'employerform-highdegree'])?>
 									</div>
 								<div class="form">
 									
@@ -188,7 +188,7 @@ select {
 									</div>
 								<div class="form">
 									
-									 <?= $form->field($model, 'work_location')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select','id' => 'employeeform-highdegree'])?>
+									 <?= $form->field($model, 'work_location')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select','id' => 'employerform-highdegree'])?>
 									</div>
 								<div class="form">
 									
@@ -209,11 +209,12 @@ select {
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
 									<h4>Add Your Skills Details</h4>
-								</div><?php 
+								</div>
+								<?php 
 
                            echo  $form->field($model, 'skills')->widget(Select2::classname(), [
                                      // 'data' => $data,
-                                        'options' => ['placeholder' => 'Select skills...', 'multiple' => true],
+                                        'options' => ['autofocus' => true,'placeholder' => 'Select skills...', 'multiple' => true],
                                         'pluginOptions' => [
                                         'tags' => true,
                                   //      'tokenSeparators' => [',', ' '],
@@ -227,16 +228,15 @@ select {
 									<h4>Add Your Employer Details</h4>
 								</div>
 								<div class="form">
-									
-										<?= $form->field($model, 'company_name')->textInput(['autofocus' => true,'placeholder' => 'Employer Name'])?>
+									    	<?= $form->field($model, 'company_name')->textInput(['autofocus' => true,'placeholder' => 'Employer Name'])?>
 									</div>
 								<div class="form">
 									
-											<?= $form->field($model, 'employer_type')->inline()->radioList(['CurrentEmployer'=>'CurrentEmployer','PreviousEmployer'=>'PreviousEmployer','OtherEmployer' =>'OtherEmployer'])?>
+								            <?= $form->field($model, 'employer_type')->inline()->radioList(['CurrentEmployer'=>'CurrentEmployer','PreviousEmployer'=>'PreviousEmployer','OtherEmployer' =>'OtherEmployer'])?>
 									</div>
 								<div class="form">
 									
-										<?= $form->field($model, 'industry_type')->dropDownList(['Accounting/Consulting/Taxation' =>'Accounting/Consulting/Taxation' , 'Advertising/Event Management/PR' =>'Advertising/Event Management/PR', 'Animation / Gaming' =>'Animation / Gaming' , 'Entertainment/Media/Publishing/Dotcom' =>'Entertainment/Media/Publishing/Dotcom' , 'Banking/FinancialServices/Broking' =>'Banking/FinancialServices/Broking' , 'Software Services' =>'Software Services' , 'Machinery/Equipment Manufacturing/Industrial Products' =>'Machinery/Equipment Manufacturing/Industrial Products' , 'Education/Training/Teaching' =>'Education/Training/Teaching'],['prompt' =>'select','id' => 'employeeform-highdegree']);?>
+										<?= $form->field($model, 'industry_type')->dropDownList(['Accounting/Consulting/Taxation' =>'Accounting/Consulting/Taxation' , 'Advertising/Event Management/PR' =>'Advertising/Event Management/PR', 'Animation / Gaming' =>'Animation / Gaming' , 'Entertainment/Media/Publishing/Dotcom' =>'Entertainment/Media/Publishing/Dotcom' , 'Banking/FinancialServices/Broking' =>'Banking/FinancialServices/Broking' , 'Software Services' =>'Software Services' , 'Machinery/Equipment Manufacturing/Industrial Products' =>'Machinery/Equipment Manufacturing/Industrial Products' , 'Education/Training/Teaching' =>'Education/Training/Teaching'],['prompt' =>'select','id' => 'employerform-highdegree']);?>
 									</div>
 									<div class="form">
 									
@@ -245,19 +245,19 @@ select {
 									</div>
 									<div class="form">
 									
-											  <?=$form->field ( $model, 'location' )->dropDownList ( [ 'Hyderabad/Secundrabad' => 'Hyderabad/Secundrabad','Banglore' => 'Banglore','Chennai' => 'Chennai','Mumbai' => 'Mumbai','Pune' => 'Pune','Gurgon' => 'Gurgon','Delhi' => ' Delhi' ], [ 'prompt' => 'select your joblocation','id' => 'employeeform-highdegree' ] );?>
+											  <?=$form->field ( $model, 'location' )->dropDownList ( [ 'Hyderabad/Secundrabad' => 'Hyderabad/Secundrabad','Banglore' => 'Banglore','Chennai' => 'Chennai','Mumbai' => 'Mumbai','Pune' => 'Pune','Gurgon' => 'Gurgon','Delhi' => ' Delhi' ], [ 'prompt' => 'select your joblocation','id' => 'employerform-highdegree' ] );?>
 									</div>
 									<div class="form">
 									
-										 <?= $form->field($model, 'country')->dropDownList(['Afghanistan' =>'Afghanistan' , 'Brazil' =>'Brazil', 'Bulgaria' =>'Bulgaria' , 'Canada' =>'Canada' , 'India' =>'India' , 'United Kingdom' =>'United Kingdom' , 'USA' =>'USA' , 'Rome' =>'Rome'],['prompt' =>'select','id' => 'employeeform-highdegree']);?>
+										 <?= $form->field($model, 'country')->dropDownList(['Afghanistan' =>'Afghanistan' , 'Brazil' =>'Brazil', 'Bulgaria' =>'Bulgaria' , 'Canada' =>'Canada' , 'India' =>'India' , 'United Kingdom' =>'United Kingdom' , 'USA' =>'USA' , 'Rome' =>'Rome'],['prompt' =>'select','id' => 'employerform-highdegree']);?>
 									</div>
 									<div class="form">
 									
-										 <?= $form->field($model, 'state')->dropDownList(['Himachal Pradesh' =>'Himachal Pradesh' , 'Andrapradesh' =>'Andrapradesh', 'Italy' =>'Italy' , 'California' =>'California' , 'Sweden' =>'Sweden' , 'Newyork' =>'Newyork' , 'parise' =>'parise'],['prompt' =>'select','id' => 'employeeform-highdegree']);?>
+										 <?= $form->field($model, 'state')->dropDownList(['Himachal Pradesh' =>'Himachal Pradesh' , 'Andrapradesh' =>'Andrapradesh', 'Italy' =>'Italy' , 'California' =>'California' , 'Sweden' =>'Sweden' , 'Newyork' =>'Newyork' , 'parise' =>'parise'],['prompt' =>'select','id' => 'employerform-highdegree']);?>
 									</div>
 									<div class="form">
 									
-										 <?= $form->field($model, 'city')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select','id' => 'employeeform-highdegree']);?>
+										 <?= $form->field($model, 'city')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select','id' => 'employerform-highdegree']);?>
 									</div>
 									<div class="form">
 									
