@@ -190,7 +190,7 @@ class EmpcommonController extends Controller {
 					$employermodel->profileimage = $profileimage;
 				}
 				
-				$employermodel->skills=$employermodel;
+				$employermodel->skills=$comma_separated;
 				$employermodel->save ();
 				//print_r($employermodel);exit;
 			}
