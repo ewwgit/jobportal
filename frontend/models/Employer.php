@@ -74,7 +74,8 @@ class Employer extends \yii\db\ActiveRecord {
 								'gender',
 								'dateofbirth',
 								'designation',
-								'profileimage'
+								'profileimage',
+								'skills'
 						],
 						'safe' 
 				] 
@@ -94,6 +95,7 @@ class Employer extends \yii\db\ActiveRecord {
 				'designation' => 'Designation',
 				'address' => 'Address',
 				'userid' => 'Userid',
+				'skills'=>'skills',
 				'profileimage' =>'profileimage',
 				
 				'roleid' => 'Roleid' 

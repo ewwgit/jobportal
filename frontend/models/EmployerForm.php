@@ -55,7 +55,8 @@ class EmployerForm extends Model {
 	/**
 	 * EmployerSkills
 	 */
-	public $skill;
+	public $sid;
+	public $skills;
 	public $lastused;
 	public $skillexperience;
 	/**
@@ -147,9 +148,8 @@ class EmployerForm extends Model {
 								'profileimage',
 								'profileimagenew',
 								
-							'skill',
-						'lastused',
-						'skillexperience',
+							'skills',
+
 								
 								'salary',
 								'weekly_days',

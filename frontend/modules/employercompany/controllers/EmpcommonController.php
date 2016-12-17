@@ -30,7 +30,7 @@ class EmpcommonController extends Controller {
 		$employermodel = new Employer ();
 		$companyModel = new EmployerCompany ();
 		$educationModel = new EmployerEducation ();
-		$skillsModel = new EmployerSkills ();
+		//$skillsModel = new EmployerSkills ();
 		$employmentModel = new Employement ();
 		$preferencesModel = new EmployerPreferences ();
 		$userData = User::find ()->where ( [ 
@@ -46,9 +46,9 @@ class EmpcommonController extends Controller {
 		$educationData = EmployerEducation::find ()->Where ( [ 
 				'userid' => Yii::$app->user->id 
 		] )->one ();
-		$skillsData = EmployerSkills::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
-		] )->one ();
+// 		$skillsData = EmployerSkills::find ()->Where ( [ 
+// 				'userid' => Yii::$app->user->id 
+// 		] )->one ();
 		$employmentData = Employement::find ()->Where ( [ 
 				'userid' => Yii::$app->user->id 
 		] )->one ();
@@ -64,6 +64,7 @@ class EmpcommonController extends Controller {
 			$model->mobilenumber = $employeData->mobilenumber;
 			$model->address = $employeData->address;
 			$model->profileimagenew = $employeData->profileimage;
+			$model->skills=$employeData->skills;
 		}
 		if (! (empty ( $userData ))) {
 			$model->username = $userData->username;
@@ -89,7 +90,8 @@ class EmpcommonController extends Controller {
 			$model->passingyear = $educationData->passingyear;
 		}
  		if (! (empty ( $skillsData ))) {
- 			$model->skill = $skillsData->skill;
+ 			$model->skills = $skillsData->skills;
+ 			//print_r($model->skills);exit;
  	 		}
 		
 		if (! (empty ( $employmentData ))) {
@@ -118,9 +120,16 @@ class EmpcommonController extends Controller {
 				$employeData->dateofbirth = $companyDataa;
 				$employeData->mobilenumber = $model->mobilenumber;
 				$employeData->address = $model->address;
-		
 				$model->profileimage = UploadedFile::getInstance ( $model, 'profileimage' );
-			
+				$employeData->skills = $model->skills;
+
+                $skill = $model->skills;
+                   //print_r($skill);exit;
+	
+				if (! Empty ( $skill )) {
+					$array = $model->skills;
+					$array_skills = implode ( ",",$array );
+				}
 				
 				if(!(empty($model->profileimage)))
 				{
@@ -137,7 +146,7 @@ class EmpcommonController extends Controller {
 				
 				}
 				
-			
+				$employeData->skills=$array_skills;
 				$employeData->save ();
 			
 			} 
@@ -155,6 +164,15 @@ class EmpcommonController extends Controller {
 				$employermodel->address = $model->address;
 				$employermodel->userid = Yii::$app->user->id;
 				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
+				$employermodel->skills = $model->skills;
+				//print_r($model->skills);exit;
+			     $skill = $model->skills;
+				//print_r($skill);exit;
+					
+				if (! Empty ( $skill )) {
+					$array = $model->skills;
+					$comma_separated = implode ( ",",$array );
+				}
 				
 				
 				
@@ -172,8 +190,9 @@ class EmpcommonController extends Controller {
 					$employermodel->profileimage = $profileimage;
 				}
 				
-				
+				$employermodel->skills=$employermodel;
 				$employermodel->save ();
+				//print_r($employermodel);exit;
 			}
 			
 			
@@ -202,7 +221,7 @@ class EmpcommonController extends Controller {
 				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofestablishment ) );
 				$companyModel->dateofestablishment = $companyDataa;
 				
-				$companyModel->company_type = $model->company_type;
+				$companyModel->employer_type = $model->employer_type;
 			
 				$companyModel->industry_type = $model->industry_type;
 				$companyModel->location = $model->location;
@@ -234,17 +253,8 @@ class EmpcommonController extends Controller {
 				
 			}
 			
- 			if (! (empty ( $skillsData ))) {
- 				$skillsData->skill = $model->skill;
- 				//print_r($model->skill);
- 				$skillsData->userid = Yii::$app->user->id;
-                $skillsData->save ();
-			} else {
-				$skillsModel->skill = $model->skill;
-				//print_r($model->skill);exit;
- 				$skillsModel->userid = Yii::$app->user->id;
- 				$skillsModel->save ();
-			}
+
+			
 			if (! (empty ( $employmentData ))) {
 				$employmentData->job_title = $model->job_title;
 				$employmentData->job_type = $model->job_type;
