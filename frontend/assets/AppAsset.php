@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
     		'css/font-awesome.css',
     		'css/responsive.css',
     		'css/style.css',
+    		'css/colors/green.css'
     ];
     public $script = [
     		
