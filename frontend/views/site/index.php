@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /* @var $this yii\web\View */
 
@@ -71,11 +71,11 @@ use yii\widgets\ListView;
     ]); ?>
   
     <nobr>
-       <?= $form->field($searchModel, 'company_name')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'), ['prompt'=>Yii::t('yii', 'COMPANYNAME')])  ?>
+       	<?= $form->field($searchModel, 'company_name')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'), ['prompt'=>Yii::t('yii', 'COMPANYNAME')])  ?>
         <?= $form->field($searchModel, 'designation')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'), ['prompt'=>Yii::t('yii', 'DESIGNATION')])  ?>
         <?= $form->field($searchModel, 'Min_Experience')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'), ['prompt'=>Yii::t('yii', 'EXPERIENCE')])  ?>
         <?= $form->field($searchModel, 'skills')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'), ['prompt'=>Yii::t('yii', 'SKILLS')])  ?>
-          <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
+        <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
     </nobr>
          <?php ActiveForm::end(); ?>
                 
@@ -105,7 +105,7 @@ use yii\widgets\ListView;
   <!-- Categories -->
   
   
-  
+  <div class="container">
      
           <div class="sixteen columns">
     <p class="margin-bottom-25">Your listings are shown in the table
@@ -113,13 +113,12 @@ use yii\widgets\ListView;
     <table class="manage-table responsive-table stacktable large-only">
       <tbody>
         <tr>
-          <th><i class="fa fa-file-text"></i> Title</th>
+          <th><i class="fa fa-file-text"></i> Designation</th>
           <th><i class="fa fa-file-text"></i> Skills</th>
           <th><i class="fa fa-calendar"></i> Experience</th>
           <th><i class="fa fa-check-square-o"></i> Filled?</th>
           <th><i class="fa fa-calendar"></i> Date Posted</th>
           <th><i class="fa fa-user"></i> Applications</th>
-          <th></th>
         </tr>
         <?php 
 			echo ListView::widget( [
@@ -139,6 +138,8 @@ use yii\widgets\ListView;
       </tbody>
     </table>
   </div>
+  </div>
+  <div class="clearfix" style="margin-bottom: 20px;"></div>
   <div class="container">
     <div class="sixteen columns">
       <h3 class="margin-bottom-25">Popular Categories</h3>

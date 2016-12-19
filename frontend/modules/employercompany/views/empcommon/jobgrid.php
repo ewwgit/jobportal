@@ -49,7 +49,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
     <table class="manage-table responsive-table stacktable large-only">
       <tbody>
         <tr>
-          <th><i class="fa fa-file-text"></i> Title</th>
+          <th><i class="fa fa-file-text"></i> Designation</th>
           <th><i class="fa fa-file-text"></i> Skills</th>
           <th><i class="fa fa-calendar"></i> Experience</th>
           <th><i class="fa fa-check-square-o"></i> Filled?</th>

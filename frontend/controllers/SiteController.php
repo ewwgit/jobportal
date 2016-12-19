@@ -21,9 +21,11 @@ use frontend\models\EmployeeLanguages;
 use frontend\models\EmployeeEducation;
 use frontend\models\EmployerJobpostings;
 use frontend\models\JobpostSearch;
+use frontend\models\EmployeeJobapplied;
 
 use common\models\User;
 use yii\web\UploadedFile;
+use frontend\models\EmployeeJobappied;
 /**
  * Site controller
  */
@@ -84,7 +86,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
     	
-    	
+    	$model = new EmployeeJobapplied();
     	$searchModel = new JobpostSearch();
     	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
     	
@@ -332,5 +334,51 @@ class SiteController extends Controller
     	} else {
     		throw new NotFoundHttpException ( 'The requested page does not exist.' );
     	}
-}
+	}
+	public function actionApply($id)
+	{
+		$query = User::find()->where(['id' => Yii::$app->user->identity->id])->one();
+		$userId = $query['id'];
+		$JobId = $id;
+	
+		$model = new EmployeeJobapplied();
+		$checkJobs = $model->checkQuery($userId, $JobId);
+		$model->jobid = $checkJobs;
+		$UserSelectJob =  $model->jobid;
+	
+	
+		if($UserSelectJob)
+		{
+			Yii::$app->getSession()->setFlash('error', 'Already Applied ');
+			//echo "Already select join";
+			return $this->render('index', [
+					'model' => $this->findModel($id),
+			]);
+		}else{
+	
+			$model = $model->insertQuery($userId, $JobId);
+			return $this->redirect(['index']);
+	
+		}
+	
+	}
+	public function actionApplylist($id)
+	{
+	
+		$model = new EmployeeJobapplied();
+		
+		$searchModel = new JobpostSearch();
+	
+		$query = EmployeeJobapplied::find()->where(['id' => Yii::$app->user->identity->id])->one();
+		$userId = $query['id'];
+		$JobId = $id;
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$model = $model->insertQuery($userId, $JobId,$appliedDate);
+		return $this->render('applylist', [
+				'searchModel' => $searchModel,
+				'dataProvider' => $dataProvider,
+		]);
+	
+	
+	}
 }
