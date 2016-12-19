@@ -530,11 +530,11 @@ input.ico-02 {
 	color: #fff;
 	border: none;
 	cursor: pointer;
-	font-size: 20px;
+	font-size: 16px;
 	box-sizing: border-box;
 	text-align: center;
-	height: 40px;
-	width: 5%;
+	height: 30px;
+	width: auto;
 	line-height: 10px;
 	position: relative;
 }
@@ -1288,7 +1288,7 @@ button.mfp-close, button.mfp-arrow {
 	transition: all 0.2s ease-in-out;
 }
 .mfp-close:before {
-	content: "\f00d ";
+	content: "\f00d Â�";
 	font-family: "FontAwesome";
 	font-size: 16px;
 	top: 0;
@@ -1329,7 +1329,7 @@ button.mfp-close, button.mfp-arrow {
 	background: #808080;
 }
 .mfp-arrow.mfp-arrow-left, .mfp-arrow.mfp-arrow-right {
-	content: "ÄÂ€Â";
+	content: "Ã„Â�Ã‚â‚¬Ã‚Â�";
 	font-family: "FontAwesome";
 	font-size: 16px;
 }
@@ -1337,13 +1337,13 @@ button.mfp-close, button.mfp-arrow {
 	right: 0;
 }
 .mfp-arrow.mfp-arrow-left:before {
-	content: "ÄÂÂ“";
+	content: "Ã„Â�Ã‚Â�Ã‚â€œ";
 	top: 1px;
 	left: -1px;
 	position: relative;
 }
 .mfp-arrow.mfp-arrow-right:before {
-	content: "ÄÂÂ”";
+	content: "Ã„Â�Ã‚Â�Ã‚â€�";
 	top: 1px;
 	left: 1px;
 	position: relative;
@@ -1966,7 +1966,7 @@ img.mfp-img {
 .post-quote .icon:before {
 	font-family: "FontAwesome";
 	font-size: 28px;
-	content: "ï„";
+	content: "Ã¯â€žÂ�";
 	color: #d0d0d0;
 	position: relative;
 	height: 15px;
@@ -3485,11 +3485,11 @@ li .job-spotlight p {
 	top: 21px;
 }
 .tp-rightarrow.default:before {
-	content: "ï”";
+	content: "Ã¯Â�â€�";
 	left: 19px;
 }
 .tp-leftarrow.default:before {
-	content: "ï“";
+	content: "Ã¯Â�â€œ";
 	left: 15px;
 }
 .tp_inner_padding {
@@ -3740,7 +3740,7 @@ html[xmlns] .flexslider .slides {
 	width: 19px;
 	top: 10px;
 	left: 17px;
-	content: "ï¤";
+	content: "Ã¯Â�Â¤";
 	font-family: "FontAwesome";
 	position: relative;
 }
@@ -4242,7 +4242,7 @@ a.post-img:hover:before {
 	position: relative;
 }
 .widget-box .input:before {
-	content: "ï€‚";
+	content: "Ã¯â‚¬â€š";
 	font-size: 18px;
 	color: #a0a0a0;
 	position: absolute;
@@ -4576,7 +4576,7 @@ a.post-img:hover:before {
 	display: block;
 }
 .chosen-container-multi .chosen-choices li.search-choice .search-choice-close:before {
-	content: "\f0d8";
+	content: "\f0d8Â�";
 	font-family: "FontAwesome";
 	font-size: 13px;
 	top: 1px;

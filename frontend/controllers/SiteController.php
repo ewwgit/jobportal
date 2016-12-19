@@ -337,7 +337,7 @@ class SiteController extends Controller
 	}
 	public function actionApply($id)
 	{
-		$query = User::find()->where(['id' => Yii::$app->user->identity->id])->one();
+		$query = User::find()->where(['id' => Yii::$app->user->id])->one();
 		$userId = $query['id'];
 		$JobId = $id;
 	
