@@ -12,6 +12,8 @@ use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ListView;
 
+use kartik\typeahead\TypeaheadBasic;
+use kartik\typeahead\Typeahead;
 ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -71,10 +73,45 @@ use yii\widgets\ListView;
     ]); ?>
   
     <nobr>
-       	<?= $form->field($searchModel, 'company_name')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'), ['prompt'=>Yii::t('yii', 'COMPANYNAME')])  ?>
-        <?= $form->field($searchModel, 'designation')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'), ['prompt'=>Yii::t('yii', 'DESIGNATION')])  ?>
-        <?= $form->field($searchModel, 'Min_Experience')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'), ['prompt'=>Yii::t('yii', 'EXPERIENCE')])  ?>
-        <?= $form->field($searchModel, 'skills')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'), ['prompt'=>Yii::t('yii', 'SKILLS')])  ?>
+       <?php 
+     
+     echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
+    'data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'),
+    'options' => ['placeholder' => 'enter CompanyName ...'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ ?>
+    
+	 <?php 
+     
+     echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
+    'data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'),
+    'options' => ['placeholder' => 'enter Designation ...'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ ?>
+        <?php 
+     
+     echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
+    'data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'),
+    'options' => ['placeholder' => 'enter Experience ...'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ 
+     
+     ?>
+       
+	   <?php 
+     
+     echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
+    'data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'),
+    'options' => ['placeholder' => 'enter skills ...'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ 
+     
+     ?>
+	 
         <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
     </nobr>
          <?php ActiveForm::end(); ?>
