@@ -200,6 +200,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tr>
 											<td>skill's:</td>
 											<td><?php echo isset($employemodel->skills) ? $employemodel->skills : '';?></td>
+											<td></td>
 										</tr>
 										
 									</tbody>

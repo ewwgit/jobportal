@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use yii\base\Model;
 use Yii;
+use yii\helpers\ArrayHelper ;
 
 class EmployerForm extends Model {
 	
@@ -70,6 +71,7 @@ class EmployerForm extends Model {
 	public $dateofbirth;
 	public $profileimage;
 	public $profileimagenew;
+	public $allskills;
 	public function rules() {
 		return [ 
 				[ 
@@ -82,7 +84,7 @@ class EmployerForm extends Model {
 						'address',
 						'dateofbirth',
 						
-// 						'skill',
+ 						'skills',
 // 						'lastused',
 // 						'skillexperience',
 						
@@ -157,7 +159,7 @@ class EmployerForm extends Model {
 								'work_location',
 								//'no_of_openings',
 								'experience',
-							//	'jobtype',
+							    //'jobtype',
 								'job_description',
 								'job_title',
 								'job_type',
@@ -190,4 +192,6 @@ class EmployerForm extends Model {
 				] 
 		];
 	}
+	
+	
 }

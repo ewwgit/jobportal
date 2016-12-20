@@ -64,7 +64,27 @@ class EmpcommonController extends Controller {
 			$model->mobilenumber = $employeData->mobilenumber;
 			$model->address = $employeData->address;
 			$model->profileimagenew = $employeData->profileimage;
-			$model->skills=$employeData->skills;
+			$model->skills = $employeData->skills;
+			$data=$model->skills;
+			if (! Empty ( $data )) {
+				$array = $model->skills;
+			
+				$array_skills = explode( ",",$array );
+			
+			
+			$allsary = array();
+			$valuary = array();
+			foreach ($array_skills as $skillnew)
+			{
+				$allsary[$skillnew] = $skillnew;
+				$valuary[] = $skillnew;
+				
+			}
+				$model->allskills = $allsary;
+				$model->skills = $valuary;
+			
+			}
+	
 		}
 		if (! (empty ( $userData ))) {
 			$model->username = $userData->username;
@@ -463,6 +483,7 @@ class EmpcommonController extends Controller {
 				'searchModel' => $searchModel
 		]);
 	}
+	
 	protected function findModel($id) {
 		if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
 			return $model;

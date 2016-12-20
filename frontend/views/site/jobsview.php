@@ -17,16 +17,13 @@ use frontend\models\EmployeeJobapplied;
 				      <?php if($memberJoin ==0){?>
 				     <td class="centered">
 				      
-				    
 							      <?= Html::a(' Apply this Job', ['apply','id'=>$model->id], [
 											          'data' => [
-											            'confirm' => 'Are you sure you want to apply this job?',
+											            'confirm' => 'Are you sure you want to apply this job? then login?',
 											            'method' => 'post',
+											          		
 											          ],
-											 ])
-							        
-							        
-							        ?>
+											 ])?>
 							 </td>	
 							 <?php }
 							 else {

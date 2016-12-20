@@ -53,7 +53,7 @@ class EmployerSkills extends \yii\db\ActiveRecord {
 // 				],
 				[ 
 						[ 
-								'skill',
+								'skills',
 // 								'lastused',
 // 								'skillexperience',
 								'userid' 

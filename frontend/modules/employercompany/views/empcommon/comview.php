@@ -5,6 +5,8 @@ use kartik\date\DatePicker;
 use kartik\file\FileInput;
 
 use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
+use frontend\models\Employer;
 
 $this->title = 'Employer Profile';
 
@@ -211,15 +213,19 @@ select {
 									<h4>Add Your Skills Details</h4>
 								</div>
 								<?php 
-
+						
                            echo  $form->field($model, 'skills')->widget(Select2::classname(), [
-                                     // 'data' => $data,
-                                        'options' => ['autofocus' => true,'placeholder' => 'Select skills...', 'multiple' => true],
+                           		                 
+                           		       'data'=>$model->allskills,
+                           		        'options' => ['placeholder' => 'Select a color ...', 'multiple' => true],
                                         'pluginOptions' => [
                                         'tags' => true,
-                                  //      'tokenSeparators' => [',', ' '],
-                                       // 'maximumInputLength' => 10
-                                             ],])->label('Skills');?>
+                                        'allowClear' => true,
+                                        'tokenSeparators' => [','],
+                                      //'maximumInputLength' => 10
+                                             ],
+                           		      //'value' => ['valu1','valu2']
+                           ])->label('Skills');?>
 							</div>
 						</div>
 						<div class="col-md-6">

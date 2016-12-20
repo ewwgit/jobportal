@@ -14,7 +14,8 @@ use yii\db\ActiveRecord;
  * @property string $email
  * @property string $password
  */
-class Employer extends \yii\db\ActiveRecord {
+class Employer extends \yii\db\ActiveRecord 
+{
 	/**
 	 * @inheritdoc
 	 */
@@ -22,6 +23,7 @@ class Employer extends \yii\db\ActiveRecord {
 	public $password;
 	public $username;
 	public $profileimagenew;
+	
 	public static function tableName() {
 		return 'employer';
 	}
@@ -43,6 +45,7 @@ class Employer extends \yii\db\ActiveRecord {
 								'dateofbirth',
 								'designation',
 								'profileimage',
+								'skills'
 						],
 						'required','on' => 'signup' 
 				],
@@ -85,6 +88,7 @@ class Employer extends \yii\db\ActiveRecord {
 	/**
 	 * @inheritdoc
 	 */
+	
 	public function attributeLabels() {
 		return [ 
 				'id' => 'ID',
