@@ -39,7 +39,8 @@ AppAsset::register($this);
         
         <!-- Menu -->
         <nav id="navigation" class="menu">
-         <?php  if (Yii::$app->user->isGuest) { ?> 
+         
+            <?php  if ((Yii::$app->user->isGuest)|| (Yii::$app->emplyoee->emplyoeeid !=2))  {?>
           <ul id="responsive">
          
             <li><a href="<?php echo Yii::$app->getHomeUrl(); ?>">Home</a> </li>
@@ -78,6 +79,8 @@ AppAsset::register($this);
             
           </ul>
           <ul class="float-right">
+       
+      
             <li><a href="<?= Url::to(['/site/signup'])?>" title="signup"><i class="fa fa-user"></i> Sign Up</a></li>
             <li><a href="<?= Url::to(['/site/login'])?>" title="login"><i class="fa fa-lock"></i> Log In</a></li>
             <li><a href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-user"></i>Employer Zone</a></li>
