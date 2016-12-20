@@ -11,7 +11,7 @@ use frontend\models\Employerjobpostings;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ListView;
-
+use kartik\growl\Growl;
 use kartik\typeahead\TypeaheadBasic;
 use kartik\typeahead\Typeahead;
 ?>
@@ -332,6 +332,51 @@ use kartik\typeahead\Typeahead;
       </div>
     </div>
   </div>
-  
-  
+  <?php $applyjoburl = Yii::$app->urlManager->createUrl(['site/applyjobajax'])?>
+ <script src="scripts/jquery.js" type="text/javascript"></script> 
+<script>
+$('.apply_job').on('click', function(){
+	
+    var jbid = $(this).attr('apljobid');
+    //console.log(jbid);
+    $.ajax({
+      url: '<?php echo $applyjoburl;?>',
+      type:'GET',
+      dataType:'json',
+      data:{jbid : jbid},
+      success : function(data)
+      {
+           if(data.status == 0)
+           {
+                console.log('fail');
+           }
+           if(data.status == 1)
+           {
+                console.log('success');
+               //$('.applied').show();
+           }
+      },
+   });
+});
+</script>
+<?php foreach (Yii::$app->session->getAllFlashes() as $message):; ?>
+            <?php
+            //print_r($message);exit();
+            echo Growl::widget([
+                'type' =>  $message['type'],
+                'title' =>  Html::encode($message['title']),
+                'icon' =>  $message['icon'],
+                'body' =>  Html::encode($message['message']) ,
+                'showSeparator' => true,
+                'delay' => 1, //This delay is how long before the message shows
+                'pluginOptions' => [
+                    'delay' => $message['duration'], //This delay is how long the message shows for
+                    'placement' => [
+                        'from' => $message['positonY'],
+                        'align' => $message['positonX'],
+                    ]
+                ]
+            ]);
+            ?>
+        <?php endforeach; ?>
   

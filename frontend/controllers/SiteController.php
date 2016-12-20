@@ -430,4 +430,40 @@ class SiteController extends Controller
 	
 	
 	}
+	public function actionApplyjobajax()
+	{
+		$result = array();
+		$query = User::find()->where(['id' => Yii::$app->user->id])->one();
+		$userId = Yii::$app->user->id;
+		$JobId = $_GET['jbid'];
+	
+		$model = new EmployeeJobapplied();
+		$checkJobs = $model->checkQuery($userId, $JobId);
+		$model->jobid = $checkJobs;
+		$UserSelectJob =  $model->jobid;
+	
+	
+		if($checkJobs = 1)
+		{
+			$model = $model->insertQuery($userId, $JobId);
+			$result['status'] = 1;
+			//$result['message'] = 'success';
+		}else{
+	
+			$result['status'] = 0;
+			$result['message'] = 'Already Applied';
+		}
+		Yii::$app->getSession()->setFlash('success', [
+					'type' => 'success',
+					'duration' => 3000,
+					'icon' => 'fa fa-users',
+					'message' => 'Successfully Applied.',
+					'title' => 'Success',
+					'positonY' => 'bottom',
+					'positonX' => 'right',
+						
+			]);
+		return $this->redirect(['index']);
+	
+	}
 }

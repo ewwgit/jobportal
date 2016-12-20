@@ -12,23 +12,21 @@ use frontend\models\EmployeeJobapplied;
 	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered">-</td>
 	<td class="title"><?= $model['startDate'];?></td>
-	<?php $userId = \Yii::$app->emplyoee->emplyoeeid;
-				      $memberJoin = EmployeeJobapplied::getUsersjoined($model->id,$userId);?>
-				      <?php if($memberJoin ==0){?>
-				     <td class="centered">
-				      
-							      <?= Html::a(' Apply this Job', ['apply','id'=>$model->id], [
-											          'data' => [
-											            'confirm' => 'Are you sure you want to apply this job? then login?',
-											            'method' => 'post',
-											          		
-											          ],
-											 ])?>
-							 </td>	
-							 <?php }
-							 else {
-							 ?>	
-							   <td class="centered"> Applied</td>
-							 <?php }?>
+	<?php
+	$userId = \Yii::$app->user->id;
+	$memberJoin = EmployeeJobapplied::getUsersjoined ( $model->id, $userId );
+	?>
+	<?php if($memberJoin ==0){?>
+	<td class="centered">
+	<button class="btn btn-primary apply_job" apljobid="<?php echo $model->id;?>">Apply this Job</button>
+	</td>
+	<?php
+	}
+	else {
+		?>
+	<td class="centered">
+	<button class="btn btn-primary applied">Applied</button>
+	</td>
+	<?php }?>
 </tr>	
 	
