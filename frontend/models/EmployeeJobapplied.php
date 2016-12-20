@@ -67,10 +67,11 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     	$this->userid = $userId;
     	$this->jobid = $JobId;
     	$allJobsUserobj = EmployeeJobapplied::find()->select(['jobid'])
-    	->where(['userid'=>$this->userid ,'jobid'=>$this->jobid])->all();
+    	->where(['userid'=>$this->userid ,'jobid'=>$this->jobid])->count();
     	//$data = ArrayHelper::toArray($allJobsUserobj, ['jobid','userid']);
-    	$JobsUserData = @$data[0]['jobid'];
-    	return $JobsUserData;
+    	/* echo $allJobsUserobj;exit();
+    	$JobsUserData = @$data[0]['jobid']; */
+    	return $allJobsUserobj;
     
     
     
@@ -93,7 +94,7 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     			 
     			// 'imageFile' => $filePath
     			)->execute ();
-    			Yii::$app->getSession()->setFlash('success', 'You are successfully Applied.');
+    			//Yii::$app->getSession()->setFlash('success', 'You are successfully Applied.');
     			return $data;
     
     }
