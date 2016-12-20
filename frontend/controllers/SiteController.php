@@ -135,8 +135,7 @@ class SiteController extends Controller
 				\Yii::$app->session->set('user.emplyoeecreated_at',Yii::$app->user->identity->created_at);
 				\Yii::$app->session->set('user.emplyoeeupdated_at',Yii::$app->user->identity->updated_at);
 				\Yii::$app->session->set('user.emplyoeeroleid',Yii::$app->user->identity->roleid);
-				\Yii::$app->session->set('user.emplyoeecreatedDate',Yii::$app->user->identity->createdDate);
-				\Yii::$app->session->set('user.emplyoeemodifiedDate',Yii::$app->user->identity->modifiedDate);
+				
 				
 				$session = Yii::$app->session;
 				$prevousurlgetinfo = $session->get('previousredirecturl');

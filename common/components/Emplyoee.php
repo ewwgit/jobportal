@@ -15,8 +15,7 @@ class Emplyoee extends Component {
     public $emplyoeecreated_at;
     public $emplyoeeupdated_at;   
     public $emplyoeeroleid;
-    public $emplyoeecreatedDate;
-    public $emplyoeemodifiedDate;
+   
 	public function init()
 	{
 	$this->emplyoeeid = \Yii::$app->session->get('user.emplyoeeid');
@@ -29,8 +28,7 @@ class Emplyoee extends Component {
     $this->emplyoeecreated_at= \Yii::$app->session->get('user.emplyoeecreated_at');
     $this->emplyoeeupdated_at= \Yii::$app->session->get('user.emplyoeeupdated_at');    
     $this->emplyoeeroleid= \Yii::$app->session->get('user.emplyoeeroleid');
-    $this->emplyoeecreatedDate= \Yii::$app->session->get('user.emplyoeecreatedDate');
-    $this->emplyoeemodifiedDate= \Yii::$app->session->get('user.emplyoeemodifiedDate');
+    
 		
 	}
 
