@@ -156,7 +156,17 @@ class EmpsiteController extends Controller {
 	public function actionLogout() {
 		$this->layout = '@app/views/layouts/employermain';
 		
-		Yii::$app->user->logout ();
+		//Yii::$app->user->logout ();
+		\Yii::$app->session->remove('user.employerid');
+		\Yii::$app->session->remove('user.employerusername');
+		\Yii::$app->session->remove('user.employerpassword_hash');
+		\Yii::$app->session->remove('user.employerpassword_reset_token');
+		\Yii::$app->session->remove('user.employeremail');
+		\Yii::$app->session->remove('user.employerauth_key');
+		\Yii::$app->session->remove('user.employerstatus');
+		\Yii::$app->session->remove('user.employercreated_at');
+		\Yii::$app->session->remove('user.employerupdated_at');
+		\Yii::$app->session->remove('user.employerroleid');
 		
 		return $this->goHome ();
 	}
