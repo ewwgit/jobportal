@@ -12,7 +12,7 @@ use frontend\models\EmployeeJobapplied;
 	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered">-</td>
 	<td class="title"><?= $model['startDate'];?></td>
-	<?php $userId = \Yii::$app->user->id;
+	<?php $userId = \Yii::$app->emplyoee->emplyoeeid;
 				      $memberJoin = EmployeeJobapplied::getUsersjoined($model->id,$userId);?>
 				      <?php if($memberJoin ==0){?>
 				     <td class="centered">

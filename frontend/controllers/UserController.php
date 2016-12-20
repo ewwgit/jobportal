@@ -23,11 +23,11 @@ class UserController extends Controller
 	
 		//$model = $model = User::find()->all();
 		//print_r($model);
-		$umodel = User::find ()->Where (['id' => Yii::$app->user->id])->one();
+		$umodel = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($model);
 	
 	
-		$empmodel = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$empmodel = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($empmodel);
 		
 	
@@ -40,11 +40,11 @@ class UserController extends Controller
 	
 		//$model = $model = User::find()->all();
 		//print_r($model);
-		$umodel = User::find ()->Where (['id' => Yii::$app->user->id])->one();
+		$umodel = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($model);
 	
 	
-		$empmodel = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$empmodel = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 		
 		
 		
@@ -102,7 +102,7 @@ class UserController extends Controller
 		if ($model->load(Yii::$app->request->post())) {
 			
 			
-			$userid = Yii::$app->user->id ;
+			$userid = Yii::$app->emplyoee->emplyoeeid ;
 			$model->userid=$userid;
 			$model->save();
 			return $this->goHome();
@@ -131,11 +131,11 @@ class UserController extends Controller
 	
 		//$model = $model = User::find()->all();
 		//print_r($model);
-		$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
+		$model = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($model);
 	
 	
-		$edumodel = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$edumodel = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($edumodel);
 	
 	
@@ -146,7 +146,7 @@ class UserController extends Controller
 	public function actionEduupdate()
 	{
 	
-		$edumodel = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$edumodel = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 
 		$model = new EmployeeEducation();
 		$model->highdegree = $edumodel->highdegree;
@@ -199,7 +199,7 @@ class UserController extends Controller
 		if ($model->load(Yii::$app->request->post())) {
 				
 				
-			$userid = Yii::$app->user->id ;
+			$userid = Yii::$app->emplyoee->emplyoeeid ;
 			$model->userid=$userid;
 			$model->save();
 			return $this->goHome();
@@ -228,11 +228,11 @@ class UserController extends Controller
 	
 		//$model = $model = User::find()->all();
 		//print_r($model);
-		$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
+		$model = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($model);
 	
 	
-		$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($edumodel);
 	
 	
@@ -246,11 +246,11 @@ class UserController extends Controller
 	
 		//$model = $model = User::find()->all();
 		//print_r($model);
-		//$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
+		//$model = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($model);
 	
 	
-		$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 	
 		$model = new EmployeePreferences();
 		$model->functionalarea = $jobmodel->functionalarea;
@@ -309,7 +309,7 @@ class UserController extends Controller
 		if ($model->load(Yii::$app->request->post())) {
 				
 				
-			$userid = Yii::$app->user->id ;
+			$userid = Yii::$app->emplyoee->emplyoeeid ;
 			$model->userid=$userid;
 			$model->save();
 			return $this->goHome();
@@ -339,11 +339,11 @@ public function actionSkillprofile()
 
 	//$model = $model = User::find()->all();
 	//print_r($model);
-	$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
+	$model = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 	//print_r($model);
 
 
-	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 	//print_r($edumodel);
 
 
@@ -357,11 +357,11 @@ public function actionSkillupdate()
 
 	//$model = $model = User::find()->all();
 	//print_r($model);
-	//$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
+	//$model = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 	//print_r($model);
 
 
-	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 
 	$model = new EmployeeSkills();
 	$model->skillname = $skillmodel->skillname;

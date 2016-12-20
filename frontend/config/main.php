@@ -28,9 +28,22 @@ return [
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
         'session' => [
-            // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-frontend',
+            'class' => 'yii\web\Session',
+            'cookieParams' => ['httponly' => true, 'lifetime' => 3600 * 24 * 30],
+            'timeout' => 3600 * 24 * 30,
+            'useCookies' => true,
+			'name' => '_frontendSessionId', // unique for frontend
+			'savePath' => __DIR__ . '/../runtime', // a temporary folder on frontend
         ],
+				'emplyoee' => [
+						'class' => 'common\components\Emplyoee',
+						
+				],
+				'employer' => [
+						'class' => 'common\components\Employer',
+				
+				],
+				
 //     		'user' => [
 //     				'identityClass' => 'common\models\User',
 //     				'enableAutoLogin' => true ,

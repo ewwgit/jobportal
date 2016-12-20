@@ -86,7 +86,7 @@ AppAsset::register($this);
             
  <?php }else { ?>
                <ul id="responsive" class="float-right">
-               <li><a href="<?= Url::to(['site/viewprofile', 'userid' => Yii::$app->user->id ])?>" title="viewprofile">EmployeeProfile</a></li>
+               <li><a href="<?= Url::to(['site/viewprofile', 'userid' => Yii::$app->emplyoee->emplyoeeid ])?>" title="viewprofile">EmployeeProfile</a></li>
                  <li><a href="<?= Url::to(['/site/logout'])?>"
             data-method="post" title="">Logout</a></li>
             </ul>

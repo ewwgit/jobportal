@@ -107,14 +107,56 @@ class SiteController extends Controller
     {
     	
     	$this->layout= '@app/views/layouts/innerpagemain';
-    	
+    	if ((! \Yii::$app->user->isGuest) && (Yii::$app->emplyoee->emplyoeeroleid ==3)) {
+    		return $this->goHome ();
+    	}
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        if ($model->user->roleid == 2) {
+				$model->addError('username','You dont have emplyoee credentials');
+				
+				return $this->render ( 'login', [ 
+					'model' => $model 
+			] );
+			} 
+			else if ($model->user->roleid == 3) {
+				\Yii::$app->session->set('user.emplyoeeid',Yii::$app->user->identity->id);
+				\Yii::$app->session->set('user.emplyoeeusername',Yii::$app->user->identity->username);
+				\Yii::$app->session->set('user.emplyoeepassword_hash',Yii::$app->user->identity->password_hash);
+				\Yii::$app->session->set('user.emplyoeepassword_reset_token',Yii::$app->user->identity->password_reset_token);
+				\Yii::$app->session->set('user.emplyoeeemail',Yii::$app->user->identity->email);
+				\Yii::$app->session->set('user.emplyoeeauth_key',Yii::$app->user->identity->auth_key);
+				\Yii::$app->session->set('user.emplyoeeOtpNumber',Yii::$app->user->identity->OtpNumber);
+				\Yii::$app->session->set('user.emplyoeestatus',Yii::$app->user->identity->status);
+				\Yii::$app->session->set('user.emplyoeecreated_at',Yii::$app->user->identity->created_at);
+				\Yii::$app->session->set('user.emplyoeeupdated_at',Yii::$app->user->identity->updated_at);
+				\Yii::$app->session->set('user.emplyoeepassword',Yii::$app->user->identity->password);
+				\Yii::$app->session->set('user.emplyoeeroleId',Yii::$app->user->identity->roleId);
+				\Yii::$app->session->set('user.emplyoeecreatedDate',Yii::$app->user->identity->createdDate);
+				\Yii::$app->session->set('user.emplyoeemodifiedDate',Yii::$app->user->identity->modifiedDate);
+				
+				$session = Yii::$app->session;
+				$prevousurlgetinfo = $session->get('previousredirecturl');
+				//print_r($prevousurlgetinfo);exit();
+				if ($prevousurlgetinfo != '')
+				{
+					unset($session['previousredirecturl']);
+					return $this->redirect($prevousurlgetinfo);
+				}
+				else {
+					return $this->goHome ();
+				}
+				
+			}
+			else {
+				
+				return $this->goBack ();
+			}
+            
         } else {
             return $this->render('login', [
                 'model' => $model,
@@ -251,26 +293,26 @@ class SiteController extends Controller
     {
     	$this->layout= '@app/views/layouts/innerpagemain';
     
-    	$umodel = User::find ()->Where (['id' => Yii::$app->user->id])->one();
+    	$umodel = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
     
-    	$empmodel = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+    	$empmodel = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
     	
-    	$edumodel = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+    	$edumodel = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
     	//print_r($edumodel);
     	//exit();
     	
     		
-    	$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+    	$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
     		
-    	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->all();
-    	//$skillmodel = EmployeeSkills::find()->select(['skillname', 'userid' => Yii::$app->user->id])->distinct();
+    	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->all();
+    	//$skillmodel = EmployeeSkills::find()->select(['skillname', 'userid' => Yii::$app->emplyoee->emplyoeeid])->distinct();
     	//print_r($skillmodel->skillname);exit();
     	/* $skillname=  count($skillmodel->skillname);
     	print_r($skillname);exit(); */
-    	$projectmodel =   EmployeeProjects :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-    	$employermodel =   EmployeeEmployer :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+    	$projectmodel =   EmployeeProjects :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
+    	$employermodel =   EmployeeEmployer :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
     	
-    	$languagemodel =   EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->user->id])->all();
+    	$languagemodel =   EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->all();
     
     	return $this->render('/site/viewprofile', ['empmodel' => $empmodel,'umodel' => $umodel,'edumodel' => $edumodel, 'jobmodel' => $jobmodel, 'skillmodel' => $skillmodel,
     			'projectmodel' => $projectmodel, 'employermodel' => $employermodel, 'languagemodel' => $languagemodel]);
@@ -337,7 +379,7 @@ class SiteController extends Controller
 	}
 	public function actionApply($id)
 	{
-		$query = User::find()->where(['id' => Yii::$app->user->id])->one();
+		$query = User::find()->where(['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 		$userId = $query['id'];
 		$JobId = $id;
 	
@@ -369,7 +411,7 @@ class SiteController extends Controller
 		
 		$searchModel = new JobpostSearch();
 	
-		$query = EmployeeJobapplied::find()->where(['id' => Yii::$app->user->identity->id])->one();
+		$query = EmployeeJobapplied::find()->where(['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 		$userId = $query['id'];
 		$JobId = $id;
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);

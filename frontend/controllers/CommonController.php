@@ -51,22 +51,22 @@ class CommonController extends Controller
 		/*getting all table values from database*/
 		
 		
-		$user = User::find ()->Where (['id' => Yii::$app->user->id])->one();
-		$employee = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$user = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
+		$employee = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($employee);exit();
-		$jobpreference = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$jobpreference = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($jobpreference);exit();
-		$education = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		$project = EmployeeProjects :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		$skill = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->user->id])->all();
+		$education = EmployeeEducation :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
+		$project = EmployeeProjects :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
+		$skill = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->all();
 		$model->allSkills = $skill;
 		//print_r($skill);exit();
 		
 	    // print_r($skill->skillname);exit();
-		$employer = EmployeeEmployer :: find ()->Where (['userid' => Yii::$app->user->id])->one();
-		$language = EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->user->id])->all();
+		$employer = EmployeeEmployer :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
+		$language = EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->all();
 		$model->alllanguages = $language;
-		$resume = EmployeeResume :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$resume = EmployeeResume :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 		
 		
 		/* assign values from database to fields*/
@@ -259,7 +259,7 @@ class CommonController extends Controller
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$empmodel->profileimage = $profileimage;
 				}
-				$empmodel->userid = Yii::$app->user->id ;
+				$empmodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 				//print_r($empmodel);exit();
 				$empmodel-> save();
 				//print_r($empmodel->errors);exit();
@@ -277,7 +277,7 @@ class CommonController extends Controller
 				$education->university = $model->university;
 				$education->collegename = $model->collegename;
 				$education->passingyear = $model->passingyear;
-				$education ->userid = Yii::$app->user->id ;
+				$education ->userid = Yii::$app->emplyoee->emplyoeeid ;
 				$education -> save();
 				
 			}
@@ -288,7 +288,7 @@ class CommonController extends Controller
 				$edumodel->university = $model->university;
 				$edumodel->collegename = $model->collegename;
 				$edumodel->passingyear = $model->passingyear;
-				$edumodel ->userid = Yii::$app->user->id ;
+				$edumodel ->userid = Yii::$app->emplyoee->emplyoeeid ;
 				$edumodel -> save();
 					
 			}
@@ -304,7 +304,7 @@ class CommonController extends Controller
 				$jobpreference->experience = $model->experience;
 				$jobpreference->jobtype = $model->jobtype;
 				$jobpreference->expectedsalary = $model->expectedsalary;
-				$jobpreference ->userid = Yii::$app->user->id ;
+				$jobpreference ->userid = Yii::$app->emplyoee->emplyoeeid ;
 				$jobpreference -> save();
 			
 			}
@@ -316,7 +316,7 @@ class CommonController extends Controller
 				$jobmodel->experience = $model->experience;
 				$jobmodel->jobtype = $model->jobtype;
 				$jobmodel->expectedsalary = $model->expectedsalary;
-				$jobmodel -> userid = Yii::$app->user->id ;
+				$jobmodel -> userid = Yii::$app->emplyoee->emplyoeeid ;
 				$jobmodel -> save();
 			}
 			
@@ -341,7 +341,7 @@ class CommonController extends Controller
 				$project->prjroledescription = $model->roledescription;
 				$project->teamsize = $model->teamsize;
 				$project->prjskills = $model->skillsused;
-				$project ->userid = Yii::$app->user->id ;
+				$project ->userid = Yii::$app->emplyoee->emplyoeeid ;
 				$project -> save();
 					
 			}
@@ -359,7 +359,7 @@ class CommonController extends Controller
 				$projectmodel->prjroledescription = $model->roledescription;
 				$projectmodel->teamsize = $model->teamsize;
 				$projectmodel->prjskills = $model->skillsused;
-				$projectmodel -> userid = Yii::$app->user->id ;
+				$projectmodel -> userid = Yii::$app->emplyoee->emplyoeeid ;
 				$projectmodel -> save();
 			}
 			
@@ -370,7 +370,7 @@ class CommonController extends Controller
 		   if(!(empty($skill)))
 			{
 				
-			 EmployeeSkills::deleteAll( ['userid' => Yii::$app->user->id]);
+			 EmployeeSkills::deleteAll( ['userid' => Yii::$app->emplyoee->emplyoeeid]);
 			 $skillname= $model->skillname;
 			    //print_r($model->skillname);exit();
 			    
@@ -393,7 +393,7 @@ class CommonController extends Controller
 							$skillmodelnew->skillname = $skillnameary[$i];
 							$skillmodelnew->lastused = $lastusedary[$i];
 							$skillmodelnew->skillexperience = $skillexperienceary[$i];
-							$skillmodelnew->userid = Yii::$app->user->id ;
+							$skillmodelnew->userid = Yii::$app->emplyoee->emplyoeeid ;
 							$skillmodelnew->save();
 							}
 							
@@ -430,7 +430,7 @@ class CommonController extends Controller
 								$skillmodelnew->skillname = $skillnameary[$i];
 								$skillmodelnew->lastused = $lastusedary[$i];
 								$skillmodelnew->skillexperience = $skillexperienceary[$i];
-								$skillmodelnew->userid = Yii::$app->user->id ;
+								$skillmodelnew->userid = Yii::$app->emplyoee->emplyoeeid ;
 								$skillmodelnew->save();
 							}
 								
@@ -454,14 +454,14 @@ class CommonController extends Controller
 					$employer->employername = $model->employername;
 					$employer->employertype = $model->employertype;
 					$employer->designation = $model->designation;
-					$employer->userid = Yii::$app->user->id ;
+					$employer->userid = Yii::$app->emplyoee->emplyoeeid ;
 					$employer-> save();
 				}
 				else {
 					$employermodel->employername = $model->employername;
 					$employermodel->employertype = $model->employertype;
 					$employermodel->designation = $model->designation;
-					$employermodel->userid = Yii::$app->user->id ;
+					$employermodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 					$employermodel-> save();
 				}
 				
@@ -472,7 +472,7 @@ class CommonController extends Controller
 				if(!(empty($language)))
 				{
 					
-			 EmployeeLanguages::deleteAll( ['userid' => Yii::$app->user->id]);
+			 EmployeeLanguages::deleteAll( ['userid' => Yii::$app->emplyoee->emplyoeeid]);
 			 $language= $model->language;
 			    //print_r($model->skillname);exit();
 			    
@@ -497,7 +497,7 @@ class CommonController extends Controller
 							$languagemodelnew->language = $languageary[$i];
 							$languagemodelnew->proficiencylevel = $proficiencyary[$i];
 							$languagemodelnew->ability =$abilitystring;
-							$languagemodelnew->userid = Yii::$app->user->id ;
+							$languagemodelnew->userid = Yii::$app->emplyoee->emplyoeeid ;
 							$languagemodelnew->save();
 							}
 							
@@ -537,7 +537,7 @@ class CommonController extends Controller
 							$languagemodelnew->language = $languageary[$i];
 							$languagemodelnew->proficiencylevel = $proficiencyary[$i];
 							$languagemodelnew->ability =$abilitystring;
-							$languagemodelnew->userid = Yii::$app->user->id ;
+							$languagemodelnew->userid = Yii::$app->emplyoee->emplyoeeid ;
 							$languagemodelnew->save();
 							//print_r($languagemodelnew->errors);exit();
 							}
@@ -574,7 +574,7 @@ class CommonController extends Controller
 				    }
 				 $res = '/frontend/web/uploadresume/'.$resumeName;
 				$resume->resume = $res;
-				$resume->userid = Yii::$app->user->id;
+				$resume->userid = Yii::$app->emplyoee->emplyoeeid;
 				$resume-> save();
 					}
 				
@@ -601,7 +601,7 @@ class CommonController extends Controller
 				}
 				$res = '/frontend/web/uploadresume/'.$resumeName;
 				$resumemodel->resume = $res; 
-				$resumemodel->userid = Yii::$app->user->id ;
+				$resumemodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 				$resumemodel-> save();
 					}
 				}
@@ -630,7 +630,7 @@ class CommonController extends Controller
 		
 		//	print_r($skillmodel->errors);exit();
 		
-			return Yii::$app->getResponse()->redirect(['site/viewprofile', 'userid' => Yii::$app->user->id ] );
+			return Yii::$app->getResponse()->redirect(['site/viewprofile', 'userid' => Yii::$app->emplyoee->emplyoeeid ] );
 			
 		}
 		return $this->render('employee', [
