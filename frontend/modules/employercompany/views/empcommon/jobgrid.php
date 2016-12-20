@@ -9,6 +9,8 @@ use yii\widgets\ListView;
 use frontend\models\JobpostSearch;
 
 use yii\bootstrap\ActiveForm;
+use kartik\typeahead\TypeaheadBasic;
+use kartik\typeahead\Typeahead;
 
 $this->title = 'JOB Posting List';
 $this->params ['breadcrumbs'] [] = $this->title;
@@ -19,9 +21,8 @@ $this->params ['breadcrumbs'] [] = $this->title;
 <section class="invoice">
 
 		<p>
-        <?= Html::a('Create postings', ['create'], ['class' => 'button'])?>
-      
-        
+        <?= Html::a('Create postings', ['create'], ['class' => 'button'])?></p>
+     <div>
   <?php $form = ActiveForm::begin([
         'action' => Url::to(['jobpostingslist']),
         'method' => 'get',
@@ -31,16 +32,26 @@ $this->params ['breadcrumbs'] [] = $this->title;
         ],
     ]); ?>
   
-    <nobr>
-       <?= $form->field($searchModel, 'company_name')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'), ['prompt'=>Yii::t('yii', 'COMPANYNAME')])  ?>
-        <?= $form->field($searchModel, 'designation')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'), ['prompt'=>Yii::t('yii', 'DESIGNATION')])  ?>
-        <?= $form->field($searchModel, 'Min_Experience')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'), ['prompt'=>Yii::t('yii', 'EXPERIENCE')])  ?>
-        <?= $form->field($searchModel, 'skills')->dropDownList(ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'), ['prompt'=>Yii::t('yii', 'SKILLS')])  ?>
-          <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
-    </nobr>
+    <div>
+  
+    <?php  echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(),
+     		[ 'data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'),'options' => ['placeholder' => 'Search Company Name'],'pluginOptions' => ['highlight'=>true],]);?>
+    
+     <?php  echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), 
+     		['data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'),'options' => ['placeholder' => 'Search Designation '],'pluginOptions' => ['highlight'=>true],]);?>
+     
+    <?php   echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), 
+     		['data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'),'options' => ['placeholder' => 'Search Experience'],'pluginOptions' => ['highlight'=>true],]); ?>
+    
+    <?php    echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), 
+     		['data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'),'options' => ['placeholder' => 'Search Skills'],'pluginOptions' => ['highlight'=>true],]);?>
+     
+      <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
+    
          <?php ActiveForm::end(); ?>
+         </div>
  
-    </p> 
+    </div> 
 	</section>
 
 	<div class="sixteen columns">
