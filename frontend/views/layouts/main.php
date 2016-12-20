@@ -40,7 +40,7 @@ AppAsset::register($this);
         <!-- Menu -->
         <nav id="navigation" class="menu">
          
-            <?php  if ((Yii::$app->user->isGuest)|| (Yii::$app->emplyoee->emplyoeeid !=2))  {?>
+            <?php  if ((Yii::$app->user->isGuest)|| (Yii::$app->emplyoee->emplyoeeid !=3))  {?>
           <ul id="responsive">
          
             <li><a href="<?php echo Yii::$app->getHomeUrl(); ?>">Home</a> </li>
