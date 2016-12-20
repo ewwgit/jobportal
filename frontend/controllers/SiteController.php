@@ -108,8 +108,14 @@ class SiteController extends Controller
     	
     	$this->layout= '@app/views/layouts/innerpagemain';
     	if ((! \Yii::$app->user->isGuest) && (Yii::$app->emplyoee->emplyoeeroleid ==3)) {
-    		return $this->goHome ();
+    		//return $this->goHome ();
+    		return Yii::$app->getResponse ()->redirect ( [
+    				'site/viewprofile',
+    	
+    				'userid' =>Yii::$app->emplyoee->emplyoeeid
+    				] );
     	}
+    	
         
 
         $model = new LoginForm();
