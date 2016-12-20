@@ -24,11 +24,11 @@ class CompanyController extends Controller
 		$model = new EmployerSignup ();
 	
 		$userData = User::find ()->where ( [ 
-				'id' => Yii::$app->user->id 
+				'id' => Yii::$app->employer->employerid 
 		] )->one ();
-		print_r(Yii::$app->user->id );
+		print_r(Yii::$app->employer->employerid );
 		$employeData = Employer::find ()->where ( [
-				'employerid' => Yii::$app->user->id
+				'employerid' => Yii::$app->employer->employerid
 		] )->one ();
 		$model->username = $userData ['username'];
 		$model->email = $userData ['email'];
@@ -52,10 +52,10 @@ class CompanyController extends Controller
 		$model = new EmployerSignup ();
 		$employer = new Employer ();
 		$userData = User::find ()->where ( [
-				'id' => Yii::$app->user->id
+				'id' => Yii::$app->employer->employerid
 		] )->one ();
 		$employeData = Employer::find ()->where ( [
-				'employerid' => Yii::$app->user->id
+				'employerid' => Yii::$app->employer->employerid
 		] )->one ();
 		$model->username = $userData ['username'];
 		$model->email = $userData ['email'];
@@ -68,10 +68,10 @@ class CompanyController extends Controller
 	if ($model->load ( Yii::$app->request->post () )) 
 				{
 			$employeuserData = User::find ()->where ( [
-					'id' => Yii::$app->user->id
+					'id' => Yii::$app->employer->employerid
 			] )->one ();
 			$employeupdateData = Employer::find ()->where ( [
-					'employerid' => Yii::$app->user->id
+					'employerid' => Yii::$app->employer->employerid
 			] )->one ();
 			$employeuserData ['username'] = $model->username;
 			$employeuserData ['email'] = $model->email;
@@ -102,7 +102,7 @@ class CompanyController extends Controller
 	{
 		$model = new EmployerCompany();
 		if ($model->load(Yii::$app->request->post())) {
-			$userid = Yii::$app->user->id ;
+			$userid = Yii::$app->employer->employerid ;
 			$model->userid=$userid;
 			$model->save();
 			//return $this->goHome();
@@ -117,15 +117,15 @@ class CompanyController extends Controller
 	}
 	public function actionEmpcompanyview()
 	{
-		$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
-		$jobmodel = EmployerCompany :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$model = User::find ()->Where (['id' => Yii::$app->employer->employerid])->one();
+		$jobmodel = EmployerCompany :: find ()->Where (['userid' => Yii::$app->employer->employerid])->one();
 		return $this->render('/company/empcompanyview', ['jobmodel' => $jobmodel,]);
 	}
 		public function actionEmployement()
 	{ 
 		$model = new Employement();
 		if ($model->load(Yii::$app->request->post())) {
-			$userid = Yii::$app->user->id ;
+			$userid = Yii::$app->employer->employerid ;
 			$model->userid=$userid;
 			$model->save();
 			echo "succesfully";
@@ -138,7 +138,7 @@ class CompanyController extends Controller
 	{
 		$model = new EmployerEducation();
 		if ($model->load(Yii::$app->request->post())) {
-			$userid = Yii::$app->user->id ;
+			$userid = Yii::$app->employer->employerid ;
 			$model->userid=$userid;
 			$model->save();
 		
@@ -156,13 +156,13 @@ class CompanyController extends Controller
 	}
 	public function actionEduprofile()
 	{
-		$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
-		$edumodel = EmployerEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$model = User::find ()->Where (['id' => Yii::$app->employer->employerid])->one();
+		$edumodel = EmployerEducation :: find ()->Where (['userid' => Yii::$app->employer->employerid])->one();
 		return $this->render('/company/eduprofile', ['edumodel' => $edumodel,]);
 	}
 	public function actionEduupdate()
 	{
-		$edumodel = EmployerEducation :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$edumodel = EmployerEducation :: find ()->Where (['userid' => Yii::$app->employer->employerid])->one();
 		$model = new EmployerEducation();
 		$model->higherdegree = $edumodel->higherdegree;
 		$model->specialization = $edumodel->specialization;
@@ -188,7 +188,7 @@ class CompanyController extends Controller
 	{
 		$model = new EmployerPreferences();
 		if ($model->load(Yii::$app->request->post())) {
-			$userid = Yii::$app->user->id ;
+			$userid = Yii::$app->employer->employerid ;
 			$model->userid=$userid;
 			$model->save();
 			return $this->redirect ( [
@@ -201,15 +201,15 @@ class CompanyController extends Controller
 	}
 	public function actionPreprofile()
 	{
-		$model = User::find ()->Where (['id' => Yii::$app->user->id])->one();
-		$empmodel = EmployerPreferences :: find ()->Where (['userid' => Yii::$app->user->id])->one();
+		$model = User::find ()->Where (['id' => Yii::$app->employer->employerid])->one();
+		$empmodel = EmployerPreferences :: find ()->Where (['userid' => Yii::$app->employer->employerid])->one();
 		return $this->render('/company/preprofile', ['empmodel' => $empmodel,]);
 	}
 	public function actionSkills()
 	{
 		$model = new EmployerSkills();
 			if ($model->load(Yii::$app->request->post())) {
-			$userid = Yii::$app->user->id ;
+			$userid = Yii::$app->employer->employerid ;
 			$model->userid=$userid;
 			$model->save();
 			return $this->goHome();

@@ -11,17 +11,14 @@ class Employer extends Component {
     public $employerpassword_hash;
     public $employerpassword_reset_token;
     public $employeremail;
-    public $employerauth_key;
-    public $employerOtpNumber;
+    public $employerauth_key;   
     public $employerstatus;
     public $employercreated_at;
-    public $employerupdated_at;
-    public $employerpassword;
+    public $employerupdated_at;    
     public $employerroleid;
-    public $employercreatedDate;
-    public $employermodifiedDate;
-    public $employermemId;
-    public $isadminLogin =0;
+    
+    
+    
 	public function init()
 	{
 		
@@ -30,15 +27,12 @@ class Employer extends Component {
     $this->employerpassword_hash= \Yii::$app->session->get('user.employerpassword_hash');
     $this->employerpassword_reset_token= \Yii::$app->session->get('user.employerpassword_reset_token');
     $this->employeremail= \Yii::$app->session->get('user.employeremail');
-    $this->employerauth_key= \Yii::$app->session->get('user.employerauth_key');
-    $this->employerOtpNumber= \Yii::$app->session->get('user.employerOtpNumber');
+    $this->employerauth_key= \Yii::$app->session->get('user.employerauth_key');    
     $this->employerstatus= \Yii::$app->session->get('user.employerstatus');
     $this->employercreated_at= \Yii::$app->session->get('user.employercreated_at');
-    $this->employerupdated_at= \Yii::$app->session->get('user.employerupdated_at');
-    $this->employerpassword= \Yii::$app->session->get('user.employerpassword');
+    $this->employerupdated_at= \Yii::$app->session->get('user.employerupdated_at');   
     $this->employerroleid= \Yii::$app->session->get('user.employerroleid');
-    $this->employercreatedDate= \Yii::$app->session->get('user.employercreatedDate');
-    $this->employermodifiedDate= \Yii::$app->session->get('user.employermodifiedDate');
+   
    
 		
 		

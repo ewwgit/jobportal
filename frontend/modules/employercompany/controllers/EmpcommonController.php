@@ -34,26 +34,26 @@ class EmpcommonController extends Controller {
 		$employmentModel = new Employement ();
 		$preferencesModel = new EmployerPreferences ();
 		$userData = User::find ()->where ( [ 
-				'id' => Yii::$app->user->id 
+				'id' => Yii::$app->employer->employerid 
 		] )->one ();
 		$employeData = Employer::find ()->where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
-		// print_r( Yii::$app->user->id);exit;
+		// print_r( Yii::$app->employer->employerid);exit;
 		$companyData = EmployerCompany::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		$educationData = EmployerEducation::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 // 		$skillsData = EmployerSkills::find ()->Where ( [ 
-// 				'userid' => Yii::$app->user->id 
+// 				'userid' => Yii::$app->employer->employerid 
 // 		] )->one ();
 		$employmentData = Employement::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		$preferencesData = EmployerPreferences::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		
 		if (! (empty ( $employeData ))) {
@@ -182,7 +182,7 @@ class EmpcommonController extends Controller {
 				$employermodel->dateofbirth = $companyDataa;
 				$employermodel->mobilenumber = $model->mobilenumber;
 				$employermodel->address = $model->address;
-				$employermodel->userid = Yii::$app->user->id;
+				$employermodel->userid = Yii::$app->employer->employerid;
 				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
 				$employermodel->skills = $model->skills;
 				//print_r($model->skills);exit;
@@ -249,7 +249,7 @@ class EmpcommonController extends Controller {
 				$companyModel->state = $model->state;
 				$companyModel->city = $model->city;
 				$companyModel->zipcode = $model->zipcode;
-				$companyModel->userid = Yii::$app->user->id;
+				$companyModel->userid = Yii::$app->employer->employerid;
 			
 				$companyModel->save ();
 			
@@ -268,7 +268,7 @@ class EmpcommonController extends Controller {
 				$educationModel->university = $model->university;
 				$educationModel->collegename = $model->collegename;
 				$educationModel->passingyear = $model->passingyear;
-				$educationModel->userid = Yii::$app->user->id;
+				$educationModel->userid = Yii::$app->employer->employerid;
 				$educationModel->save ();
 				
 			}
@@ -294,7 +294,7 @@ class EmpcommonController extends Controller {
 				$employmentModel->shift_timings = $model->shift_timings;
 				$employmentModel->weekly_days = $model->weekly_days;
 				$employmentModel->salary = $model->salary;
-				$employmentModel->userid = Yii::$app->user->id;
+				$employmentModel->userid = Yii::$app->employer->employerid;
 				$employmentModel->save ();
 				//print_r($employmentModel);exit;
 			
@@ -308,14 +308,14 @@ class EmpcommonController extends Controller {
 				$preferencesModel->expected_salary = $model->expected_salary;
 				$preferencesModel->job_location = $model->job_location;
 				$preferencesModel->job_role = $model->job_role;
-				$preferencesModel->userid = Yii::$app->user->id;
+				$preferencesModel->userid = Yii::$app->employer->employerid;
 				$preferencesModel->save ();
 			}
 			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  updated' );
 		
  			return Yii::$app->getResponse ()->redirect ( [ 
  					'employercompany/empcommon/employercommonview',
- 					'userid' => Yii::$app->user->id 
+ 					'userid' => Yii::$app->employer->employerid 
  			] );
 		}
 		
@@ -328,27 +328,27 @@ class EmpcommonController extends Controller {
 		$this->layout = '@app/views/layouts/employermain';
 		$model = new EmployerForm ();
 		$model = User::find ()->where ( [ 
-				'id' => Yii::$app->user->id 
+				'id' => Yii::$app->employer->employerid 
 		] )->one ();
 		$employemodel = Employer::find ()->where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		$jobmodel = EmployerCompany::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 	
 		$edumodel = EmployerEducation::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 	
 		$skillsmodel = EmployerSkills::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		$employmentmodel = Employement::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		$preferencesmodel = EmployerPreferences::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		
 		return $this->render ( 'employercommonview', [ 

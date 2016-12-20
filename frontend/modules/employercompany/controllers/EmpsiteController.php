@@ -105,14 +105,42 @@ class EmpsiteController extends Controller {
 		 * }
 		 */
 		$this->layout = '@app/views/layouts/employermain';
+		if ((! \Yii::$app->user->isGuest) && (Yii::$app->employer->employerroleid == 2)) {
+			//return $this->goHome ();
+			// return $this->goBack();
+			//Yii::$app->getSession ()->setFlash ( 'success', ' successfully   login ' );
+			return Yii::$app->getResponse ()->redirect ( [
+					'employercompany/empcommon/employercommonview',
+					'userid' => Yii::$app->employer->employerid
+			] );
+		}
 		$model = new LoginForm ();
 		if ($model->load ( Yii::$app->request->post () ) && $model->login ()) {
-			// return $this->goBack();
-			Yii::$app->getSession ()->setFlash ( 'success', ' successfully   login ' );
-			return Yii::$app->getResponse ()->redirect ( [ 
-					'employercompany/empcommon/employercommonview',
-					'userid' => Yii::$app->user->id 
-			] );
+			if($model->user->roleid == 2)
+			{
+				\Yii::$app->session->set('user.employerid',Yii::$app->user->identity->id);
+				\Yii::$app->session->set('user.employerusername',Yii::$app->user->identity->username);
+				\Yii::$app->session->set('user.employerpassword_hash',Yii::$app->user->identity->password_hash);
+				\Yii::$app->session->set('user.employerpassword_reset_token',Yii::$app->user->identity->password_reset_token);
+				\Yii::$app->session->set('user.employeremail',Yii::$app->user->identity->email);
+				\Yii::$app->session->set('user.employerauth_key',Yii::$app->user->identity->auth_key);				
+				\Yii::$app->session->set('user.employerstatus',Yii::$app->user->identity->status);
+				\Yii::$app->session->set('user.employercreated_at',Yii::$app->user->identity->created_at);
+				\Yii::$app->session->set('user.employerupdated_at',Yii::$app->user->identity->updated_at);				
+				\Yii::$app->session->set('user.employerroleid',Yii::$app->user->identity->roleid);
+				
+				return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(['employercompany/empcommon/employercommonview']));
+			}
+			if($model->user->roleid == 3)
+			{
+				$model->addError('username','You dont have employer credentials');
+			
+				return $this->render('login', [
+						'model' => $model,
+				]);
+			
+			}
+			
 		} else {
 			return $this->render ( 'login', [ 
 					'model' => $model 
@@ -212,7 +240,7 @@ class EmpsiteController extends Controller {
 				Yii::$app->getSession ()->setFlash ( 'success', ' successfully   Registered ' );
 				return Yii::$app->getResponse ()->redirect ( [ 
 						'employercompany/empsite/login',
-						'userid' => Yii::$app->user->id 
+						'userid' => Yii::$app->employer->employerid 
 				] );
 				if (Yii::$app->getUser ()->login ( $user )) {
 					
@@ -233,7 +261,7 @@ class EmpsiteController extends Controller {
 		$this->layout = '@app/views/layouts/employermain';
 	
 		$userData = User::find ()->where ( [ 
-				'id' => Yii::$app->user->id 
+				'id' => Yii::$app->employer->employerid 
 		] )->one ();
 		$model->username = $userData ['username'];
 		
@@ -242,7 +270,7 @@ class EmpsiteController extends Controller {
 		
 		
 		$employeData = Employer::find ()->Where ( [ 
-				'id' => Yii::$app->user->id 
+				'id' => Yii::$app->employer->employerid 
 		] )->one ();
 		
 		return $this->render ( '/site/viewprofile', [  
@@ -256,11 +284,11 @@ class EmpsiteController extends Controller {
 		$model = new EmployerSignup ();
 		
 		$userData = User::find ()->where ( [ 
-				'id' => Yii::$app->user->id 
+				'id' => Yii::$app->employer->employerid 
 		] )->one ();
-		print_r ( Yii::$app->user->id );
+		print_r ( Yii::$app->employer->employerid );
 		$employeData = Employer::find ()->where ( [ 
-				'id' => Yii::$app->user->id 
+				'id' => Yii::$app->employer->employerid 
 		] )->one ();
 		
 		
@@ -277,13 +305,13 @@ class EmpsiteController extends Controller {
 		
 		
 		$jobmodel = EmployerCompany::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		$edumodel = EmployerEducation::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		$empmodel = EmployerPreferences::find ()->Where ( [ 
-				'userid' => Yii::$app->user->id 
+				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
 		return $this->render ( '/site/viewprofile', [ 
 				'model' => $model,
