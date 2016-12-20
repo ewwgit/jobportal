@@ -29,6 +29,7 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
             'kartik\\select2\\' => 15,
             'kartik\\plugins\\fileinput\\' => 25,
             'kartik\\plugins\\checkbox\\' => 24,
+            'kartik\\growl\\' => 13,
             'kartik\\file\\' => 12,
             'kartik\\date\\' => 12,
             'kartik\\checkbox\\' => 16,
@@ -96,6 +97,10 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         'kartik\\plugins\\checkbox\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/bootstrap-checkbox-x',
+        ),
+        'kartik\\growl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-growl',
         ),
         'kartik\\file\\' => 
         array (
