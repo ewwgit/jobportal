@@ -130,12 +130,12 @@ class SiteController extends Controller
 				\Yii::$app->session->set('user.emplyoeepassword_reset_token',Yii::$app->user->identity->password_reset_token);
 				\Yii::$app->session->set('user.emplyoeeemail',Yii::$app->user->identity->email);
 				\Yii::$app->session->set('user.emplyoeeauth_key',Yii::$app->user->identity->auth_key);
-				\Yii::$app->session->set('user.emplyoeeOtpNumber',Yii::$app->user->identity->OtpNumber);
+				
 				\Yii::$app->session->set('user.emplyoeestatus',Yii::$app->user->identity->status);
 				\Yii::$app->session->set('user.emplyoeecreated_at',Yii::$app->user->identity->created_at);
 				\Yii::$app->session->set('user.emplyoeeupdated_at',Yii::$app->user->identity->updated_at);
 				\Yii::$app->session->set('user.emplyoeepassword',Yii::$app->user->identity->password);
-				\Yii::$app->session->set('user.emplyoeeroleId',Yii::$app->user->identity->roleId);
+				\Yii::$app->session->set('user.emplyoeeroleid',Yii::$app->user->identity->roleid);
 				\Yii::$app->session->set('user.emplyoeecreatedDate',Yii::$app->user->identity->createdDate);
 				\Yii::$app->session->set('user.emplyoeemodifiedDate',Yii::$app->user->identity->modifiedDate);
 				
