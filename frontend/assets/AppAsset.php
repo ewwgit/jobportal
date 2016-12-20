@@ -20,29 +20,30 @@ class AppAsset extends AssetBundle
     		'css/style.css',
     		'css/colors/green.css'
     ];
-    public $script = [
+    public $scripts = [
     		
-    		'script/bootstrap.min.js',
-    			'script/chosen.jquery.min.js',
-    		'script/custom.js',
-    		'script/headroom.min.js',
-    		'script/jquery-2.1.3.min.js',
-    		'script/jquery.counterup.min.js',
-    		'script/jquery.flexslider-min.js',
-    		'script/jquery.gmaps.min.js',
-    		'script/jpanelmenu.js',
-    		'script/jquery.magnific-popup.min.js',
-    		'script/jquery.sceditor.bbcode.min.js',
-    		'script/jquery.sceditor.js',
-    		'script/jquery.superfish.js',
-    		'script/jquery.themepunch.revolution.min.js',
-    		'script/jquery.themepunch.showbizpro.min.js',
-    		'script/jquery.themepunch.tools.min.js',
-    		'script/stacktable.js',
-    		'script/switcher.js',
-    		'script/vendor-date.js',
-    		'script/vendor-datepicker.js',
-    		'script/Waypoints.min.js',
+    		'scripts/bootstrap.min.js',
+    		'scripts/chosen.jquery.min.js',
+    		'scripts/custom.js',
+    		'scripts/headroom.min.js',
+    		'scripts/jquery-2.1.3.min.js',
+    		'scripts/jquery.counterup.min.js',
+    		'scripts/jquery.flexslider-min.js',
+    		'scripts/jquery.gmaps.min.js',
+    		'scripts/jpanelmenu.js',
+    		'scripts/jquery.magnific-popup.min.js',
+    		'scripts/jquery.sceditor.bbcode.min.js',
+    		'scripts/jquery.sceditor.js',
+    		'scripts/jquery.superfish.js',
+    		'scripts/jquery.themepunch.revolution.min.js',
+    		'scripts/jquery.themepunch.showbizpro.min.js',
+    		'scripts/jquery.themepunch.tools.min.js',
+    		'scripts/stacktable.js',
+    		'scripts/switcher.js',
+    		'scripts/vendor-date.js',
+    		'scripts/vendor-datepicker.js',
+    		'scripts/Waypoints.min.js',
+    		
     		
     		
     		
