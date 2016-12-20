@@ -42,7 +42,7 @@ class EmpsiteController extends Controller {
 										],
 										'allow' => true,
 										'roles' => [ 
-												'?' 
+												'@' 
 										] 
 								],
 								[ 
