@@ -81,7 +81,7 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
          
          <ul class="float-right">
 		 
-		   <?php  if ((Yii::$app->user->isGuest) || (Yii::$app->emplyoee->employerroleid !=2)) { ?> 
+		   <?php  if ((Yii::$app->user->isGuest) || (Yii::$app->employer->employerroleid !=2)) { ?> 
             <li><a href="<?= Url::to(['/employercompany/empsite/signup'])?>"><i class="fa fa-user"></i> Sign Up</a></li>
             <li><a href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-lock"></i> Log In</a></li>
             <li><a  href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-user"></i>Employer Zone</a></li>
