@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use frontend\models\EmployerJobpostings;
 
 class JobpostSearch extends EmployerJobpostings {
+	
 	public function rules() {
 		return [ 
 				[ 
@@ -53,27 +54,27 @@ class JobpostSearch extends EmployerJobpostings {
 		}
 		
 		
-		$query->andFilterWhere ( [ 
+		$query->orFilterWhere ( [ 
 				'like',
 				'rolecategory',
 				$this->rolecategory 
-		] )->andFilterWhere ( [ 
+		] )->orFilterWhere ( [ 
 				'like',
 				'skills',
 				$this->skills 
-		] )->andFilterWhere ( [ 
+		] )->orFilterWhere ( [ 
 				'like',
 				'designation',
 				$this->designation 
-		] )->andFilterWhere ( [ 
+		] )->orFilterWhere ( [ 
 				'like',
 				'Min_Experience',
 				$this->Min_Experience 
-		] )->andFilterWhere ( [ 
+		] )->orFilterWhere ( [ 
 				'like',
 				'Max_Experience',
 				$this->Max_Experience 
-		] )->andFilterWhere ( [ 
+		] )->orFilterWhere ( [ 
 				'like',
 				'dateofestablishment',
 				$this->dateofestablishment 
