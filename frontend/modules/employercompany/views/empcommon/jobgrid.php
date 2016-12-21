@@ -58,11 +58,9 @@ $this->params ['breadcrumbs'] [] = $this->title;
             'options' => ['placeholder' => 'Search Experience ...'],
             'pluginOptions' => ['highlight'=>true],]);?>
             
-     <?php  $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');
-        if($data){$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');}
-        else {$data =[''];}
+     <?php 
         echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
-            'data' =>$data,
+            'data' =>$skillsInfo,
             'options' => ['placeholder' => 'Search skills ...'],
             'pluginOptions' => ['highlight'=>true],]);?>
  	 

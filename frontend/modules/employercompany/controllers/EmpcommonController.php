@@ -445,33 +445,50 @@ class EmpcommonController extends Controller {
 	
 		$searchModel = new JobpostSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		
 		//$model = new EmployerJobpostings();
 		
 		
-		$rows = (new \yii\db\Query())
+		/* $rows = (new \yii\db\Query())
 		->select([ 'skills'])
 		->from(' employer_post_jobs')
-		->where('id')->all();
+		->where('id')->all(); */
 	
 		
 		// $rows[] = array();
 		
-		$data=var_dump($rows);
+		//$data=var_dump($rows);
 		// print_r($data);exit;
 		
 		
-// 				$skillsdata = EmployerJobpostings::find()
-// 				->select('skills')
-// 				->where(['id' => Yii::$app->employer->employerid])->all();
+ 				$skillsdata = EmployerJobpostings::find()
+ 				->select('skills')
+				->where(['id' => Yii::$app->employer->employerid])->all();
+				$skillsInfo = array();
+ 				if(!empty($skillsdata))
+ 				{
+ 					foreach ($skillsdata as $skillnew)
+ 					{
+ 						echo rtrim($skillnew->skills,",");
+ 						$aryconvertskill = explode(",",rtrim($skillnew->skills,","));
+ 						for($k=0; $k < count($aryconvertskill); $k++)
+ 						{
+ 							$skillsInfo[$aryconvertskill[$k]] = $aryconvertskill[$k];
+ 						}
+ 					}
+ 				}
+ 				/* print_r($skillsInfo);exit();
+ 				exit(); */
+				
 		
-		 		 			while($data !== null) {
+		 		 			/* while($data !== null) {
 		 					$dataaa=explode(',', $data);
 		 				 	foreach($dataaa as $output) {
 		 						//echo $output;
 		 						$searchModel->skills=$output;
 		 						print_r($searchModel->skills);
 		 					}
-		 				}
+		 				} */
 		
                   
 
@@ -479,7 +496,8 @@ class EmpcommonController extends Controller {
 	    
 		return $this->render('jobgrid', [
 				'dataProvider' => $dataProvider,
-				'searchModel' => $searchModel
+				'searchModel' => $searchModel,
+				'skillsInfo' => $skillsInfo
 		]);
 	}
 	
