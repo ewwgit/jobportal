@@ -22,6 +22,7 @@ use frontend\models\EmployerJobpostings;
 use frontend\models\JobpostSearch;
 
 
+
 class EmpcommonController extends Controller {
 	public function actionEmployer() {
 		$this->layout = '@app/views/layouts/employerinner';
@@ -66,8 +67,10 @@ class EmpcommonController extends Controller {
 			$model->profileimagenew = $employeData->profileimage;
 			$model->skills = $employeData->skills;
 			$data=$model->skills;
+			//print_r($model->skills);exit;
 			if (! Empty ( $data )) {
 				$array = $model->skills;
+				
 			
 				$array_skills = explode( ",",$array );
 			
@@ -82,9 +85,9 @@ class EmpcommonController extends Controller {
 			}
 				$model->allskills = $allsary;
 				$model->skills = $valuary;
-			
+				
 			}
-	
+			
 		}
 		if (! (empty ( $userData ))) {
 			$model->username = $userData->username;
@@ -272,9 +275,7 @@ class EmpcommonController extends Controller {
 				$educationModel->save ();
 				
 			}
-			
-
-			
+		
 			if (! (empty ( $employmentData ))) {
 				$employmentData->job_title = $model->job_title;
 				$employmentData->job_type = $model->job_type;
@@ -438,46 +439,15 @@ class EmpcommonController extends Controller {
 		}
 	}
 	
-	// public function actionJobpostingsupdate($id)
-	// {
-	// $model = $this->findModel($id);
 	
-	// //$model = new EmployerJobpostings();
-	// $postings = EmployerJobpostings :: find()->one($id);
-	// if (($model->load(Yii::$app->request->post())) && ($model->validate()) )
-	// {
-	// $postingsdata = EmployerJobpostings :: find()->one();
-	// $postingsdata ['company_name'] = $model->company_name;
-	// $postingsdata ['company_type'] = $model->company_type;
-	// $postingsdata ['industry_type'] = $model->industry_type;
-	// $postingsdata ['dateofestablishment'] = $model->dateofestablishment;
-	// $postingsdata ['country'] = $model->country;
-	// $postingsdata ['state'] = $model->state;
-	// $postingsdata ['city'] = $model->city;
-	// $postingsdata ['zipcode'] = $model->zipcode;
-	// $postingsdata ['skills'] = $model->skills;
-	// $postingsdata ['desigmation'] = $model->desigmation;
-	// $postingsdata ['experience'] = $model->experience;
-	// $postingsdata ['rolecategory'] = $model->rolecategory;
-	// $postingsdata ['Description'] = $model->Description;
-	// $postingsdata ['jobtype'] = $model->jobtype;
-	// $postingsdata ['gender'] = $model->gender;
-	// $postingsdata ['address'] = $model->address;
-	// $postingsdata->update($postingsdata);
-	
-	// $model->save();
-	// return Yii::$app->getResponse()->redirect(['employercompany/empcommon/jobpostingsview'] );
-	// }return $this->render('jobpostingupdates',['postings'=>$postings,
-	// 'model' => $model,
-	// ]);
-	// }
 	public function actionJobpostingslist() {
 		$this->layout = '@app/views/layouts/employerinner';
-				
+	
 		$searchModel = new JobpostSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-		
-		
+
+
+	
 		return $this->render('jobgrid', [
 				'dataProvider' => $dataProvider,
 				'searchModel' => $searchModel
