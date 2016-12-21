@@ -173,7 +173,7 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-       // Yii::$app->user->logout();
+       ///Yii::$app->user->logout();
     	\Yii::$app->session->remove('user.emplyoeeid');
     	\Yii::$app->session->remove('user.emplyoeeusername');
     	\Yii::$app->session->remove('user.emplyoeepassword_hash');
