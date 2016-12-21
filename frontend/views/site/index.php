@@ -111,16 +111,26 @@ use kartik\typeahead\Typeahead;
 	   
 	   
 	   $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');
+	     //$datary = array();
+	 // print_r($data);exit();
+	    //$newdataary = array();
 	   if($data)
 	   {
+
 	   	$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');
+	  /*  	$dataarry =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');
+	   	for ($i=0;$i< count($dataarry); $i++)
+	   	 {
+	   	 $newdataary[$dataarry[$i]]= $dataarry[$i];
+	   	 }  */
+	   	
 	   }
 	   else {
 	   	$data = [''];
 	   }
      
      echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
-    'data' => $data,
+    'data' => 	$data,
     'options' => ['placeholder' => 'enter skills ...'],
     'pluginOptions' => ['highlight'=>true],
 ]);
