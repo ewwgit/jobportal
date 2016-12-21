@@ -33,19 +33,39 @@ $this->params ['breadcrumbs'] [] = $this->title;
     ]); ?>
   
     <div>
-  
-    <?php  echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(),
-     		[ 'data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'),'options' => ['placeholder' => 'Search Company Name'],'pluginOptions' => ['highlight'=>true],]);?>
-    
-     <?php  echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), 
-     		['data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'),'options' => ['placeholder' => 'Search Designation '],'pluginOptions' => ['highlight'=>true],]);?>
-     
-    <?php   echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), 
-     		['data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience'),'options' => ['placeholder' => 'Search Experience'],'pluginOptions' => ['highlight'=>true],]); ?>
-    
-    <?php    echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), 
-     		['data' => ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills'),'options' => ['placeholder' => 'Search Skills'],'pluginOptions' => ['highlight'=>true],]);?>
-     
+        
+    <?php   $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
+       if($data){$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'); }
+       else {$data = [''];}
+       echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
+       		'data' => $data,
+       		'options' => ['placeholder' => 'Search CompanyNam'],
+       		'pluginOptions' => ['highlight'=>true],]);?>
+       		
+     <?php   $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
+       if($data){$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'); }
+       else {$data = [''];}
+       echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
+       		'data' => $data,
+       		'options' => ['placeholder' => 'Search Designation'],
+       		'pluginOptions' => ['highlight'=>true],]);?>
+    	
+     <?php  $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
+        if($data){$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');}
+        else {$data =[''];}
+        echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
+            'data' =>$data,
+            'options' => ['placeholder' => 'Search Experience ...'],
+            'pluginOptions' => ['highlight'=>true],]);?>
+            
+     <?php  $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');
+        if($data){$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');}
+        else {$data =[''];}
+        echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
+            'data' =>$data,
+            'options' => ['placeholder' => 'Search skills ...'],
+            'pluginOptions' => ['highlight'=>true],]);?>
+ 	 
       <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
     
          <?php ActiveForm::end(); ?>
