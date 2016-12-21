@@ -32,7 +32,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 				<div class="col-md-3 col-sm-3 col-xs-3 profile_img">
 					<div class="resume-titlebar">
 						<img
-							src="<?php echo Yii::getAlias('/jobportal').$employemodel->profileimage; ?>"
+							src="<?php echo isset( $employemodel->profileimage)? Yii::getAlias('/jobportal').$employemodel->profileimage : '' ;  ?>"
 							alt="">
 					</div>
 				</div>
@@ -47,37 +47,37 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Username:</td>
-											<td><?php echo  $model->username ;?></td>
+											<td><?php echo isset($model->username) ? $model->username : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
 											<td>Your Email:</td>
-											<td><a href="#" style="color: #000;"><?php  echo $model->email;?></a></td>
+											<td><a href="#" style="color: #000;"><?php echo isset($model->email) ? $model->email : ' Not Mentioned' ;?></a></td>
 										</tr>
 
 										<tr>
 											<td>Your Name:</td>
-											<td><?php echo  $employemodel->name;  ?></td>
+											<td><?php echo isset($employemodel->name) ? $employemodel->name : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
 											<td>Your designation:</td>
-											<td><?php echo  $employemodel->designation;  ?></td>
+											<td><?php echo isset($employemodel->designation) ? $employemodel->designation : ' Not Mentioned' ;?></td>
 										</tr>
 
 										<tr>
 											<td>Gender:</td>
-											<td><?php echo  $employemodel->gender;  ?></td>
+											<td><?php echo isset($employemodel->gender) ? $employemodel->gender : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
 											<td>Mobile Number:</td>
-											<td><?php echo  $employemodel->mobilenumber;  ?></td>
+											<td><?php echo isset($employemodel->mobilenumber) ? $employemodel->mobilenumber : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
 											<td>Dateof Birth:</td>
-											<td><?php echo  $employemodel->dateofbirth;  ?></td>
+											<td><?php echo isset($employemodel->dateofbirth) ? $employemodel->dateofbirth : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
 											<td>address:</td>
-											<td><?php echo  $employemodel->address;  ?></td>
+											<td><?php echo isset($employemodel->address) ? $employemodel->address : ' Not Mentioned' ;?></td>
 										</tr>
 									</tbody>
 								</table>
