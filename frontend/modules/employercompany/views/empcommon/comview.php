@@ -217,7 +217,7 @@ select {
                            echo  $form->field($model, 'skills')->widget(Select2::classname(), [
                            		                 
                            		       'data'=>$model->allskills,
-                           		        'options' => ['placeholder' => 'Select a color ...', 'multiple' => true],
+                           		        'options' => ['placeholder' => 'Select a Skils', 'multiple' => true],
                                         'pluginOptions' => [
                                         'tags' => true,
                                         'allowClear' => true,
