@@ -92,23 +92,23 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Highest Degree:</td>
-											<td><?php echo isset($edumodel->higherdegree) ? $edumodel->higherdegree : '';?></td>
+											<td><?php echo isset($edumodel->higherdegree) ? $edumodel->higherdegree : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
 											<td>Highest Degree Specialization:</td>
-											<td><?php echo isset($edumodel->specialization) ? $edumodel->specialization : '';?></td>
+											<td><?php echo isset($edumodel->specialization) ? $edumodel->specialization : 'Not Mentioned ';?></td>
 										</tr>
 										<tr>
 											<td>Your University:</td>
-											<td><?php echo isset($edumodel->university) ? $edumodel->university : '';?></td>
+											<td><?php echo isset($edumodel->university) ? $edumodel->university : 'Not Mentioned ';?></td>
 										</tr>
 										<tr>
 											<td>Your College Name:</td>
-											<td><?php echo isset($edumodel->collegename) ? $edumodel->collegename : '';?></td>
+											<td><?php echo isset($edumodel->collegename) ? $edumodel->collegename : 'Not Mentioned ';?></td>
 										</tr>
 										<tr>
 											<td>Passing Year:</td>
-											<td><?php echo isset($edumodel->passingyear) ? $edumodel->passingyear : '';?></td>
+											<td><?php echo isset($edumodel->passingyear) ? $edumodel->passingyear : 'Not Mentioned ';?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -125,40 +125,40 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Company name:</td>
-											<td><?php echo isset($jobmodel->company_name) ? $jobmodel->company_name : '';?></td>
+											<td><?php echo isset($jobmodel->company_name) ? $jobmodel->company_name : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Employer type:</td>
-											<td><?php echo isset($jobmodel->employer_type) ? $jobmodel->employer_type : '';?></td>
+											<td><?php echo isset($jobmodel->employer_type) ? $jobmodel->employer_type : 'Not Mentioned';?></td>
 										</tr>
 
 										<tr>
 											<td>Industry type:</td>
-											<td><?php echo isset($jobmodel->industry_type) ? $jobmodel->industry_type : '';?></td>
+											<td><?php echo isset($jobmodel->industry_type) ? $jobmodel->industry_type : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Dateofestablishment:</td>
-											<td><?php echo isset($jobmodel->dateofestablishment) ? $jobmodel->dateofestablishment : '';?></td>
+											<td><?php echo isset($jobmodel->dateofestablishment) ? $jobmodel->dateofestablishment : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Location:</td>
-											<td><?php echo isset($jobmodel->location) ? $jobmodel->location : '';?></td>
+											<td><?php echo isset($jobmodel->location) ? $jobmodel->location : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Country:</td>
-											<td><?php echo isset($jobmodel->country) ? $jobmodel->country : '';?></td>
+											<td><?php echo isset($jobmodel->country) ? $jobmodel->country : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>State:</td>
-											<td><?php echo isset($jobmodel->state) ? $jobmodel->state : '';?></td>
+											<td><?php echo isset($jobmodel->state) ? $jobmodel->state : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>City:</td>
-											<td><?php echo isset($jobmodel->city) ? $jobmodel->city : '';?></td>
+											<td><?php echo isset($jobmodel->city) ? $jobmodel->city : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Zipcode:</td>
-											<td><?php echo isset($jobmodel->zipcode) ? $jobmodel->zipcode : '';?></td>
+											<td><?php echo isset($jobmodel->zipcode) ? $jobmodel->zipcode : 'Not Mentioned';?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -173,15 +173,15 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Expected salary:</td>
-											<td><?php echo isset($preferencesmodel->expected_salary) ? $preferencesmodel->expected_salary : '';?></td>
+											<td><?php echo isset($preferencesmodel->expected_salary) ? $preferencesmodel->expected_salary : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Job location:</td>
-											<td><?php echo isset($preferencesmodel->job_location) ? $preferencesmodel->job_location : '';?></td>
+											<td><?php echo isset($preferencesmodel->job_location) ? $preferencesmodel->job_location : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Job role:</td>
-											<td><?php echo isset($preferencesmodel->job_role) ? $preferencesmodel->job_role : '';?></td>
+											<td><?php echo isset($preferencesmodel->job_role) ? $preferencesmodel->job_role : 'Not Mentioned';?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -199,7 +199,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									
 									<tr>
 											<td>skill's:</td>
-											<td><?php echo isset($employemodel->skills) ? $employemodel->skills : '';?></td>
+											<td><?php echo isset($employemodel->skills) ? $employemodel->skills : 'Not Mentioned';?></td>
 											<td></td>
 										</tr>
 										
@@ -216,36 +216,36 @@ $this->params ['breadcrumbs'] [] = $this->title;
 									<tbody>
 										<tr>
 											<td>Job title:</td>
-											<td><?php echo isset($employmentmodel->job_title) ? $employmentmodel->job_title  : '';?></td>
+											<td><?php echo isset($employmentmodel->job_title) ? $employmentmodel->job_title  : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Job type:</td>
-											<td><?php echo isset($employmentmodel->job_type) ? $employmentmodel->job_type  : '';?></td>
+											<td><?php echo isset($employmentmodel->job_type) ? $employmentmodel->job_type  : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Job description:</td>
-											<td><?php echo isset($employmentmodel->job_description) ? $employmentmodel->job_description  : '';?></td>
+											<td><?php echo isset($employmentmodel->job_description) ? $employmentmodel->job_description  : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Experience:</td>
-											<td><?php echo isset($employmentmodel->experience) ? $employmentmodel->experience  : '';?></td>
+											<td><?php echo isset($employmentmodel->experience) ? $employmentmodel->experience  : 'Not Mentioned';?></td>
 										</tr>
 										
 										<tr>
 											<td>Work location:</td>
-											<td><?php echo isset($employmentmodel->work_location) ? $employmentmodel->work_location  : '';?></td>
+											<td><?php echo isset($employmentmodel->work_location) ? $employmentmodel->work_location  : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Shift timings:</td>
-											<td><?php echo isset($employmentmodel->shift_timings) ? $employmentmodel->shift_timings  : '';?></td>
+											<td><?php echo isset($employmentmodel->shift_timings) ? $employmentmodel->shift_timings  : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Weekly days:</td>
-											<td><?php echo isset($employmentmodel->weekly_days) ? $employmentmodel->weekly_days  : '';?></td>
+											<td><?php echo isset($employmentmodel->weekly_days) ? $employmentmodel->weekly_days  : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
 											<td>Salary:</td>
-											<td><?php echo isset($employmentmodel->salary) ? $employmentmodel->salary  : '';?></td>
+											<td><?php echo isset($employmentmodel->salary) ? $employmentmodel->salary  : 'Not Mentioned';?></td>
 										</tr>
 
 									</tbody>
