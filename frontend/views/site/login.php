@@ -6,7 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
-
+use kartik\growl\Growl;
 $this->title = 'Login';
 
 ?>
@@ -76,6 +76,26 @@ $this->title = 'Login';
 		</div>
 	</div>
 </div>
+<?php foreach (Yii::$app->session->getAllFlashes() as $message):; ?>
+            <?php
+            //print_r($message);exit();
+            echo Growl::widget([
+                'type' =>  $message['type'],
+                'title' =>  Html::encode($message['title']),
+                'icon' =>  $message['icon'],
+                'body' =>  Html::encode($message['message']) ,
+                'showSeparator' => true,
+                'delay' => 1, //This delay is how long before the message shows
+                'pluginOptions' => [
+                    'delay' => $message['duration'], //This delay is how long the message shows for
+                    'placement' => [
+                        'from' => $message['positonY'],
+                        'align' => $message['positonX'],
+                    ]
+                ]
+            ]);
+            ?>
+        <?php endforeach; ?>
 
 
 

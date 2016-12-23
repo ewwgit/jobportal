@@ -25,7 +25,6 @@ use frontend\models\EmployeeJobapplied;
 
 use common\models\User;
 use yii\web\UploadedFile;
-use frontend\models\EmployeeJobappied;
 /**
  * Site controller
  */
@@ -390,33 +389,6 @@ class SiteController extends Controller
     		throw new NotFoundHttpException ( 'The requested page does not exist.' );
     	}
 	}
-	public function actionApply($id)
-	{
-		$query = User::find()->where(['id' => Yii::$app->emplyoee->emplyoeeid])->one();
-		$userId = $query['id'];
-		$JobId = $id;
-	
-		$model = new EmployeeJobapplied();
-		$checkJobs = $model->checkQuery($userId, $JobId);
-		$model->jobid = $checkJobs;
-		$UserSelectJob =  $model->jobid;
-	
-	
-		if($UserSelectJob)
-		{
-			Yii::$app->getSession()->setFlash('error', 'Already Applied ');
-			//echo "Already select join";
-			return $this->render('index', [
-					'model' => $this->findModel($id),
-			]);
-		}else{
-	
-			$model = $model->insertQuery($userId, $JobId);
-			return $this->redirect(['index']);
-	
-		}
-	
-	}
 	public function actionApplylist($id)
 	{
 	
@@ -438,38 +410,55 @@ class SiteController extends Controller
 	}
 	public function actionApplyjobajax()
 	{
-		$result = array();
-		$query = User::find()->where(['id' => Yii::$app->user->id])->one();
-		$userId = Yii::$app->user->id;
-		$JobId = $_GET['jbid'];
-	
-		$model = new EmployeeJobapplied();
-		$checkJobs = $model->checkQuery($userId, $JobId);
-		$model->jobid = $checkJobs;
-		$UserSelectJob =  $model->jobid;
-	
-	
-		if($checkJobs = 1)
-		{
-			$model = $model->insertQuery($userId, $JobId);
-			$result['status'] = 1;
-			//$result['message'] = 'success';
-		}else{
-	
-			$result['status'] = 0;
-			$result['message'] = 'Already Applied';
-		}
-		Yii::$app->getSession()->setFlash('success', [
-					'type' => 'success',
-					'duration' => 3000,
-					'icon' => 'fa fa-users',
-					'message' => 'Successfully Applied.',
-					'title' => 'Success',
-					'positonY' => 'bottom',
-					'positonX' => 'right',
-						
-			]);
-		return $this->redirect(['index']);
-	
+			if ((Yii::$app->user->isGuest) || (Yii::$app->emplyoee->emplyoeeroleid !=3))
+			{
+				Yii::$app->getSession()->setFlash('danger', [
+						'type' => 'danger',
+						'duration' => 20000,
+						'icon' => 'fa fa-users',
+						'message' => 'Please Login to Apply this Job.',
+						'title' => 'Errors',
+						'positonY' => 'bottom',
+						'positonX' => 'right'
+				]);
+		
+				$this->redirect(['login']);
+			}
+			else {
+				
+				$result = array();
+				$query = User::find()->where(['id' => Yii::$app->user->id])->one();
+				$userId = Yii::$app->user->id;
+				$JobId = $_GET['jbid'];
+				
+				$model = new EmployeeJobapplied();
+				$checkJobs = $model->checkQuery($userId, $JobId);
+				$model->jobid = $checkJobs;
+				$UserSelectJob =  $model->jobid;			
+				
+				if($checkJobs = 1)
+				{
+					$model = $model->insertQuery($userId, $JobId);
+					$result['status'] = 1;
+					//$result['message'] = 'success';
+				}else{
+				
+					$result['status'] = 0;
+					$result['message'] = 'Already Applied';
+				}
+				Yii::$app->getSession()->setFlash('success', [
+						'type' => 'success',
+						'duration' => 3000,
+						'icon' => 'fa fa-users',
+						'message' => 'Successfully Applied.',
+						'title' => 'Success',
+						'positonY' => 'bottom',
+						'positonX' => 'right',
+				
+				]);
+		
+				return $this->render('index');
+			}	
+		
 	}
 }

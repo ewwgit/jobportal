@@ -21,6 +21,9 @@ use frontend\models\EmployerForm;
 use frontend\models\EmployerJobpostings;
 use frontend\models\JobpostSearch;
 
+use frontend\models\EmployeeJobapplied;
+use yii\data\ActiveDataProvider;
+use yii\db\Query ;
 
 
 class EmpcommonController extends Controller {
@@ -462,8 +465,10 @@ class EmpcommonController extends Controller {
 		
 		
  				$skillsdata = EmployerJobpostings::find()
- 				->select('skills')
-				->where(['id' => Yii::$app->employer->employerid])->all();
+ 				->select('skills')->all();
+				//->where(['id' => Yii::$app->employer->employerid])->all();
+				//print_r($skillsdata);exit();
+				//exit();
 				$skillsInfo = array();
  				if(!empty($skillsdata))
  				{
@@ -508,4 +513,24 @@ class EmpcommonController extends Controller {
 			throw new NotFoundHttpException ( 'The requested page does not exist.' );
 		}
 	}
+	
+	public function actionEmployeeslist($jid) {
+		
+		$this->layout = '@app/views/layouts/employerinner';
+		
+		$query = EmployeeJobapplied::find()->where(['jobid' => $jid]);
+		$dataProvider = new ActiveDataProvider([
+				'pagination' => ['pageSize' =>5],
+				'query' => $query,
+		]);
+		
+		//print_r($dataProvider->getModels());exit();	
+		
+		
+		
+		
+		
+		return $this->render('jobappliedlist', ['dataProvider' => $dataProvider]);
+		}	
+	
 }
