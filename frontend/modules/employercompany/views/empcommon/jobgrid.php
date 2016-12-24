@@ -31,6 +31,7 @@ $userid=Yii::$app->employer->employerid;
         'options' => ['class' => '  form-inline form-group  col-xs-12'],/* form-group-sm*/
         'fieldConfig' => [
             'template' => "{input}",
+        		
         ],
     ]); ?>
   
