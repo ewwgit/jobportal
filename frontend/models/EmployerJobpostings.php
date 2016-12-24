@@ -9,6 +9,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 	public static function tableName() {
 		return 'employer_post_jobs';
 	}
+	public $allskills;
 	public function rules() {
 		return [ 
 				[ 
@@ -58,7 +59,8 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'city',
 								'zipcode',
 								'Min_Experience',
-								'Max_Experience' 
+								'Max_Experience' ,
+								'userid'
 						],
 						'safe' 
 				] 
@@ -85,7 +87,8 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 				'country' => 'Country',
 				'state' => 'State',
 				'city' => 'City',
-				'zipcode' => 'Zipcode' 
+				'zipcode' => 'Zipcode',
+				'userid' =>'userid'
 		];
 	}
 	// public static skills($skills){

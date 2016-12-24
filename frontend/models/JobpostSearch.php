@@ -29,7 +29,8 @@ class JobpostSearch extends EmployerJobpostings {
 								'country',
 								'state',
 								'city',
-								'zipcode' 
+								'zipcode',
+								'userid'
 						],
 						'safe' 
 				] 

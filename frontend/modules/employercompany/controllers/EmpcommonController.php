@@ -24,6 +24,7 @@ use frontend\models\JobpostSearch;
 use frontend\models\EmployeeJobapplied;
 use yii\data\ActiveDataProvider;
 use yii\db\Query ;
+use yii\helpers\ArrayHelper;
 
 
 class EmpcommonController extends Controller {
@@ -365,9 +366,11 @@ class EmpcommonController extends Controller {
 				'model' => $model 
 		] );
 	}
-	public function actionCreate() {
+	public function actionCreate($userid) {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployerJobpostings ();
+		$query = EmployerJobpostings::find()->where(['userid' => $userid]);
+		$userid=Yii::$app->employer->employerid;
 	
 		
 		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
@@ -386,12 +389,14 @@ class EmpcommonController extends Controller {
 			$model->startDate = date ( "Y-m-d H:i:s" );
 			
 			$model->skills = $comma_separated;
+			$model->userid = $userid;
 			
 			$model->save ();
 			
 			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  create jobposting' );
 			return Yii::$app->getResponse ()->redirect ( [ 
-					'employercompany/empcommon/jobpostingslist' 
+					'employercompany/empcommon/jobpostingslist' ,
+					'userid' => Yii::$app->employer->employerid 
 			] );
 		} else {
 			return $this->render ( 'jobpostings', [ 
@@ -443,68 +448,72 @@ class EmpcommonController extends Controller {
 	}
 	
 	
-	public function actionJobpostingslist() {
+public function actionJobpostingslist($userid) {
 		$this->layout = '@app/views/layouts/employerinner';
-	
+		$query = EmployerJobpostings::find()->where(['userid' => $userid]);
 		$searchModel = new JobpostSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$id=Yii::$app->employer->employerid;
+		//print_r($id);exit;
 		
-		//$model = new EmployerJobpostings();
-		
-		
-		/* $rows = (new \yii\db\Query())
-		->select([ 'skills'])
-		->from(' employer_post_jobs')
-		->where('id')->all(); */
-	
-		
-		// $rows[] = array();
-		
-		//$data=var_dump($rows);
-		// print_r($data);exit;
-		
-		
- 				$skillsdata = EmployerJobpostings::find()
- 				->select('skills')->all();
-				//->where(['id' => Yii::$app->employer->employerid])->all();
-				//print_r($skillsdata);exit();
-				//exit();
+	 			$skillsdata = EmployerJobpostings::find()
+ 				->select('skills')
+				->where(['userid' => Yii::$app->employer->employerid])->all();
+ 				
 				$skillsInfo = array();
  				if(!empty($skillsdata))
  				{
  					foreach ($skillsdata as $skillnew)
  					{
- 						echo rtrim($skillnew->skills,",");
+ 						//echo rtrim($skillnew->skills,",");
  						$aryconvertskill = explode(",",rtrim($skillnew->skills,","));
  						for($k=0; $k < count($aryconvertskill); $k++)
  						{
  							$skillsInfo[$aryconvertskill[$k]] = $aryconvertskill[$k];
  						}
  					}
+ 				}else {
+ 					$skillsInfo =[''];
  				}
- 				/* print_r($skillsInfo);exit();
- 				exit(); */
-				
-		
-		 		 			/* while($data !== null) {
-		 					$dataaa=explode(',', $data);
-		 				 	foreach($dataaa as $output) {
-		 						//echo $output;
-		 						$searchModel->skills=$output;
-		 						print_r($searchModel->skills);
-		 					}
-		 				} */
-		
-                  
-
-	   // $searchModel->skills=$output;
-	    
-		return $this->render('jobgrid', [
+ 	
+ 				$MinExperienceinfo =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
+ 				
+ 				if($MinExperienceinfo)
+ 				{
+ 					$MinExperienceinfo;
+ 				}
+ 				else {
+ 					$MinExperienceinfo =[''];}
+ 				$designationinfo =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
+ 				
+ 				if($designationinfo)
+ 				{
+ 					$designationinfo; 
+ 				}
+ 				else {
+ 					$designationinfo = [''];}
+ 				$companynameinfo =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
+ 				
+ 				if($companynameinfo)
+ 				{
+ 					$companynameinfo;
+ 				}
+ 				else {$companynameinfo = [''];}
+ 		
+		return $this->render('jobgrid', 
+				[
 				'dataProvider' => $dataProvider,
 				'searchModel' => $searchModel,
-				'skillsInfo' => $skillsInfo
+				'skillsInfo' => $skillsInfo,
+				'MinExperienceinfo' => $MinExperienceinfo,
+				'designationinfo' => $designationinfo,
+				'companynameinfo' => $companynameinfo,
+				//'userid' => Yii::$app->employer->employerid ,
+				
+				
 		]);
 	}
+	
 	
 	protected function findModel($id) {
 		if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
@@ -523,14 +532,9 @@ class EmpcommonController extends Controller {
 				'pagination' => ['pageSize' =>5],
 				'query' => $query,
 		]);
-		
-		//print_r($dataProvider->getModels());exit();	
-		
-		
-		
-		
-		
-		return $this->render('jobappliedlist', ['dataProvider' => $dataProvider]);
+	
+		return $this->render('jobappliedlist',
+				['dataProvider' => $dataProvider]);
 		}	
 	
 }

@@ -14,6 +14,7 @@ use kartik\typeahead\Typeahead;
 
 $this->title = 'JOB Posting List';
 $this->params ['breadcrumbs'] [] = $this->title;
+$userid=Yii::$app->employer->employerid;
 ?>
 <div class="coachingvideoapi-index">
 
@@ -21,50 +22,46 @@ $this->params ['breadcrumbs'] [] = $this->title;
 <section class="invoice">
 
 		<p>
-        <?= Html::a('Create postings', ['create'], ['class' => 'button'])?></p>
-     <div>
+		
+        <?= Html::a('Create postings', ['create','userid'=>$userid], ['class' => 'button'],[])?></p>
+     <div >
   <?php $form = ActiveForm::begin([
         'action' => Url::to(['jobpostingslist']),
         'method' => 'get',
-        'options' => ['class' => 'form-inline form-group form-group-sm col-xs-12'],
+        'options' => ['class' => '  form-inline form-group  col-xs-12'],/* form-group-sm*/
         'fieldConfig' => [
             'template' => "{input}",
         ],
     ]); ?>
   
     <div>
-        
-    <?php   $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
-       if($data){$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name'); }
-       else {$data = [''];}
-       echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
-       		'data' => $data,
-       		'options' => ['placeholder' => 'Search CompanyNam'],
+     
+      
+      <?php  echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
+       		'data' => $companynameinfo,
+       		'options' => ['placeholder' => 'Search CompanyNam','class'=>'desine'],
        		'pluginOptions' => ['highlight'=>true],]);?>
        		
-     <?php   $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
-       if($data){$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation'); }
-       else {$data = [''];}
-       echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
-       		'data' => $data,
-       		'options' => ['placeholder' => 'Search Designation'],
+     
+     <?php   echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
+       		'data' => $designationinfo,
+       		'options' => ['placeholder' => 'Search Designation' ,'class'=>''],
        		'pluginOptions' => ['highlight'=>true],]);?>
     	
-     <?php  $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
-        if($data){$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');}
-        else {$data =[''];}
-        echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
-            'data' =>$data,
-            'options' => ['placeholder' => 'Search Experience ...'],
+    
+     <?php      echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
+            'data' =>$MinExperienceinfo,
+            'options' => ['placeholder' => 'Search Experience'],
             'pluginOptions' => ['highlight'=>true],]);?>
-            
-     <?php 
-        echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
+     
+     
+      <?php echo  $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
             'data' =>$skillsInfo,
-            'options' => ['placeholder' => 'Search skills ...'],
-            'pluginOptions' => ['highlight'=>true],]);?>
+          	
+            'options' => ['placeholder' => 'Search skills'],
+            'pluginOptions' => ['highlight'=>true],] ); ?>
  	 
-      <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
+       <?= Html::submitButton(Yii::t('app', 'search'), ['class' => 'btn btn-warning']) ?>
     
          <?php ActiveForm::end(); ?>
          </div>
@@ -90,7 +87,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 			echo ListView::widget( [
 					'dataProvider' => $dataProvider,
 					'itemView' => '_jobslist',
-					'viewParams' => [],
+					'viewParams' => [Yii::$app->employer->employerid],
 					'pager' => [
 							 
 							'prevPageLabel' => 'PREV',
@@ -105,4 +102,10 @@ $this->params ['breadcrumbs'] [] = $this->title;
     </table>
   </div>
 </div>
+<style>
+.desine {
+  
+}
+
+</style>
 

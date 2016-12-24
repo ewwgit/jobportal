@@ -12,6 +12,8 @@ use common\widgets\Alert;
 use yii\helpers\Url;
 
 AppAsset::register($this);
+$userid=Yii::$app->employer->employerid;
+//print_r($userid);exit();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -89,7 +91,7 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
 	       
 	        <?php }else { ?>
 	        
-	         <li><a href="<?= Url::to(['/employercompany/empcommon/jobpostingslist'])?>" title="viewprofile">EmployerJobPosting</a></li>
+	         <li><a href="<?= Url::to(['/employercompany/empcommon/jobpostingslist','userid' =>$userid])?>" title="viewprofile">EmployerJobPosting</a></li>
 			    <li><a href="<?= Url::to(['/employercompany/empcommon/employer'])?>" title="viewprofile">EmployerDetails</a></li>
                <li><a href="<?= Url::to(['empsite/logout'])?>"data-method="post" title="">Logout</a></li>
                  
