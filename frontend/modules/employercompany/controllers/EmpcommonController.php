@@ -480,7 +480,7 @@ public function actionJobpostingslist() {
  					$skillsInfo =[''];
  				}
  	
- 				$MinExperienceinfo =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
+ 				$MinExperienceinfo =  ArrayHelper::map(EmployerJobpostings::find()->where(['userid' => Yii::$app->employer->employerid])->all(), 'Min_Experience','Min_Experience');
  				
  				if($MinExperienceinfo)
  				{
@@ -488,7 +488,7 @@ public function actionJobpostingslist() {
  				}
  				else {
  					$MinExperienceinfo =[''];}
- 				$designationinfo =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
+ 				$designationinfo =  ArrayHelper::map(EmployerJobpostings::find()->where(['userid' => Yii::$app->employer->employerid])->all(), 'designation','designation');
  				
  				if($designationinfo)
  				{
@@ -496,7 +496,7 @@ public function actionJobpostingslist() {
  				}
  				else {
  					$designationinfo = [''];}
- 				$companynameinfo =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
+ 				$companynameinfo =  ArrayHelper::map(EmployerJobpostings::find()->where(['userid' => Yii::$app->employer->employerid])->all(), 'company_name','company_name');
  				
  				if($companynameinfo)
  				{
