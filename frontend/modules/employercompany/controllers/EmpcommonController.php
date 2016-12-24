@@ -448,11 +448,15 @@ class EmpcommonController extends Controller {
 	}
 	
 	
-public function actionJobpostingslist($userid) {
+public function actionJobpostingslist() {
 		$this->layout = '@app/views/layouts/employerinner';
-		$query = EmployerJobpostings::find()->where(['userid' => $userid]);
+		
+		$query = EmployerJobpostings::find()->where(['userid' => Yii::$app->employer->employerid]);
 		$searchModel = new JobpostSearch();
-		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$searchParams = Yii::$app->request->queryParams;
+		$searchParams['userid'] = Yii::$app->employer->employerid;
+		
+		$dataProvider = $searchModel->search($searchParams);
 		$id=Yii::$app->employer->employerid;
 		//print_r($id);exit;
 		

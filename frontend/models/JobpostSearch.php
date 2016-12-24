@@ -40,7 +40,15 @@ class JobpostSearch extends EmployerJobpostings {
 		return Model::scenarios ();
 	}
 	public function search($params) {
+		
 		$query = EmployerJobpostings::find ();
+		if(isset($params['userid']) && ($params['userid'] != 0) )
+		{
+			$query = EmployerJobpostings::find()->where(['userid'=>$params['userid']]);
+		}
+		else {
+			$query = EmployerJobpostings::find();
+		}
 		
 		$dataProvider = new ActiveDataProvider ( [ 
 				'query' => $query 
