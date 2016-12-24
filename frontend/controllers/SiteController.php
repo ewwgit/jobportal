@@ -20,8 +20,9 @@ use frontend\models\EmployeeEmployer;
 use frontend\models\EmployeeLanguages;
 use frontend\models\EmployeeEducation;
 use frontend\models\EmployerJobpostings;
-use frontend\models\JobpostSearch;
+use frontend\models\EmployeeJobsearch;
 use frontend\models\EmployeeJobapplied;
+
 
 use common\models\User;
 use yii\web\UploadedFile;
@@ -86,13 +87,34 @@ class SiteController extends Controller
     {
     	
     	$model = new EmployeeJobapplied();
-    	$searchModel = new JobpostSearch();
+    	$searchModel = new EmployeeJobsearch();
     	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
     	
     	
+    	
+    	
+
+    	$skillsdata = EmployerJobpostings::find()
+    	->select('skills')
+    	->all();
+    	 
+    	$skillsInfo = array();
+    	if(!empty($skillsdata))
+    	{
+    		foreach ($skillsdata as $skillnew)
+    		{
+    			//echo rtrim($skillnew->skills,",");
+    			$aryconvertskill = explode(",",rtrim($skillnew->skills,","));
+    			for($k=0; $k < count($aryconvertskill); $k++)
+    			{
+    				$skillsInfo[$aryconvertskill[$k]] = $aryconvertskill[$k];
+    			}
+    		}
+    	}
+    	
     	return $this->render('index', [
     			'dataProvider' => $dataProvider,
-    			'searchModel' => $searchModel
+    			'searchModel' => $searchModel,'skillsInfo' => $skillsInfo
     	]);
     	}
     	
@@ -389,12 +411,13 @@ class SiteController extends Controller
     		throw new NotFoundHttpException ( 'The requested page does not exist.' );
     	}
 	}
+	
 	public function actionApplylist($id)
 	{
 	
 		$model = new EmployeeJobapplied();
 		
-		$searchModel = new JobpostSearch();
+		$searchModel = new EmployeeJobsearch();
 	
 		$query = EmployeeJobapplied::find()->where(['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 		$userId = $query['id'];
