@@ -39,11 +39,11 @@ class EmpcommonController extends Controller {
 		//print_r(RolesModel::getRole());exit();
 		if(EmployerRolesModel::getRole() == 2)
 		{
-			$permissionsArray = ['employer','employercommonview'
+			$permissionsArray = ['employer','employercommonview','delete','update','view','create','jobpostingsview','jobpostingslist','employeelist'
 			];
 		}
 		else {
-			$permissionsArray = ['employer'];
+			$permissionsArray = [''];
 		}
 	
 	
@@ -52,13 +52,13 @@ class EmpcommonController extends Controller {
 				'verbs' => [
 						'class' => VerbFilter::className(),
 						'actions' => [
-								'delete' => ['post'],
+								'delete' => ['data-method'=>'post'],
 						],
 				],
 				'access' => [
 						'class' => AccessControl::className(),
 						'only' => [
-								'employer','employercommonview'
+								'employer','employercommonview','delete','update','view','create','jobpostingsview','jobpostingslist','employeelist'
 	
 						],
 						'rules' => [
@@ -438,9 +438,9 @@ class EmpcommonController extends Controller {
 			if (! Empty ( $skill )) {
 				
 				$array = $model->skills;
-				$comma_separated = implode ( ",", $array );
-				//$comma_separated = join ( ",", $array );
-				//$comma_separated = implode(",",rtrim($array,","));
+				$aryconvertskill1 = implode ( ",", $array );
+				$comma_separated = rtrim($aryconvertskill1,",");
+			
 			}
 			
 			$model->startDate = date ( "Y-m-d " );
