@@ -9,15 +9,22 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
-    'controllerNamespace' => 'backend\controllers',
+    'controllerNamespace' => 'app\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+    		'employees' => [
+    				'class' => 'app\modules\employees\employees',
+    		],
+    		'employers' => [
+    				'class' => 'app\modules\employers\employers',
+    		],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
@@ -34,6 +41,21 @@ return [
                 ],
             ],
         ],
+    		
+    		'view' => [
+    				'theme' => [
+    						'pathMap' => [
+    								'@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+    						],
+    				],
+    		],
+    		'db' => [
+    				'class' => '\yii\db\Connection',
+    				'dsn' => 'mysql:host=localhost;dbname=jobportal',
+    				'username' => 'root',
+    				'password' => '',
+    				'charset' => 'utf8'
+    		],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
