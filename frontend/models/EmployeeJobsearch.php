@@ -45,7 +45,7 @@ class EmployeeJobsearch extends EmployerJobpostings {
 				'query' => $query 
 		]
 		 );
-		
+		//print_r($params);exit();
 		$this->load ( $params );
 		
 		if (! $this->validate ()) {
@@ -54,27 +54,27 @@ class EmployeeJobsearch extends EmployerJobpostings {
 		}
 		
 		
-		$query->orFilterWhere ( [ 
+		$query->andFilterWhere ( [ 
 				'like',
 				'rolecategory',
 				$this->rolecategory 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'skills',
 				$this->skills 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'designation',
 				$this->designation 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'Min_Experience',
 				$this->Min_Experience 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'Max_Experience',
 				$this->Max_Experience 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'dateofestablishment',
 				$this->dateofestablishment 
