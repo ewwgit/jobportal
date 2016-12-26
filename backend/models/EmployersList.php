@@ -5,13 +5,20 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "employee_employer".
+ * This is the model class for table "employer".
  *
  * @property integer $employerid
- * @property string $employername
- * @property string $employertype
+ * @property string $name
+ * @property string $mobilenumber
+ * @property string $dateofbirth
+ * @property string $gender
  * @property string $designation
+ * @property string $address
  * @property integer $userid
+ * @property string $profileimage
+ * @property string $create_date
+ * @property string $updated_date
+ * @property string $skills
  */
 class EmployersList extends \yii\db\ActiveRecord
 {
@@ -20,7 +27,7 @@ class EmployersList extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'employee_employer';
+        return 'employer';
     }
 
     /**
@@ -29,9 +36,13 @@ class EmployersList extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['employername', 'employertype', 'designation', 'userid'], 'required'],
-            [['userid'], 'integer'],
-            [['employername', 'employertype', 'designation'], 'string', 'max' => 200],
+            [['name', 'mobilenumber', 'dateofbirth', 'gender', 'designation', 'address', 'userid', 'profileimage', 'create_date', 'updated_date', 'skills'], 'required'],
+            [['mobilenumber', 'userid'], 'integer'],
+            [['dateofbirth', 'create_date', 'updated_date'], 'safe'],
+            [['gender', 'address'], 'string'],
+            [['name'], 'string', 'max' => 225],
+            [['designation', 'skills'], 'string', 'max' => 100],
+            [['profileimage'], 'string', 'max' => 200],
         ];
     }
 
@@ -42,10 +53,17 @@ class EmployersList extends \yii\db\ActiveRecord
     {
         return [
             'employerid' => 'Employerid',
-            'employername' => 'Employername',
-            'employertype' => 'Employertype',
+            'name' => 'Name',
+            'mobilenumber' => 'Mobilenumber',
+            'dateofbirth' => 'Dateofbirth',
+            'gender' => 'Gender',
             'designation' => 'Designation',
+            'address' => 'Address',
             'userid' => 'Userid',
+            'profileimage' => 'Profileimage',
+            'create_date' => 'Create Date',
+            'updated_date' => 'Updated Date',
+            'skills' => 'Skills',
         ];
     }
 }

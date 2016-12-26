@@ -18,8 +18,8 @@ class EmployerslistSearch extends EmployersList
     public function rules()
     {
         return [
-            [['employerid', 'userid'], 'integer'],
-            [['employername', 'employertype', 'designation'], 'safe'],
+            [['employerid', 'mobilenumber', 'userid'], 'integer'],
+            [['name', 'dateofbirth', 'gender', 'designation', 'address', 'profileimage', 'create_date', 'updated_date', 'skills'], 'safe'],
         ];
     }
 
@@ -60,12 +60,19 @@ class EmployerslistSearch extends EmployersList
         // grid filtering conditions
         $query->andFilterWhere([
             'employerid' => $this->employerid,
+            'mobilenumber' => $this->mobilenumber,
+            'dateofbirth' => $this->dateofbirth,
             'userid' => $this->userid,
+            'create_date' => $this->create_date,
+            'updated_date' => $this->updated_date,
         ]);
 
-        $query->andFilterWhere(['like', 'employername', $this->employername])
-            ->andFilterWhere(['like', 'employertype', $this->employertype])
-            ->andFilterWhere(['like', 'designation', $this->designation]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'gender', $this->gender])
+            ->andFilterWhere(['like', 'designation', $this->designation])
+            ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'profileimage', $this->profileimage])
+            ->andFilterWhere(['like', 'skills', $this->skills]);
 
         return $dataProvider;
     }

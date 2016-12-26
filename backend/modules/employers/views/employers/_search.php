@@ -17,13 +17,27 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'employerid') ?>
 
-    <?= $form->field($model, 'employername') ?>
+    <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'employertype') ?>
+    <?= $form->field($model, 'mobilenumber') ?>
 
-    <?= $form->field($model, 'designation') ?>
+    <?= $form->field($model, 'dateofbirth') ?>
 
-    <?= $form->field($model, 'userid') ?>
+    <?= $form->field($model, 'gender') ?>
+
+    <?php // echo $form->field($model, 'designation') ?>
+
+    <?php // echo $form->field($model, 'address') ?>
+
+    <?php // echo $form->field($model, 'userid') ?>
+
+    <?php // echo $form->field($model, 'profileimage') ?>
+
+    <?php // echo $form->field($model, 'create_date') ?>
+
+    <?php // echo $form->field($model, 'updated_date') ?>
+
+    <?php // echo $form->field($model, 'skills') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

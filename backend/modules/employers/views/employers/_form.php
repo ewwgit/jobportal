@@ -12,13 +12,27 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'employername')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'employertype')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'mobilenumber')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'dateofbirth')->textInput() ?>
+
+    <?= $form->field($model, 'gender')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'designation')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
+
     <?= $form->field($model, 'userid')->textInput() ?>
+
+    <?= $form->field($model, 'profileimage')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'create_date')->textInput() ?>
+
+    <?= $form->field($model, 'updated_date')->textInput() ?>
+
+    <?= $form->field($model, 'skills')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
