@@ -23,6 +23,7 @@ use frontend\models\EmployerJobpostings;
 use frontend\models\EmployeeJobsearch;
 use frontend\models\EmployeeJobapplied;
 use frontend\models\MatchingJobsearch;
+use frontend\models\RolesModel;
 
 
 use common\models\User;
@@ -35,7 +36,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+  /*   public function behaviors()
     {
         return [
             'access' => [
@@ -61,6 +62,60 @@ class SiteController extends Controller
                 ],
             ],
         ];
+    } */
+    
+    public function behaviors()
+    {
+    
+    	$permissionsArray = [''];
+    	//print_r(RolesModel::getRole());exit();
+    	if(RolesModel::getRole() == 3)
+    	{
+    		$permissionsArray = ['index','login','logout','contact','about','signup',
+    				'viewprofile'
+    		];
+    	}
+    	else {
+    		$permissionsArray = ['index','login','logout','contact','about','signup'];
+    	}
+    
+    
+    	//print_r($permissionsArray);exit();
+    	return [
+    			'verbs' => [
+    					'class' => VerbFilter::className(),
+    					'actions' => [
+    							'delete' => ['post'],
+    					],
+    			],
+    			'access' => [
+    					'class' => AccessControl::className(),
+    					'only' => [
+    							'index','login','logout','contact','about','signup','viewprofile'
+    
+    					],
+    					'rules' => [
+    							[
+    									'actions' => $permissionsArray,
+    									'allow' => true,
+    									'matchCallback' => function ($rule, $action) {
+    									
+    									if((RolesModel::getRole() == 3) || (RolesModel::getRole() == 0))
+    									{
+    											
+    										return true;
+    									}
+    									}
+    									],
+    									[
+    											'denyCallback' => function ($rule, $action) {
+    											
+    											$this->redirect(Yii::$app->urlManager->createUrl(['site/index/']));
+    											}
+    											]
+    											]
+    											]
+    											];
     }
 
     /**
