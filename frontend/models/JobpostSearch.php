@@ -63,27 +63,27 @@ class JobpostSearch extends EmployerJobpostings {
 		}
 		
 		
-		$query->orFilterWhere ( [ 
+		$query->andFilterWhere ( [ 
 				'like',
 				'rolecategory',
 				$this->rolecategory 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'skills',
 				$this->skills 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'designation',
 				$this->designation 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'Min_Experience',
 				$this->Min_Experience 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'Max_Experience',
 				$this->Max_Experience 
-		] )->orFilterWhere ( [ 
+		] )->andFilterWhere ( [ 
 				'like',
 				'dateofestablishment',
 				$this->dateofestablishment 

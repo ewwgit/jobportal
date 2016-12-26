@@ -152,7 +152,7 @@ use kartik\typeahead\Typeahead;
      
           <!-- Browse Jobs -->
        
-          <div class="browse-jobs"> Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a> </div>
+          <div class="browse-jobs">  </div>
           
           <!-- Announce -->
           <div class="announce"> We've over <strong>15 000</strong> job offers for you! </div>

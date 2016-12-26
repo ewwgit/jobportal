@@ -382,11 +382,12 @@ class EmpcommonController extends Controller {
 			if (! Empty ( $skill )) {
 				
 				$array = $model->skills;
-				
 				$comma_separated = implode ( ",", $array );
+				//$comma_separated = join ( ",", $array );
+				//$comma_separated = implode(",",rtrim($array,","));
 			}
 			
-			$model->startDate = date ( "Y-m-d H:i:s" );
+			$model->startDate = date ( "Y-m-d " );
 			
 			$model->skills = $comma_separated;
 			$model->userid = $userid;

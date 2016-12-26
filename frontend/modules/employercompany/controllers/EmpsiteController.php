@@ -336,16 +336,31 @@ class EmpsiteController extends Controller {
 		if ($model->load ( Yii::$app->request->post () ) && $model->validate ()) {
 			if ($model->sendEmail ()) {
 				Yii::$app->session->setFlash ( 'success', 'Check your email for further instructions.' );
-				return $this->goHome ();
+				//return $this->goHome ();
+				return Yii::$app->getResponse ()->redirect ( [
+						'employercompany/empsite/login',
+						'success' => 1
+						//'userid' => Yii::$app->employer->employerid
+				] );
 				
 			} else {
-				Yii::$app->session->setFlash ( 'error', 'Sorry, we are unable to reset password for email provided.' );
+				Yii::$app->getSession()->setFlash('danger', [
+						'type' => 'danger',
+						'duration' => 12000,
+						'icon' => 'fa fa-users',
+						'message' => 'Sorry, we are unable to reset password for email provided.',
+						'title' => 'Errors',
+						'positonY' => 'top',
+						'positonX' => 'center'
+				]);
+				//Yii::$app->session->setFlash ( 'error', 'Sorry, we are unable to reset password for email provided.' );
 			}
 		}
 		return $this->render ( 'requestPasswordResetToken', [ 
 				'model' => $model 
 		] );
 	}
+	
 	/**
 	 * Resets password.
 	 * 
@@ -364,7 +379,11 @@ class EmpsiteController extends Controller {
 		if ($model->load ( Yii::$app->request->post () ) && $model->validate () && $model->resetPassword ()) {
 			Yii::$app->session->setFlash ( 'success', 'New password was saved.' );
 			
-			return $this->goHome ();
+			//return $this->goHome ();
+			return Yii::$app->getResponse ()->redirect ( [
+					'employercompany/empsite/login',
+					//'userid' => Yii::$app->employer->employerid
+			] );
 		}
 		
 		return $this->render ( 'resetPassword', [ 
