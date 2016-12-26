@@ -19,6 +19,7 @@ use common\models\User;
 use frontend\models\EmployerEducation;
 use frontend\models\EmployerPreferences;
 use yii\web\UploadedFile;
+use frontend\models\EmployerRolesModel;
 
 /**
  * Site controller
@@ -27,7 +28,7 @@ class EmpsiteController extends Controller {
 	/**
 	 * @inheritdoc
 	 */
-	public function behaviors() {
+	/* public function behaviors() {
 		return [ 
 				'access' => [ 
 						'class' => AccessControl::className (),
@@ -65,6 +66,60 @@ class EmpsiteController extends Controller {
 						] 
 				] 
 		];
+	} */
+	
+	public function behaviors()
+	{
+	
+		$permissionsArray = [''];
+		//print_r(RolesModel::getRole());exit();
+		if(EmployerRolesModel::getRole() == 2)
+		{
+			$permissionsArray = ['index','login','logout','contact','about','signup',
+					'viewprofile'
+			];
+		}
+		else {
+			$permissionsArray = ['index','login','logout','contact','about','signup'];
+		}
+	
+	
+		//print_r($permissionsArray);exit();
+		return [
+				'verbs' => [
+						'class' => VerbFilter::className(),
+						'actions' => [
+								'delete' => ['post'],
+						],
+				],
+				'access' => [
+						'class' => AccessControl::className(),
+						'only' => [
+								'index','login','logout','contact','about','signup','viewprofile'
+	
+						],
+						'rules' => [
+								[
+										'actions' => $permissionsArray,
+										'allow' => true,
+										'matchCallback' => function ($rule, $action) {
+											
+										if((EmployerRolesModel::getRole() == 2) || (EmployerRolesModel::getRole() == 0))
+										{
+												
+											return true;
+										}
+										}
+										],
+										[
+												'denyCallback' => function ($rule, $action) {
+													
+												$this->redirect(Yii::$app->urlManager->createUrl(['employercompany/empsite/login/']));
+												}
+												]
+												]
+												]
+												];
 	}
 	
 	/**

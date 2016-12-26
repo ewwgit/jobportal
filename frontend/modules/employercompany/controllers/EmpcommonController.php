@@ -25,9 +25,65 @@ use frontend\models\EmployeeJobapplied;
 use yii\data\ActiveDataProvider;
 use yii\db\Query ;
 use yii\helpers\ArrayHelper;
+use frontend\models\EmployerRolesModel;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 
 class EmpcommonController extends Controller {
+	
+	public function behaviors()
+	{
+	
+		$permissionsArray = [''];
+		//print_r(RolesModel::getRole());exit();
+		if(EmployerRolesModel::getRole() == 2)
+		{
+			$permissionsArray = ['employer','employercommonview'
+			];
+		}
+		else {
+			$permissionsArray = ['employer'];
+		}
+	
+	
+		//print_r($permissionsArray);exit();
+		return [
+				'verbs' => [
+						'class' => VerbFilter::className(),
+						'actions' => [
+								'delete' => ['post'],
+						],
+				],
+				'access' => [
+						'class' => AccessControl::className(),
+						'only' => [
+								'employer','employercommonview'
+	
+						],
+						'rules' => [
+								[
+										'actions' => $permissionsArray,
+										'allow' => true,
+										'matchCallback' => function ($rule, $action) {
+											
+										if((EmployerRolesModel::getRole() == 2) || (EmployerRolesModel::getRole() == 0))
+										{
+	
+											return true;
+										}
+										}
+										],
+										[
+												'denyCallback' => function ($rule, $action) {
+													
+												$this->redirect(Yii::$app->urlManager->createUrl(['employercompany/empsite/login/']));
+												}
+												]
+												]
+												]
+												];
+	}
 	public function actionEmployer() {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployerForm ();
