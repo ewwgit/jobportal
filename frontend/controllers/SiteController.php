@@ -22,6 +22,7 @@ use frontend\models\EmployeeEducation;
 use frontend\models\EmployerJobpostings;
 use frontend\models\EmployeeJobsearch;
 use frontend\models\EmployeeJobapplied;
+use frontend\models\MatchingJobsearch;
 
 
 use common\models\User;
@@ -131,7 +132,7 @@ class SiteController extends Controller
     	if ((! \Yii::$app->user->isGuest) && (Yii::$app->emplyoee->emplyoeeroleid ==3)) {
     		//return $this->goHome ();
     		return Yii::$app->getResponse ()->redirect ( [
-    				'site/viewprofile',
+    				'site/matchingjobs',
     	
     				'userid' =>Yii::$app->emplyoee->emplyoeeid
     				] );
@@ -172,6 +173,11 @@ class SiteController extends Controller
 				}
 				else {
 					return $this->goHome ();
+				/* 	return Yii::$app->getResponse ()->redirect ( [
+    				'site/matchingjobs',
+    	
+    				'userid' =>Yii::$app->emplyoee->emplyoeeid
+    				] ); */
 				}
 				
 			}
@@ -404,6 +410,50 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    
+     public function actionMatchingjobs()
+     {
+     	
+     	
+     	$query = EmployerJobpostings::find();
+     	$searchModel = new MatchingJobsearch();
+     	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
+     	$skillname = $skillmodel->skillname;
+     	//print_r($skillname);exit();
+    		
+    	$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
+     	$experience = $jobmodel->experience;
+     	$jobrole = $jobmodel->jobrole;
+     	$jobtype = $jobmodel->jobtype;
+     	$salary = $jobmodel->expectedsalary;
+     	$joblocation = $jobmodel->joblocation;
+     	
+     	
+     	//$searchParams = Yii::$app->request->queryParams;
+     	//print_r($searchParams);exit();
+     	$searchParams['skills'] = $skillname;
+     	$searchParams['Min_Experience'] = $experience;
+     	$searchParams['designation'] = $jobrole;
+     	$searchParams['jobtype'] = $jobtype;
+     	$searchParams['CTC'] = $salary;
+     	$searchParams['city'] = $joblocation;
+     
+     	
+     	$dataProvider = $searchModel->search($searchParams);
+     
+     	
+     	
+     	
+     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     protected function findModel($id) {
     	if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
     		return $model;
