@@ -22,7 +22,7 @@ use frontend\models\EmployeeEducation;
 use frontend\models\EmployerJobpostings;
 use frontend\models\EmployeeJobsearch;
 use frontend\models\EmployeeJobapplied;
-use frontend\models\MatchingJobsearch;
+
 use frontend\models\RolesModel;
 
 
@@ -72,11 +72,11 @@ class SiteController extends Controller
     	if(RolesModel::getRole() == 3)
     	{
     		$permissionsArray = ['index','login','logout','contact','about','signup',
-    				'viewprofile'
+    				'viewprofile','request-password-reset','reset-password','applylist','applyjobajax'
     		];
     	}
     	else {
-    		$permissionsArray = ['index','login','logout','contact','about','signup'];
+    		$permissionsArray = ['index','login','logout','contact','about','signup','request-password-reset','reset-password'];
     	}
     
     
@@ -91,7 +91,7 @@ class SiteController extends Controller
     			'access' => [
     					'class' => AccessControl::className(),
     					'only' => [
-    							'index','login','logout','contact','about','signup','viewprofile'
+    							'index','login','logout','contact','about','signup','viewprofile','request-password-reset','reset-password','applylist','applyjobajax'
     
     					],
     					'rules' => [
@@ -490,46 +490,7 @@ class SiteController extends Controller
         ]);
     }
     
-     public function actionMatchingjobs()
-     {
-     	
-     	
-     	$query = EmployerJobpostings::find();
-     	$searchModel = new MatchingJobsearch();
-     	$skillmodel = EmployeeSkills :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
-     	$skillname = $skillmodel->skillname;
-     	//print_r($skillname);exit();
-    		
-    	$jobmodel = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
-     	$experience = $jobmodel->experience;
-     	$jobrole = $jobmodel->jobrole;
-     	$jobtype = $jobmodel->jobtype;
-     	$salary = $jobmodel->expectedsalary;
-     	$joblocation = $jobmodel->joblocation;
-     	
-     	
-     	//$searchParams = Yii::$app->request->queryParams;
-     	//print_r($searchParams);exit();
-     	$searchParams['skills'] = $skillname;
-     	$searchParams['Min_Experience'] = $experience;
-     	$searchParams['designation'] = $jobrole;
-     	$searchParams['jobtype'] = $jobtype;
-     	$searchParams['CTC'] = $salary;
-     	$searchParams['city'] = $joblocation;
-     
-     	
-     	$dataProvider = $searchModel->search($searchParams);
-     
-     	
-     	
-     	
-     }
-    
-    
-    
-    
-    
-    
+   
     
     
     

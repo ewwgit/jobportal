@@ -24,6 +24,9 @@ use frontend\models\EmployeeResume;
 use frontend\models\EmployeeLanguages;
 
 
+use frontend\models\RolesModel;
+
+
 use yii\base\Object;
 use yii\web\UploadedFile;
 
@@ -31,6 +34,67 @@ use yii\web\UploadedFile;
 
 class CommonController extends Controller
 {
+	
+	
+	
+	public function behaviors()
+	{
+	
+		$permissionsArray = [''];
+		//print_r(RolesModel::getRole());exit();
+		if(RolesModel::getRole() == 3)
+		{
+			$permissionsArray = ['index','login','logout','contact','about','signup',
+					'viewprofile','employee'
+			];
+		}
+		else {
+			$permissionsArray = ['index','login','logout','contact','about','signup',];
+		}
+	
+	
+		//print_r($permissionsArray);exit();
+		return [
+				'verbs' => [
+						'class' => VerbFilter::className(),
+						'actions' => [
+								'delete' => ['post'],
+						],
+				],
+				'access' => [
+						'class' => AccessControl::className(),
+						'only' => [
+								'index','login','logout','contact','about','signup','viewprofile','employee'
+	
+						],
+						'rules' => [
+								[
+										'actions' => $permissionsArray,
+										'allow' => true,
+										'matchCallback' => function ($rule, $action) {
+												
+											if((RolesModel::getRole() == 3) || (RolesModel::getRole() == 0))
+											{
+													
+												return true;
+											}
+										}
+								],
+								[
+										'denyCallback' => function ($rule, $action) {
+												
+											$this->redirect(Yii::$app->urlManager->createUrl(['site/index/']));
+										}
+								]
+								]
+								]
+								];
+	}
+	
+	
+	
+	
+	
 	
 	public function actionEmployee()
 	{

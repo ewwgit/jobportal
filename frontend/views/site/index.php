@@ -5,7 +5,7 @@
 $this->title = 'My Yii Application';
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use frontend\models\JobpostSearch;
+use frontend\models\EmployeeJobsearch;
 
 use frontend\models\Employerjobpostings;
 use yii\helpers\Url;
