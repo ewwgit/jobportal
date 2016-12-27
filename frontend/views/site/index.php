@@ -49,98 +49,61 @@ use kartik\typeahead\Typeahead;
        
        
 
-        
-       $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
-       if($data)
-       {
-       	$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
-       }
-       else {
-       	$data = [''];
-       }
+  
      
      echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
-    'data' => $data,
+    'data' => $companydata,
     'options' => ['placeholder' => 'enter CompanyName ...'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  ?>
+ 
     
 	 <?php 
 	 
 	 
 	 
-	 $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
-	 if($data)
-	 {
-	 	$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
-	 }
-	 else {
-	 	$data = [''];
-	 }
+	
      
      echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
-    'data' => $data,
+    'data' => $desdata,
     'options' => ['placeholder' => 'enter Designation ...'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  ?>
+ 
         <?php 
         
       
-        
-        $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
-        if($data)
-        {
-        	$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
-        }
-        else {
-        	$data =[''];
-        }
-     
+       
      echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
-    'data' =>$data,
+    'data' =>$expdata,
     'options' => ['placeholder' => 'enter Experience ...'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  
      
      ?>
+  
        
 	   <?php 
 	   
 	   
-	   $data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');
-	     //$datary = array();
-	 // print_r($data);exit();
-	    //$newdataary = array();
-	   if($data)
-	   {
 
-	   	$data =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');
-	  /*  	$dataarry =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'skills','skills');
-	   	for ($i=0;$i< count($dataarry); $i++)
-	   	 {
-	   	 $newdataary[$dataarry[$i]]= $dataarry[$i];
-	   	 }  */
-	   	
-	   }
-	   else {
-	   	$data = [''];
-	   }
      
      echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
-    'data' => 	$data,
+    'data' => 	$skillsInfo,
     'options' => ['placeholder' => 'enter skills ...'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  
      
      ?>
+      
 	 
-         <button><i class="fa fa-search"></i></button>
-    </nobr>
-         <?php ActiveForm::end(); ?>
+         <button><i class="fa fa-search"></i></button></nobr>
+ 
+        
                 
            
        
@@ -151,11 +114,15 @@ use kartik\typeahead\Typeahead;
              
      
           <!-- Browse Jobs -->
-       
-          <div class="browse-jobs">  </div>
+       <!-- Browse Jobs -->
+          <div class="browse-jobs"> Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a> </div>
           
           <!-- Announce -->
-          <div class="announce"> We've over <strong>15 000</strong> job offers for you! </div>
+          <div class="announce"> We  have over <strong>15 000</strong> job offers for you! </div>
+          
+          
+          
+           <?php ActiveForm::end(); ?>
         </div>
       </div>
     </div>

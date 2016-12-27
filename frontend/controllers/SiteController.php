@@ -22,6 +22,7 @@ use frontend\models\EmployeeEducation;
 use frontend\models\EmployerJobpostings;
 use frontend\models\EmployeeJobsearch;
 use frontend\models\EmployeeJobapplied;
+use yii\helpers\ArrayHelper;
 
 use frontend\models\RolesModel;
 
@@ -161,6 +162,43 @@ class SiteController extends Controller
     			}
     		}
     	}
+    	else {
+    		$skillsInfo =[''];
+    	}
+    	
+    	$companydata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
+    	if($companydata)
+    	{
+    		$companydata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
+    	}
+    	else {
+    		$companydata = [''];
+    	}
+    	
+    	
+    	$desdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
+    	if($desdata)
+    	{
+    		$desdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
+    	}
+    	else {
+    		$desdata = [''];
+    	}
+    	
+    	
+    	$expdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
+    	if($expdata)
+    	{
+    		$expdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
+    	}
+    	else {
+    		$expdata =[''];
+    	}
+    	
+    	
+    	
+    	
+    	
     	if(Yii::$app->emplyoee->emplyoeeid != '')
     	{
     		
@@ -194,7 +232,9 @@ class SiteController extends Controller
     	}
     	return $this->render('index', [
     			'dataProvider' => $dataProvider,
-    			'searchModel' => $searchModel,'skillsInfo' => $skillsInfo
+    			'searchModel' => $searchModel,'skillsInfo' => $skillsInfo,
+    			'companydata' => $companydata,'desdata' => $desdata,
+    			'expdata' => $expdata,
     	]);
     	}
     	
