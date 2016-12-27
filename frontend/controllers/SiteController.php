@@ -158,7 +158,7 @@ class SiteController extends Controller
     			$aryconvertskill = explode(",",rtrim($skillnew->skills,","));
     			for($k=0; $k < count($aryconvertskill); $k++)
     			{
-    				$skillsInfo[$aryconvertskill[$k]] = $aryconvertskill[$k];
+    				$skillsInfo["$aryconvertskill[$k]"] = $aryconvertskill[$k];
     			}
     		}
     	}
@@ -194,7 +194,7 @@ class SiteController extends Controller
     	else {
     		$expdata =[''];
     	}
-    	
+    	//print_r($expdata);exit();
     	
     	
     	
@@ -210,13 +210,13 @@ class SiteController extends Controller
     		}
     		else {
     			
-    			$skillsInfo = EmployeeSkills::find()->select(['skillname'])->where(['userid' => Yii::$app->emplyoee->emplyoeeid ])->all();
-    			if(!empty($skillsInfo))
+    			$skillsInfonew = EmployeeSkills::find()->select(['skillname'])->where(['userid' => Yii::$app->emplyoee->emplyoeeid ])->all();
+    			if(!empty($skillsInfonew))
     			{
     				
     				$paramInfo = Yii::$app->request->queryParams;
     				$paramInfo['r'] = 'site/index';    				
-    				$paramInfo['EmployeeJobsearch']['skills'] = $skillsInfo[0]['skillname'];
+    				$paramInfo['EmployeeJobsearch']['skills'] = $skillsInfonew[0]['skillname'];
     				//print_r($paramInfo);exit();
     				$dataProvider = $searchModel->search($paramInfo);
     			}
@@ -232,8 +232,10 @@ class SiteController extends Controller
     	}
     	return $this->render('index', [
     			'dataProvider' => $dataProvider,
-    			'searchModel' => $searchModel,'skillsInfo' => $skillsInfo,
-    			'companydata' => $companydata,'desdata' => $desdata,
+    			'searchModel' => $searchModel,
+    			'skillsInfo' => $skillsInfo,
+    			'companydata' => $companydata,
+    			'desdata' => $desdata,
     			'expdata' => $expdata,
     	]);
     	}

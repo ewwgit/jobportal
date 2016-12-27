@@ -45,12 +45,7 @@ use kartik\typeahead\Typeahead;
   
     <nobr>
        <?php 
-       
-       
-       
-
   
-     
      echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
     'data' => $companydata,
     'options' => ['placeholder' => 'enter CompanyName ...'],
@@ -60,11 +55,7 @@ use kartik\typeahead\Typeahead;
  
     
 	 <?php 
-	 
-	 
-	 
 	
-     
      echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
     'data' => $desdata,
     'options' => ['placeholder' => 'enter Designation ...'],
@@ -73,9 +64,7 @@ use kartik\typeahead\Typeahead;
  ?>
  
         <?php 
-        
-      
-       
+     
      echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
     'data' =>$expdata,
     'options' => ['placeholder' => 'enter Experience ...'],
@@ -87,10 +76,7 @@ use kartik\typeahead\Typeahead;
   
        
 	   <?php 
-	   
-	   
-
-     
+	
      echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
     'data' => 	$skillsInfo,
     'options' => ['placeholder' => 'enter skills ...'],
