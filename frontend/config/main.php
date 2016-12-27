@@ -5,11 +5,13 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
-
+use \yii\web\Request;
+$baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+		'defaultRoute' => 'site/index',
 		//'defaultRoute' => 'user/index',
 		'modules' => [
 				'employercompany' => [
@@ -19,9 +21,9 @@ return [
 		],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
-        'request' => [
+       /*  'request' => [
             'csrfParam' => '_csrf-frontend',
-        ],
+        ], */
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -43,6 +45,19 @@ return [
 						'class' => 'common\components\Employer',
 				
 				],
+    		
+    		'request' => [
+    				'baseUrl' => $baseUrl,
+    				'enableCsrfValidation' => false,
+    		],
+    		'urlManager' => [
+    				'baseUrl' => $baseUrl,
+    				'enablePrettyUrl' => true,
+    				'showScriptName' => false,
+    				'rules' => [
+    		
+    				]
+    		],
 				
 //     		'user' => [
 //     				'identityClass' => 'common\models\User',
