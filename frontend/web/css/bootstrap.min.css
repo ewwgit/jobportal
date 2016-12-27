@@ -3026,7 +3026,7 @@ select[multiple].input-sm, textarea.input-sm {
 }
 
 .form-group-sm .form-control {
-	height: 35px;
+	height: 35px !important;
 	padding: 5px 10px;
 	font-size: 12px;
 	line-height: 1.5;

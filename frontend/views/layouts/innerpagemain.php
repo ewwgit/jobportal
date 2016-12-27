@@ -34,7 +34,7 @@ AppAsset::register($this);
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="images/logo.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="../images/logo.png" alt="Work Scout" /></a></h1>
         </div>
         
         <!-- Menu -->
@@ -84,7 +84,7 @@ AppAsset::register($this);
           <?php }else { ?>
                <ul id="responsive" class="float-right">
                  
-               <li><a href="<?= Url::to(['site/viewprofile', 'userid' => Yii::$app->emplyoee->emplyoeeid ])?>" title="viewprofile">EmployeeProfile</a></li>
+               <li><a href="<?= Url::to(['site/viewprofile'])?>" title="viewprofile">EmployeeProfile</a></li>
                  <li><a href="<?= Url::to(['/site/logout'])?>"
             data-method="post" title="">Logout</a></li>
             </ul>
