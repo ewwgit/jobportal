@@ -26,12 +26,19 @@ return [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+        		'identityCookie' => [
+        				'name' => '_backendUser', // unique for backend
+        				'path' => '/advanced/backend/web' // correct path for backend app.
+        		],
         ],
         'session' => [
-            // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
-        ],
+    				'class' => 'yii\web\Session',
+    				'cookieParams' => ['httponly' => true, 'lifetime' => 3600 * 24 * 30],
+    				'timeout' => 3600 * 24 * 30,
+    				'useCookies' => true,
+    				'name' => '_backendUser', // unique for frontend
+    				'savePath' => __DIR__ . '/../runtime', // a temporary folder on frontend
+    		],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
