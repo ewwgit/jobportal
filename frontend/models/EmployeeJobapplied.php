@@ -48,7 +48,7 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     public function getUser()
     {
     	$a= $this->hasOne(User::className(), ['id' => 'userid']);
-    	Print_r($a);exit;
+    	//Print_r($a);exit;
     }
     
     /**

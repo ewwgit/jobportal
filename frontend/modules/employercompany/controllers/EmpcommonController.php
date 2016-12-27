@@ -52,7 +52,7 @@ class EmpcommonController extends Controller {
 				'verbs' => [
 						'class' => VerbFilter::className(),
 						'actions' => [
-								'delete' => ['data-method'=>'post'],
+								'delete' => ['DELETE'],
 						],
 				],
 				'access' => [
@@ -589,6 +589,8 @@ public function actionJobpostingslist() {
 		$this->layout = '@app/views/layouts/employerinner';
 		
 		$query = EmployeeJobapplied::find()->where(['jobid' => $jid]);
+		
+		
 		$dataProvider = new ActiveDataProvider([
 				'pagination' => ['pageSize' =>5],
 				'query' => $query,

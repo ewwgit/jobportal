@@ -10,10 +10,17 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use yii\helpers\Url;
+use frontend\models\EmployeeJobapplied;
 
 AppAsset::register($this);
 $userid=Yii::$app->employer->employerid;
-//print_r($userid);exit();
+//$jid = EmployeeJobapplied::find()->where(['jobid' => $jid]);
+//$jid = yii::$app->controller->action->jid;
+//$this->jobid = $JobId;
+
+//$jid=Yii::$app->employee->jobuid;
+//$jid = $this->jobid;
+//print_r($jid);exit();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -76,7 +83,7 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="images/logo.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="..images/logo.png" alt="Work Scout" /></a></h1>
         </div>
       
          <nav id="navigation" class="menu" >
@@ -87,10 +94,9 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
             <li><a href="<?= Url::to(['/employercompany/empsite/signup'])?>"><i class="fa fa-user"></i> Sign Up</a></li>
             <li><a href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-lock"></i> Log In</a></li>
             <li><a  href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-user"></i>Employer Zone</a></li>
-			
-	       
+		
 	        <?php }else { ?>
-	        
+	        <li><a href="<?= Url::to(['/employercompany/empcommon/employeeslist'/*,'jobid' => $jid*/])?>" title="viewprofile">Employeelist</a></li>
 	         <li><a href="<?= Url::to(['/employercompany/empcommon/jobpostingslist','userid' =>$userid])?>" title="viewprofile">EmployerJobPosting</a></li>
 			    <li><a href="<?= Url::to(['/employercompany/empcommon/employer','userid' =>$userid])?>" title="viewprofile">EmployerDetails</a></li>
                <li><a href="<?= Url::to(['empsite/logout'])?>"data-method="post" title="">Logout</a></li>
