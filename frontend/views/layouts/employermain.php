@@ -83,7 +83,7 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="..images/logo.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="../images/logo.png" alt="Work Scout" /></a></h1>
         </div>
       
          <nav id="navigation" class="menu" >
@@ -112,7 +112,7 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
   <div class="clearfix"></div>
    <!-- Titlebar
 ================================================== -->
-  <div id="titlebar" class="single" style="background:url(images/employer-registration-viewport.jpg); min-height:250px;">
+  <div id="titlebar" class="single" style="background:url(../images/employer-registration-viewport.jpg); min-height:250px;">
     <div class="container">
       <div class="sixteen columns" >
         <h2 style="margin-top:2.5em; color:#fff;"><?= Html::encode($this->title) ?></h2>
