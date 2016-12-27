@@ -96,7 +96,7 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
             <li><a  href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-user"></i>Employer Zone</a></li>
 		
 	        <?php }else { ?>
-	        <li><a href="<?= Url::to(['/employercompany/empcommon/employeeslist'/*,'jobid' => $jid*/])?>" title="viewprofile">Employeelist</a></li>
+	        
 	         <li><a href="<?= Url::to(['/employercompany/empcommon/jobpostingslist','userid' =>$userid])?>" title="viewprofile">EmployerJobPosting</a></li>
 			    <li><a href="<?= Url::to(['/employercompany/empcommon/employer','userid' =>$userid])?>" title="viewprofile">EmployerDetails</a></li>
                <li><a href="<?= Url::to(['empsite/logout'])?>"data-method="post" title="">Logout</a></li>

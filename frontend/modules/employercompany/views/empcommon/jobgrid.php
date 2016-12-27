@@ -79,7 +79,7 @@ $userid=Yii::$app->employer->employerid;
           <th><i class="fa fa-file-text"></i> Designation</th>
           <th><i class="fa fa-file-text"></i> Skills</th>
           <th><i class="fa fa-calendar"></i> Experience</th>
-          <th><i class="fa fa-check-square-o"></i> Filled?</th>
+          <th><i class="fa fa-check-square-o"></i> Applicants</th>
           <th><i class="fa fa-calendar"></i> Date Posted</th>
           <th><i class="fa fa-user"></i> Applications</th>
           <th></th>
