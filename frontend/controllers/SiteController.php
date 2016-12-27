@@ -111,7 +111,7 @@ class SiteController extends Controller
     									[
     											'denyCallback' => function ($rule, $action) {
     											
-    											$this->redirect(Yii::$app->urlManager->createUrl(['site/index/']));
+    											$this->redirect(Yii::$app->urlManager->createUrl(['site/login/']));
     											}
     											]
     											]
