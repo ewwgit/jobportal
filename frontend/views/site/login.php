@@ -38,7 +38,7 @@ $this->title = 'Login';
 			</ul>
 			<div class="tabs-container">
 				<!-- Login -->
-				<div class="tab-content" id="tab1" style="display: none;">
+				<div class="tab-content" id="tab1" style="">
 					<form method="post" class="login">
            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
             <p class="form-row form-row-wide">

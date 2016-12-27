@@ -246,20 +246,18 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-    	
+    	$model = new LoginForm();
     	$this->layout= '@app/views/layouts/innerpagemain';
     	if ((! \Yii::$app->user->isGuest) && (Yii::$app->emplyoee->emplyoeeroleid ==3)) {
     		//return $this->goHome ();
     		return Yii::$app->getResponse ()->redirect ( [
-    				'site/matchingjobs',
-    	
-    				'userid' =>Yii::$app->emplyoee->emplyoeeid
+    				'site/index'
     				] );
     	}
     	
         
 
-        $model = new LoginForm();
+        
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
         if ($model->user->roleid == 2) {
 				$model->addError('username','You dont have emplyoee credentials');
@@ -306,6 +304,7 @@ class SiteController extends Controller
 			}
             
         } else {
+        	
             return $this->render('login', [
                 'model' => $model,
             ]);
