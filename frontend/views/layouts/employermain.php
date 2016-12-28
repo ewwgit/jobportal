@@ -30,7 +30,7 @@ $userid=Yii::$app->employer->employerid;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <script
+       <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <?php $this->head() ?>
 </head>
@@ -55,10 +55,6 @@ $userid=Yii::$app->employer->employerid;
 
 <!-- CSS
 ================================================== -->
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/colors/green.css" id="colors">
-
 
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -208,26 +204,12 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
 
 <!-- Scripts
 ================================================== --> 
-<script src="scripts/jquery-2.1.3.min.js"></script> 
-<script src="scripts/custom.js"></script> 
-<script src="scripts/jquery.superfish.js"></script> 
-<script src="scripts/jquery.themepunch.tools.min.js"></script> 
-<script src="scripts/jquery.themepunch.revolution.min.js"></script> 
-<script src="scripts/jquery.themepunch.showbizpro.min.js"></script> 
-<script src="scripts/jquery.flexslider-min.js"></script> 
-<script src="scripts/chosen.jquery.min.js"></script> 
-<script src="scripts/jquery.magnific-popup.min.js"></script> 
-<script src="scripts/waypoints.min.js"></script> 
-<script src="scripts/jquery.counterup.min.js"></script> 
-<script src="scripts/jquery.jpanelmenu.js"></script> 
-<script src="scripts/stacktable.js"></script> 
-<script src="scripts/headroom.min.js"></script> 
-<script src="scripts/vendor-datepicker.js"></script> 
-<script src="scripts/vendor-date.js"></script> 
+
 
 <!-- Style Switcher
 ================================================== --> 
-<script src="scripts/switcher.js"></script>
+<script src="<?php echo Yii::getAlias('@web');?>/frontend/web/scripts/switcher.js"></script>
+
 <div id="style-switcher">
   <h2>Style Switcher <a href="#"></a></h2>
   <div>
@@ -307,22 +289,22 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
   <div id="reset"><a href="#" class="button color">Reset</a></div>
 </div>
 </body>
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker8').datetimepicker({
-			 useCurrent: false
-			});
+<!-- <script type="text/javascript">
+//     $(function () {
+//         $('#datetimepicker8').datetimepicker({
+// 			 useCurrent: false
+// 			});
    
 
 		
-    });
+//     });
 	
 
 		
 		
 				
 
-</script>
+<!-- </script> -->
 
 <?php $this->endBody() ?>
 </body>

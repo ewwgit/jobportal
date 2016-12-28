@@ -28,7 +28,7 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     {
         return [
             [['userid', 'jobid', 'appliedDate'], 'required'],
-            [['userid', 'jobid'], 'integer'],
+            [['userid', 'jobid','status'], 'integer'],
             [['appliedDate'], 'safe']
         ];
     }
@@ -42,6 +42,7 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
         	'jobUid' => 'Job Uid',
             'userid' => 'User ID',
             'jobid' => 'Job ID',
+        	'status' => 'Status',
             'appliedDate' => 'Applied Date',
         ];
     }

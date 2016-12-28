@@ -581,12 +581,33 @@ public function actionJobpostingslist() {
 	public function actionEmployeeslist($jid) {
 	
 		$this->layout = '@app/views/layouts/employerinner';
-		$model = new EmployeeResume();
+		$model = new EmployeeJobapplied();
 		$query = EmployeeJobapplied::find()->where(['jobid' => $jid]);
  	    $employeeResume = EmployeeResume::find()->where(['userid' => Yii::$app->employer->employerid])->select('resume')->one();
  	    $applied_data = EmployeeJobapplied::find()->where(['jobid' => $jid])->all();
 	    $total_list=count($applied_data);
 	  //  print_r($total_list);exit;
+	
+	if ($model->load ( Yii::$app->request->post ())) {
+		$status = $model->status;
+		print_($status);exit;
+		
+// 		if($status['status'] == 1)
+// 		{
+// 			$status = "Active";
+// 		}
+// 		else
+// 		{
+// 			$status = "Inactive";
+// 		}
+		 
+		Yii::$app->db->createCommand ()->insert ( 'employee_job_applied', [
+				'status' =>  $status,
+			
+				
+		] )->execute ();
+	}
+			
 		
 		
 	

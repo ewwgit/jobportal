@@ -45,6 +45,11 @@ class AppAsset extends AssetBundle
     		'js/vendor-datepicker.js',
     		'js/Waypoints.min.js',
     		
+    		
+    		
+    		//'js/jquery-1.9.1.js',
+    		//'js/show_ads.js',
+    		
     ];
     public $depends = [
         'yii\web\YiiAsset',
