@@ -567,6 +567,10 @@ class SiteController extends Controller
 		$this->layout= '@app/views/layouts/innerpagemain';
 		$applied_data = EmployeeJobapplied::find()->joinWith('job');
 		print_r($applied_data);exit();
+		$dataProvider = new ActiveDataProvider([
+				'pagination' => ['pageSize' =>5],
+				'query' => $applied_data,
+		]);
 	  // $model->applieddata = $applied_data;
 	
 	
