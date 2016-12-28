@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 use kartik\growl\Growl;
-//use yii\widgets\ListView;
+use yii\widgets\ListView;
 $this->title = 'Application History';
 use frontend\models\EmployeeJobapplied;
 use frontend\models\EmployerJobpostings;
@@ -39,11 +39,11 @@ use frontend\models\EmployerJobpostings;
  
  
  
-  <!--  <div class="container">
+    <div class="container">
      
           <div class="sixteen columns">
-    <p class="margin-bottom-25">Your listings are shown in the table
-      below. Expired listings will be automatically removed after 30 days.</p>
+    <p class="margin-bottom-25">You Have Applied  Following Jobs In Last 30 Days</p>
+    
     <table class="manage-table responsive-table stacktable large-only">
       <tbody>
         <tr>
@@ -51,12 +51,12 @@ use frontend\models\EmployerJobpostings;
          
           <th><i class="fa fa-file-text"></i> Designation</th>
          
-          <th><i class="fa fa-calendar"></i> Experience</th>
+          <th><i class="fa fa-calendar"></i> CompanyName</th>
       
           <th><i class="fa fa-user"></i> Applieddate</th>
         </tr>
         
-			/* echo ListView::widget( [
+		<?php  echo ListView::widget( [
 					'dataProvider' => $dataProvider,
 					'itemView' => 'applyjobsview',
 					'viewParams' => [],
@@ -68,20 +68,15 @@ use frontend\models\EmployerJobpostings;
 							 
 					],
 					'layout' => "{items}\n{pager}",
-			] ); */
+			] );
+		?>
 			 
-      </tbody>-->
+      </tbody>
+      </table>
+      </div>
       
    
-      
-       <tr>
-	<td class="title"><?= $jobdetails['skills'];?></td>
-	<td class="title"><?= $jobdetails['designation'];?></td>	
-	<td class="title"><?= $jobdetails['company_name'];?></td>	
-	<td class="centered">-</td>
-
-	<!--  <td class="title"></td>-->
-	</tr>
+  
  
  
  

@@ -566,7 +566,12 @@ class SiteController extends Controller
 	
 		$this->layout= '@app/views/layouts/innerpagemain';
 		$applied_data = EmployeeJobapplied::find()->joinWith('job');
-		print_r($applied_data);exit();
+		//print_r($applied_data);exit();
+		
+		
+		
+		//$total_list=count($applied_data);
+		
 		$dataProvider = new ActiveDataProvider([
 				'pagination' => ['pageSize' =>5],
 				'query' => $applied_data,
@@ -575,22 +580,9 @@ class SiteController extends Controller
 	
 	
 
-	   foreach($applied_data as $newapplied_data)
-	   {
-	   
-	   	$jid = $newapplied_data -> jobid;
-	   	//print_r($jid);exit();
-	   
-	   	$jobdetails = EmployerJobpostings::find()->where(['id' => $jid ])->one();
-	  // print_r($jobdetails);exit();
-	   	return $this->render('myjobs',
-	   			['applied_data' => $applied_data, 'jobdetails' => $jobdetails
-	   		   	
-	   			]);
-	   
-	   }
 	
-	 
+	   return $this->render('myjobs',['dataProvider' => $dataProvider, ]
+	   	);
 	    
 		
 	
