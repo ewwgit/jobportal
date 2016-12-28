@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use frontend\models\EmployerJobpostings;
 /**
  * This is the model class for table "employee_signup".
  *
@@ -45,22 +46,23 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
         ];
     }
     
-    public function getUser()
+    
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getJob()
     {
-    	$a= $this->hasOne(User::className(), ['id' => 'userid']);
-    	//Print_r($a);exit;
+    	return $this->hasOne(EmployerJobpostings::className(), ['id' => 'jobid']);
     }
     
     /**
      * @return \yii\db\ActiveQuery
      */
-    
-    public function getJob()
+    public function getUser()
     {
-    	return $this->hasOne(Jobs::className(), ['jobid' => 'JobId']);
+    	return $this->hasOne(User::className(), ['id' => 'userid']);
     }
-    
-
     public function checkQuery($userId, $JobId)
     {
     

@@ -75,7 +75,7 @@ class SiteController extends Controller
     	if(RolesModel::getRole() == 3)
     	{
     		$permissionsArray = ['index','login','logout','contact','about','signup',
-    				'viewprofile','request-password-reset','reset-password','applylist','applyjobajax'
+    				'viewprofile','request-password-reset','reset-password','applylist','applyjobajax','myjobs'
     		];
     	}
     	else {
@@ -94,7 +94,7 @@ class SiteController extends Controller
     			'access' => [
     					'class' => AccessControl::className(),
     					'only' => [
-    							'index','login','logout','contact','about','signup','viewprofile','request-password-reset','reset-password','applylist','applyjobajax'
+    							'index','login','logout','contact','about','signup','viewprofile','request-password-reset','reset-password','applylist','applyjobajax','myjobs'
     
     					],
     					'rules' => [
@@ -560,13 +560,13 @@ class SiteController extends Controller
 	}
 	
 
-	public function actionJobapplylist()
+	public function actionMyjobs()
 	{
 	
 	
 		$this->layout= '@app/views/layouts/innerpagemain';
-		$applied_data = EmployeeJobapplied::find()->where(['userid' => Yii::$app->emplyoee->emplyoeeid])->all();
-		//print_r($applied_data);exit();
+		$applied_data = EmployeeJobapplied::find()->joinWith('job')->all();
+		print_r($applied_data);exit();
 	  // $model->applieddata = $applied_data;
 	
 	
@@ -579,7 +579,7 @@ class SiteController extends Controller
 	   
 	   	$jobdetails = EmployerJobpostings::find()->where(['id' => $jid ])->one();
 	  // print_r($jobdetails);exit();
-	   	return $this->render('jobapplylist',
+	   	return $this->render('myjobs',
 	   			['applied_data' => $applied_data, 'jobdetails' => $jobdetails
 	   		   	
 	   			]);
