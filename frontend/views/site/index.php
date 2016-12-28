@@ -341,7 +341,7 @@ use kartik\typeahead\Typeahead;
     </div>
   </div>
   <?php $applyjoburl = Yii::$app->urlManager->createUrl(['site/applyjobajax'])?>
- <script src="scripts/jquery.js" type="text/javascript"></script> 
+ 
 <script>
 $('.apply_job').on('click', function(){
 	
