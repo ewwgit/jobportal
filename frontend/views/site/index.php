@@ -17,7 +17,26 @@ use kartik\typeahead\Typeahead;
 ?>
 
  
-  
+  <?php foreach (Yii::$app->session->getAllFlashes() as $message):; ?>
+            <?php
+            //print_r($message);exit();
+            echo Growl::widget([
+                'type' =>  $message['type'],
+                'title' =>  Html::encode($message['title']),
+                'icon' =>  $message['icon'],
+                'body' =>  Html::encode($message['message']) ,
+                'showSeparator' => true,
+                'delay' => 1, //This delay is how long before the message shows
+                'pluginOptions' => [
+                    'delay' => $message['duration'], //This delay is how long the message shows for
+                    'placement' => [
+                        'from' => $message['positonY'],
+                        'align' => $message['positonX'],
+                    ]
+                ]
+            ]);
+            ?>
+        <?php endforeach; ?>
 
  
  
@@ -367,24 +386,5 @@ $('.apply_job').on('click', function(){
    });
 });
 </script>
-<?php foreach (Yii::$app->session->getAllFlashes() as $message):; ?>
-            <?php
-            //print_r($message);exit();
-            echo Growl::widget([
-                'type' =>  $message['type'],
-                'title' =>  Html::encode($message['title']),
-                'icon' =>  $message['icon'],
-                'body' =>  Html::encode($message['message']) ,
-                'showSeparator' => true,
-                'delay' => 1, //This delay is how long before the message shows
-                'pluginOptions' => [
-                    'delay' => $message['duration'], //This delay is how long the message shows for
-                    'placement' => [
-                        'from' => $message['positonY'],
-                        'align' => $message['positonX'],
-                    ]
-                ]
-            ]);
-            ?>
-        <?php endforeach; ?>
+
   

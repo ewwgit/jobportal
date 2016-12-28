@@ -594,13 +594,14 @@ class SiteController extends Controller
 				{
 					$model = $model->insertQuery($userId, $JobId);
 					$result['status'] = 1;
-					//$result['message'] = 'success';
+					$result['message'] = 'success';
 				}else{
 				
 					$result['status'] = 0;
 					$result['message'] = 'Already Applied';
 				}
-				Yii::$app->getSession()->setFlash('success', [
+				return json_encode($result);
+				/* Yii::$app->getSession()->setFlash('success', [
 						'type' => 'success',
 						'duration' => 3000,
 						'icon' => 'fa fa-users',
@@ -611,7 +612,7 @@ class SiteController extends Controller
 				
 				]);
 		
-				return $this->render('index');
+				return $this->render('index'); */
 			}	
 		
 	}
