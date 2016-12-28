@@ -29,6 +29,8 @@ use frontend\models\RolesModel;
 
 use common\models\User;
 use yii\web\UploadedFile;
+use yii\data\ActiveDataProvider;
+use yii\db\Query ;
 /**
  * Site controller
  */
@@ -489,6 +491,7 @@ class SiteController extends Controller
      */
     public function actionRequestPasswordReset()
     {
+    	$this->layout= '@app/views/layouts/innerpagemain';
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -535,13 +538,6 @@ class SiteController extends Controller
     
     
     
-    protected function findModel($id) {
-    	if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
-    		return $model;
-    	} else {
-    		throw new NotFoundHttpException ( 'The requested page does not exist.' );
-    	}
-	}
 	
 	public function actionApplylist($id)
 	{
@@ -562,6 +558,58 @@ class SiteController extends Controller
 	
 	
 	}
+	
+
+	public function actionJobapplylist()
+	{
+	
+	
+		$this->layout= '@app/views/layouts/innerpagemain';
+		$applied_data = EmployeeJobapplied::find()->where(['userid' => Yii::$app->emplyoee->emplyoeeid])->all();
+		//print_r($applied_data);exit();
+	  // $model->applieddata = $applied_data;
+	
+	
+
+	   foreach($applied_data as $newapplied_data)
+	   {
+	   
+	   	$jid = $newapplied_data -> jobid;
+	   	//print_r($jid);exit();
+	   
+	   	$jobdetails = EmployerJobpostings::find()->where(['id' => $jid ])->one();
+	  // print_r($jobdetails);exit();
+	   	return $this->render('jobapplylist',
+	   			['applied_data' => $applied_data, 'jobdetails' => $jobdetails
+	   		   	
+	   			]);
+	   
+	   }
+	
+	 
+	    
+		
+	
+
+		
+		
+	
+	
+	}
+	
+
+	protected function findModel($id) {
+		if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
+			return $model;
+		} else {
+			throw new NotFoundHttpException ( 'The requested page does not exist.' );
+		}
+	}
+	
+	
+	
+	
+	
 	public function actionApplyjobajax()
 	{
 			if ((Yii::$app->user->isGuest) || (Yii::$app->emplyoee->emplyoeeroleid !=3))

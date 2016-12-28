@@ -87,6 +87,7 @@ AppAsset::register($this);
                <ul id="responsive" class="float-right">
                  
                <li><a href="<?= Url::to(['site/viewprofile'])?>" title="viewprofile">EmployeeProfile</a></li>
+                <li><a href="<?= Url::to(['site/jobapplyList'])?>" title="applicationhistory">ApplicationHistory</a></li>
                  <li><a href="<?= Url::to(['/site/logout'])?>"
             data-method="post" title="">Logout</a></li>
             </ul>
