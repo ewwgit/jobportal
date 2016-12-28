@@ -565,7 +565,7 @@ class SiteController extends Controller
 	
 	
 		$this->layout= '@app/views/layouts/innerpagemain';
-		$applied_data = EmployeeJobapplied::find()->joinWith('job')->all();
+		$applied_data = EmployeeJobapplied::find()->joinWith('job');
 		print_r($applied_data);exit();
 	  // $model->applieddata = $applied_data;
 	
