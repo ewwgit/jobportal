@@ -76,7 +76,7 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="<?=Yii::$app->getHomeUrl(); ?>"><img src="../images/logo.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?=Yii::$app->getHomeUrl(); ?>"><img src="<?php echo Yii::getAlias('@web');?>/frontend/web/images/logo.png" alt="Work Scout" /></a></h1>
           
         </div>
       

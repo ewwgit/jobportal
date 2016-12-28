@@ -284,7 +284,7 @@ select {
     <?php ActiveForm::end(); ?>
   </div>
   </div>
-<script src="scripts/jquery.js" type="text/javascript"></script>
+
 <script type="text/javascript">
      $(document).ready(function(){
 	$(".addCF1").on('click',function(){

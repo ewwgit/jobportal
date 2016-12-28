@@ -10,8 +10,13 @@ use yii\bootstrap\ActiveForm;
 use kartik\typeahead\TypeaheadBasic;
 use kartik\typeahead\Typeahead;
 
+
 $this->title = 'Job applied List';
 $this->params ['breadcrumbs'] [] = $this->title;
+
+//use frontend\models\EmployeeJobapplied;
+
+
 ?>
 
 <div class="container">
@@ -19,7 +24,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 	<!-- Table -->
 	<div class="sixteen columns">
 
-		<p class="margin-bottom-25" style="float: left;">The job applications are listed below.</p>
+		<p class="margin-bottom-25" style="float: left;">Total job applications are : <b style= "color:green;"><?php echo  $total_list ?></b></p>
 
 
 	</div>

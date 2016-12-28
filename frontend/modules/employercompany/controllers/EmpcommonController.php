@@ -29,6 +29,10 @@ use frontend\models\EmployerRolesModel;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
+use frontend\models\EmployeeResume;
+
+
+
 
 class EmpcommonController extends Controller {
 	
@@ -574,8 +578,37 @@ public function actionJobpostingslist() {
 				
 		]);
 	}
+	public function actionEmployeeslist($jid) {
+	
+		$this->layout = '@app/views/layouts/employerinner';
+		$model = new EmployeeResume();
+		$query = EmployeeJobapplied::find()->where(['jobid' => $jid]);
+ 	    $employeeResume = EmployeeResume::find()->where(['userid' => Yii::$app->employer->employerid])->select('resume')->one();
+ 	    $applied_data = EmployeeJobapplied::find()->where(['jobid' => $jid])->all();
+	    $total_list=count($applied_data);
+	  //  print_r($total_list);exit;
+		
+		
 	
 	
+		$dataProvider = new ActiveDataProvider([
+				'pagination' => ['pageSize' =>5],
+				'query' => $query,
+		]);
+
+		
+		return $this->render('jobappliedlist',
+				['dataProvider' => $dataProvider,
+						'employeeResume' =>$employeeResume,
+						'total_list' =>$total_list
+				]);
+	}
+	public function actionResumedownlode() {
+		
+		echo "hai";
+	
+	}
+
 	protected function findModel($id) {
 		if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
 			return $model;
@@ -584,20 +617,6 @@ public function actionJobpostingslist() {
 		}
 	}
 	
-	public function actionEmployeeslist($jid) {
-		
-		$this->layout = '@app/views/layouts/employerinner';
-		
-		$query = EmployeeJobapplied::find()->where(['jobid' => $jid]);
-		
-		
-		$dataProvider = new ActiveDataProvider([
-				'pagination' => ['pageSize' =>5],
-				'query' => $query,
-		]);
 	
-		return $this->render('jobappliedlist',
-				['dataProvider' => $dataProvider]);
-		}	
 	
 }

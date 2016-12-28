@@ -14,6 +14,7 @@ $UserData = User::find()->where(['id' => $model->userid])->one();
 $signupdata = EmployeeSignup::find()->where(['userid' => $model->userid])->one();
 $emp_preference = EmployeePreferences::find()->where(['userid' => $model->userid])->one();
 $emp_resume = EmployeeResume::find()->where(['userid' => $model->userid])->one();
+
 $applied_data = EmployeeJobapplied::find()->where(['userid' => $model->userid])->one();
 $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->one();
 ?>
@@ -28,7 +29,12 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 <img src="<?php echo isset( $signupdata->profileimage)? Yii::getAlias('/jobportal').$signupdata->profileimage : '' ;  ?>" alt="">
 <span><?php echo isset( $UserData->username)? $UserData->username : 'Not Mentioned' ;  ?></span>
 					<ul>
-						<li><a href="<?php echo isset( $emp_resume->resume)? $emp_resume->resume : 'Not Mentioned' ;  ?>"><i class="fa fa-file-text"></i> Download CV</a></li>
+					
+				
+						<li><a href="/jobportal/<?php echo isset( $emp_resume->resume)? $emp_resume->resume : 'Not Mentioned' ;
+						             ?>"><i class="fa fa-file-text"></i> Download CV</a></li>
+						
+											
 						<li><i class="fa fa-envelope"></i> Contact No: <a href="#"><?php echo isset ($signupdata->mobilenumber)? $signupdata->mobilenumber : 'Not Mentioned' ;    ?></a></li>
 					</ul>
 				</div>

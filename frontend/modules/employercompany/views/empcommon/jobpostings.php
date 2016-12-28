@@ -178,7 +178,7 @@ select {
 </div>
 
 
-<script src="scripts/jquery.js" type="text/javascript"></script>
+<script src="<?php echo Yii::getAlias('@web');?>/frontend/web/scripts/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
      $(document).ready(function(){
 	$(".addCF1").on('click',function(){
