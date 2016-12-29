@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'JobPortal';
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use frontend\models\EmployeeJobsearch;

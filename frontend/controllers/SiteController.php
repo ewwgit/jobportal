@@ -517,6 +517,8 @@ class SiteController extends Controller
      */
     public function actionResetPassword($token)
     {
+    	$this->layout= '@app/views/layouts/innerpagemain';
+    	
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {
