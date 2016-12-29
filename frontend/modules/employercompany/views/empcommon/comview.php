@@ -3,10 +3,12 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use kartik\date\DatePicker;
 use kartik\file\FileInput;
+use yii\widgets\Breadcrumbs;
 
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use frontend\models\Employer;
+use yii\helpers\Url;
 
 $this->title = 'Employer Profile';
 
@@ -21,6 +23,22 @@ select {
 	height: 40px !important;
 }
 </style>
+  <!-- Titlebar
+================================================== -->
+  <div class="col-md-3 right_side_buttons" style="float: right; margin-top: -158px;">
+       <div class="row">
+		<a href="<?= Url::to(['/employercompany/empcommon/employercommonview'])?>">
+		<i title="Edit your profile"class="fa fa-edit" style="font-size: 18px; margin-top: 25px;">
+		</i> Edit Employer Profile</a>
+			
+		</ul>
+	</div>
+	</div>
+  
+  <!-- Content
+================================================== -->
+
+	
 
 
 <div class="container"> 
@@ -31,7 +49,9 @@ select {
 ]); ?>
     <!-- Submit Page -->
 	<div class="sixteen columns">
+
 		<div class="submit-page" style="padding: 0px;">
+		
 			<div class="container">
 				<div class="col-md-3 col-sm-3 col-xs-3 profile_img">
 					<div class="form">

@@ -22,7 +22,7 @@ select {
 }
 </style>
 <div class="site-signup">
-	<h1><?= Html::encode($this->title) ?></h1>
+	
 
 	<div class="container">
 

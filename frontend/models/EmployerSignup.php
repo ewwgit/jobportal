@@ -115,39 +115,25 @@ class EmployerSignup extends Model {
 // 				'gender',
 // 				'required','on' => 'signup'
 // 						],
-				[
-				'address',
-				'required','on' => 'signup'
-						],
+		
 				[
 				'dateofbirth',
 				'required','on' => 'signup'
 						],
-				[
-				'designation',
-				'required','on' => 'signup'
-						],
-				[
-				'designation',
-				'required','on' => 'signup'
-						],
-// 				[
-// 				'profileimage',
-// 				'required','on' => 'signup'
-// 						],
-				['profileimage', 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg'],
+				
+				//['profileimage', 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg'],
 				[ 
 						[ 
 								'username',
 								'email',
 								'name',
 								'mobilenumber',
-								'address',
+							
 								'gender',
 								'dateofbirth',
-								'designation',
+							
 								'create_date' ,
-								'profileimage'
+								
 						],
 						'safe' 
 				] 

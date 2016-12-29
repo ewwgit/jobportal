@@ -31,26 +31,24 @@ select {
 			<div class="tab-content" id="tab1">
 
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-            
+            <p class="form-row form-row-wide">
+					<label for="username">Username: 
+              <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'placeholder' => 'Username',])->label(false)?>
+              </label>
+				</p>
+				
+				<p class="form-row form-row-wide">
+					<label for="username">Password: 
+              <?= $form->field($model, 'password')->passwordInput() ->label(false)?>
+              </label>
+				</p>
+				
             	 <p class="form-row form-row-wide">
 					<label for="username">Name: 
               <?= $form->field($model, 'name')->textInput(['autofocus' => true, 'placeholder' => 'Name', 'class' => 'fa fa-user'])->label(false)?>
               </label>
 				</p>
-
-
-				<p class="form-row form-row-wide">
-					<label for="username">Username: 
-              <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'placeholder' => 'Username',])->label(false)?>
-              </label>
-				</p>
-
-				<p class="form-row form-row-wide">
-					<label for="username">Mobilenumber:
-              <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true,'placeholder' => 'Mobilenumber',])->label(false)?>
-              </label>
-				</p>
-
+				
 				<p class="form-row form-row-wide">
 					<label for="username">Email: 
               <?= $form->field($model, 'email')->textInput(['autofocus' => true,'placeholder' => 'Email',])->label(false)?>
@@ -58,13 +56,13 @@ select {
 				</p>
 
 				<p class="form-row form-row-wide">
-					<label for="username">Password: 
-              <?= $form->field($model, 'password')->passwordInput() ->label(false)?>
+					<label for="username">MobileNumber:
+              <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true,'placeholder' => 'Mobilenumber',])->label(false)?>
               </label>
 				</p>
 
 				<p class="form-row form-row-wide">
-					<label for="username">Dateofbirth:
+					<label for="username">Date Of Birth:
               <?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
               </label>
 				</p>
@@ -75,30 +73,6 @@ select {
               </label>
 				</p>
 
-				<p class="form-row form-row-wide">
-					<label for="username">Designation:
-              <?= $form->field($model, 'designation')->dropDownList(['Java Developer' =>'Java Developer' , 'Tester' =>'Tester', 'Designer' =>'Designer' , 'Administrator' =>'Administrator' , 'Software Engineer' =>'Software Engineer' , 'Web Developer' =>'Web Developer' , 'Php Developer' =>'Php Developer'],['prompt' =>'select designation'])->label(false) ?>                 
-       
-              </label>
-				</p>
-
-				<p class="form-row form-row-wide">
-					<label for="username">Address: 
-              <?= $form->field($model, 'address')->textarea(['rows' => 4])->label(false)?>
-       
-              </label>
-				</p>
-				<p class="form-row form-row-wide">
-				
-				
-				<div class="form">
-						<label for="password2">Profileimage</label> 
-				    <?= $form->field($model, 'profileimage')->fileInput(['maxlength' => true])->label(false)?>
-				   
-				
-					</div>
-
-				</p>
 				<p class="form-row">
           <?= Html::submitButton('Signup', ['class' => 'button border fw margin-top-10', 'name' => 'register'])?>
           </p>

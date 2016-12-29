@@ -28,30 +28,6 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
-<!--<![endif]-->
-<head>
-
-<!-- Basic Page Needs
-================================================== -->
-<meta charset="utf-8">
-<title>Work Scout</title>
-
-<!-- Mobile Specific Metas
-================================================== -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<!-- CSS
-================================================== -->
-
-<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-</head>
 <style>
 
 label.radio-inline{display:inline-block;}
@@ -60,10 +36,6 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
 
 </style>
 
-
-<body>
-<div id="wrapper"> 
-  
   <!-- Header
 ================================================== -->
   <header class="sticky-header">
@@ -99,37 +71,26 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
       </div>
     </div>
   </header>
+  
   <div class="clearfix"></div>
-   <!-- Titlebar
-================================================== -->
+  <div class="container" style="width: 100%;" >
   <div id="titlebar" class="single">
-	<div class="container">
-
-		<div class="sixteen columns">
-			<h2>Manage Jobs</h2>
-			<!-- <nav id="breadcrumbs">
-				<ul>
-					<li>You are here:</li>
-					<li><a href="#">Home</a></li>
-					<li>Job Dashboard</li>
-				</ul>
-			</nav> -->
-			<?= Breadcrumbs::widget([
+    <div class="container">
+      <div class="twelve columns">
+      <h1><?=  $this->params ['breadcrumbs'] [] = $this->title;?></h1>
+        <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-		</div>
-
-	</div>
-</div>
-  
-  <!-- Content
-================================================== --> 
-	
-	<div class="container">
-        
-        <?= Alert::widget() ?>
+      </div>
+      
+    </div>
+  </div>
+       
         <?= $content ?>
     </div>
+
+	
+	
 	
   <!-- Footer
 ================================================== -->
@@ -194,7 +155,7 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
   
   <!-- Back To Top Button -->
   <div id="backtotop"><a href="#"></a></div>
-</div>
+
 <!-- Wrapper / End --> 
 
 <!-- Scripts
@@ -301,8 +262,8 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
 <!-- </script> -->
 
 <?php $this->endBody() ?>
-</body>
-</html>
+
+
 <?php $this->endPage() ?>
 
     

@@ -27,6 +27,7 @@ select {
 
 					<div class="col-md-3 col-sm-3 col-xs-3 profile_img">
 
+
 						
 
 					</div>
@@ -121,45 +122,47 @@ select {
                     
                   <?= $form->field($model, 'designation')?>
                   </div>
-									<div class="form">
-					<div class="col-md-6"><?= $form->field($model, 'Min_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></div>
+									<div class="form" style="
+    width: 450px;
+    margin-left: -15px;
+">
+					<div class=" col-md-6"><?= $form->field($model, 'Min_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',],['prompt'=>'select your MinExperience'])?></div>
                  
-                  <div class="col-md-6" style="padding-left: 0px;"><?= $form->field($model, 'Max_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></div>
+                  <div class=" col-md-6" style="padding-left: 0px;"><?= $form->field($model, 'Max_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',],['prompt'=>'select your MaxExperience'])?></div>
                   </div>
 									<div class="form">
                     
-                  <?=$form->field ( $model, 'rolecategory' )->dropDownList ( [ 'Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => ' System Admin' ], [ 'prompt' => 'select your jobrole' ] )?>
+                  <?=$form->field ( $model, 'rolecategory' )->dropDownList ( [ 'Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => ' System Admin' ], [ 'prompt' => 'select your RoleCategory ' ] )?>
                   </div>
 									<div class="form">
                     
-                  <?= $form->field($model, 'Description')->textarea(['rows' => 6])?>
+                  <?= $form->field($model, 'Description')->textarea(['rows' => 1])?>
+                    
                   </div>
 									<div class="form">
                     
-                   <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time'],['prompt' =>'select'])?>
+                   <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select jobtype'])?>
                   </div>
-									<div class="form">
-                   
-                 <?= $form->field($model, 'gender')->inline()->radioList(['Male' =>'Male' , 'Female' =>'Female'],['prompt' =>'select'])?>
-                  </div>
+									
 									<div class="form">
                     
-                 <?= $form->field($model, 'address')->textarea(['rows' => 6])?>
+                 <?= $form->field($model, 'address')->textarea(['rows' => 0])?>
                   </div>
 
 									<div class="form">
                     
-                  <?= $form->field($model, 'company_type')->dropDownList(['consultant' => 'consultant','corporate' => 'corporate'],['prompt'=>'select your jobrole'])?>
+                  <?= $form->field($model, 'company_type')->dropDownList(['consultant' => 'consultant','corporate' => 'corporate'],['prompt'=>'select your company type'])?>
                   </div>
 									<div class="form">
                     
-                  <?=$form->field ( $model, 'industry_type' )->dropDownList ( [ 'Advertising/Event Management/PR' => 'Advertising/Event Management/PR','Machinery/Equipment Manufacturing/Industrial Products' => 'Machinery/Equipment Manufacturing/Industrial Products' ], [ 'prompt' => 'select your jobrole' ] )?>
+                  <?=$form->field ( $model, 'industry_type' )->dropDownList ( [ 'Advertising/Event Management/PR' => 'Advertising/Event Management/PR','Machinery/Equipment Manufacturing/Industrial Products' => 'Machinery/Equipment Manufacturing/Industrial Products' ], [ 'prompt' => 'select your industry type' ] )?>
                   </div>
 
 								</div>
 							</div>
 						</div>
 					</div>
+					
 				</div>
 				<div class="clearfix"></div>
 		<div class="divider margin-top-0 padding-reset"></div>

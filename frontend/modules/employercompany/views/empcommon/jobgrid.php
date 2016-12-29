@@ -16,6 +16,7 @@ $this->title = 'JOB Posting List';
 $this->params ['breadcrumbs'] [] = $this->title;
 $userid=Yii::$app->employer->employerid;
 ?>
+<div class="container"> 
 <div class="coachingvideoapi-index">
 
    
@@ -107,10 +108,6 @@ $userid=Yii::$app->employer->employerid;
     </table>
   </div>
 </div>
-<style>
-.desine {
-  
-}
+</div>
 
-</style>
 

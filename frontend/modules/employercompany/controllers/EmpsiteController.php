@@ -172,7 +172,7 @@ class EmpsiteController extends Controller {
 	 */
 	public function actionLogout() {
 		$this->layout = '@app/views/layouts/employermain';
-		
+		$model = new LoginForm ();
 		//Yii::$app->user->logout ();
 		\Yii::$app->session->remove('user.employerid');
 		\Yii::$app->session->remove('user.employerusername');
@@ -185,7 +185,10 @@ class EmpsiteController extends Controller {
 		\Yii::$app->session->remove('user.employerupdated_at');
 		\Yii::$app->session->remove('user.employerroleid');
 		
-		return $this->goHome ();
+		return $this->render ( 'login', [ 
+					'model' => $model 
+			] );
+		
 	}
 	
 	/**
@@ -238,29 +241,18 @@ class EmpsiteController extends Controller {
 				$mobilenumber = $model->mobilenumber;
 				$dateofbirth = date ( 'Y-m-d', strtotime ( $model->dateofbirth ) );
 				$gender = $model->gender;
-				$designation = $model->designation;
-				$address = $model->address;
-				$model->profileimage = UploadedFile::getInstance ( $model, 'profileimage' );
 				
-				$imageName = time () . $model->profileimage->name;
-				$profileimage = '/frontend/web/profileimages/' . $imageName;
 				
-				if (! (empty ( $model->profileimage ))) {
-					$imageName = time () . $model->profileimage->name;
-					
-					$model->profileimage->saveAs ( 'profileimages/' . $imageName );
-					$model->profileimage = 'profileimages/' . $imageName;
-				}
 				$date=$model->create_date = date ( "Y-m-d H:i:s" );
 				$userid = Yii::$app->db->getLastInsertID ();
 				Yii::$app->db->createCommand ()->insert ( 'employer', [ 
 						'name' => $name,
 						'mobilenumber' => $mobilenumber,
 						'gender' => $gender,
-						'designation' => $designation,
+						
 						'dateofbirth' => $dateofbirth,
-						'address' => $address,
-						'profileimage' => $profileimage,
+						
+						
 						'userid' => $userid ,
 						'create_date'=>$date
 				] )->execute ();

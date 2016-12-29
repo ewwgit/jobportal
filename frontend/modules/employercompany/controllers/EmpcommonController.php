@@ -449,7 +449,7 @@ class EmpcommonController extends Controller {
 			}
 			
 			$model->startDate = date ( "Y-m-d " );
-			
+			$model->status = 1;
 			$model->skills = $comma_separated;
 			$model->userid = $userid;
 			
