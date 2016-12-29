@@ -130,54 +130,56 @@ $this->params ['breadcrumbs'] [] = $this->title;
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6">
+								<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
-									<h4>Employer Company Profile</h4>
+									<h4>Employer employment</h4>
 								</div>
-	<table class="table table-user-information ">
+								<table class="table table-user-information ">
 									<tbody>
-										<tr>
-											<td>Company name:</td>
-											<td><?php echo isset($jobmodel->company_name) ? $jobmodel->company_name : 'Not Mentioned';?></td>
+									<tr>
+											<td>Job title:</td>
+											<td><?php echo isset($employmentmodel->company_name) ? $employmentmodel->company_name  : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
-											<td>Employer type:</td>
-											<td><?php echo isset($jobmodel->employer_type) ? $jobmodel->employer_type : 'Not Mentioned';?></td>
+											<td>Job title:</td>
+											<td><?php echo isset($employmentmodel->job_title) ? $employmentmodel->job_title  : 'Not Mentioned';?></td>
+										</tr>
+										<tr>
+											<td>Job type:</td>
+											<td><?php echo isset($employmentmodel->job_type) ? $employmentmodel->job_type  : 'Not Mentioned';?></td>
+										</tr>
+										<tr>
+											<td>Job description:</td>
+											<td><?php echo isset($employmentmodel->job_description) ? $employmentmodel->job_description  : 'Not Mentioned';?></td>
+										</tr>
+										<tr>
+											<td>Experience:</td>
+											<td><?php echo isset($employmentmodel->experience) ? $employmentmodel->experience  : 'Not Mentioned';?></td>
+										</tr>
+										
+										<tr>
+											<td>Work location:</td>
+											<td><?php echo isset($employmentmodel->work_location) ? $employmentmodel->work_location  : 'Not Mentioned';?></td>
+										</tr>
+										<tr>
+											<td>Shift timings:</td>
+											<td><?php echo isset($employmentmodel->shift_timings) ? $employmentmodel->shift_timings  : 'Not Mentioned';?></td>
+										</tr>
+										<tr>
+											<td>Weekly days:</td>
+											<td><?php echo isset($employmentmodel->weekly_days) ? $employmentmodel->weekly_days  : 'Not Mentioned';?></td>
+										</tr>
+										<tr>
+											<td>Salary:</td>
+											<td><?php echo isset($employmentmodel->salary) ? $employmentmodel->salary  : 'Not Mentioned';?></td>
 										</tr>
 
-										<tr>
-											<td>Industry type:</td>
-											<td><?php echo isset($jobmodel->industry_type) ? $jobmodel->industry_type : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Dateofestablishment:</td>
-											<td><?php echo isset($jobmodel->dateofestablishment) ? $jobmodel->dateofestablishment : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Location:</td>
-											<td><?php echo isset($jobmodel->location) ? $jobmodel->location : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Country:</td>
-											<td><?php echo isset($jobmodel->country) ? $jobmodel->country : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>State:</td>
-											<td><?php echo isset($jobmodel->state) ? $jobmodel->state : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>City:</td>
-											<td><?php echo isset($jobmodel->city) ? $jobmodel->city : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Zipcode:</td>
-											<td><?php echo isset($jobmodel->zipcode) ? $jobmodel->zipcode : 'Not Mentioned';?></td>
-										</tr>
 									</tbody>
 								</table>
 							</div>
 						</div>
+					
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
@@ -221,51 +223,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 								</table>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="margin-bottom-20">
-								<div class="title-underlined">
-									<h4>Employer employment</h4>
-								</div>
-								<table class="table table-user-information ">
-									<tbody>
-										<tr>
-											<td>Job title:</td>
-											<td><?php echo isset($employmentmodel->job_title) ? $employmentmodel->job_title  : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Job type:</td>
-											<td><?php echo isset($employmentmodel->job_type) ? $employmentmodel->job_type  : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Job description:</td>
-											<td><?php echo isset($employmentmodel->job_description) ? $employmentmodel->job_description  : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Experience:</td>
-											<td><?php echo isset($employmentmodel->experience) ? $employmentmodel->experience  : 'Not Mentioned';?></td>
-										</tr>
-										
-										<tr>
-											<td>Work location:</td>
-											<td><?php echo isset($employmentmodel->work_location) ? $employmentmodel->work_location  : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Shift timings:</td>
-											<td><?php echo isset($employmentmodel->shift_timings) ? $employmentmodel->shift_timings  : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Weekly days:</td>
-											<td><?php echo isset($employmentmodel->weekly_days) ? $employmentmodel->weekly_days  : 'Not Mentioned';?></td>
-										</tr>
-										<tr>
-											<td>Salary:</td>
-											<td><?php echo isset($employmentmodel->salary) ? $employmentmodel->salary  : 'Not Mentioned';?></td>
-										</tr>
-
-									</tbody>
-								</table>
-							</div>
-						</div>
+			
 					</div>
 				</div>
 			</div>

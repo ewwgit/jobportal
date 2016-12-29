@@ -25,15 +25,7 @@ class EmployerForm extends Model {
 	/**
 	 * EmployerCompany
 	 */
-	public $company_name;
-	public $dateofestablishment;
-	public $employer_type;
-	public $industry_type;
-	public $location;
-	public $country;
-	public $state;
-	public $city;
-	public $zipcode;
+
 	/**
 	 * EmployerPreferencess
 	 */
@@ -44,6 +36,7 @@ class EmployerForm extends Model {
 	/**
 	 * EmployerEmployement
 	 */
+	public $company_name;
 	public $job_title;
 	public $job_type;
 	public $job_description;
@@ -85,34 +78,25 @@ class EmployerForm extends Model {
 						'dateofbirth',
 						
  						'skills',
-// 						'lastused',
-// 						'skillexperience',
+
 						
 						'salary',
 						'weekly_days',
 						'shift_timings',
 						'work_location',
-						//'no_of_openings',
+						
 						'experience',
-						//'jobtype',
+						
 						'job_description',
 						'job_title',
 						'job_role',
+					    'company_name',
 						
 						'expected_salary',
 						'job_location',
 						'job_role',
 						
-						'company_name',
-						'dateofestablishment',
-						'employer_type',
-						'industry_type',
-						'job_type',
-						'location',
-						'country',
-						'state',
-						'city',
-						'zipcode',
+
 						
 						'passingyear',
 						'collegename',
@@ -129,12 +113,7 @@ class EmployerForm extends Model {
 				'pattern' =>'/^[a-zA-Z0-9]+$/',
 				'message' => 'username can only contain alphanumeric characters.'
 						],
-				[ 
-						[ 
-								'zipcode' 
-						],
-						'integer' 
-				],
+
 				
 				[
 				['profileimage'],'file'],
@@ -157,27 +136,20 @@ class EmployerForm extends Model {
 								'weekly_days',
 								'shift_timings',
 								'work_location',
-								//'no_of_openings',
+							
 								'experience',
-							    //'jobtype',
+							
 								'job_description',
 								'job_title',
 								'job_type',
 								'job_role',
+								'company_name',
 								
 								'expected_salary',
 								'job_location',
 								'job_role',
 								
-								'company_name',
-								'dateofestablishment',
-								'employer_type',
-								'industry_type',
-								'location',
-								'country',
-								'state',
-								'city',
-								'zipcode',
+
 								
 								'passingyear',
 								'collegename',

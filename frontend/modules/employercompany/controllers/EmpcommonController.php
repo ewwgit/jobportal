@@ -16,7 +16,7 @@ use frontend\models\EmployerSkills;
 use frontend\models\EmployerSignup;
 use frontend\models\Employement;
 use common\models\User;
-use frontend\models\EmployerCompany;
+//use frontend\models\EmployerCompany;
 use frontend\models\EmployerForm;
 use frontend\models\EmployerJobpostings;
 use frontend\models\JobpostSearch;
@@ -41,7 +41,7 @@ class EmpcommonController extends Controller {
 	{
 	
 		$permissionsArray = [''];
-		//print_r(RolesModel::getRole());exit();
+		
 		if(EmployerRolesModel::getRole() == 2)
 		{
 			$permissionsArray = ['employer','employercommonview','delete','update','view','create','jobpostingsview','jobpostingslist','employeelist'
@@ -52,7 +52,7 @@ class EmpcommonController extends Controller {
 		}
 	
 	
-		//print_r($permissionsArray);exit();
+		
 		return [
 				'verbs' => [
 						'class' => VerbFilter::className(),
@@ -94,9 +94,7 @@ class EmpcommonController extends Controller {
 		$model = new EmployerForm ();
 		$employerSignup = new EmployerSignup ();
 		$employermodel = new Employer ();
-		$companyModel = new EmployerCompany ();
 		$educationModel = new EmployerEducation ();
-		//$skillsModel = new EmployerSkills ();
 		$employmentModel = new Employement ();
 		$preferencesModel = new EmployerPreferences ();
 		$userData = User::find ()->where ( [ 
@@ -105,16 +103,11 @@ class EmpcommonController extends Controller {
 		$employeData = Employer::find ()->where ( [ 
 				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
-		// print_r( Yii::$app->employer->employerid);exit;
-		$companyData = EmployerCompany::find ()->Where ( [ 
-				'userid' => Yii::$app->employer->employerid 
-		] )->one ();
+
 		$educationData = EmployerEducation::find ()->Where ( [ 
 				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
-// 		$skillsData = EmployerSkills::find ()->Where ( [ 
-// 				'userid' => Yii::$app->employer->employerid 
-// 		] )->one ();
+
 		$employmentData = Employement::find ()->Where ( [ 
 				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
@@ -132,7 +125,7 @@ class EmpcommonController extends Controller {
 			$model->profileimagenew = $employeData->profileimage;
 			$model->skills = $employeData->skills;
 			$data=$model->skills;
-			//print_r($model->skills);exit;
+			
 			if (! Empty ( $data )) {
 				$array = $model->skills;
 				
@@ -159,17 +152,7 @@ class EmpcommonController extends Controller {
 			$model->email = $userData->email;
 		}
 		
-		if (! (empty ( $companyData ))) {
-			$model->company_name = $companyData->company_name;
-			$model->industry_type = $companyData->industry_type;
-			$model->dateofestablishment = $companyData->dateofestablishment;
-			$model->employer_type = $companyData->employer_type;
-			$model->location = $companyData->location;
-			$model->country = $companyData->country;
-			$model->state = $companyData->state;
-			$model->city = $companyData->city;
-			$model->zipcode = $companyData->zipcode;
-		}
+
 		if (! (empty ( $educationData ))) {
 			$model->higherdegree = $educationData->higherdegree;
 			$model->specialization = $educationData->specialization;
@@ -179,10 +162,11 @@ class EmpcommonController extends Controller {
 		}
  		if (! (empty ( $skillsData ))) {
  			$model->skills = $skillsData->skills;
- 			//print_r($model->skills);exit;
+ 			
  	 		}
 		
 		if (! (empty ( $employmentData ))) {
+			$model->company_name = $employmentData->company_name;
 			$model->job_title = $employmentData->job_title;
 			$model->job_type = $employmentData->job_type;
 			$model->job_description = $employmentData->job_description;
@@ -212,7 +196,7 @@ class EmpcommonController extends Controller {
 				$employeData->skills = $model->skills;
 
                 $skill = $model->skills;
-                   //print_r($skill);exit;
+                  
 	
 				if (! Empty ( $skill )) {
 					$array = $model->skills;
@@ -253,9 +237,9 @@ class EmpcommonController extends Controller {
 				$employermodel->userid = Yii::$app->employer->employerid;
 				$model->profileimage = UploadedFile::getInstance($model,'profileimage');
 				$employermodel->skills = $model->skills;
-				//print_r($model->skills);exit;
+				
 			     $employermodel = $model->skills;
-				//print_r($skill);exit;
+				
 					
 				if (! Empty ( $employermodel )) {
 					$array = $model->skills;
@@ -280,48 +264,10 @@ class EmpcommonController extends Controller {
 				
 				$employermodel->skills=$comma_separated;
 				$employermodel->save ();
-				//print_r($employermodel);exit;
+				
 			}
 			
-			
-			if (! (empty ( $companyData ))) {
-				
-				$companyData->company_name = $model->company_name;
-			
-				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofestablishment ) );
-				$companyData->dateofestablishment = $companyDataa;
-				$companyData->employer_type = $model->employer_type;
-				$companyData->industry_type = $model->industry_type;
-				$companyData->location = $model->location;
-				$companyData->country = $model->country;
-				$companyData->state = $model->state;
-				$companyData->city = $model->city;
-				$companyData->zipcode = $model->zipcode;
 
-				$companyData->save ();
-			} 
-			
-
-			else {
-				
-				$companyModel->company_name = $model->company_name;
-				
-				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofestablishment ) );
-				$companyModel->dateofestablishment = $companyDataa;
-				
-				$companyModel->employer_type = $model->employer_type;
-			
-				$companyModel->industry_type = $model->industry_type;
-				$companyModel->location = $model->location;
-				$companyModel->country = $model->country;
-				$companyModel->state = $model->state;
-				$companyModel->city = $model->city;
-				$companyModel->zipcode = $model->zipcode;
-				$companyModel->userid = Yii::$app->employer->employerid;
-			
-				$companyModel->save ();
-			
-			}
 			if (! (empty ( $educationData ))) {
 				$educationData->higherdegree = $model->higherdegree;
 				$educationData->specialization = $model->specialization;
@@ -342,6 +288,7 @@ class EmpcommonController extends Controller {
 			}
 		
 			if (! (empty ( $employmentData ))) {
+				$employmentData->company_name = $model->company_name;
 				$employmentData->job_title = $model->job_title;
 				$employmentData->job_type = $model->job_type;
 				$employmentData->job_description = $model->job_description;
@@ -352,6 +299,7 @@ class EmpcommonController extends Controller {
 				$employmentData->salary = $model->salary;
 				$employmentData->save ();
 			} else {
+				$employmentModel->company_name = $model->company_name;
 				$employmentModel->job_title = $model->job_title;
 				$employmentModel->job_type = $model->job_type;
 				$employmentModel->job_description = $model->job_description;
@@ -362,7 +310,7 @@ class EmpcommonController extends Controller {
 				$employmentModel->salary = $model->salary;
 				$employmentModel->userid = Yii::$app->employer->employerid;
 				$employmentModel->save ();
-				//print_r($employmentModel);exit;
+			  
 			
 			}
 			if (! (empty ( $preferencesData ))) {
@@ -399,9 +347,7 @@ class EmpcommonController extends Controller {
 		$employemodel = Employer::find ()->where ( [ 
 				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
-		$jobmodel = EmployerCompany::find ()->Where ( [ 
-				'userid' => Yii::$app->employer->employerid 
-		] )->one ();
+
 	
 		$edumodel = EmployerEducation::find ()->Where ( [ 
 				'userid' => Yii::$app->employer->employerid 
@@ -422,7 +368,7 @@ class EmpcommonController extends Controller {
 				'employmentmodel' => $employmentmodel,
 				'skillsmodel' => $skillsmodel,
 				'employemodel' => $employemodel,
-				'jobmodel' => $jobmodel,
+				
 				'edumodel' => $edumodel,
 				'model' => $model 
 		] );
