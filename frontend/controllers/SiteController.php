@@ -144,7 +144,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-    	
+    	$this->layout= '@app/views/layouts/main';
     	$model = new EmployeeJobapplied();
     	$searchModel = new EmployeeJobsearch();    	
     	$skillsdata = EmployerJobpostings::find()
@@ -205,9 +205,13 @@ class SiteController extends Controller
     	{
     		
     		$allquerys = Yii::$app->request->queryParams;
-    		if(array_key_exists("company_name",$allquerys) || array_key_exists("designation",$allquerys) ||array_key_exists("Min_Experience",$allquerys) ||array_key_exists("skills",$allquerys))
+    		if(array_key_exists("EmployeeJobsearch",$allquerys))
     		{
-    			
+    			$allquerysnew = $allquerys['EmployeeJobsearch'];
+    		//print_r( Yii::$app->request->queryParams);exit();
+    		if(array_key_exists("company_name",$allquerysnew) || array_key_exists("designation",$allquerysnew) ||array_key_exists("Min_Experience",$allquerysnew) ||array_key_exists("skills",$allquerysnew))
+    		{
+    			//echo 'hello';exit();
     			$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
     		}
     		else {
@@ -215,7 +219,7 @@ class SiteController extends Controller
     			$skillsInfonew = EmployeeSkills::find()->select(['skillname'])->where(['userid' => Yii::$app->emplyoee->emplyoeeid ])->all();
     			if(!empty($skillsInfonew))
     			{
-    				
+    				//echo 'hello2';exit();
     				$paramInfo = Yii::$app->request->queryParams;
     				$paramInfo['r'] = 'site/index';    				
     				$paramInfo['EmployeeJobsearch']['skills'] = $skillsInfonew[0]['skillname'];
@@ -224,8 +228,30 @@ class SiteController extends Controller
     			}
     			else 
     			{
+    				//echo 'hello3';exit();
     				$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
     			}
+    		}
+    		}
+    		else {
+
+
+    			$skillsInfonew = EmployeeSkills::find()->select(['skillname'])->where(['userid' => Yii::$app->emplyoee->emplyoeeid ])->all();
+    			if(!empty($skillsInfonew))
+    			{
+    				//echo 'hello2';exit();
+    				$paramInfo = Yii::$app->request->queryParams;
+    				$paramInfo['r'] = 'site/index';
+    				$paramInfo['EmployeeJobsearch']['skills'] = $skillsInfonew[0]['skillname'];
+    				//print_r($paramInfo);exit();
+    				$dataProvider = $searchModel->search($paramInfo);
+    			}
+    			else
+    			{
+    				//echo 'hello3';exit();
+    				$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    			}
+    			
     		}
     	}
     	else 
