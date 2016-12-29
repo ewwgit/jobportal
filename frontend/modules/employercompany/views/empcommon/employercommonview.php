@@ -23,6 +23,20 @@ $this->params ['breadcrumbs'] [] = $this->title;
 	/* width: 100%; */
 }
 </style>
+  <!-- Titlebar
+================================================== -->
+  <div class="col-md-3 right_side_buttons" style="float: right; margin-top: -158px;">
+       <div class="row">
+		<a href="<?= Url::to(['/employercompany/empcommon/employer'])?>">
+		<i title="Edit your profile"class="fa fa-edit" style="font-size: 18px; margin-top: 25px;">
+		</i> Edit Employer Profile</a>
+			
+		</ul>
+	</div>
+	</div>
+  
+  <!-- Content
+================================================== -->
 <div class="container">
 
 	<!-- Submit Page -->

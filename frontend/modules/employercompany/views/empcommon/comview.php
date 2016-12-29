@@ -23,20 +23,7 @@ select {
 	height: 40px !important;
 }
 </style>
-  <!-- Titlebar
-================================================== -->
-  <div class="col-md-3 right_side_buttons" style="float: right; margin-top: -158px;">
-       <div class="row">
-		<a href="<?= Url::to(['/employercompany/empcommon/employercommonview'])?>">
-		<i title="Edit your profile"class="fa fa-edit" style="font-size: 18px; margin-top: 25px;">
-		</i> Edit Employer Profile</a>
-			
-		</ul>
-	</div>
-	</div>
-  
-  <!-- Content
-================================================== -->
+
 
 	
 

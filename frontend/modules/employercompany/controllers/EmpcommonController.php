@@ -391,7 +391,7 @@ class EmpcommonController extends Controller {
 		 );
 	}
 	public function actionEmployercommonview() {
-		$this->layout = '@app/views/layouts/employermain';
+		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployerForm ();
 		$model = User::find ()->where ( [ 
 				'id' => Yii::$app->employer->employerid 

@@ -60,7 +60,7 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
 	        <?php }else { ?>
 	        
 	         <li><a href="<?= Url::to(['/employercompany/empcommon/jobpostingslist'])?>" title="viewprofile">EmployerJobPosting</a></li>
-			    <li><a href="<?= Url::to(['/employercompany/empcommon/employer'])?>" title="viewprofile">EmployerDetails</a></li>
+			    <li><a href="<?= Url::to(['/employercompany/empcommon/employercommonview'])?>" title="viewprofile">EmployerDetails</a></li>
                <li><a href="<?= Url::to(['empsite/logout'])?>"data-method="post" title="">Logout</a></li>
                  
 		    <?php } ?>
