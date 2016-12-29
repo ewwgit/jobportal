@@ -42,6 +42,11 @@ select {
               <?= $form->field($model, 'password')->passwordInput() ->label(false)?>
               </label>
 				</p>
+				<p class="form-row form-row-wide">
+					<label for="username">ConformPassword: 
+              <?= $form->field($model, 'confirmpassword')->passwordInput() ->label(false)?>
+              </label>
+				</p>
 				
             	 <p class="form-row form-row-wide">
 					<label for="username">Name: 

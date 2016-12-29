@@ -112,10 +112,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 											<td>Job Type:</td>
 											<td><?php echo  $postings->jobtype;  ?></td>
 										</tr>
-										<tr>
-											<td>Gender:</td>
-											<td><?php echo  $postings->gender;  ?></td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>

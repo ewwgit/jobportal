@@ -12,6 +12,7 @@ class EmployerSignup extends Model {
 	public $username;
 	public $email;
 	public $password;
+	public $confirmpassword;
 	public $name;
 	public $mobilenumber;
 	public $dateofbirth;
@@ -97,6 +98,20 @@ class EmployerSignup extends Model {
 						'string',
 						'min' => 6 
 				],
+				[
+				'confirmpassword',
+				'required'
+						],
+						[
+								'confirmpassword',
+								'compare',
+								'compareAttribute' => 'password'
+						],
+						[
+								'confirmpassword',
+								'string',
+								'min' => 6
+						],
 				[ 
 						[ 
 								'profileimage' 
@@ -128,7 +143,7 @@ class EmployerSignup extends Model {
 								'email',
 								'name',
 								'mobilenumber',
-							
+								'confirmpassword',
 								'gender',
 								'dateofbirth',
 							
