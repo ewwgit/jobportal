@@ -512,28 +512,13 @@ class EmpcommonController extends Controller {
 	
 public function actionJobpostingslist() {
 		$this->layout = '@app/views/layouts/employerinner';
-		$model = new EmployeeJobapplied();
-	//	print_r($model);exit;
-	//	$aa = EmployeeJobapplied::find()->where(Yii::app('jobid')->request);
-		//Yii::app()->controller->Employeeslist->jobid;
-		
-		//print_r(Yii::$app->controller->employeeslist->jobid);exit;
-		
 		$query = EmployerJobpostings::find()->where(['userid' => Yii::$app->employer->employerid]);
 		$searchModel = new JobpostSearch();
 		$searchParams = Yii::$app->request->queryParams;
 		$searchParams['userid'] = Yii::$app->employer->employerid;
-		
-		
-	
-		
-		
-		
-		
 		$dataProvider = $searchModel->search($searchParams);
 		$id=Yii::$app->employer->employerid;
-		//print_r($id);exit;
-		
+	
 	 			$skillsdata = EmployerJobpostings::find()
  				->select('skills')
 				->where(['userid' => Yii::$app->employer->employerid])->all();
@@ -587,7 +572,7 @@ public function actionJobpostingslist() {
 				'designationinfo' => $designationinfo,
 				'companynameinfo' => $companynameinfo,
 					
-				//'userid' => Yii::$app->employer->employerid ,
+				
 				
 				
 		]);
@@ -596,18 +581,15 @@ public function actionJobpostingslist() {
 	
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployeeJobapplied();
-		//print_r($model);exit;
 		$query = EmployeeJobapplied::find()->where(['jobid' => $jid]);
-	//	print_r($query);exit;
+	
  	    $employeeResume = EmployeeResume::find()->where(['userid' => Yii::$app->employer->employerid])->select('resume')->one();
  	    $applied_data = EmployeeJobapplied::find()->where(['jobid' => $jid])->all();
- 	 
-	    $total_list=count($applied_data);
-	  // print_r($model);exit;
+ 	 	$total_list=count($applied_data);
 	
 	if ($model->load ( Yii::$app->request->post ())) {
 		$status = $model->status;
-		//print_($status);exit;
+	
 		
 // 		if($status['status'] == 1)
 // 		{
@@ -624,11 +606,7 @@ public function actionJobpostingslist() {
 				
 		] )->execute ();
 	}
-			
 		
-		
-	
-	
 		$dataProvider = new ActiveDataProvider([
 				'pagination' => ['pageSize' =>5],
 				'query' => $query,

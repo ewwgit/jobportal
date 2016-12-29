@@ -42,7 +42,7 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
         	'jobUid' => 'Job Uid',
             'userid' => 'User ID',
             'jobid' => 'Job ID',
-        	
+        
             'appliedDate' => 'Applied Date',
         ];
     }

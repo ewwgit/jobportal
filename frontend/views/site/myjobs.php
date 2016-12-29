@@ -53,7 +53,7 @@ use frontend\models\EmployerJobpostings;
          
           <th><i class="fa fa-calendar"></i> CompanyName</th>
       
-          <th><i class="fa fa-user"></i> Applieddate</th>
+          <th><i class="fa fa-user"></i> AppliedDate</th>
         </tr>
         
 		<?php  echo ListView::widget( [
