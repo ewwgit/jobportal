@@ -20,7 +20,6 @@ class EmployeeJobsearch extends EmployerJobpostings {
 								'Max_Experience',
 								'Description',
 								'jobtype',
-								'gender',
 								'address',
 								'company_name',
 								'company_type',
