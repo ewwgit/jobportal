@@ -7,7 +7,8 @@ use frontend\models\EmployeeJobapplied;
 ?>
 
 <tr>
-	<td class="title"><?= $model['designation'];?></td>
+	<td class="title"><a
+		href="<?= Url::to(['/site/jobdetails','id'=>$model->id])?>"><?= $model['designation'];?></td>
 	<td class="title"><?= $model['skills'];?></td>	
 	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered">-</td>

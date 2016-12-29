@@ -60,7 +60,7 @@ AppAsset::register($this);
 					</ul>
 				</li>
 -->
-            <li><a href="#">Candidates</a>
+           <!-- <li><a href="#">Candidates</a>
               <ul>
                 <li><a href="browse-jobs.html">Browse Jobs</a></li>
                 <li><a href="browse-categories.html">Browse Categories</a></li>
@@ -92,10 +92,10 @@ AppAsset::register($this);
  <?php }else { ?>
                <ul id="responsive" class="float-right">
                
-               <li><a href="<?= Url::to(['site/viewprofile'])?>" title="viewprofile">EmployeeProfile</a></li>
-                <li><a href="<?= Url::to(['site/myjobs'])?>" title="applicationhistory">ApplicationHistory</a></li>
+               <li><a href="<?= Url::to(['site/viewprofile'])?>" title="viewprofile">Profile Information</a></li>
+                <li><a href="<?= Url::to(['site/myjobs'])?>" title="applicationhistory">Application History</a></li>
                  <li><a href="<?= Url::to(['/site/logout'])?>"
-            data-method="post" title="">Logout</a></li>
+            data-method="post" title="">Log Out</a></li>
             </ul>
                <?php } ?>
              

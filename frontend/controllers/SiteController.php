@@ -427,8 +427,8 @@ class SiteController extends Controller
         		$gender = $model->gender;
         		$dateofbirth = date('Y-m-d', strtotime($model->dateofbirth));
         		$mobilenumber=$model->mobilenumber;
-        		$model->profileimage = UploadedFile::getInstance($model,'profileimage');
-        		//print_r($model->profileimage);exit();
+        		
+        		
         		$imageName = time().$model->profileimage;
         		$profileimage = '/frontend/web/profileimages/'.$imageName;
         		 
@@ -447,8 +447,8 @@ class SiteController extends Controller
         		/* $userid = Yii::$app->user->id ;
         		 $model->userid=$userid;
         		 $userids=$model->userid;
-        		 
-        		 
+        		
+        		
         		 */
         		
         		
@@ -458,7 +458,7 @@ class SiteController extends Controller
         		Yii::$app->db->createCommand()->insert('employee_signup', [
         				'name' => $name,'surname' => $surname, 'gender' => $gender, 'dateofbirth' => $dateofbirth,
         				'mobilenumber' => $mobilenumber,'profileimage' => $profileimage,'userid'=>$id])->execute();
-        	
+        		 
         		return $this->goHome();
         		 
         		if (Yii::$app->getUser()->login($user)) {
@@ -611,12 +611,23 @@ class SiteController extends Controller
 	
 	   return $this->render('myjobs',['dataProvider' => $dataProvider, ]
 	   	);
-	    
+	   
+	
+	}
+	
+	public function actionJobdetails($id)
+	{
+	
+		$this->layout = '@app/views/layouts/innerpagemain';
+		$jobinfo = $this->findModel ( $id );
+		return $this->render ( 'jobdetails', [
+				'jobinfo' => $jobinfo
+		]);
+	
+		
 		
 	
-
-		
-		
+	
 	
 	
 	}
