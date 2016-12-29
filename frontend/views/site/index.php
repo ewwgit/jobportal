@@ -14,6 +14,7 @@ use yii\widgets\ListView;
 use kartik\growl\Growl;
 use kartik\typeahead\TypeaheadBasic;
 use kartik\typeahead\Typeahead;
+use yii\web\view;
 ?>
 
  
@@ -361,30 +362,39 @@ use kartik\typeahead\Typeahead;
   </div>
   <?php $applyjoburl = Yii::$app->urlManager->createUrl(['site/applyjobajax'])?>
  
-<script>
-$('.apply_job').on('click', function(){
+
+
+<?php 
+
+$this->registerJs ( "
+		
+		$(document.body).on('click', '.apply_job' ,function(){
+		 var jbid = $(this).attr('apljobid');
+		
+		$.ajax({
+        url: '$applyjoburl',
+        type: 'get',
+        dataType : 'json',
+		data:{jbid : jbid},
+		success : function(data){	
 	
-    var jbid = $(this).attr('apljobid');
-    //console.log(jbid);
-    $.ajax({
-      url: '<?php echo $applyjoburl;?>',
-      type:'GET',
-      dataType:'json',
-      data:{jbid : jbid},
-      success : function(data)
-      {
-           if(data.status == 0)
+		   if(data.status == 0)
            {
-                console.log('fail');
+               //console.log(data.status);
            }
            if(data.status == 1)
            {
-                console.log('success');
-               //$('.applied').show();
+		
+        	$('[id=\"needtoapply'+jbid+'\"]').html('Applied');
+		    $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-check scicon\"></span>Success!<hr class=\"successseperator\">', message: 'Successfully removed from your favorite stores list brahmi.',duration:2000000000000,location:'tc',style:'notice',size:'large' });
+		    //console.log($('[id=\"needtoapply4\"]').html());
            }
-      },
-   });
-});
-</script>
+		
+      } 
+        
+    }); 
+		})
 
+		", View::POS_READY, 'my-options2' );
+?>
   

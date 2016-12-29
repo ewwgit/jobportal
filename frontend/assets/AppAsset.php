@@ -18,7 +18,8 @@ class AppAsset extends AssetBundle
     		'css/font-awesome.css',
     		'css/responsive.css',
     		'css/style.css',
-    		'css/colors/green.css'
+    		'css/colors/green.css',
+    		'css/jquery.growl.css',
     ];
     public $js = [
     		//'js/jquery.js',
@@ -44,6 +45,7 @@ class AppAsset extends AssetBundle
     		'js/vendor-date.js',
     		'js/vendor-datepicker.js',
     		'js/Waypoints.min.js',
+    		'js/jquery.growl.js',
     		
     		
     		

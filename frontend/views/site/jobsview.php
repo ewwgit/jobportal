@@ -19,7 +19,8 @@ use frontend\models\EmployeeJobapplied;
 	?>
 	<?php if($memberJoin ==0){?>
 	<td class="centered">
-	<button class="btn btn-primary apply_job" apljobid="<?php echo $model->id;?>">Apply this Job</button>
+	<button class="btn btn-primary apply_job" id="needtoapply<?=  $model->id; ?>" apljobid="<?php echo $model->id;?>">Apply this Job</button>
+	
 	</td>
 	<?php
 	}
