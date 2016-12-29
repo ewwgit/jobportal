@@ -429,27 +429,8 @@ class SiteController extends Controller
         		$mobilenumber=$model->mobilenumber;
         		
         		
-        		$imageName = time().$model->profileimage;
-        		$profileimage = '/frontend/web/profileimages/'.$imageName;
-        		 
-        		 
-        		//print_r($imageName);exit();
         		
-        		if(!(empty($model->profileimage)))
-        		{
-        			$imageName = time().$model->profileimage->name;
-        			//print_r($imageName);exit();
-        			$model->profileimage->saveAs('profileimages/'.$imageName );
-        			$model->profileimage = 'profileimages/'.$imageName;
-        		}
-        		
-        		 
-        		/* $userid = Yii::$app->user->id ;
-        		 $model->userid=$userid;
-        		 $userids=$model->userid;
-        		
-        		
-        		 */
+        	
         		
         		
         		$id = Yii::$app->db->getLastInsertID();
@@ -457,7 +438,7 @@ class SiteController extends Controller
         		
         		Yii::$app->db->createCommand()->insert('employee_signup', [
         				'name' => $name,'surname' => $surname, 'gender' => $gender, 'dateofbirth' => $dateofbirth,
-        				'mobilenumber' => $mobilenumber,'profileimage' => $profileimage,'userid'=>$id])->execute();
+        				'mobilenumber' => $mobilenumber,'userid'=>$id])->execute();
         		 
         		return $this->goHome();
         		 

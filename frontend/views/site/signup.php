@@ -3,7 +3,8 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use kartik\date\DatePicker;
 use yii\helpers\Url;
-use kartik\file\FileInput;
+
+
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -42,10 +43,8 @@ $this->title = 'Signup';
 		</ul>
 		<div class="tabs-container">
 
-          <?php $form = ActiveForm::begin([ 
-		'options' => [ 
-				'enctype' => 'multipart/form-data' 
-		] 
+          <?php $form = ActiveForm::begin([ 'id' => 'signup-form'
+		
 ]); ?>
          
           <p class="form-row form-row-wide">
@@ -92,17 +91,10 @@ $this->title = 'Signup';
                   <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])?>
            
           </p>
+          
+       
 
-					<p class="form-row form-row-wide">				
-					
-					<div class="form">
-						<label for="password2">Profileimage</label> 
-					<?=$form->field ( $model, 'profileimage' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => 'Profile Image', 'allowedFileExtensions'=>['jpg','png'] ]] ] )->label ( false );?>
-				   
-				   
 				
-					</div>
-					</p>
 					<p class="form-row">
                <?= Html::submitButton('Signup', ['class' => 'button border fw margin-top-10', 'name' => 'signup-button'])?>
           </p>
