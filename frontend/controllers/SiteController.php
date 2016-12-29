@@ -600,9 +600,11 @@ class SiteController extends Controller
 	{
 	
 		$this->layout = '@app/views/layouts/innerpagemain';
+		
+		$model = new EmployeeJobapplied();
 		$jobinfo = $this->findModel ( $id );
 		return $this->render ( 'jobdetails', [
-				'jobinfo' => $jobinfo
+				'jobinfo' => $jobinfo,'model' => $model 
 		]);
 	
 		
