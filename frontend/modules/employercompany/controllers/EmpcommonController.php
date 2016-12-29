@@ -34,6 +34,7 @@ use frontend\models\EmployeeResume;
 
 
 
+
 class EmpcommonController extends Controller {
 	
 	public function behaviors()
@@ -511,11 +512,23 @@ class EmpcommonController extends Controller {
 	
 public function actionJobpostingslist() {
 		$this->layout = '@app/views/layouts/employerinner';
+		$model = new EmployeeJobapplied();
+	//	print_r($model);exit;
+	//	$aa = EmployeeJobapplied::find()->where(Yii::app('jobid')->request);
+		//Yii::app()->controller->Employeeslist->jobid;
+		
+		//print_r(Yii::$app->controller->employeeslist->jobid);exit;
 		
 		$query = EmployerJobpostings::find()->where(['userid' => Yii::$app->employer->employerid]);
 		$searchModel = new JobpostSearch();
 		$searchParams = Yii::$app->request->queryParams;
 		$searchParams['userid'] = Yii::$app->employer->employerid;
+		
+		
+	
+		
+		
+		
 		
 		$dataProvider = $searchModel->search($searchParams);
 		$id=Yii::$app->employer->employerid;
@@ -573,6 +586,7 @@ public function actionJobpostingslist() {
 				'MinExperienceinfo' => $MinExperienceinfo,
 				'designationinfo' => $designationinfo,
 				'companynameinfo' => $companynameinfo,
+					
 				//'userid' => Yii::$app->employer->employerid ,
 				
 				
@@ -582,15 +596,18 @@ public function actionJobpostingslist() {
 	
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployeeJobapplied();
+		//print_r($model);exit;
 		$query = EmployeeJobapplied::find()->where(['jobid' => $jid]);
+	//	print_r($query);exit;
  	    $employeeResume = EmployeeResume::find()->where(['userid' => Yii::$app->employer->employerid])->select('resume')->one();
  	    $applied_data = EmployeeJobapplied::find()->where(['jobid' => $jid])->all();
+ 	 
 	    $total_list=count($applied_data);
-	  //  print_r($total_list);exit;
+	  // print_r($model);exit;
 	
 	if ($model->load ( Yii::$app->request->post ())) {
 		$status = $model->status;
-		print_($status);exit;
+		//print_($status);exit;
 		
 // 		if($status['status'] == 1)
 // 		{
@@ -624,11 +641,7 @@ public function actionJobpostingslist() {
 						'total_list' =>$total_list
 				]);
 	}
-	public function actionResumedownlode() {
-		
-		echo "hai";
 	
-	}
 
 	protected function findModel($id) {
 		if (($model = EmployerJobpostings::findOne ( $id )) !== null) {

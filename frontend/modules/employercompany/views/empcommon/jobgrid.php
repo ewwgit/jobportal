@@ -71,8 +71,12 @@ $userid=Yii::$app->employer->employerid;
 	</section>
 
 	<div class="sixteen columns">
-    <p class="margin-bottom-25">Your listings are shown in the table
-      below. Expired listings will be automatically removed after 30 days.</p>
+   
+
+		<p class="margin-bottom-25" style="float: left;">Total job postings are : <b style= "color:green;"><?php ?></b></p>
+
+
+	
     <table class="manage-table responsive-table stacktable large-only">
       <tbody>
         <tr>

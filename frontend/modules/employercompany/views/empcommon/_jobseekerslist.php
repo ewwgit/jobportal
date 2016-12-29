@@ -98,10 +98,10 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 
 	
 	?>
-	<?php if($status ==0){?>
+	<?php if($status == 0){?>
 	<i data="<?php echo $model['jobid'];?>" class="status_checks btn 
 				<?php echo ($model['status'])? 'btn-success' : 'btn-danger'?>">
-				<?php echo ($model['status'])? 'Active' : 'Inactive'?></i>
+				<?php echo ($model['status'])? 'Active' : 'Inactive' ?></i>
 				<?php
 	}
 	else {?>
@@ -202,13 +202,20 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 <!--  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>  -->
 <script type="text/javascript">
 $('.status_checks').on('click',function(){
-	var $ = jQuery;
+	//var $ = jQuery;
 	//var status = ($(this).hasClass("btn-success")) ? '0' : '1';
 	 var status = $(this).attr('btn-success') ? '0' : '1';
-	
+	 
+// 	 if(result.indexOf("status") != -1)
+// 	 {
+// 		 echo "status";
+// 	 }
+// 	 exit();
+
 		$.ajax({
+			
 		type:"GET",
-		 dataType:'json',
+		dataType:'json',
 		
 		data: {status : status},
 		
