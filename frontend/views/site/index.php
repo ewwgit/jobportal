@@ -380,7 +380,7 @@ $this->registerJs ( "
 	
 		   if(data.status == 0)
            {
-               $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-exclamation scicon\"></span>Warning!<hr class=\"successseperator\">', message: 'Already Applied this job.',duration:5000,location:'tc',style:'notice' });
+               $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-exclamation scicon\"></span>Warning!<hr class=\"successseperator\">', message: 'Already Applied this job.',duration:5000,location:'tc',style:'warning' });
            }
            if(data.status == 1)
            {
@@ -388,7 +388,7 @@ $this->registerJs ( "
         	$('[id=\"needtoapply'+jbid+'\"]').html('Applied');
 		    $('[id=\"needtoapply'+jbid+'\"]').addClass('applied');
 		    $('[id=\"needtoapply'+jbid+'\"]').removeClass('apply_job');
-		    $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-check scicon\"></span>Success!<hr class=\"successseperator\">', message: 'Successfully removed from your favorite stores list brahmi.',duration:2000000000000,location:'tc',style:'notice',size:'large' });
+		    $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-check scicon\"></span>Success!<hr class=\"successseperator\">', message: 'Successfully Applied this job',duration:5000,location:'tc',style:'notice',size:'large' });
 		    //console.log($('[id=\"needtoapply4\"]').html());
            }
 		
