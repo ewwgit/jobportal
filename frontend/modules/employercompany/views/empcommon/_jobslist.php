@@ -3,10 +3,21 @@ use yii\helpers\Html;
 use yii\web\View;
 use yii\helpers\Url;
 use yii\helpers\BaseStringHelper;
+use frontend\models\EmployeeJobapplied;
+
+$applied_data = EmployeeJobapplied::find()->where(['userid' => $model->userid])->one();
+
+
+//$userid = Yii::$app->employer->employerid;
+
+$query = EmployeeJobapplied::find()->where(['jobid'=>$model->id])->count();
+		 $total_list=$query;
+	
+		
 ?>
 
 <tr>
-	<td class="title"><?= $model['designation'];?></td>
+	<td class="title"><?= $model['designation'];?><b style= "color:green;"><?php echo '(' . $total_list .')' ?></b></td>
 	<td class="title"><?= $model['skills'];?></td>	
 	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered"><a
