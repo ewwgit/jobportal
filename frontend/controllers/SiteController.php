@@ -410,7 +410,15 @@ class SiteController extends Controller
         $model = new SignupForm();
        //$employeesignup = new EmployeeSignup();
         if ($model->load(Yii::$app->request->post())&& $model->validate()) {
-        	
+        	$checkMobile = EmployeeSignup::find()->where(['mobilenumber' => $model->mobilenumber])->count();
+        	if($checkMobile != 0)
+        	{
+        		$model->addError('mobilenumber','This mobile number has already been taken.');
+        		return $this->render('signup', [
+        				'model' => $model,
+        		]);
+        		exit();
+        	}
         	//print_r(Yii::$app->request->post());exit();
         	
         	
