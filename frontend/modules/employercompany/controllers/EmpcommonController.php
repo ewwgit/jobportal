@@ -465,9 +465,15 @@ public function actionJobpostingslist() {
 		$dataProvider = $searchModel->search($searchParams);
 		$id=Yii::$app->employer->employerid;
 	
+	
+
 		$applied_data = EmployerJobpostings::find()->where(['userid' => Yii::$app->employer->employerid])->all();
 		$total_postings=count($applied_data);
 		
+		
+
+		
+	
 	 			$skillsdata = EmployerJobpostings::find()
  				->select('skills')
 				->where(['userid' => Yii::$app->employer->employerid])->all();

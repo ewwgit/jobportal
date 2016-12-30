@@ -87,10 +87,10 @@ select {
 									 <?= $form->field($model, 'gender')->inline()->radioList(['male'=>'Male','female'=>'Female'],['prompt' =>'<---select gender--->'])?>
 									</div>
 								<div class="form">
-									
+							     <?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter Establish date ...' ],'pluginOptions' => [ 'autoclose' => true ,'format' => 'yyyy-mm-dd',] ] )->label(false);?>  
+            
 								 
-								  <?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true , 'todayHighlight' => true,   'type' => DatePicker::TYPE_COMPONENT_APPEND,] ])?>
-									</div>
+								</div>
 									<div class="form">
 									
 								    <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])?>

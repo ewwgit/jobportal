@@ -90,14 +90,23 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 			  
 			    <div class="app-tab-content"  id="three-1">
 			    <div >
-			   
+			      <?php
+	$userId = \Yii::$app->user->id;
+	$status = EmployeeJobapplied::getUsersjoined ($userId , $model->jobid);
 	
-		    
-			   
-			   
-			 
-				
-				
+
+	?>
+	<?php if($status == 0){?>
+	<i data="<?php echo $model['jobid'];?>" class="status_checks btn 
+				<?php echo ($model['status'])? 'btn-success' : 'btn-danger'?>">
+				<?php echo ($model['status'])? 'Active' : 'Inactive'?></i>
+				<?php
+	}
+	else {?>
+		<i <?php echo ($model['status'])? 'btn-success' : 'btn-danger'?>> 
+		   <?php echo ($model['status'])? 'Active' : 'Inactive'?></i>
+		<?php }?>
+			  
 				
 				</div>
 					<i>Full Name:</i>
@@ -122,14 +131,9 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 					<i>Description:</i>
 					<span><?php echo  isset($jobmaster_data->Description) ?  $jobmaster_data->Description : 'Not Mentioned'  ;  ?></span>
 			    </div>
-			
-			  
-			  
-
-			</div>
 		
-			
-
+			</div>
+	
 			<!-- Footer -->
 			<div class="app-footer">
 
@@ -140,12 +144,90 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 
 				<ul>
 					<li><i class="fa fa-file-text-o"></i> New</li>
-					<li><i class="fa fa-calendar"></i> <?php echo  isset($applied_data->appliedDate) ?  $applied_data->appliedDate : 'Not Mentioned'  ;  ?></li>
+					<li><i class="fa fa-calendar"></i> 
+					<?php echo  isset($applied_data->appliedDate) ? ($applied_data->appliedDate)  : 'Not Mentioned'  ;  ?>
+					</li>
 				</ul>
 				<div class="clearfix"></div>
 
 			</div>
 		</div>
 	</div>
+	
+	<style type="text/css">
+
+   .btn-success {
+   background-color: #65B688;
+   border-color: #65B688;
+   }
+   .btn-danger {
+   color: #fff;
+   background-color: #d9534f;
+   border-color: #d43f3a;
+   }
+   .btn {
+   color: white;
+   display: inline-block;
+   margin-bottom: 0;
+   font-weight: 400;
+   text-align: center;
+   vertical-align: middle;
+   cursor: pointer;
+   background-image: none;
+   border: 1px solid transparent;
+   white-space: nowrap;
+   padding: 6px 12px;
+   font-size: 14px;
+   line-height: 1.42857143;
+   border-radius: 4px;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   width:100px;
+   }
+</style>
+<!--  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>  -->
+<script type="text/javascript">
+$('.status_checks').on('click',function(){
+	//var $ = jQuery;
+	//var status = ($(this).hasClass("btn-success")) ? '0' : '1';
+	 var status = $(this).attr('btn-success') ? '0' : '1';
+	 
+// 	 if(result.indexOf("status") != -1)
+// 	 {
+// 		 echo "status";
+// 	 }
+// 	 exit();
+
+	 
+	
+		$.ajax({
+			
+		type:"GET",
+		dataType:'json',
+		
+		data: {status : status},
+		
+		success: function(data)
+		{
+			 if(data.status == 0)
+         {
+              console.log('fail');
+         }
+         if(data.status == 1)
+         {
+              console.log('success');
+			//location.reload();
+         }
+		},
+		});
+		
+	});
+
+
+
+</script>
+	
 	
 

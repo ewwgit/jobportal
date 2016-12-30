@@ -16,6 +16,7 @@ use frontend\models\EmployerJobpostings;
  */
 class EmployeeJobapplied extends \yii\db\ActiveRecord
 {	
+	public $status;
     public static function tableName()
     {
         return 'employee_job_applied';

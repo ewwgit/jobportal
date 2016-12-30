@@ -75,7 +75,7 @@ $userid=Yii::$app->employer->employerid;
    <?php 
 	
 		?>
-		<p class="margin-bottom-25" style="float: left;">Total job postings are : <b style= "color:green;"><?php echo $total_postings ?></b></p>
+		<p class="margin-bottom-25" style="float: left;">Total job postings are :- <b style= "color:green;"><?php echo $total_postings ?></b></p>
 
 
 	

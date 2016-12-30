@@ -22,7 +22,8 @@ $query = EmployeeJobapplied::find()->where(['jobid'=>$model->id])->count();
 	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered"><a
 		href="<?= Url::to(['/employercompany/empcommon/employeeslist','jid'=>$model->id])?>"> Employees</a></td>
-	<td class="title"><?= $model['startDate'];?></td>	
+		
+	<td class="title"><?= date('Y-m-d',strtotime( $model['startDate']))?></td>	
 	
 	<td class="centered"><a
 		href="<?= Url::to(['/employercompany/empcommon/jobpostingsview','id'=>$model->id])?>"

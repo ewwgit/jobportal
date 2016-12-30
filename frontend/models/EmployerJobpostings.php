@@ -21,7 +21,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								
 								'Description',
 								'jobtype',
-								'gender',
+								
 								'address',
 								'company_name',
 								'company_type',
@@ -48,7 +48,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								
 								'Description',
 								'jobtype',
-								'gender',
+								
 								'address',
 								'company_name',
 								'company_type',
@@ -75,7 +75,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 				'Max_Experience' => 'Max Experience',
 				'Description' => 'Description',
 				'jobtype' => 'Jobtype',
-				'gender' => 'Gender',
+			
 				'address' => 'Address',
 				'roleid' => 'Roleid',
 				'CTC' => 'CTC',
