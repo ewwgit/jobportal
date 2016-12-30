@@ -1,6 +1,6 @@
 /* jQuery Growl
  * Copyright 2015 Kevin Sylvestre
- * 1.3.1
+ * 1.3.2
  */
 #growls {
   z-index: 50000;
@@ -20,10 +20,10 @@
   #growls.br {
     bottom: 10px;
     right: 10px; }
-  /* #growls.tc {
+  #growls.tc {
     top: 10px;
     right: 10px;
-    left: 10px; } */
+    left: 10px; }
   #growls.bc {
     bottom: 10px;
     right: 10px;
@@ -33,7 +33,7 @@
     margin-right: auto; }
 
 .growl {
-  opacity: 1;
+  opacity: 0.8;
   filter: alpha(opacity=80);
   position: relative;
   border-radius: 4px;
@@ -55,7 +55,7 @@
     padding: 10px;
     margin: 10px; }
   .growl.growl-large {
-    /* width: 300px; */
+    width: 300px;
     padding: 15px;
     margin: 15px; }
   .growl.growl-default {
@@ -65,21 +65,20 @@
     color: #FFF;
     background: #C0392B; }
   .growl.growl-notice {
-    color:#3c763d;
-	background-color:#dff0d8;
-	border-color:#d6e9c6; }
+    color: #FFF;
+    background: #2ECC71; }
   .growl.growl-warning {
     color: #FFF;
     background: #F39C12; }
   .growl .growl-close {
     cursor: pointer;
     float: right;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 18px;
-    font-weight: bold;
+    font-weight: normal;
     font-family: helvetica, verdana, sans-serif; }
   .growl .growl-title {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 24px; }
   .growl .growl-message {
     font-size: 14px;
