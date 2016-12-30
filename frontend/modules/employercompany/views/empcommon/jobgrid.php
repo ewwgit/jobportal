@@ -72,9 +72,10 @@ $userid=Yii::$app->employer->employerid;
 	</section>
 
 	<div class="sixteen columns">
-   
-
-		<p class="margin-bottom-25" style="float: left;">Total job postings are : <b style= "color:green;"><?php ?></b></p>
+   <?php 
+	
+		?>
+		<p class="margin-bottom-25" style="float: left;">Total job postings are : <b style= "color:green;"><?php echo $total_postings ?></b></p>
 
 
 	
