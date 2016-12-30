@@ -409,7 +409,7 @@ class SiteController extends Controller
     	
         $model = new SignupForm();
        //$employeesignup = new EmployeeSignup();
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())&& $model->validate()) {
         	
         	//print_r(Yii::$app->request->post());exit();
         	
@@ -451,6 +451,11 @@ class SiteController extends Controller
         	
         	
        
+        }
+        else {
+        	return $this->render('signup', [
+        			'model' => $model,
+        	]);
         }
 
         return $this->render('signup', [

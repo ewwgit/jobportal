@@ -99,12 +99,7 @@ class SignupForm extends Model {
 						'mobilenumber',
 						'required',
 				],
-			  	[
-				'mobilenumber',
-				'unique',
-				'targetClass' => '\forntend\models\EmployeeSignup',
-				'message' => 'This mobile number has already been taken.'
-						],  
+			  	
 				[
 						'mobilenumber',
 						'number',
