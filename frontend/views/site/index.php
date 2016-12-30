@@ -16,7 +16,14 @@ use kartik\typeahead\TypeaheadBasic;
 use kartik\typeahead\Typeahead;
 use yii\web\view;
 ?>
-
+<style>
+.growl-notice {
+	margin-top: 175px !important;
+}
+.growl-warning {
+	margin-top: 175px !important;
+}
+</style>
  
   <?php foreach (Yii::$app->session->getAllFlashes() as $message):; ?>
             <?php
@@ -380,7 +387,7 @@ $this->registerJs ( "
 	
 		   if(data.status == 0)
            {
-               $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-exclamation scicon\"></span>Warning!<hr class=\"successseperator\">', message: 'Already Applied this job.',duration:5000,location:'tc',style:'warning' });
+               $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-exclamation scicon\"></span>Warning!<hr class=\"successseperator\">', message: 'Already Applied this job.',duration:50000,location:'tc',style:'warning',size:'large' });
            }
            if(data.status == 1)
            {
@@ -388,7 +395,7 @@ $this->registerJs ( "
         	$('[id=\"needtoapply'+jbid+'\"]').html('Applied');
 		    $('[id=\"needtoapply'+jbid+'\"]').addClass('applied');
 		    $('[id=\"needtoapply'+jbid+'\"]').removeClass('apply_job');
-		    $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-check scicon\"></span>Success!<hr class=\"successseperator\">', message: 'Successfully Applied this job',duration:5000,location:'tc',style:'notice',size:'large' });
+		    $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-check scicon\"></span>Success!<hr class=\"successseperator\">', message: 'Successfully Applied this job',duration:50000,location:'tc',style:'notice',size:'large' });
 		    //console.log($('[id=\"needtoapply4\"]').html());
            }
 		
@@ -398,7 +405,7 @@ $this->registerJs ( "
 		});
 		
 		$(document.body).on('click', '.applied' ,function(){
-		 $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-exclamation scicon\"></span>Warning!<hr class=\"successseperator\">', message: 'Already Applied this job.',duration:5000,location:'tc',style:'notice' });
+		 $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-exclamation scicon\"></span>Warning!<hr class=\"successseperator\">', message: 'Already Applied this job.',duration:50000,location:'tc',style:'warning' });
 		});
 
 		", View::POS_READY, 'my-options2' );
