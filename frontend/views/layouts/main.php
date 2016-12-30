@@ -36,7 +36,7 @@ AppAsset::register($this);
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="images/logo2.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="<?php echo Yii::getAlias('@web');?>/frontend/web/images/logo2.png" alt="Work Scout" /></a></h1>
         </div>
         
         <!-- Menu -->

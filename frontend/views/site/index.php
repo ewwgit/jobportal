@@ -51,7 +51,7 @@ use yii\web\view;
   
   <!-- Banner
 ================================================== -->
-  <div id="banner" class="with-transparent-header parallax background" style="background-image: url(images/banner-home-02.jpg)" data-img-width="2000"     data-img-height="1330" data-diff="300">
+  <div id="banner" class="with-transparent-header parallax background" style="background-image: url(<?php echo Yii::getAlias('@web');?>/frontend/web/images/banner-home-02.jpg)" data-img-width="2000"     data-img-height="1330" data-diff="300">
     <div class="container" >
       <div class="sixteen columns">
         <div class="search-container"> 

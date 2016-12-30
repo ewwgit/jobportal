@@ -21,15 +21,17 @@ use frontend\models\EmployeeJobapplied;
 		</div>
 	</div>
 
-<h3>Urget Openings of Job Complete Information</h3>
+<h3>Urgent Openings For Freshers</h3>
 <div class="container">
 <p> <?php  echo $jobinfo -> skills ?> Developers</p>
 <div><p> <?php  echo $jobinfo -> company_name?> Private Limited</p></div>
 <div><p><?php  echo $jobinfo -> Min_Experience?> - 
     <?php echo $jobinfo -> Max_Experience?></p></div>
- <div><p> <?php  echo $jobinfo -> city?> </p></div>
+ <div><p> <?php  echo $jobinfo -> city ?> </p></div>
  
  </div>
+ 
+ 
  
  <table class="table table-user-information ">
 									<tbody>
@@ -88,7 +90,7 @@ use frontend\models\EmployeeJobapplied;
 								</table>
 								
 								
-								 <?= Html::a('Back', ['/site/index'], ['class'=>'btn btn-primary button border fw margin-top-10'])?>
+							
 
 
 
