@@ -18,13 +18,17 @@ return [
     		'employers' => [
     				'class' => 'app\modules\employers\employers',
     		],
+    		'degrees' => [
+    				'class' => 'app\modules\degrees\degrees',
+    		],
+    		'designation' => [
+    				'class' => 'app\modules\designation\designation',
+    		],
     		'specializations' => [
     				'class' => 'app\modules\specializations\specializations',
-    			
+    				 
     		],
     		
-    	
-       
     ],
     'components' => [
         'request' => [
