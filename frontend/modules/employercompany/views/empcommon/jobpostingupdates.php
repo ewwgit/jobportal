@@ -103,9 +103,7 @@ select {
 												<td><?= $form->field($postings, 'jobtype')->inline()->radioList(['Full time' =>'Full time' , 'Part time' =>'Part time'],['prompt' =>'select'],['value' => $postings->jobtype])?></td>
 											</tr>
 
-											<tr>
-												<td><?= $form->field($postings, 'gender')->inline()->radioList(['Male' =>'Male' , 'Female' =>'Female'],['prompt' =>'select'],['value' => $postings->gender]) ?></td>
-											</tr>
+											
 
 										</tbody>
 									</table>

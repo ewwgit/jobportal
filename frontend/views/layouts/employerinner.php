@@ -78,16 +78,19 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
     <div class="container">
       <div class="twelve columns">
       <h1><?=  $this->params ['breadcrumbs'] [] = $this->title;?></h1>
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [''],
-        ]) ?>
+      
+         <?= 
+   Breadcrumbs::widget([
+
+      'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [''],
+   ]) 
+?> 
           <?= Alert::widget() ?>
       </div>
       
     </div>
   </div>
-       
-        <?= $content ?>
+               <?= $content ?>
     </div>
 
 	

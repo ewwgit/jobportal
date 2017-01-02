@@ -102,7 +102,7 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 				<?php echo ($model['status'])? 'Active' : 'Inactive'?></i>
 				<?php
 	}
-	else {?>
+	else if($status == 2){?>
 		<i <?php echo ($model['status'])? 'btn-success' : 'btn-danger'?>> 
 		   <?php echo ($model['status'])? 'Active' : 'Inactive'?></i>
 		<?php }?>
@@ -189,45 +189,41 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 </style>
 <!--  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>  -->
 <script type="text/javascript">
-$('.status_checks').on('click',function(){
-	//var $ = jQuery;
-	//var status = ($(this).hasClass("btn-success")) ? '0' : '1';
-	 var status = $(this).attr('btn-success') ? '0' : '1';
-	 
-// 	 if(result.indexOf("status") != -1)
-// 	 {
-// 		 echo "status";
-// 	 }
-// 	 exit();
+<?php 
+$this->registerJs ( "
+$(document).on('click', '.status_checks' ,function(){
 
-	 
-	
+	 var status = $(this).attr('btn-success') ? '0' : '2';
+	 	
 		$.ajax({
 			
-		type:"GET",
+		type:'get',
 		dataType:'json',
 		
 		data: {status : status},
 		
-		success: function(data)
-		{
-			 if(data.status == 0)
-         {
-              console.log('fail');
-         }
-         if(data.status == 1)
-         {
-              console.log('success');
-			//location.reload();
-         }
-		},
+
 		});
 		
 	});
+		
 
 
+", View::POS_READY, 'my-options2' );
+?>
+<?php 
+// 		success: function(data)
+// 		{
+// 			 if(data.status == 2)
+//          {
+//               console.log('fail');
+//          }
+//          if(data.status == 0)
+//          {
+//               console.log('success');
+// 	         }
+// 		},?>
 
-</script>
 	
 	
 

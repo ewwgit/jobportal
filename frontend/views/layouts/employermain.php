@@ -113,18 +113,10 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
   <div id="titlebar" class="single" style="background:url(<?php echo Yii::getAlias('@web');?>/frontend/web/images/employer-registration-viewport.jpg); min-height:250px;">
     <div class="container">
       <div class="sixteen columns" >
+     
+      <h1><?=  $this->params ['breadcrumbs'] [] = $this->title;?></h1>
+       
       
-        <nav id="breadcrumbs">
-          <ul>
-            <li>You are here:</li>
-           
-            <li><h1><?=  $this->params ['breadcrumbs'] [] = $this->title;?></h1></li>
-             <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [''],
-        ]) ?>
-          <?= Alert::widget() ?>
-          </ul>
-        </nav>
       </div>
     </div>
   </div>
