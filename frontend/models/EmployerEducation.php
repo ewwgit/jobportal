@@ -83,4 +83,6 @@ class EmployerEducation extends \yii\db\ActiveRecord {
 				'userid' => 'Userid' 
 		];
 	}
+	
+	
 }

@@ -17,11 +17,11 @@ $query = EmployeeJobapplied::find()->where(['jobid'=>$model->id])->count();
 ?>
 
 <tr>
-	<td class="title"><?= $model['designation'];?><b style= "color:green;"><?php echo '(' . $total_list .')' ?></b></td>
+	<td class="title"><?= $model['designation'];?></td>
 	<td class="title"><?= $model['skills'];?></td>	
 	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered"><a
-		href="<?= Url::to(['/employercompany/empcommon/employeeslist','jid'=>$model->id])?>"> Employees</a></td>
+		href="<?= Url::to(['/employercompany/empcommon/employeeslist','jid'=>$model->id])?>"> Employees</a><b style= "color:#ec971f;"><?php echo '(' . $total_list .')' ?></b></td>
 		
 	<td class="title"><?= date('Y-m-d',strtotime( $model['startDate']))?></td>	
 	

@@ -2,6 +2,8 @@
 use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\ArrayHelper;
+use backend\models\Designation;
 
 $this->title = '';
 $this->params ['breadcrumbs'] [] = $this->title;
@@ -118,10 +120,11 @@ select {
 									</div>
 
 
-									<div class="form">
-                    
-                  <?= $form->field($model, 'designation')?>
-                  </div>
+									
+                  <div class="form">
+									designation:<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>
+                                                </div>
+               
 									<div class="form" style="
     width: 450px;
     margin-left: -15px;

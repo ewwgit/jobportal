@@ -109,7 +109,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 											<td><?php echo isset($edumodel->higherdegree) ? $edumodel->higherdegree : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
-											<td>Highest Degree Specialization:</td>
+											<td>Specialization:</td>
 											<td><?php echo isset($edumodel->specialization) ? $edumodel->specialization : 'Not Mentioned ';?></td>
 										</tr>
 										<tr>

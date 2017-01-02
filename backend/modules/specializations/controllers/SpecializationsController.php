@@ -3,8 +3,8 @@
 namespace app\modules\specializations\controllers;
 
 use Yii;
-use app\models\Specializations;
-use app\models\SpecializationsSearch;
+use backend\models\Specializations;
+use backend\models\SpecializationsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

@@ -2,6 +2,8 @@
 use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\ArrayHelper;
+use backend\models\Designation;
 
 $this->title = 'POST A JOB';
 $this->params ['breadcrumbs'] [] = $this->title;
@@ -84,9 +86,9 @@ select {
 											<tr>
 												<td><?= $form->field($postings, 'skills')->textInput(['autofocus' => true],['value' => $postings->skills])?></td>
 											</tr>
+											
 											<tr>
-												<td><?= $form->field($postings, 'designation')->textInput(['autofocus' => true],['value' => $postings->designation])?></td>
-											</tr>
+												<td>designation:<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>	</tr>
 											<tr>
 												<td><?= $form->field($model, 'Max_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></td>
 											</tr>
@@ -102,8 +104,7 @@ select {
 											<tr>
 												<td><?= $form->field($postings, 'jobtype')->inline()->radioList(['Full time' =>'Full time' , 'Part time' =>'Part time'],['prompt' =>'select'],['value' => $postings->jobtype])?></td>
 											</tr>
-
-											
+	
 
 										</tbody>
 									</table>

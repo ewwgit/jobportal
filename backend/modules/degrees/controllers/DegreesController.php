@@ -3,8 +3,8 @@
 namespace app\modules\degrees\controllers;
 
 use Yii;
-use app\models\Degrees;
-use app\models\DegreesSearch;
+use backend\models\Degrees;
+use backend\models\DegreesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

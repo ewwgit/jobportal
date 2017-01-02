@@ -3,8 +3,8 @@
 namespace app\modules\designation\controllers;
 
 use Yii;
-use app\models\Designation;
-use app\models\DesignaionSearch;
+use backend\models\Designation;
+use backend\models\DesignaionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

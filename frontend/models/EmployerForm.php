@@ -5,6 +5,8 @@ namespace frontend\models;
 use yii\base\Model;
 use Yii;
 use yii\helpers\ArrayHelper ;
+use backend\models\Specializations;
+
 
 class EmployerForm extends Model {
 	
@@ -164,6 +166,7 @@ class EmployerForm extends Model {
 				] 
 		];
 	}
+
 	
 	
 }

@@ -274,6 +274,9 @@ class EmpcommonController extends Controller {
 				$educationData->university = $model->university;
 				$educationData->collegename = $model->collegename;
 				$educationData->passingyear = $model->passingyear;
+				
+
+				
 				$educationData->save ();
 				
 			} else {
@@ -544,25 +547,7 @@ public function actionJobpostingslist() {
  	    $applied_data = EmployeeJobapplied::find()->where(['jobid' => $jid])->all();
  	 	$total_list=count($applied_data);
 	
-	if ($model->load ( Yii::$app->request->post ())) {
-		$status = $model->status;
-	
-		
-// 		if($status['status'] == 1)
-// 		{
-// 			$status = "Active";
-// 		}
-// 		else
-// 		{
-// 			$status = "Inactive";
-// 		}
-		 
-		Yii::$app->db->createCommand ()->insert ( 'employee_job_applied', [
-				'status' =>  $status,
-			
-				
-		] )->execute ();
-	}
+
 		
 		$dataProvider = new ActiveDataProvider([
 				'pagination' => ['pageSize' =>5],

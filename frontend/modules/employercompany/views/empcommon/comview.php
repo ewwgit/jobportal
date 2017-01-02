@@ -9,7 +9,9 @@ use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use frontend\models\Employer;
 use yii\helpers\Url;
-
+use backend\models\Specializations;
+use backend\models\Designation;
+use backend\models\Degrees;
 $this->title = 'Employer Profile';
 
 $this->params ['breadcrumbs'] [] = $this->title;
@@ -95,10 +97,10 @@ select {
 									
 								    <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])?>
 									</div>
-									<div class="form">
 									
-								     <?= $form->field($model, 'designation')->textInput(['autofocus' => true])?>
-									</div>
+									<div class="form">
+									designation:<?= Html::activeDropDownList($model, 'designation', ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>
+                                                </div>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -106,23 +108,21 @@ select {
 								<div class="title-underlined">
 									<h4>Add Your Educational Details</h4>
 								</div>
+								
 								<div class="form">
+								higherdegre:<?= Html::activeDropDownList($model, 'higherdegree',ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higherdegree']) ?>	</tr>
 									
-										<?=$form->field ( $model, 'higherdegree' )->dropDownList ( [ 'B-Tech/B.E.' => 'B-Tech/B.E.','B.Sc' => 'B.Sc','B.Ed' => 'B.Ed','BDS' => 'BDS','BFA' => 'BFA','B.Pharma' => 'B.Pharma','B.A' => 'B.A','B.Com' => 'B.Com','BCA' => 'BCA','Other' => 'Other' ], [ 'prompt' => 'select your Highdegree' ] )?>
 									</div>
 
 								<!-- Email -->
-								<div class="form">
-									
-										<?=$form->field ( $model, 'specialization' )->dropDownList ( [ 'Computers' => 'Computers','Chemical' => 'Chemical','Civil' => 'Civil','Electrical' => 'Electrical','Electronics/Telecommunication' => 'Electronics/Telecommunication','Automobile' => 'Automobile','Agricultural' => 'Agricultural','Mechanical' => 'Mechanical','Mining' => 'Mining','BioMedical' => 'BioMedical','Other' => 'Other' ], [ 'prompt' => 'select your Specilization' ] )?>
-									</div>
-
+							
+									<div class="form">
+									specialization:<?= Html::activeDropDownList($model, 'specialization',ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization']) ?>
+                                                </div>
 								<!-- Email -->
 								<div class="form">
-									
-										<?= $form->field($model, 'university')->textInput(['autofocus' => true])?>
+								    <?= $form->field($model, 'university')->textInput(['autofocus' => true])?>
 									</div>
-
 								<!-- Title -->
 								<div class="form">
 									

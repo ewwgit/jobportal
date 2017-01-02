@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div
 	class="specializations-view">
 
-	<h1><?= Html::encode($this->title) ?></h1>
+	
 
 	<p>
         <?= Html::a('Update', ['update', 'id' => $model->specialization_id], ['class' => 'btn btn-primary']) ?>
