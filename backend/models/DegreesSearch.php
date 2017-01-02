@@ -19,7 +19,7 @@ class DegreesSearch extends Degrees
     {
         return [
             [['degree_id'], 'integer'],
-            [['degreename', 'description', 'status'], 'safe'],
+            [['name', 'description', 'status'], 'safe'],
         ];
     }
 
@@ -62,7 +62,7 @@ class DegreesSearch extends Degrees
             'degree_id' => $this->degree_id,
         ]);
 
-        $query->andFilterWhere(['like', 'degreename', $this->degreename])
+        $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'status', $this->status]);
 

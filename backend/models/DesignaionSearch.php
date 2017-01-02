@@ -19,7 +19,7 @@ class DesignaionSearch extends Designation
     {
         return [
             [['designation_id'], 'integer'],
-            [['designation_name', 'designation_description', 'status'], 'safe'],
+            [['name', 'description', 'status'], 'safe'],
         ];
     }
 
@@ -62,8 +62,8 @@ class DesignaionSearch extends Designation
             'designation_id' => $this->designation_id,
         ]);
 
-        $query->andFilterWhere(['like', 'designation_name', $this->designation_name])
-            ->andFilterWhere(['like', 'designation_description', $this->designation_description])
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'status', $this->status]);
 
         return $dataProvider;

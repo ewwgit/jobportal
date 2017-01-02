@@ -28,9 +28,9 @@ class Degrees extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['degreename', 'description', 'status'], 'required'],
+            [['name', 'description', 'status'], 'required'],
             [['status'], 'string'],
-            [['degreename', 'description'], 'string', 'max' => 200],
+            [['name', 'description'], 'string', 'max' => 200],
         ];
     }
 
@@ -41,7 +41,7 @@ class Degrees extends \yii\db\ActiveRecord
     {
         return [
             'degree_id' => 'Degree ID',
-            'degreename' => 'Degreename',
+            'name' => 'Name',
             'description' => 'Description',
             'status' => 'Status',
         ];

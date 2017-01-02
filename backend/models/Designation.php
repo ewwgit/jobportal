@@ -28,9 +28,9 @@ class Designation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['designation_name', 'designation_description', 'status'], 'required'],
+            [['name', 'description', 'status'], 'required'],
             [['status'], 'string'],
-            [['designation_name', 'designation_description'], 'string', 'max' => 200],
+            [['name', 'description'], 'string', 'max' => 200],
         ];
     }
 
@@ -41,8 +41,8 @@ class Designation extends \yii\db\ActiveRecord
     {
         return [
             'designation_id' => 'Designation ID',
-            'designation_name' => 'Designation Name',
-            'designation_description' => 'Designation Description',
+            'name' => 'Name',
+            'description' => 'Description',
             'status' => 'Status',
         ];
     }
