@@ -30,9 +30,12 @@
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Employees', 'icon' => 'fa fa-file-code-o', 'url' => ['/employees/employees/']],
-                    ['label' => 'Employers', 'icon' => 'fa fa-dashboard', 'url' => ['/employers/employers/']],
+                  //  ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+                    ['label' => 'Employees', 'icon' => 'fa fa-users', 'url' => ['/employees/employees/']],
+                    ['label' => 'Employers', 'icon' => 'fa fa-user-circle-o', 'url' => ['/employers/employers/']],
+                	['label' => 'Degrees', 'icon' => 'fa fa-book', 'url' => ['/degrees/degrees/']],
+                	['label' => 'Designation', 'icon' => 'fa fa-bookmark', 'url' => ['/designation/designation/']],
+                	['label' => 'Specializations', 'icon' => 'fa fa-sun-o', 'url' => ['/specializations/specializations/']],
                    
                    
                 ],
