@@ -1,6 +1,35 @@
 Change Log: `bootstrap-fileinput`
 =================================
 
+## version 4.3.6
+
+**Date:** 17-Dec-2016
+
+1. (enh #696): Better default preview zoom settings.
+2. (enh #764): Update Russian Translations.
+3. (enh #771): Update Chinese Translations.
+4. (enh #769, #785, #786, #787): Better image resized event handling.
+5. (enh #779, #789): More correct thumbnail identification post rearrange.
+6. (enh #782): New validation for invalid slug file name (caption):
+   - if slug callback returns an empty string, then an error will be thrown using `msgInvalidFileName`.
+   - if slug callback returns `false` then the next file will be read and current file skipped.
+7. (enh #788): New validation for minimum file size:
+   - new property `minFileSize` which validates the minimum file size in KB for upload, else throws
+     a validation error using `msgSizeTooSmall`. This defaults to `0`.
+   - if `minFileSize` is set to `null`, then above validation is skipped and no minimum file size 
+     check is performed.
+8. (enh #791): Auto orientation of images based on EXIF data.
+9. (enh #799): Fix IE memory issue on image load.
+10. (enh #800): Update Spanish Translations.
+11. (enh #802): Allow MOV files preview for supported devices and browsers.
+12. (enh #803): Update Hungarian Translations.
+13. (enh #804): Add Slovenian Translations.
+14. (enh #809): Various enhancements for preview control and iconic thumbnails.
+    - add ability to control and render different previews for file thumbnails and zoomed preview content
+    - new property `preferIconicPreview` will try to parse the `previewFileIconSettings` and `previewFileExtSettings` to automatically force iconic previews for file thumbnails.
+    - new property `preferIconicZoomPreview` will try to parse the `previewFileIconSettings` and `previewFileExtSettings` to automatically force iconic previews in the zoomed content.
+    - the above properties will be applied and parsed for `initialPreview` content as well.
+
 ## version 4.3.5
 
 **Date:** 20-Sep-2016

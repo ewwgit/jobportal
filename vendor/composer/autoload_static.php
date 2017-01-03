@@ -9,6 +9,7 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '7e702cccdb9dd904f2ccf22e5f37abae' => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook/polyfills.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -32,6 +33,7 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         'k' => 
         array (
             'kartik\\typeahead\\' => 17,
+            'kartik\\social\\' => 14,
             'kartik\\select2\\' => 15,
             'kartik\\plugins\\fileinput\\' => 25,
             'kartik\\plugins\\checkbox\\' => 24,
@@ -54,6 +56,7 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         'F' => 
         array (
             'Faker\\' => 6,
+            'Facebook\\' => 9,
         ),
     );
 
@@ -106,6 +109,10 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-typeahead',
         ),
+        'kartik\\social\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-social',
+        ),
         'kartik\\select2\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2',
@@ -157,6 +164,10 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
+        ),
+        'Facebook\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook',
         ),
     );
 

@@ -18,6 +18,7 @@ return array(
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
     'rmrevin\\yii\\fontawesome\\' => array($vendorDir . '/rmrevin/yii2-fontawesome'),
     'kartik\\typeahead\\' => array($vendorDir . '/kartik-v/yii2-widget-typeahead'),
+    'kartik\\social\\' => array($vendorDir . '/kartik-v/yii2-social'),
     'kartik\\select2\\' => array($vendorDir . '/kartik-v/yii2-widget-select2'),
     'kartik\\plugins\\fileinput\\' => array($vendorDir . '/kartik-v/bootstrap-fileinput'),
     'kartik\\plugins\\checkbox\\' => array($vendorDir . '/kartik-v/bootstrap-checkbox-x'),
@@ -31,4 +32,5 @@ return array(
     'dmstr\\' => array($vendorDir . '/dmstr/yii2-adminlte-asset'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
+    'Facebook\\' => array($vendorDir . '/facebook/php-sdk-v4/src/Facebook'),
 );

@@ -3,15 +3,6 @@
 $vendorDir = dirname(__DIR__);
 
 return array (
-  'yiisoft/yii2-swiftmailer' => 
-  array (
-    'name' => 'yiisoft/yii2-swiftmailer',
-    'version' => '2.0.5.0',
-    'alias' => 
-    array (
-      '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer',
-    ),
-  ),
   'yiisoft/yii2-codeception' => 
   array (
     'name' => 'yiisoft/yii2-codeception',
@@ -28,15 +19,6 @@ return array (
     'alias' => 
     array (
       '@yii/bootstrap' => $vendorDir . '/yiisoft/yii2-bootstrap',
-    ),
-  ),
-  'yiisoft/yii2-debug' => 
-  array (
-    'name' => 'yiisoft/yii2-debug',
-    'version' => '2.0.6.0',
-    'alias' => 
-    array (
-      '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug',
     ),
   ),
   'yiisoft/yii2-gii' => 
@@ -181,6 +163,42 @@ return array (
     'alias' => 
     array (
       '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
+    ),
+  ),
+  'kartik-v/yii2-social' => 
+  array (
+    'name' => 'kartik-v/yii2-social',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/social' => $vendorDir . '/kartik-v/yii2-social',
+    ),
+  ),
+  'yiisoft/yii2-swiftmailer' => 
+  array (
+    'name' => 'yiisoft/yii2-swiftmailer',
+    'version' => '2.0.6.0',
+    'alias' => 
+    array (
+      '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer',
+    ),
+  ),
+  'yiisoft/yii2-debug' => 
+  array (
+    'name' => 'yiisoft/yii2-debug',
+    'version' => '2.0.7.0',
+    'alias' => 
+    array (
+      '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug',
+    ),
+  ),
+  'ijackua/yii2-sharelinks-widget' => 
+  array (
+    'name' => 'ijackua/yii2-sharelinks-widget',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@ijackua/sharelinks' => $vendorDir . '/ijackua/yii2-sharelinks-widget',
     ),
   ),
 );
