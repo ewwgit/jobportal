@@ -28,9 +28,11 @@ return array(
     'kartik\\date\\' => array($vendorDir . '/kartik-v/yii2-widget-datepicker'),
     'kartik\\checkbox\\' => array($vendorDir . '/kartik-v/yii2-checkbox-x'),
     'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base'),
+    'ijackua\\sharelinks\\' => array($vendorDir . '/ijackua/yii2-sharelinks-widget'),
     'dosamigos\\datepicker\\' => array($vendorDir . '/2amigos/yii2-date-picker-widget/src'),
     'dmstr\\' => array($vendorDir . '/dmstr/yii2-adminlte-asset'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
+    'bl\\socialShare\\' => array($vendorDir . '/black-lamp/yii2-socialshare'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Facebook\\' => array($vendorDir . '/facebook/php-sdk-v4/src/Facebook'),
 );

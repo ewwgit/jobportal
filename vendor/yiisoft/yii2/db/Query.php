@@ -93,7 +93,7 @@ class Query extends Component implements QueryInterface
      */
     public $join;
     /**
-     * @var string|array|Expression the condition to be applied in the GROUP BY clause.
+     * @var string|array the condition to be applied in the GROUP BY clause.
      * It can be either a string or an array. Please refer to [[where()]] on how to specify the condition.
      */
     public $having;
@@ -152,7 +152,7 @@ class Query extends Component implements QueryInterface
      * ```php
      * $query = (new Query)->from('user');
      * foreach ($query->batch() as $rows) {
-     *     // $rows is an array of 100 or fewer rows from user table
+     *     // $rows is an array of 10 or fewer rows from user table
      * }
      * ```
      *
@@ -268,22 +268,19 @@ class Query extends Component implements QueryInterface
      */
     public function column($db = null)
     {
-        if ($this->indexBy === null) {
+        if (!is_string($this->indexBy)) {
             return $this->createCommand($db)->queryColumn();
         }
-
-        if (is_string($this->indexBy) && is_array($this->select) && count($this->select) === 1) {
+        if (is_array($this->select) && count($this->select) === 1) {
             $this->select[] = $this->indexBy;
         }
         $rows = $this->createCommand($db)->queryAll();
         $results = [];
         foreach ($rows as $row) {
-            $value = reset($row);
-
-            if ($this->indexBy instanceof \Closure) {
-                $results[call_user_func($this->indexBy, $row)] = $value;
+            if (array_key_exists($this->indexBy, $row)) {
+                $results[$row[$this->indexBy]] = reset($row);
             } else {
-                $results[$row[$this->indexBy]] = $value;
+                $results[] = reset($row);
             }
         }
         return $results;
@@ -612,7 +609,7 @@ class Query extends Component implements QueryInterface
      */
     public function andFilterCompare($name, $value, $defaultOperator = '=')
     {
-        if (preg_match('/^(<>|>=|>|<=|<|=)/', $value, $matches)) {
+        if (preg_match("/^(<>|>=|>|<=|<|=)/", $value, $matches)) {
             $operator = $matches[1];
             $value = substr($value, strlen($operator));
         } else {

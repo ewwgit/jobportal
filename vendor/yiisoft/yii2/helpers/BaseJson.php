@@ -142,7 +142,7 @@ class BaseJson
 
                 return $token;
             } elseif ($data instanceof \JsonSerializable) {
-                return static::processData($data->jsonSerialize(), $expressions, $expPrefix);
+                $data = $data->jsonSerialize();
             } elseif ($data instanceof Arrayable) {
                 $data = $data->toArray();
             } elseif ($data instanceof \SimpleXMLElement) {

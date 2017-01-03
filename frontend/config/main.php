@@ -150,6 +150,58 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+    		'socialShare' => [
+    				'class' => bl\socialShare\SocialShare::className(),
+    				'defaultIcons' => true,
+    				'attributes' => [
+    						'class' => 'social-btn'
+    				],
+    				'networks' => [
+    						'facebook' => [
+    								'class' => bl\socialShare\classes\Facebook::className(),
+    								'label' => 'Facebook'
+    						],
+    						'twitter' => [
+    								'class' => bl\socialShare\classes\Twitter::className(),
+    								'label' => 'Twitter',
+    								// custom option for Twitter class
+    								'account' => 'twitterAccount'
+    						],
+    						'googlePlus' => [
+    								'class' => bl\socialShare\classes\GooglePlus::className(),
+    								'label' => 'Google+'
+    						],
+    						'gmail' => [
+    								'class' => bl\socialShare\classes\Gmail::className(),
+    								'label' => 'Gmail'
+    						],
+    						'pinterest' => [
+    								'class' => bl\socialShare\classes\Pinterest::className(),
+    								'label' => 'Pinterest'
+    						],
+    						'telegram' => [
+    								'class' => bl\socialShare\classes\Telegram::className(),
+    								'label' => 'Telegram'
+    						],
+    						/* 'vk' => [
+    								'class' => bl\socialShare\classes\Vkontakte::className(),
+    								'label' => 'vk'
+    						], */
+    						'linkedIn' => [
+    								'class' => bl\socialShare\classes\LinkedIn::className(),
+    								'label' => 'LinkedIn'
+    						],
+    						'whatsApp' => [
+    								'class' => bl\socialShare\classes\mobile\WhatsApp::className(),
+    								'label' => 'WhatsApp'
+    						],
+    						'viber' => [
+    								'class' => bl\socialShare\classes\mobile\Viber::className(),
+    								'label' => 'Viber'
+    						],
+    						// other social networks ...
+    				]
+    		],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

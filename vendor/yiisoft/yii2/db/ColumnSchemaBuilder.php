@@ -43,7 +43,7 @@ class ColumnSchemaBuilder extends Object
      * @var boolean|null whether the column is or not nullable. If this is `true`, a `NOT NULL` constraint will be added.
      * If this is `false`, a `NULL` constraint will be added.
      */
-    protected $isNotNull;
+    protected $isNotNull = null;
     /**
      * @var boolean whether the column values should be unique. If this is `true`, a `UNIQUE` constraint will be added.
      */

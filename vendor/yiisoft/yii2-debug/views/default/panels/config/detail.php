@@ -10,7 +10,6 @@ echo $this->render('table', [
     'values' => [
         'Yii Version' => $panel->data['application']['yii'],
         'Application Name' => $panel->data['application']['name'],
-        'Application Version' => $panel->data['application']['version'],
         'Environment' => $panel->data['application']['env'],
         'Debug Mode' => $panel->data['application']['debug'] ? 'Yes' : 'No',
     ],
@@ -23,20 +22,13 @@ if (!empty($extensions)) {
     ]);
 }
 
-$memcache = 'Disabled';
-if ($panel->data['php']['memcache']) {
-    $memcache = 'Enabled (memcache)';
-} elseif ($panel->data['php']['memcached']) {
-    $memcache = 'Enabled (memcached)';
-}
-
 echo $this->render('table', [
     'caption' => 'PHP Configuration',
     'values' => [
         'PHP Version' => $panel->data['php']['version'],
         'Xdebug' => $panel->data['php']['xdebug'] ? 'Enabled' : 'Disabled',
         'APC' => $panel->data['php']['apc'] ? 'Enabled' : 'Disabled',
-        'Memcache' =>  $memcache,
+        'Memcache' => $panel->data['php']['memcache'] ? 'Enabled' : 'Disabled',
     ],
 ]);
 

@@ -8,8 +8,8 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
 {
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '7e702cccdb9dd904f2ccf22e5f37abae' => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook/polyfills.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -44,6 +44,10 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
             'kartik\\checkbox\\' => 16,
             'kartik\\base\\' => 12,
         ),
+        'i' => 
+        array (
+            'ijackua\\sharelinks\\' => 19,
+        ),
         'd' => 
         array (
             'dosamigos\\datepicker\\' => 21,
@@ -52,6 +56,10 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
+        ),
+        'b' => 
+        array (
+            'bl\\socialShare\\' => 15,
         ),
         'F' => 
         array (
@@ -149,6 +157,10 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base',
         ),
+        'ijackua\\sharelinks\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ijackua/yii2-sharelinks-widget',
+        ),
         'dosamigos\\datepicker\\' => 
         array (
             0 => __DIR__ . '/..' . '/2amigos/yii2-date-picker-widget/src',
@@ -160,6 +172,10 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'bl\\socialShare\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/black-lamp/yii2-socialshare',
         ),
         'Faker\\' => 
         array (

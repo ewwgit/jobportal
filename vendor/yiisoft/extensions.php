@@ -174,10 +174,19 @@ return array (
       '@kartik/social' => $vendorDir . '/kartik-v/yii2-social',
     ),
   ),
+  'ijackua/yii2-sharelinks-widget' => 
+  array (
+    'name' => 'ijackua/yii2-sharelinks-widget',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@ijackua/sharelinks' => $vendorDir . '/ijackua/yii2-sharelinks-widget',
+    ),
+  ),
   'yiisoft/yii2-swiftmailer' => 
   array (
     'name' => 'yiisoft/yii2-swiftmailer',
-    'version' => '2.0.6.0',
+    'version' => '2.0.5.0',
     'alias' => 
     array (
       '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer',
@@ -186,19 +195,19 @@ return array (
   'yiisoft/yii2-debug' => 
   array (
     'name' => 'yiisoft/yii2-debug',
-    'version' => '2.0.7.0',
+    'version' => '2.0.6.0',
     'alias' => 
     array (
       '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug',
     ),
   ),
-  'ijackua/yii2-sharelinks-widget' => 
+  'black-lamp/yii2-socialshare' => 
   array (
-    'name' => 'ijackua/yii2-sharelinks-widget',
-    'version' => '9999999-dev',
+    'name' => 'black-lamp/yii2-socialshare',
+    'version' => '1.7.0.0',
     'alias' => 
     array (
-      '@ijackua/sharelinks' => $vendorDir . '/ijackua/yii2-sharelinks-widget',
+      '@bl/socialShare' => $vendorDir . '/black-lamp/yii2-socialshare',
     ),
   ),
 );

@@ -8,7 +8,6 @@
 namespace yii\web;
 
 use Yii;
-use yii\helpers\Url;
 use yii\base\InvalidRouteException;
 
 /**
@@ -76,19 +75,7 @@ class Application extends \yii\base\Application
     public function handleRequest($request)
     {
         if (empty($this->catchAll)) {
-            try {
-                list ($route, $params) = $request->resolve();
-            } catch (UrlNormalizerRedirectException $e) {
-                $url = $e->url;
-                if (is_array($url)) {
-                    if (isset($url[0])) {
-                        // ensure the route is absolute
-                        $url[0] = '/' . ltrim($url[0], '/');
-                    }
-                    $url += $request->getQueryParams();
-                }
-                return $this->getResponse()->redirect(Url::to($url, $e->scheme), $e->statusCode);
-            }
+            list ($route, $params) = $request->resolve();
         } else {
             $route = $this->catchAll[0];
             $params = $this->catchAll;
