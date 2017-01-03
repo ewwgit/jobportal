@@ -24,6 +24,23 @@ return [
        /*  'request' => [
             'csrfParam' => '_csrf-frontend',
         ], */
+    		'authClientCollection' => [
+    				'class' => 'yii\authclient\Collection',
+    				'clients' => [
+    						'google' => [
+    								'class' => 'yii\authclient\clients\Google',
+    								'clientId' => '604006204304-vjl6qpcvb32fb1dsufoh1sjujpijdvfq.apps.googleusercontent.com',
+    								'clientSecret' => '7NAsLa52gWZNomzDvVSGuRg9',
+    						],
+    						'facebook' => [
+    								'class' => 'yii\authclient\clients\Facebook',
+    								'clientId' => '1159301224119499',
+    								'clientSecret' => '63f5de378875b955ab7d146cf22ad0f2',
+    								'attributeNames' => ['name', 'email', 'first_name', 'last_name'],
+    						],
+    						// etc.
+    				],
+    		],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

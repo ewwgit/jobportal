@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 use kartik\growl\Growl;
+use yii\authclient\widgets\AuthChoice;
 $this->title = 'Login';
 
 ?>
@@ -39,7 +40,6 @@ $this->title = 'Login';
 			<div class="tabs-container">
 				<!-- Login -->
 				<div class="tab-content" id="tab1" style="">
-					<form method="post" class="login">
            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
             <p class="form-row form-row-wide">
 
@@ -69,10 +69,27 @@ $this->title = 'Login';
 						</p>
 
             <?php ActiveForm::end(); ?>
-
-          </form>
 				</div>
 			</div>
+		<div class="benefits">
+			<h4>Log In with social account</h4>
+
+			<div class="clearfix"></div>
+			<div class="social-icons-new">
+					<?php
+					$authAuthChoice = AuthChoice::begin ( [ 
+							'baseAuthUrl' => [ 
+									'site/auth' 
+							],
+							'popupMode' => true 
+					] );
+					?>
+					<?php foreach ($authAuthChoice->getClients() as $client): ?>
+					<?php  endforeach; ?>
+					<?php AuthChoice::end(); ?>
+				</div>
+			<div class="clearfix"></div>
+		</div>
 		</div>
 	</div>
 </div>

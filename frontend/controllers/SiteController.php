@@ -127,6 +127,11 @@ class SiteController extends Controller
     public function actions()
     {
         return [
+        		'auth' => [
+        				'class' => 'yii\authclient\AuthAction',
+        				'successCallback' => [$this, 'successCallback'],
+        				//'successUrl' => $this->successUrl
+        		],
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
@@ -135,6 +140,66 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+    
+    public function successCallback($client) {
+    	$attributes = ( object ) $client->getUserAttributes ();
+    
+    	$clientClass = get_class ( $client );
+    	$facebookidnew = '';
+    	$facebookidnewemail = '';
+    	$validUser = false;
+    	switch ($clientClass) {
+    		case "yii\authclient\clients\Facebook" :
+    
+    			if (isset ( $attributes )) {
+    					
+    				$firstName = $attributes->first_name;
+    				$lastName = $attributes->last_name;
+    				$facebookidnew = $attributes->id;
+    				$facebookidnewemail = $attributes->email;
+    				if(isset($attributes->email) && ($attributes->email != ''))
+    				{
+    					$email = $attributes->email;
+    				}
+    				else {
+    					$email = $attributes->id;
+    				}
+    				$accessToken = $attributes->id;
+    					
+    				$providerId = 1;
+    				$validUser = true;
+    			}
+    			break;
+    				
+    		case "yii\authclient\clients\GoogleOAuth" :
+    
+    			if (isset ( $attributes->emails [0] ['value'] )) {
+    				$firstName = $attributes->name ['givenName'];
+    				$lastName = $attributes->name ['familyName'];
+    				$email = $attributes->emails [0] ['value'];
+    				$accessToken = $attributes->id;
+    					
+    				$providerId = 2;
+    				$validUser = true;
+    			}
+    			break;
+    		    				
+    		default :
+    			;
+    			break;
+    	}
+    	$model = new LoginForm ();
+    	if ($email != '') {
+    			
+    		$socialInfo = array ();
+    		$socialInfo ['email'] = $email;
+    		$socialInfo ['firstName'] = $firstName;
+    		$socialInfo ['lastName'] = $lastName;
+    		$socialInfo ['facebookidnew'] = $facebookidnew;
+    		$socialInfo ['facebookidnewemail'] = $facebookidnewemail;
+    			   			
+    	}
     }
 
     /**
