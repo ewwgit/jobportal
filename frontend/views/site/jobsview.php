@@ -11,8 +11,8 @@ use frontend\models\EmployeeJobapplied;
 		href="<?= Url::to(['/site/jobdetails','id'=>$model->id])?>"><?= $model['designation'];?></td>
 	<td class="title"><?= $model['skills'];?></td>	
 	<td class="title"><?= $model['Min_Experience'];?></td>	
-	<td class="centered">-</td>
-	<td class="title"><?= $model['startDate'];?></td>
+	<td class="centered"><?= $model['city'];?></td>
+	<td class="title"><?= date('Y-m-d',strtotime( $model['startDate']))?></td>
 	<?php
 	$userId = \Yii::$app->user->id;
 	$memberJoin = EmployeeJobapplied::getUsersjoined ( $model->id, $userId );

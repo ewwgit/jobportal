@@ -51,9 +51,9 @@ use frontend\models\EmployerJobpostings;
          
           <th><i class="fa fa-file-text"></i> Designation</th>
          
-          <th><i class="fa fa-calendar"></i> CompanyName</th>
+          <th><i class="fa fa-calendar"></i> Company Name</th>
       
-          <th><i class="fa fa-user"></i> AppliedDate</th>
+          <th><i class="fa fa-user"></i> Applied Date</th>
         </tr>
         
 		<?php  echo ListView::widget( [
