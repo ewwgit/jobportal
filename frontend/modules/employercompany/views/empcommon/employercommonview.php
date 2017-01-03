@@ -3,13 +3,13 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 $this->title = 'EmployerProfile';
-$this->params ['breadcrumbs'] [] = [ 
-		'label' => 'Signup',
-		'url' => [ 
-				'index' 
-		] 
-];
-$this->params ['breadcrumbs'] [] = $this->title;
+// $this->params ['breadcrumbs'] [] = [ 
+// 		'label' => 'Home',
+// 		'url' => [ 
+// 				'/employercompany/empsite/login' 
+// 		] 
+// ];
+//$this->params ['breadcrumbs'] [] = $this->title;
 ?>
 <style>
 .table > thead > tr > th, 

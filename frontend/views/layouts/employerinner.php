@@ -44,7 +44,7 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="<?=Yii::$app->getHomeUrl(); ?>"><img src="<?php echo Yii::getAlias('@web');?>/frontend/web/images/logo.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?= Url::to(['/employercompany/empsite/login'])?>"><img src="<?php echo Yii::getAlias('@web');?>/frontend/web/images/logo.png" alt="Work Scout" /></a></h1>
           
         </div>
       
@@ -83,6 +83,13 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
    Breadcrumbs::widget([
 
       'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [''],
+   	  'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [''],
+   		$this->params ['breadcrumbs'] [] = [ 
+		'label' => 'Home',
+		'url' => [ 
+				'/employercompany/empsite/login' 
+		] 
+]
    ]) 
 ?> 
           <?= Alert::widget() ?>

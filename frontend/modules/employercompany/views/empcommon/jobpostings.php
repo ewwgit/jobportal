@@ -5,8 +5,8 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Designation;
 
-$this->title = '';
-$this->params ['breadcrumbs'] [] = $this->title;
+$this->title = ' JOB Postings';
+
 ?>
 <style>
 .required {
@@ -18,7 +18,7 @@ select {
 }
 </style>
 <div class="site-signup">
-	<h1><?= Html::encode($this->title) ?></h1>
+	
 	<div class="container">
 
 		<!-- Submit Page -->
@@ -119,16 +119,11 @@ select {
 										</div>
 									</div>
 
-
-									
                   <div class="form">
 									designation:<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>
                                                 </div>
                
-									<div class="form" style="
-    width: 450px;
-    margin-left: -15px;
-">
+									<div class="form" style="width: 450px;margin-left: -15px;">
 					<div class=" col-md-6"><?= $form->field($model, 'Min_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',],['prompt'=>'select your MinExperience'])?></div>
                  
                   <div class=" col-md-6" style="padding-left: 0px;"><?= $form->field($model, 'Max_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',],['prompt'=>'select your MaxExperience'])?></div>

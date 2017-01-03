@@ -12,9 +12,7 @@ use kartik\typeahead\Typeahead;
 
 
 $this->title = 'Job applied List';
-$this->params ['breadcrumbs'] [] = $this->title;
 
-//use frontend\models\EmployeeJobapplied;
 
 
 ?>

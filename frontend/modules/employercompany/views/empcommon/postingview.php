@@ -7,13 +7,7 @@ use frontend\models\Employerjobpostings;
 /* @var $model backend\models\Membershipdetails */
 
 $this->title = 'Job posting Details view';
-$this->params ['breadcrumbs'] [] = [ 
-		'label' => 'Cancel Membership Details',
-		'url' => [ 
-				'jobgrid' 
-		] 
-];
-$this->params ['breadcrumbs'] [] = $this->title;
+
 
 ?>
 <div class="">
