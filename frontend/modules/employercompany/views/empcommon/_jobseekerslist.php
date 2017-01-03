@@ -10,6 +10,7 @@ use frontend\models\EmployeeResume;
 use frontend\models\EmployeeJobapplied;
 use frontend\models\EmployerJobpostings;
 use yii\bootstrap\ActiveForm;
+use kartik\rating\StarRating;
 
 
 $UserData = User::find()->where(['id' => $model->userid])->one();
@@ -19,6 +20,7 @@ $emp_resume = EmployeeResume::find()->where(['userid' => $model->userid])->one()
 
 $applied_data = EmployeeJobapplied::find()->where(['userid' => $model->userid])->one();
 $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->one();
+//echo $model->application_status;exit();
 ?>
 <div class="sixteen columns">
 
@@ -33,7 +35,7 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 					<ul>
 					
 				
-						<li><a target="_blank" href="<?php echo Url::base().$emp_resume->resume; ?>"><i class="fa fa-file-text"></i> Download CV</a></li>
+						<li><a target="_blank" href="<?php  echo isset( $emp_resume->resume)? Url::base().$emp_resume->resume : 'Not Mentioned' ; ?>"><i class="fa fa-file-text"></i> Download CV</a></li>
 						
 						
 											
@@ -44,7 +46,7 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 				<!-- Buttons -->
 				<div class="buttons">
 					<a href="#one-1" class="button gray app-link"><i class="fa fa-pencil"></i> Edit</a>
-					<a href="#two-1" class="button gray app-link"><i class="fa fa-sticky-note"></i> Add Note</a>
+					
 					<a href="#three-1" class="button gray app-link"><i class="fa fa-plus-circle"></i> Show Details</a>
 				</div>
 				<div class="clearfix"></div>
@@ -59,32 +61,28 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 				<!-- First Tab -->
 			    <div class="app-tab-content" id="one-1">
 
-					<div class="select-grid">
+					<div class="select-grid applicationstatus" id="selectbx<?php echo $model->jobUid;?>">
 						<select data-placeholder="Application Status" class="chosen-select-no-single">
-							<option value="">Application Status</option>
-							<option value="new">New</option>
-							<option value="interviewed">Interviewed</option>
-							<option value="offer">Offer extended</option>
-							<option value="hired">Hired</option>
-							<option value="archived">Archived</option>
+							<option value="New" <?php echo $model->application_status == 'New' ? 'selected' : ''; ?>>New</option>
+							<option value="Interviewed" <?php echo $model->application_status == 'Interviewed' ? 'selected' : ''; ?>>Interviewed</option>
+							
+							<option value="Hired" <?php echo $model->application_status == 'Hired' ? 'selected' : ''; ?>>Hired</option>
+							<option value="Archived" <?php echo $model->application_status == 'Archived' ? 'selected' : ''; ?>>Archived</option>
 						</select>
 					</div>
 
 					<div class="select-grid">
-						<input type="number" min="1" max="5" placeholder="Rating (out of 5)">
+						<input type="number" value="<?php echo $model->rating;?>" min="1" max="5" id="ratstatus<?php echo $model->jobUid;?>" placeholder="Rating (out of 5)">
 					</div>
 
 					<div class="clearfix"></div>
-					<a href="#" class="button margin-top-15">Save</a>
-					<a href="#" class="button gray margin-top-15 delete-application">Delete this application</a>
+					<a href="#" class="button margin-top-15 applicationsve" id="mainsve<?php echo $model->jobUid; ?>" applied-id="<?php echo $model->jobUid; ?>">Save</a>
+					<a href="#" class="button gray margin-top-15 delete-application applicationdel" id="appdelid<?php echo $model->jobUid;?>" applied-id="<?php echo $model->jobUid; ?>">Delete this application</a>
 
 			    </div>
 			    
 			    <!-- Second Tab -->
-			    <div class="app-tab-content"  id="two-1">
-					<textarea placeholder="Private note regarding this application"></textarea>
-					<a href="#" class="button margin-top-15">Add Note</a>
-			    </div>
+			    
 			    
 			    <!-- Third Tab -->
 			  
@@ -96,16 +94,7 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 	
 
 	?>
-	<?php if($status == 0){?>
-	<i data="<?php echo $model['jobid'];?>" class="status_checks btn 
-				<?php echo ($model['status'])? 'btn-success' : 'btn-danger'?>">
-				<?php echo ($model['status'])? 'Active' : 'Inactive'?></i>
-				<?php
-	}
-	else if($status == 2){?>
-		<i <?php echo ($model['status'])? 'btn-success' : 'btn-danger'?>> 
-		   <?php echo ($model['status'])? 'Active' : 'Inactive'?></i>
-		<?php }?>
+	
 			  
 				
 				</div>
@@ -137,15 +126,25 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 			<!-- Footer -->
 			<div class="app-footer">
 
-				<div class="rating no-stars">
-					<div class="star-rating"></div>
-					<div class="star-bg"></div>
+				<div class="rating no-stars starnewcls">
+					<?php 
+                          echo StarRating::widget([
+                          		'name' => 'rating_21',
+                          		'value' => 3,
+                          		'pluginOptions' => [
+                          				'readonly' => true,
+                          				'showClear' => false,
+                          				'showCaption' => false,
+                          				'size'=>'xs',
+                          		],
+                          ]);
+                          ?>
 				</div>
 
 				<ul>
-					<li><i class="fa fa-file-text-o"></i> New</li>
+					<li><i class="fa fa-file-text-o"></i> <?= $model->application_status;?></li>
 					<li><i class="fa fa-calendar"></i> 
-					<?php echo  isset($applied_data->appliedDate) ? ($applied_data->appliedDate)  : 'Not Mentioned'  ;  ?>
+					<?php echo  isset($applied_data->appliedDate) ? (date('d-M-Y H:i:s',strtotime($applied_data->appliedDate)))  : 'Not Mentioned'  ;  ?>
 					</li>
 				</ul>
 				<div class="clearfix"></div>
@@ -154,75 +153,7 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 		</div>
 	</div>
 	
-	<style type="text/css">
-
-   .btn-success {
-   background-color: #65B688;
-   border-color: #65B688;
-   }
-   .btn-danger {
-   color: #fff;
-   background-color: #d9534f;
-   border-color: #d43f3a;
-   }
-   .btn {
-   color: white;
-   display: inline-block;
-   margin-bottom: 0;
-   font-weight: 400;
-   text-align: center;
-   vertical-align: middle;
-   cursor: pointer;
-   background-image: none;
-   border: 1px solid transparent;
-   white-space: nowrap;
-   padding: 6px 12px;
-   font-size: 14px;
-   line-height: 1.42857143;
-   border-radius: 4px;
-   -webkit-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
-   width:100px;
-   }
-</style>
-<!--  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>  -->
-<script type="text/javascript">
-<?php 
-$this->registerJs ( "
-$(document).on('click', '.status_checks' ,function(){
-
-	 var status = $(this).attr('btn-success') ? '0' : '2';
-	 	
-		$.ajax({
-			
-		type:'get',
-		dataType:'json',
-		
-		data: {status : status},
-		
-
-		});
-		
-	});
-		
-
-
-", View::POS_READY, 'my-options2' );
-?>
-<?php 
-// 		success: function(data)
-// 		{
-// 			 if(data.status == 2)
-//          {
-//               console.log('fail');
-//          }
-//          if(data.status == 0)
-//          {
-//               console.log('success');
-// 	         }
-// 		},?>
+	
 
 	
 	

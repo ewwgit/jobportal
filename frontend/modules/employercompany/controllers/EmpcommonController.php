@@ -542,7 +542,6 @@ public function actionJobpostingslist() {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployeeJobapplied();
 		$query = EmployeeJobapplied::find()->where(['jobid' => $jid]);
-		//print_r($query);exit();
 	
  	    $employeeResume = EmployeeResume::find()->where(['userid' => Yii::$app->employer->employerid])->select('resume')->one();
  	    $applied_data = EmployeeJobapplied::find()->where(['jobid' => $jid])->all();
@@ -555,7 +554,7 @@ public function actionJobpostingslist() {
 				'query' => $query,
 		]);
 
-		
+		//print_r($dataProvider->getModels());exit();
 		return $this->render('jobappliedlist',
 				['dataProvider' => $dataProvider,
 						'employeeResume' =>$employeeResume,
@@ -658,6 +657,51 @@ exit;
 	}
 	
 
+	
+	public function actionJobapplictionstatuschange()
+	{
+		
+	
+			$result = array();
+			$jobappliedid = $_GET['appliedid'];
+			$applicationStatus = $_GET['applicationstaus'];
+			$applicationRating = $_GET['applicationrating'];
+			$updatestatus = $_GET['updatestatus'];
+	
+			$model = new EmployeeJobapplied();
+			$jobdetails = EmployeeJobapplied::find()->where(['jobUid' => $jobappliedid])->one();
+			if($updatestatus == 'notdelete')
+			{
+			$jobdetails->application_status = $applicationStatus;
+			$jobdetails->rating = $applicationRating;
+			$jobdetails->updatedDate = date('Y-m-d H:i:s');
+			$jobdetails->updatedBy = Yii::$app->employer->employerid;
+			$checkJobs = $jobdetails->update();
+			}
+			if($updatestatus == 'delete')
+			{
+				$jobdetails->application_status = 'Deleted';
+				$jobdetails->rating = 0;
+				$jobdetails->updatedDate = date('Y-m-d H:i:s');
+				$jobdetails->updatedBy = Yii::$app->employer->employerid;
+				$checkJobs = $jobdetails->update();
+			}
+	
+			if($checkJobs = 1)
+			{
+				
+				$result['status'] = 1;
+				$result['message'] = 'success';
+			}else{
+	
+				$result['status'] = 0;
+				$result['message'] = 'Somthing Wrong';
+			}
+			return json_encode($result);
+			
+		
+	
+	}
 	protected function findModel($id) {
 		if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
 			return $model;
