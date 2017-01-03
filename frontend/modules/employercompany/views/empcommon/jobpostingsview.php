@@ -3,7 +3,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 $this->title = 'Postings View';
-
+$this->params ['breadcrumbs'] [] = [ 
+		'label' => 'Signup',
+		'url' => [ 'index'] 
+];
+$this->params ['breadcrumbs'] [] = $this->title;
 ?>
 <style>
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,

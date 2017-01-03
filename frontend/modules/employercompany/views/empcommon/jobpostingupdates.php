@@ -6,7 +6,7 @@ use yii\helpers\ArrayHelper;
 use backend\models\Designation;
 
 $this->title = 'POST A JOB';
-
+$this->params ['breadcrumbs'] [] = $this->title;
 ?>
 <style>
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,

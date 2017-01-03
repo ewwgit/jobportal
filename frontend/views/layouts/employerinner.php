@@ -84,12 +84,12 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
 
       'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [''],
    	  'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [''],
-   		$this->params ['breadcrumbs'] [] = [ 
-		'label' => 'Home',
-		'url' => [ 
-				'/employercompany/empsite/login' 
-		] 
-]
+//    		$this->params ['breadcrumbs'] [] = [ 
+// 		'label' => 'Home',
+// 		'url' => [ 
+// 				'/employercompany/empsite/login' 
+// 		] 
+// ];
    ]) 
 ?> 
           <?= Alert::widget() ?>

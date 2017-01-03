@@ -6,7 +6,7 @@ use yii\helpers\ArrayHelper;
 use backend\models\Designation;
 
 $this->title = ' JOB Postings';
-
+$this->params ['breadcrumbs'] [] = $this->title;
 ?>
 <style>
 .required {
@@ -18,7 +18,7 @@ select {
 }
 </style>
 <div class="site-signup">
-	
+	<h1><?= Html::encode($this->title) ?></h1>
 	<div class="container">
 
 		<!-- Submit Page -->
