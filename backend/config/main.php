@@ -28,6 +28,9 @@ return [
     				'class' => 'app\modules\specializations\specializations',
     				 
     		],
+    		'memberships' => [
+    				'class' => 'app\modules\memberships\memberships',
+    		],
     		
     ],
     'components' => [
