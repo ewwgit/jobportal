@@ -193,7 +193,29 @@ class CommonController extends Controller
 			$model->role = $project->prjrole;
 			$model->roledescription = $project->prjroledescription;
 			$model->teamsize = $project->teamsize;
-			$model->skillsused= $project->prjskills;	
+			$model->skillsused= $project->prjskills;
+			$data=$model->skillsused;
+				
+			if (! Empty ( $data )) {
+				$array = $model->skillsused;
+			
+					
+				$array_skills = explode( ",",$array );
+					
+					
+				$allsary = array();
+				$valuary = array();
+				foreach ($array_skills as $skillnew)
+				{
+					$allsary[$skillnew] = $skillnew;
+					$valuary[] = $skillnew;
+			
+				}
+				$model->allskills = $allsary;
+				$model->skillsused = $valuary;
+			
+			}
+			
 		}
 	
 		
@@ -261,7 +283,7 @@ class CommonController extends Controller
 		{
 			
 			
-			
+		
 			/* insert values into user and signup tables*/
 			
 		 if(!(empty($employee)))
@@ -404,7 +426,16 @@ class CommonController extends Controller
 			
 				$project->prjroledescription = $model->roledescription;
 				$project->teamsize = $model->teamsize;
-				$project->prjskills = $model->skillsused;
+				//$project->prjskills = $model->skillsused;
+				print_r( $model->skillsused);exit();
+				$skilluse = $model->skillsused;
+				
+				
+				if (! Empty ( $skilluse )) {
+					$array = $model->skillsused;
+					$array_skills = implode ( ",",$array );
+				}
+				$project->prjskills = $array_skills;
 				$project ->userid = Yii::$app->emplyoee->emplyoeeid ;
 				$project -> save();
 					
@@ -422,7 +453,16 @@ class CommonController extends Controller
 				$projectmodel->prjrole = $model->role;
 				$projectmodel->prjroledescription = $model->roledescription;
 				$projectmodel->teamsize = $model->teamsize;
-				$projectmodel->prjskills = $model->skillsused;
+				//$projectmodel->prjskills = $model->skillsused;
+				
+				$skilluse = $model->skillsused;
+				
+				
+				if (! Empty ( $skilluse )) {
+					$array = $model->skillsused;
+					$array_skills = implode ( ",",$array );
+				}
+				$projectmodel->prjskills = $array_skills;
 				$projectmodel -> userid = Yii::$app->emplyoee->emplyoeeid ;
 				$projectmodel -> save();
 			}
@@ -697,6 +737,7 @@ class CommonController extends Controller
 			return Yii::$app->getResponse()->redirect(['site/viewprofile', ] );
 			
 		}
+		//echo 'hello';exit();
 		return $this->render('employee', [
 				'model' => $model,
 		]);

@@ -61,6 +61,7 @@ class EmployeeForm extends Model {
 	public $roledescription;
 	public $teamsize;
 	public $skillsused;
+	public $allskills;
 	
 
 	

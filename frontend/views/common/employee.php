@@ -3,10 +3,12 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use kartik\date\DatePicker;
 use kartik\file\FileInput;
+use kartik\select2\Select2;
 use backend\models\Degrees;
 use yii\helpers\ArrayHelper;
 use backend\models\Specializations;
 use backend\models\Designation;
+use frontend\models\EmployeeForm;
 
 $this->title = 'UserProfileUpdate';
 ?>
@@ -235,7 +237,21 @@ select {
 									</div>
 								<div class="form">
 									<h5>Skills Used</h5>
-										<?= $form->field($model, 'skillsused')->textInput(['autofocus' => true])->label(false)?>
+									
+											<?php 
+						
+                           echo  $form->field($model, 'skillsused')->widget(Select2::classname(), [
+                           		                 
+                           		       'data'=>$model->allskills,
+                           		        'options' => ['placeholder' => 'Select a Skill', 'multiple' => true],
+                                        'pluginOptions' => [
+                                        'tags' => true,
+                                        'allowClear' => true,
+                                        'tokenSeparators' => [','],
+                                      //'maximumInputLength' => 10
+                                             ],
+                           		      //'value' => ['valu1','valu2']
+                           ])->label ( 'false' );?>
 									</div>
 							</div>
 						</div>
