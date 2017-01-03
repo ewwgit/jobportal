@@ -31,7 +31,8 @@
         "yiisoft/yii2-authclient": "^2.1",
         "kartik-v/yii2-mpdf": "*",
         "kartik-v/yii2-social": "@dev",
-        "ijackua/yii2-sharelinks-widget": "dev-master"
+        "ijackua/yii2-sharelinks-widget": "dev-master",
+        "black-lamp/yii2-socialshare": "^1.7"
        
         
     },
