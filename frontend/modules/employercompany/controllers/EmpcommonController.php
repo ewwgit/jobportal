@@ -30,6 +30,9 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 use frontend\models\EmployeeResume;
+use kartik\mpdf\Pdf;
+use kartik\social\FacebookPlugin;
+
 
 
 
@@ -274,9 +277,6 @@ class EmpcommonController extends Controller {
 				$educationData->university = $model->university;
 				$educationData->collegename = $model->collegename;
 				$educationData->passingyear = $model->passingyear;
-				
-
-				
 				$educationData->save ();
 				
 			} else {
@@ -547,7 +547,25 @@ public function actionJobpostingslist() {
  	    $applied_data = EmployeeJobapplied::find()->where(['jobid' => $jid])->all();
  	 	$total_list=count($applied_data);
 	
-
+	if ($model->load ( Yii::$app->request->post ())) {
+		$status = $model->status;
+	
+		
+// 		if($status['status'] == 1)
+// 		{
+// 			$status = "Active";
+// 		}
+// 		else
+// 		{
+// 			$status = "Inactive";
+// 		}
+		 
+		Yii::$app->db->createCommand ()->insert ( 'employee_job_applied', [
+				'status' =>  $status,
+			
+				
+		] )->execute ();
+	}
 		
 		$dataProvider = new ActiveDataProvider([
 				'pagination' => ['pageSize' =>5],
@@ -560,6 +578,100 @@ public function actionJobpostingslist() {
 						'employeeResume' =>$employeeResume,
 						'total_list' =>$total_list
 				]);
+	}
+	
+	public function actionReport() {
+		header('Content-Type: application/msword');
+		// get your HTML raw content without any layouts or scripts
+		$contentold = file_get_contents('http://localhost:8010/jobportal/frontend/web/uploadresume/brahmeswararao_php_3years.doc');
+	//print_r($content);exit();
+	$pdf = Yii::$app->pdf; // or new Pdf();
+	$mpdf = $pdf->api; // fetches mpdf api
+	 // call methods or set any properties
+	$content = $mpdf->WriteHtml($contentold); // call mpdf write html
+		// setup kartik\mpdf\Pdf component
+		
+		$pdf = new Pdf([
+				// set to use core fonts only
+				'mode' => Pdf::MODE_UTF8,
+				// A4 paper format
+				'format' => Pdf::FORMAT_A4,
+				// portrait orientation
+				'orientation' => Pdf::ORIENT_PORTRAIT,
+				// stream to browser inline
+				'destination' => Pdf::DEST_BROWSER,
+				// your html content input
+				'content' => $content,
+				// format content from your own css file if needed or use the
+				// enhanced bootstrap css built by Krajee for mPDF formatting
+				'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+				// any css to be embedded if required
+				'cssInline' => '.kv-heading-1{font-size:18px}',
+				// set mPDF properties on the fly
+				'options' => ['title' => 'Krajee Report Title'],
+				// call mPDF methods on the fly
+				'methods' => [
+						'SetHeader'=>['Krajee Report Header'],
+						'SetFooter'=>['{PAGENO}'],
+				]
+		]);
+	
+		// return the pdf output as per the destination setting
+		return $pdf->render();
+	}
+	
+	public function actionReportnew() {
+		// get your HTML raw content without any layouts or scripts
+		
+		header('Content-disposition: inline');
+header('Content-type: application/msword'); // not sure if this is the correct MIME type
+@readfile('http://localhost:8010/jobportal/frontend/web/uploadresume/brahmeswararao_php_3years.doc');
+exit;
+	}
+	public function actionFacebook() {
+		$this->layout = '@app/views/layouts/employerinner';
+		return $this->render ( 'view', [ 
+		] );
+	}
+	public function actionShare() {
+		return $this->render ( 'shareexp', [ 
+		] );
+	}
+	
+	public function actionValidateFb()
+	{
+		$this->layout = '@app/views/layouts/employerinner';
+		$social = Yii::$app->getModule('social');
+		$fb = $social->getFb(); // gets facebook object based on module settings
+		try {
+			$helper = $fb->getRedirectLoginHelper();
+			$accessToken = $helper->getAccessToken();
+		} catch(\Facebook\Exceptions\FacebookSDKException $e) {
+			// There was an error communicating with Graph
+			return $this->render('validate-fb', [
+					'out' => '<div class="alert alert-danger">' . $e->getMessage() . '</div>'
+			]);
+		}
+		if (isset($accessToken)) { // you got a valid facebook authorization token
+			$response = $fb->get('/me?fields=id,name,email', $accessToken);
+			return $this->render('validate-fb', [
+					'out' => '<legend>Facebook User Details</legend>' . '<pre>' . print_r($response->getGraphUser(), true) . '</pre>'
+			]);
+		} elseif ($helper->getError()) {
+			// the user denied the request
+			// You could log this data . . .
+			return $this->render('validate-fb', [
+					'out' => '<legend>Validation Log</legend><pre>' .
+					'<b>Error:</b>' . print_r($helper->getError(), true) .
+					'<b>Error Code:</b>' . print_r($helper->getErrorCode(), true) .
+					'<b>Error Reason:</b>' . print_r($helper->getErrorReason(), true) .
+					'<b>Error Description:</b>' . print_r($helper->getErrorDescription(), true) .
+					'</pre>'
+			]);
+		}
+		return $this->render('validate-fb', [
+				'out' => '<div class="alert alert-warning"><h4>Oops! Nothing much to process here.</h4></div>'
+		]);
 	}
 	
 
