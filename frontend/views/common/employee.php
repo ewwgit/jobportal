@@ -3,6 +3,10 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use kartik\date\DatePicker;
 use kartik\file\FileInput;
+use backend\models\Degrees;
+use yii\helpers\ArrayHelper;
+use backend\models\Specializations;
+use backend\models\Designation;
 
 $this->title = 'UserProfileUpdate';
 ?>
@@ -99,13 +103,15 @@ select {
 								</div>
 								<div class="form">
 									<h5>Highdegree</h5>
-										<?=$form->field ( $model, 'highdegree' )->dropDownList ( [ 'B-Tech/B.E.' => 'B-Tech/B.E.','B.Sc' => 'B.Sc','B.Ed' => 'B.Ed','BDS' => 'BDS','BFA' => 'BFA','B.Pharma' => 'B.Pharma','B.A' => 'B.A','B.Com' => 'B.Com','BCA' => 'BCA','Other' => 'Other' ], [ 'prompt' => 'select your Highdegree' ] )->label ( false )?>
+									
+									<?= Html::activeDropDownList($model, 'highdegree',ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higherdegree']) ?>
+										
 									</div>
 
 								<!-- Email -->
 								<div class="form">
 									<h5>Specialization</h5>
-										<?=$form->field ( $model, 'specialization' )->dropDownList ( [ 'Computers' => 'Computers','Chemical' => 'Chemical','Civil' => 'Civil','Electrical' => 'Electrical','Electronics/Telecommunication' => 'Electronics/Telecommunication','Automobile' => 'Automobile','Agricultural' => 'Agricultural','Mechanical' => 'Mechanical','Mining' => 'Mining','BioMedical' => 'BioMedical','Other' => 'Other' ], [ 'prompt' => 'select your Specilization' ] )->label ( false )?>
+										<?= Html::activeDropDownList($model, 'specialization',ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization']) ?>
 									</div>
 
 								<!-- Email -->
@@ -138,7 +144,8 @@ select {
 									</div>
 								<div class="form">
 									<h5>Jobrole</h5>
-										<?=$form->field ( $model, 'jobrole' )->dropDownList ( [ 'Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => 'System Admin' ], [ 'prompt' => 'select your jobrole' ] )->label ( false )?>
+										
+										<?= Html::activeDropDownList($model, 'jobrole',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select jobrole']) ?>
 									</div>
 								<div class="form">
 									<h5>Job Location</h5>
@@ -171,7 +178,8 @@ select {
 									</div>
 								<div class="form">
 									<h5>Designation</h5>
-										<?= $form->field($model, 'designation')->textInput(['autofocus' => true,'placeholder' => 'Designation'])->label(false)?>
+									<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>
+										
 									</div>
 							</div>
 						</div>
@@ -214,7 +222,8 @@ select {
 									</div>
 								<div class="form">
 									<h5>Role</h5>
-										<?=$form->field ( $model, 'role' )->dropDownList ( [ 'Domain Expert' => 'Domain Expert','Sr project leader' => 'Sr project leader','solution architect' => 'solution architect','quality analyst' => 'quality analyst','databse architect' => 'databse architect','system admin' => 'system admin','project leader' => 'project leader','Programmer' => 'Programmer','test engineer' => 'test engineer','Other' => 'Other' ], [ 'prompt' => 'Select' ] )->label ( false )?>
+									<?= Html::activeDropDownList($model, 'role',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select role in project']) ?>
+										
 									</div>
 								<div class="form">
 									<h5>Role Description</h5>

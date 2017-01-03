@@ -694,7 +694,7 @@ class CommonController extends Controller
 		
 		//	print_r($skillmodel->errors);exit();
 		
-			return Yii::$app->getResponse()->redirect(['site/viewprofile', 'userid' => Yii::$app->emplyoee->emplyoeeid ] );
+			return Yii::$app->getResponse()->redirect(['site/viewprofile', ] );
 			
 		}
 		return $this->render('employee', [
