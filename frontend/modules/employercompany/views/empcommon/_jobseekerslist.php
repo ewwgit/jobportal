@@ -33,7 +33,7 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 					<ul>
 					
 				
-						<li><a target="_blank" href="<?php echo \Yii::getAlias('@web').isset( $emp_resume->resume)? $emp_resume->resume : 'Not Mentioned'; ?>"><i class="fa fa-file-text"></i> Download CV</a></li>
+						<li><a target="_blank" href="<?php echo Url::base().$emp_resume->resume; ?>"><i class="fa fa-file-text"></i> Download CV</a></li>
 						
 						
 											
