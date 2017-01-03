@@ -13,7 +13,7 @@ use kartik\typeahead\TypeaheadBasic;
 use kartik\typeahead\Typeahead;
 
 $this->title = 'JOB Posting List';
-$this->params ['breadcrumbs'] [] = $this->title;
+
 $userid=Yii::$app->employer->employerid;
 ?>
 <div class="container"> 

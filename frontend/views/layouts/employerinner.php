@@ -82,8 +82,8 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
          <?= 
    Breadcrumbs::widget([
 
-      'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [''],
-   	  'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [''],
+      'links' => isset($this->params['breadcrumbs'] ) ? $this->params['breadcrumbs'] : [''],
+   	 
 //    		$this->params ['breadcrumbs'] [] = [ 
 // 		'label' => 'Home',
 // 		'url' => [ 
