@@ -35,6 +35,7 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
             'kartik\\typeahead\\' => 17,
             'kartik\\social\\' => 14,
             'kartik\\select2\\' => 15,
+            'kartik\\rating\\' => 14,
             'kartik\\plugins\\fileinput\\' => 25,
             'kartik\\plugins\\checkbox\\' => 24,
             'kartik\\mpdf\\' => 12,
@@ -124,6 +125,10 @@ class ComposerStaticInit0d1d3c13f80202964b8b82ff7f2fb863
         'kartik\\select2\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2',
+        ),
+        'kartik\\rating\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-rating',
         ),
         'kartik\\plugins\\fileinput\\' => 
         array (
