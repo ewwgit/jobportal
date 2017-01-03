@@ -17,6 +17,44 @@ return [
 				'employercompany' => [
 						'class' => 'app\modules\employercompany\employercompany',
 				],
+				'social' => [
+						// the module class
+						'class' => 'kartik\social\Module',
+				
+						// the global settings for the Disqus widget
+						'disqus' => [
+								'settings' => ['shortname' => 'DISQUS_SHORTNAME'] // default settings
+						],
+				
+						// the global settings for the Facebook plugins widget
+						'facebook' => [
+								'appId' => '1159301224119499',
+								'secret' => '63f5de378875b955ab7d146cf22ad0f2',
+						],
+				
+						// the global settings for the Google+ Plugins widget
+						'google' => [
+								'clientId' => 'GOOGLE_API_CLIENT_ID',
+								'pageId' => 'GOOGLE_PLUS_PAGE_ID',
+								'profileId' => 'GOOGLE_PLUS_PROFILE_ID',
+						],
+				
+						// the global settings for the Google Analytics plugin widget
+						'googleAnalytics' => [
+								'id' => 'TRACKING_ID',
+								'domain' => 'TRACKING_DOMAIN',
+						],
+				
+						// the global settings for the Twitter plugin widget
+						'twitter' => [
+								'screenName' => 'TWITTER_SCREEN_NAME'
+						],
+				
+						// the global settings for the GitHub plugin widget
+						'github' => [
+								'settings' => ['user' => 'GITHUB_USER', 'repo' => 'GITHUB_REPO']
+						],
+				],
 				
 		],
     'controllerNamespace' => 'frontend\controllers',
@@ -74,6 +112,13 @@ return [
     				'rules' => [
     		
     				]
+    		],
+    		'pdf' => [
+    				'class' => Pdf::classname(),
+    				'format' => Pdf::FORMAT_A4,
+    				'orientation' => Pdf::ORIENT_PORTRAIT,
+    				'destination' => Pdf::DEST_BROWSER,
+    				// refer settings section for all configuration options
     		],
 				
 //     		'user' => [
