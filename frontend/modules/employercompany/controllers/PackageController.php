@@ -24,7 +24,7 @@ class PackageController extends Controller
         ];
     }
 
-	public function actionPackage() {
+	public function actionIndex() {
 		$this->layout = '@app/views/layouts/employermain';
 		
 		return $this->render ( 'index' );
