@@ -427,7 +427,7 @@ class CommonController extends Controller
 				$project->prjroledescription = $model->roledescription;
 				$project->teamsize = $model->teamsize;
 				//$project->prjskills = $model->skillsused;
-				print_r( $model->skillsused);exit();
+				//print_r( $model->skillsused);exit();
 				$skilluse = $model->skillsused;
 				
 				

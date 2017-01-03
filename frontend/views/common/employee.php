@@ -251,7 +251,7 @@ select {
                                       //'maximumInputLength' => 10
                                              ],
                            		      //'value' => ['valu1','valu2']
-                           ])->label ( 'false' );?>
+                           ])->label('false');?>
 									</div>
 							</div>
 						</div>
