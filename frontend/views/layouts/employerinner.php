@@ -56,7 +56,6 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
             <li><a href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-lock"></i> Log In</a></li>
             <li><a  href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-user"></i>Employer Zone</a></li>
 			
-	       
 	        <?php }else { ?>
 	        
 	         <li><a href="<?= Url::to(['/employercompany/empcommon/jobpostingslist'])?>" title="viewprofile">Employer JobPosting</a></li>
