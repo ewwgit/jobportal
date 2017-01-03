@@ -10,7 +10,7 @@ $applied_data = EmployeeJobapplied::find()->where(['userid' => $model->userid])-
 
 //$userid = Yii::$app->employer->employerid;
 
-$query = EmployeeJobapplied::find()->where(['jobid'=>$model->id])->count();
+$query = EmployeeJobapplied::find()->where("jobid = $model->id AND 	application_status != 'Deleted'")->count();
 		 $total_list=$query;
 	
 		

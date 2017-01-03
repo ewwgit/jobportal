@@ -541,7 +541,7 @@ public function actionJobpostingslist() {
 	
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployeeJobapplied();
-		$query = EmployeeJobapplied::find()->where(['jobid' => $jid]);
+		$query = EmployeeJobapplied::find()->where("jobid = $jid AND 	application_status != 'Deleted' ");
 	
  	    $employeeResume = EmployeeResume::find()->where(['userid' => Yii::$app->employer->employerid])->select('resume')->one();
  	    $applied_data = EmployeeJobapplied::find()->where(['jobid' => $jid])->all();
