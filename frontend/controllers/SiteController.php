@@ -143,6 +143,7 @@ class SiteController extends Controller
     }
     
     public function successCallback($client) {
+    	ini_set('allow_url_fopen',1);
     	$attributes = ( object ) $client->getUserAttributes ();
     
     	$clientClass = get_class ( $client );
@@ -184,13 +185,38 @@ class SiteController extends Controller
     				$validUser = true;
     			}
     			break;
+    			
+    			case "yii\authclient\clients\Twitter" :
+    			
+    				if (isset ( $attributes->email )) {
+    					$firstName = $attributes->first_name;
+    					$lastName = $attributes->last_name;
+    					$email = $attributes->emails;
+    					$accessToken = $attributes->id;
+    						
+    					$providerId = 3;
+    					$validUser = true;
+    				}
+    				break;
+    			case "yii\authclient\clients\LinkedInOAuth":
+    				
+    				if (isset ( $attributes->email )) {    					 
+    					$firstName = $attributes->first_name;
+    					$lastName = $attributes->last_name;
+    					$email = $attributes->email;
+    					$accessToken = $attributes->id;
+    				
+    					$providerId = 4;
+    					$validUser = true;
+    				}
+    				break;
     		    				
     		default :
     			;
     			break;
     	}
     	$model = new LoginForm ();
-    	if ($email != '') {
+    	if ($email = '') {
     			
     		$socialInfo = array ();
     		$socialInfo ['email'] = $email;

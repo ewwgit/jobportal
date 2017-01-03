@@ -152,10 +152,10 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
         <div class="sixteen columns">
           <h4>Follow Us</h4>
           <ul class="social-icons">
-            <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-            <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+            <li><a class="facebook-footer" href="#"><i class="icon-facebook"></i></a></li>
+            <li><a class="twitter-footer" href="#"><i class="icon-twitter"></i></a></li>
             <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-            <li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+            <li><a class="linkedin-footer" href="#"><i class="icon-linkedin"></i></a></li>
           </ul>
           <div class="copyrights">©  Copyright 2015 by <a href="#">Work Scout</a>. All Rights Reserved.</div>
         </div>

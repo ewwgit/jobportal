@@ -137,7 +137,7 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
     <div class="container">
       <div class="seven columns">
         <h4>About</h4>
-        <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+        <p>Job seekers can browse through job openings posted by employers and apply for positions through the job portal...</p>
         <a href="#" class="button">Get Started</a> </div>
       <div class="three columns">
         <h4>Company</h4>
@@ -179,10 +179,10 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
         <div class="sixteen columns">
           <h4>Follow Us</h4>
           <ul class="social-icons">
-            <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-            <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+            <li><a class="facebook-footer" href="#"><i class="icon-facebook"></i></a></li>
+            <li><a class="twitter-footer" href="#"><i class="icon-twitter"></i></a></li>
             <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-            <li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+            <li><a class="linkedin-footer" href="#"><i class="icon-linkedin"></i></a></li>
           </ul>
           <div class="copyrights">©  Copyright 2015 by <a href="#">Work Scout</a>. All Rights Reserved.</div>
         </div>

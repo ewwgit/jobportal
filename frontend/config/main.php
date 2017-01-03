@@ -77,6 +77,19 @@ return [
     								'clientSecret' => '63f5de378875b955ab7d146cf22ad0f2',
     								'attributeNames' => ['name', 'email', 'first_name', 'last_name'],
     						],
+    						'twitter' => [
+    								'class' => 'yii\authclient\clients\Twitter',
+    								'attributeParams' => [
+    										'include_email' => 'true'
+    								],
+    								'consumerKey' => '8LytYPZ2DBLow0O88NxqBnFcR',
+    								'consumerSecret' => '5U7DOVkZmeLEQ8Rt4cM7XW68tw3os4Tl3n8JaFmNN2BZCC0wWC',
+    						],
+    						'linkedin' => [
+    								'class' => 'yii\authclient\clients\LinkedIn',
+    								'clientId' => '81b871j1q04ctq',
+    								'clientSecret' => 'S9l855IaU2oI47AM',
+    						],
     						// etc.
     				],
     		],
