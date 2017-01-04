@@ -28,6 +28,12 @@ if(!empty($packageInfoByUser))
 				<li>Number of jobs Posted: <?= $model->num_of_jobs_posting;?></li>
 				
 			</ul>
+			<?php if($isactivcls == 0)
+			{?>
 			<a class="button memcart" memcart = "<?= $model->mem_id;?>" id="<?= $model->mem_id;?>" href="#"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+			<?php }
+			else{?>
+			<a class="button nonmemcart" memcart = "<?= $model->mem_id;?>" id="<?= $model->mem_id;?>" href="#">Active Package</a>
+			<?php } ?>
 		</div>
 	</div>
