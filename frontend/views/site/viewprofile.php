@@ -50,8 +50,17 @@ td {
       <div class="submit-page" style="padding:0px;">
         <div class="container">
           <div class="col-md-3 col-sm-3 col-xs-3 profile_img">
-            <div class="resume-titlebar"> <img class='image' src="<?php echo isset( $empmodel->profileimage)? Yii::getAlias('/jobportal').$empmodel->profileimage : '' ;  ?>" width="100" height="100">
-    </img> </div>
+            <div class="resume-titlebar">
+            <img class='image'
+							src="<?php
+							if($empmodel->profileimage){
+														
+							echo isset( $empmodel->profileimage)? Yii::getAlias('/jobportal/').$empmodel->profileimage : '' ; 
+							}else {
+									 echo "/jobportal/frontend/web/profileimages/1483335917profile_pic.jpg" ;
+								      }
+								?>">
+	  </img> </div>
           </div>
           <div class="col-md-9">
             <div class="row">

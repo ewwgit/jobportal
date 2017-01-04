@@ -689,7 +689,6 @@ exit;
 	
 			if($checkJobs = 1)
 			{
-				
 				$result['status'] = 1;
 				$result['message'] = 'success';
 			}else{
@@ -699,8 +698,6 @@ exit;
 			}
 			return json_encode($result);
 			
-		
-	
 	}
 	protected function findModel($id) {
 		if (($model = EmployerJobpostings::findOne ( $id )) !== null) {
