@@ -13,7 +13,17 @@ use yii\web\view;
 
 
 $this->title = 'Job applied List';
-
+$statusnew = 'All';
+$urlnew = Yii::$app->urlManager->createUrl ( [
+			'employercompany/empcommon/employeeslist',
+			'jid' => $_GET['jid'],
+			
+	] );
+if(isset($_GET['status']) && ($_GET['status'] != ''))
+{
+	$statusnew = $_GET['status'];
+	
+}
 
 
 ?>
@@ -55,7 +65,7 @@ $this->title = 'Job applied List';
 	<!-- Table -->
 	<div class="sixteen columns">
 
-		<p class="margin-bottom-25" style="float: left;">Total job applications are : <b style= "color:green;"><?php echo  $total_list ?></b></p>
+		<p class="margin-bottom-25" style="float: left;">Total job applications are : <b style= "color:green;"><?php echo  $dataProvider->totalCount; ?></b></p>
 
 
 	</div>
@@ -63,13 +73,13 @@ $this->title = 'Job applied List';
 
 	<div class="eight columns">
 		<!-- Select -->
-		<select data-placeholder="Filter by status" class="chosen-select-no-single">
-			<option value="">Filter by status</option>
-			<option value="new">New</option>
-			<option value="interviewed">Interviewed</option>
-			<option value="offer">Offer extended</option>
-			<option value="hired">Hired</option>
-			<option value="archived">Archived</option>
+		<select data-placeholder="Filter by status " id="stanewchangenew" class="chosen-select-no-single searchstatusnew">
+			<option value="All">All</option>
+			<option value="New" <?php echo $statusnew == 'New' ? 'selected' : ''; ?>>New</option>
+							<option value="Interviewed" <?php echo $statusnew == 'Interviewed' ? 'selected' : ''; ?>>Interviewed</option>
+							
+							<option value="Hired" <?php echo $statusnew == 'Hired' ? 'selected' : ''; ?>>Hired</option>
+							<option value="Archived" <?php echo $statusnew == 'Archived' ? 'selected' : ''; ?>>Archived</option>
 		</select>
 		<div class="margin-bottom-15"></div>
 	</div>
@@ -171,6 +181,13 @@ $this->registerJs ( "
       } 
         
     }); 
+		});
+		
+		$(document.body).on('change', '.searchstatusnew' ,function(){
+		console.log('hello');
+		var applicationstausnew = $('#stanewchangenew option:selected').val();
+		window.location.replace('$urlnew&status='+applicationstausnew);
+		 
 		});
 		
 		
