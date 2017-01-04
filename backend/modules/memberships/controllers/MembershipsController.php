@@ -65,9 +65,15 @@ class MembershipsController extends Controller
     {
         $model = new Memberships();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        	$model->createdDate = date('Y-m-d H:i:s');
+        	$model->updatedDate = date('Y-m-d H:i:s');
+        	$model->createdBy = Yii::$app->user->id;
+        	$model->updatedBy = Yii::$app->user->id;
+        	$model->save();
             return $this->redirect(['view', 'id' => $model->mem_id]);
         } else {
+        	//print_r($model->errors);exit();
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -84,7 +90,10 @@ class MembershipsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        	$model->updatedDate = date('Y-m-d H:i:s');
+        	$model->updatedBy = Yii::$app->user->id;
+        	$model->save();
             return $this->redirect(['view', 'id' => $model->mem_id]);
         } else {
             return $this->render('update', [
