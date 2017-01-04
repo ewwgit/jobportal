@@ -451,11 +451,17 @@ class EmpcommonController extends Controller {
 			$model->save ();
 			
 			
-			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  create jobposting' );
-			return Yii::$app->getResponse ()->redirect ( [ 
-					'employercompany/empcommon/jobpostingslist' 
-					
-			] );
+			Yii::$app->getSession()->setFlash('success', [
+					'type' => 'success',
+					'duration' => 20000,
+					'icon' => 'fa fa-users',
+					'message' => 'You are Successfully posted job.',
+					'title' => 'Success',
+					'positonY' => 'top',
+					'positonX' => 'center'
+			]);
+			return $this->redirect('jobpostingslist');
+			
 		} else {
 			
 			return $this->render ( 'jobpostings', [ 
