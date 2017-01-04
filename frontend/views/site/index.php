@@ -75,7 +75,7 @@ use yii\web\view;
   
      echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
     'data' => $companydata,
-    'options' => ['placeholder' => 'enter CompanyName ...'],
+    'options' => ['placeholder' => 'Enter CompanyName ...'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  ?>
@@ -85,7 +85,7 @@ use yii\web\view;
 	
      echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
     'data' => $desdata,
-    'options' => ['placeholder' => 'enter Designation ...'],
+    'options' => ['placeholder' => 'Enter Designation ...'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  ?>
@@ -94,7 +94,7 @@ use yii\web\view;
      
      echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
     'data' =>$expdata,
-    'options' => ['placeholder' => 'enter Experience ...'],
+    'options' => ['placeholder' => 'Enter Experience ...'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  
@@ -106,7 +106,7 @@ use yii\web\view;
 	
      echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
     'data' => 	$skillsInfo,
-    'options' => ['placeholder' => 'enter skills ...'],
+    'options' => ['placeholder' => 'Enter Skills ...'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  

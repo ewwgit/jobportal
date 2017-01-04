@@ -31,6 +31,31 @@ use frontend\models\EmployeeJobapplied;
  
  </div>
  
+ 
+ 
+ 
+ <?php
+	$userId = \Yii::$app->user->id;
+	$memberJoin = EmployeeJobapplied::getUsersjoined ( $model->jobid, $userId );
+	?>
+	<?php if($memberJoin ==0){?>
+	<td class="centered">
+	<button class="btn btn-primary apply_job" id="needtoapply<?=  $model->jobid; ?>" apljobid="<?php echo $model->jobid;?>">Apply This Job</button>
+	
+	</td>
+	<?php
+	}
+	else {
+		?>
+	<td class="centered">
+	<button class="btn btn-primary applied">Applied</button>
+	</td>
+	<?php }?>
+ 
+ 
+ 
+ 
+ 
  <div class="container">
 <div class="row">
 <div class="col-md-4">
