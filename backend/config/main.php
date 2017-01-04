@@ -31,6 +31,9 @@ return [
     		'memberships' => [
     				'class' => 'app\modules\memberships\memberships',
     		],
+    		'employerpackages' => [
+    				'class' => 'app\modules\employerpackages\employerpackages',
+    		],
     		
     ],
     'components' => [
