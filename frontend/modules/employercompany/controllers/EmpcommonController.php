@@ -32,6 +32,7 @@ use yii\filters\AccessControl;
 use frontend\models\EmployeeResume;
 use kartik\mpdf\Pdf;
 use kartik\social\FacebookPlugin;
+use backend\models\EmployerPackages;
 
 
 
@@ -377,6 +378,45 @@ class EmpcommonController extends Controller {
 		] );
 	}
 	public function actionCreate() {
+		$userId = Yii::$app->employer->employerid;
+		$presentDate = date('Y-m-d');
+		$packageInfoByUser = EmployerPackages::find()->where("userid = $userId AND status = 1 AND endDate <= $presentDate")->one();
+		if(!empty($packageInfoByUser))
+		{
+			$membershipsInfo = Memberships::find()->where(['mem_id' => $packageInfoByUser->mem_id])->one();
+			$allowedjobs = $membershipsInfo->num_of_jobs_posting;
+			$alreadyCreatedJobs = EmployerJobpostings::find()->where("userid = $userId AND createdDate >= $packageInfoByUser->startDate ")->count();
+			if($alreadyCreatedJobs ==  $allowedjobs)
+			{
+				Yii::$app->getSession()->setFlash('success', [
+						'type' => 'warning',
+						'duration' => 20000,
+						'icon' => 'fa fa-users',
+						'message' => 'You are Max job postins are completed.',
+						'title' => 'Success',
+						'positonY' => 'top',
+						'positonX' => 'center'
+				]);
+				return $this->redirect('jobpostingslist');
+			}
+		}
+		else {
+			$allowedjobs = 10;
+			$alreadyCreatedJobs = EmployerJobpostings::find()->where("userid = $userId ")->count();
+			if($alreadyCreatedJobs ==  $allowedjobs)
+			{
+				Yii::$app->getSession()->setFlash('success', [
+						'type' => 'warning',
+						'duration' => 20000,
+						'icon' => 'fa fa-users',
+						'message' => 'You are Max job postins are completed.',
+						'title' => 'Success',
+						'positonY' => 'top',
+						'positonX' => 'center'
+				]);
+				return $this->redirect('jobpostingslist');
+			}
+		}
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployerJobpostings ();
 		
@@ -394,7 +434,8 @@ class EmpcommonController extends Controller {
 			
 			}
 			
-			$model->startDate = date ( "Y-m-d " );
+			$model->createdDate = date('Y-m-d H:i:s');
+			$model->updatedDate = date('Y-m-d H:i:s');
 			$model->status = 1;
 			$model->skills = $comma_separated;
 			$model->userid = Yii::$app->employer->employerid;

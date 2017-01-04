@@ -23,7 +23,7 @@ $query = EmployeeJobapplied::find()->where("jobid = $model->id AND 	application_
 	<td class="centered"><a
 		href="<?= Url::to(['/employercompany/empcommon/employeeslist','jid'=>$model->id])?>"> Employees</a><b style= "color:#ec971f;"><?php echo '(' . $total_list .')' ?></b></td>
 		
-	<td class="title"><?= date('Y-m-d',strtotime( $model['startDate']))?></td>	
+	<td class="title"><?= date('Y-m-d',strtotime( $model['createdDate']))?></td>	
 	
 	<td class="centered"><a
 		href="<?= Url::to(['/employercompany/empcommon/jobpostingsview','id'=>$model->id])?>"
