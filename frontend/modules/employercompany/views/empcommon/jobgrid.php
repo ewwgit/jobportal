@@ -24,7 +24,7 @@ $userid=Yii::$app->employer->employerid;
 
 		<p>
 		
-        <?= Html::a('Create postings', ['create','userid'=>$userid], ['class' => 'button'],[])?></p>
+        <?= Html::a('Create postings', ['create'], ['class' => 'button'],[])?></p>
      <div >
   <?php $form = ActiveForm::begin([
         'action' => Url::to(['jobpostingslist']),

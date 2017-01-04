@@ -376,12 +376,9 @@ class EmpcommonController extends Controller {
 				'model' => $model 
 		] );
 	}
-	public function actionCreate($userid) {
+	public function actionCreate() {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployerJobpostings ();
-		$query = EmployerJobpostings::find()->where(['userid' => $userid]);
-		$userid=Yii::$app->employer->employerid;
-	
 		
 		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
 			
