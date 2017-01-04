@@ -33,6 +33,7 @@ use frontend\models\EmployeeResume;
 use kartik\mpdf\Pdf;
 use kartik\social\FacebookPlugin;
 use backend\models\EmployerPackages;
+use backend\models\Memberships;
 
 
 
@@ -378,15 +379,21 @@ class EmpcommonController extends Controller {
 		] );
 	}
 	public function actionCreate() {
+		
 		$userId = Yii::$app->employer->employerid;
 		$presentDate = date('Y-m-d');
-		$packageInfoByUser = EmployerPackages::find()->where("userid = $userId AND status = 1 AND endDate <= $presentDate")->one();
+		$packageInfoByUser = EmployerPackages::find()->where("userid = $userId AND status = 1 AND endDate >= '$presentDate'")->one();
+		//print_r($packageInfoByUser);exit();
 		if(!empty($packageInfoByUser))
 		{
+			
+			
+			//echo 'hello';exit();
 			$membershipsInfo = Memberships::find()->where(['mem_id' => $packageInfoByUser->mem_id])->one();
 			$allowedjobs = $membershipsInfo->num_of_jobs_posting;
-			$alreadyCreatedJobs = EmployerJobpostings::find()->where("userid = $userId AND createdDate >= $packageInfoByUser->startDate ")->count();
-			if($alreadyCreatedJobs ==  $allowedjobs)
+			$alreadyCreatedJobs = EmployerJobpostings::find()->where("userid = $userId AND createdDate >= '$packageInfoByUser->createdDate' ")->count();
+			//echo $alreadyCreatedJobs;exit();
+			if($alreadyCreatedJobs >=  $allowedjobs)
 			{
 				Yii::$app->getSession()->setFlash('success', [
 						'type' => 'warning',
@@ -403,7 +410,8 @@ class EmpcommonController extends Controller {
 		else {
 			$allowedjobs = 1;
 			$alreadyCreatedJobs = EmployerJobpostings::find()->where("userid = $userId ")->count();
-			if($alreadyCreatedJobs ==  $allowedjobs)
+			//echo $alreadyCreatedJobs;exit();
+			if($alreadyCreatedJobs >=  $allowedjobs)
 			{
 				Yii::$app->getSession()->setFlash('success', [
 						'type' => 'warning',
@@ -442,12 +450,14 @@ class EmpcommonController extends Controller {
 			
 			$model->save ();
 			
+			
 			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  create jobposting' );
 			return Yii::$app->getResponse ()->redirect ( [ 
 					'employercompany/empcommon/jobpostingslist' 
 					
 			] );
 		} else {
+			
 			return $this->render ( 'jobpostings', [ 
 					'model' => $model 
 			] );
