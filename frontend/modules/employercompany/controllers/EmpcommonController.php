@@ -401,7 +401,7 @@ class EmpcommonController extends Controller {
 			}
 		}
 		else {
-			$allowedjobs = 10;
+			$allowedjobs = 1;
 			$alreadyCreatedJobs = EmployerJobpostings::find()->where("userid = $userId ")->count();
 			if($alreadyCreatedJobs ==  $allowedjobs)
 			{
