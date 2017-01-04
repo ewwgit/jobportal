@@ -6,51 +6,26 @@ use yii\helpers\BaseStringHelper;
 $this->title = 'Job Complete Details';
 use frontend\models\EmployeeJobapplied;
 ?>
-<div id="titlebar" class="single">
-		<div class="container">
-			<div class="sixteen columns">
-				<h2>Candidates Login</h2>
-				<nav id="breadcrumbs">
-					<ul>
-						<li>You are here:</li>
-						<li><a href="#">Home</a></li>
-						<li>Job Complete Information</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
 
-<h3>Urgent Openings For Freshers</h3>
-<div class="container">
-<p> <?php  echo $jobinfo -> skills ?> Developers</p>
-<div><p> <?php  echo $jobinfo -> company_name?> Private Limited</p></div>
-<div><p><?php  echo $jobinfo -> Min_Experience?> - 
-    <?php echo $jobinfo -> Max_Experience?></p></div>
- <div><p> <?php  echo $jobinfo -> city ?> </p></div>
+<div id="titlebar">
+	<div class="container">
+		<div class="ten columns">
+			<span><a href="#"> <?php echo   $jobinfo -> rolecategory;  ?> Category </a></span>
+			<h2><?php  echo $jobinfo -> skills ?> Developers<span class="full-time"><?php echo   $jobinfo -> jobtype;  ?></span></h2>
+		</div>
+
+		<div class="six columns">
+			<a href="#" class="button dark"><i class="fa fa-star"></i> Bookmark This Job</a>
+		</div>
+
+	</div>
+</div>
+
+
  
- </div>
  
  
  
- 
- <?php
-	$userId = \Yii::$app->user->id;
-	$memberJoin = EmployeeJobapplied::getUsersjoined ( $jobinfo->id, $userId );
-	?>
-	<?php if($memberJoin ==0){?>
-	<td class="centered">
-	<button class="btn btn-primary apply_job" id="needtoapply<?=  $jobinfo->id; ?>" apljobid="<?php echo $jobinfo->id;?>">Apply This Job</button>
-	
-	</td>
-	<?php
-	}
-	else {
-		?>
-	<td class="centered">
-	<button class="btn btn-primary applied">Applied</button>
-	</td>
-	<?php }?>
  
  
  
@@ -78,62 +53,145 @@ use frontend\models\EmployeeJobapplied;
  
  
  
- <table class="table table-user-information ">
-									<tbody>
-										<tr>
-											<td>Job Description:</td>
-											<td><?php echo  $jobinfo -> Description;  ?></td>
-										</tr>
-										<tr>
-											<td>Salry:</td>
-											<td><?php echo   $jobinfo -> CTC;  ?></td>
-										</tr>
+ <div class="container">
+	
+	<!-- Recent Jobs -->
+	<div class="eleven columns">
+	<div class="padding-right">
+		
+		<!-- Company Info -->
+		<div class="company-info">
+			<img src="" alt="company image">
+			<div class="content">
+				<h4><?php  echo $jobinfo -> company_name?></h4>
+				<span><a href="#"><i class="fa fa-link"></i> Website</a></span>
+				<span><a href="#"><i class="fa fa-twitter"></i> @kingrestaurants</a></span>
+			</div>
+			<div class="clearfix"></div>
+		</div>
 
-										<tr>
-											<td>Industry Type:</td>
-											<td><?php echo   $jobinfo -> industry_type;  ?></td>
-										</tr>
-										<tr>
-											<td>Role Category:</td>
-											<td><?php echo   $jobinfo -> rolecategory;  ?></td>
-										</tr>
-										<tr>
-											<td>Company Type:</td>
-											<td><?php echo   $jobinfo -> company_type;  ?></td>
-										</tr>
-										<tr>
-											<td>Job Type:</td>
-											<td><?php echo   $jobinfo -> jobtype;  ?></td>
-										</tr>
-										<tr>
-											<td>Establishment Date:</td>
-											<td><?php echo  $jobinfo -> dateofestablishment;  ?></td>
-										</tr>
+		<p class="margin-reset">
+			<strong>Job Description</strong>
+		</p>
 
-										<tr>
-											<td>Country:</td>
-											<td><?php echo  $jobinfo -> country;  ?></td>
-										</tr>
-										<tr>
-											<td>State:</td>
-											<td><?php echo  $jobinfo -> state;  ?></td>
-										</tr>
-										<tr>
-											<td>City:</td>
-											<td><?php echo  $jobinfo -> city;  ?></td>
-										</tr>
-										<tr>
-											<td>Zipcode:</td>
-											<td><?php echo  $jobinfo -> zipcode;  ?></td>
-										</tr>
-										<tr>
-											<td>Address:</td>
-											<td><?php echo  $jobinfo -> address;  ?></td>
-										</tr>
-										
-									</tbody>
-								</table>
-								
+		<br>
+		
+
+		<p><?php echo  $jobinfo -> Description;  ?></p>
+		<p><?php  echo $jobinfo -> Min_Experience?> - 
+    <?php echo $jobinfo -> Max_Experience?></p>
+		
+		<br>
+
+		<h4 class="margin-bottom-10">Key Skills</h4>
+		<?php  echo $jobinfo -> skills ?> 
+		
+		
+			<h4 class="margin-bottom-10">Job Posting Date</h4>
+
+		    	<?php  echo $jobinfo -> startDate?> 
+		
+		    
+	</div>
+	</div>
+
+
+	<!-- Widgets -->
+	<div class="five columns">
+
+		<!-- Sort by -->
+		<div class="widget">
+			<h4>Overview</h4>
+
+			<div class="job-overview">
+				
+				<ul>
+					<li>
+						<i class="fa fa-map-marker"></i>
+						<div>
+							<strong>Location:</strong>
+							<span><?php echo  $jobinfo -> city;  ?></span>
+						</div>
+					</li>
+					<li>
+						<i class="fa fa-user"></i>
+						<div>
+							<strong>Job Title:</strong>
+							<span><?php echo   $jobinfo -> rolecategory;  ?></span>
+						</div>
+					</li>
+					<li>
+						<i class="fa fa-user"></i>
+						<div>
+							<strong>Industry Type:</strong>
+							<span><?php echo   $jobinfo -> industry_type;  ?></span>
+						</div>
+					</li>
+					<li>
+					<li>
+						<i class="fa fa-user"></i>
+						<div>
+							<strong>Company Type:</strong>
+							<span><?php echo   $jobinfo -> company_type;  ?></span>
+						</div>
+					</li>
+					<li>
+						<i class="fa fa-clock-o"></i>
+						<div>
+							<strong>Establishment Date:</strong>
+							<span><?php echo  $jobinfo -> dateofestablishment;  ?></span>
+						</div>
+					</li>
+					<li>
+						<i class="fa fa-money"></i>
+						<div>
+							<strong>Salary:</strong>
+							<span><?php echo   $jobinfo -> CTC;  ?></span>
+						</div>
+					</li>
+				</ul>
+				
+				
+				 <?php
+	$userId = \Yii::$app->user->id;
+	$memberJoin = EmployeeJobapplied::getUsersjoined ( $jobinfo->id, $userId );
+	?>
+	<?php if($memberJoin ==0){?>
+	<td class="centered">
+	<button class="btn btn-primary apply_job" id="needtoapply<?=  $jobinfo->id; ?>" apljobid="<?php echo $jobinfo->id;?>">Apply This Job</button>
+	
+	</td>
+	<?php
+	}
+	else {
+		?>
+	<td class="centered">
+	<button class="btn btn-primary applied">Applied</button>
+	</td>
+	<?php }?>
+ 
+
+
+				<!--  <a href="#small-dialog" class="popup-with-zoom-anim button">Apply For This Job</a>
+
+				<div id="small-dialog" class="zoom-anim-dialog mfp-hide apply-popup">
+					<div class="small-dialog-headline">
+						<h2>Apply For This Job</h2>
+					</div>-->
+
+					
+					
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Widgets / End -->
+
+
+</div>
 								
 							
 <?php $applyjoburl = Yii::$app->urlManager->createUrl(['site/applyjobajax'])?>
