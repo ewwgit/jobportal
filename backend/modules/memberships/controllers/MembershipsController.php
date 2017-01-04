@@ -3,8 +3,8 @@
 namespace app\modules\memberships\controllers;
 
 use Yii;
-use app\models\Memberships;
-use app\models\MembershipsSearch;
+use backend\models\Memberships;
+use backend\models\MembershipsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
