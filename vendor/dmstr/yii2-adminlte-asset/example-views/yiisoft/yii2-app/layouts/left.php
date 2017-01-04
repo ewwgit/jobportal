@@ -37,6 +37,7 @@
                 	['label' => 'Designation', 'icon' => 'fa fa-bookmark', 'url' => ['/designation/designation/']],
                 	['label' => 'Specializations', 'icon' => 'fa fa-sun-o', 'url' => ['/specializations/specializations/']],
                 	['label' => 'Memberships', 'icon' => 'fa fa-sun-o', 'url' => ['/memberships/memberships/']],
+                	['label' => 'EmployerPackages', 'icon' => 'fa fa-sun-o', 'url' => ['/employerpackages/employerpackages/']],
                    
                    
                 ],
