@@ -91,7 +91,7 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
 // ];
    ]) 
 ?> 
-          <?= Alert::widget() ?>
+          <? /* echo Alert::widget(); */ ?>
       </div>
       
     </div>

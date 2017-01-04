@@ -3,8 +3,8 @@
 namespace app\modules\employerpackages\controllers;
 
 use Yii;
-use app\models\EmployerPackages;
-use app\models\EmployerPackagesSearch;
+use backend\models\EmployerPackages;
+use backend\models\EmployerPackagesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
