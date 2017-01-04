@@ -36,11 +36,11 @@ use frontend\models\EmployeeJobapplied;
  
  <?php
 	$userId = \Yii::$app->user->id;
-	$memberJoin = EmployeeJobapplied::getUsersjoined ( $model->jobid, $userId );
+	$memberJoin = EmployeeJobapplied::getUsersjoined ( $jobinfo->id, $userId );
 	?>
 	<?php if($memberJoin ==0){?>
 	<td class="centered">
-	<button class="btn btn-primary apply_job" id="needtoapply<?=  $model->jobid; ?>" apljobid="<?php echo $model->jobid;?>">Apply This Job</button>
+	<button class="btn btn-primary apply_job" id="needtoapply<?=  $jobinfo->id; ?>" apljobid="<?php echo $jobinfo->id;?>">Apply This Job</button>
 	
 	</td>
 	<?php
@@ -136,8 +136,47 @@ use frontend\models\EmployeeJobapplied;
 								
 								
 							
+<?php $applyjoburl = Yii::$app->urlManager->createUrl(['site/applyjobajax'])?>
+ 
+<?php 
 
+$this->registerJs ( "
+		
+		$(document.body).on('click', '.apply_job' ,function(){
+		 var jbid = $(this).attr('apljobid');
+		
+		$.ajax({
+        url: '$applyjoburl',
+        type: 'get',
+        dataType : 'json',
+		data:{jbid : jbid},
+		success : function(data){	
+	
+		   if(data.status == 0)
+           {
+               $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-exclamation scicon\"></span>Warning!<hr class=\"successseperator\">', message: 'Already Applied this job.',duration:50000,location:'tc',style:'warning',size:'large' });
+           }
+           if(data.status == 1)
+           {
+		
+        	$('[id=\"needtoapply'+jbid+'\"]').html('Applied');
+		    $('[id=\"needtoapply'+jbid+'\"]').addClass('applied');
+		    $('[id=\"needtoapply'+jbid+'\"]').removeClass('apply_job');
+		    $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-check scicon\"></span>Success!<hr class=\"successseperator\">', message: 'Successfully Applied this job',duration:50000,location:'tc',style:'notice',size:'large' });
+		    //console.log($('[id=\"needtoapply4\"]').html());
+           }
+		
+      } 
+        
+    }); 
+		});
+		
+		$(document.body).on('click', '.applied' ,function(){
+		 $.growl({ title: '<span data-notify=\"icon\" class=\"fa fa-exclamation scicon\"></span>Warning!<hr class=\"successseperator\">', message: 'Already Applied this job.',duration:50000,location:'tc',style:'warning' });
+		});
 
+		", View::POS_READY, 'my-options2' );
+?>
 
 
 
