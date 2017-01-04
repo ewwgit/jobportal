@@ -65,7 +65,12 @@ class EmployerpackagesController extends Controller
     {
         $model = new EmployerPackages();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        	
+            $model->createdDate = date('Y-m-d H:i:s');
+        
+        	
+        	$model->save();
             return $this->redirect(['view', 'id' => $model->employer_pid]);
         } else {
             return $this->render('create', [
@@ -84,7 +89,10 @@ class EmployerpackagesController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        	$model->createdDate = date('Y-m-d H:i:s');
+        	
+        	$model->save();
             return $this->redirect(['view', 'id' => $model->employer_pid]);
         } else {
             return $this->render('update', [

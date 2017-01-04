@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div
 	class="employer-packages-view">
 
-	<h1><?= Html::encode($this->title) ?></h1>
+	
 
 	<p>
         <?= Html::a('Update', ['update', 'id' => $model->employer_pid], ['class' => 'btn btn-primary']) ?>
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'employer_pid',
+           // 'employer_pid',
             'userId',
             'mem_id',
             'startDate',
