@@ -397,14 +397,14 @@ class EmpcommonController extends Controller {
 			$model->startDate = date ( "Y-m-d " );
 			$model->status = 1;
 			$model->skills = $comma_separated;
-			$model->userid = $userid;
+			$model->userid = Yii::$app->employer->employerid;
 			
 			$model->save ();
 			
 			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  create jobposting' );
 			return Yii::$app->getResponse ()->redirect ( [ 
-					'employercompany/empcommon/jobpostingslist' ,
-					'userid' => Yii::$app->employer->employerid 
+					'employercompany/empcommon/jobpostingslist' 
+					
 			] );
 		} else {
 			return $this->render ( 'jobpostings', [ 

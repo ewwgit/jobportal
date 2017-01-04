@@ -13,8 +13,6 @@ use kartik\typeahead\TypeaheadBasic;
 use kartik\typeahead\Typeahead;
 
 $this->title = 'JOB Posting List';
-
-$userid=Yii::$app->employer->employerid;
 ?>
 <div class="container"> 
 <div class="coachingvideoapi-index">
