@@ -47,11 +47,19 @@ $updatePackageinfo = Yii::$app->urlManager->createUrl(['employercompany/package/
 $this->registerJs ( "
 		
 		$(document.body).on('mouseover', '.testmemapp' ,function(){
+		var activestatus = $(this).attr('isactivenew');
+		if(activestatus == 0)
+		{
 		$(this).addClass('color-2');
+		}
 		 
 		});
 		$(document.body).on('mouseout', '.testmemapp' ,function(){
+		var activestatus = $(this).attr('isactivenew');
+		if(activestatus == 0)
+		{
 		$(this).removeClass('color-2');
+		}
 		 
 		});
 		

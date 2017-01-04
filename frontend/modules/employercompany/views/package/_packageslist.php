@@ -1,7 +1,21 @@
 <?php
 use yii\helpers\Html;
+use backend\models\EmployerPackages;
+
+$packageInfoByUser = EmployerPackages::find()->where(['userId' => Yii::$app->employer->employerid,'status'=> 1])->one();
+$activecls = '';
+$isactivcls = 0;
+if(!empty($packageInfoByUser))
+{
+	if($model->mem_id == $packageInfoByUser->mem_id)
+	{
+		$activecls = 'color-2';
+		$isactivcls = 1;
+	}
+}
+
 ?>
-<div class="plan color-1  four columns testmemapp" id="newmne<?= $model->mem_id;?>">
+<div class="plan color-1  four columns testmemapp <?= $activecls; ?>" id="newmne<?= $model->mem_id;?>" isactivenew ="<?= $isactivcls;?>">
 		<div class="plan-price">
 			<h3><?= $model->name;?></h3>
 			<span class="plan-currency">$</span>
