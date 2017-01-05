@@ -12,7 +12,7 @@ use frontend\models\EmployeeJobapplied;
 	<td class="title"><?= $model['skills'];?></td>	
 	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered"><?= $model['city'];?></td>
-	<td class="title"><?= date('Y-m-d',strtotime( $model['startDate']))?></td>
+	<td class="title"><?= date('Y-m-d',strtotime( $model['createdDate']))?></td>
 	<?php
 	$userId = \Yii::$app->user->id;
 	$memberJoin = EmployeeJobapplied::getUsersjoined ( $model->id, $userId );
