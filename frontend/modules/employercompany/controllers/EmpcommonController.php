@@ -495,7 +495,7 @@ class EmpcommonController extends Controller {
 	public function actionUpdate($id) {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = $this->findModel ( $id );
-		$postings = EmployerJobpostings::find ()->one ();
+		
 		if ($model->load ( Yii::$app->request->post () ) && $model->save ()) {
 			
 			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  Update jobposting' );
@@ -504,8 +504,8 @@ class EmpcommonController extends Controller {
 			] );
 		} else {
 			return $this->render ( 'jobpostingupdates', [ 
-					'model' => $model,
-					'postings' => $postings 
+					'model' => $model
+					
 			] );
 		}
 	}
