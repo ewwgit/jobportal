@@ -153,7 +153,7 @@ use frontend\models\EmployeeJobapplied;
 				
 				
 				 <?php
-	$userId = \Yii::$app->user->id;
+	$userId = Yii::$app->emplyoee->emplyoeeid;
 	$memberJoin = EmployeeJobapplied::getUsersjoined ( $jobinfo->id, $userId );
 	?>
 	<?php if($memberJoin ==0){?>
