@@ -448,6 +448,8 @@ select {
 											// change here: below line is added just to hide upload button. Its up to you to add this code or not.
 											'showUpload' => false ,
 											'showPreview' => false,
+											'allowedFileExtensions'=>['doc','docx'],
+											
 									] 
 							] )->label ( false );
 							?>
