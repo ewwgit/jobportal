@@ -729,9 +729,16 @@ class CommonController extends Controller
 			}
 			
 			
-		
+			Yii::$app->getSession()->setFlash('success', [
+					'type' => 'warning',
+					'duration' => 20000,
+					'icon' => 'fa fa-users',
+					'message' => 'You Are SuccessFully Updated.',
+					'title' => 'Success',
+					'positonY' => 'top',
+					'positonX' => 'center'
+			]);
 			
-		
 		//	print_r($skillmodel->errors);exit();
 		
 			return Yii::$app->getResponse()->redirect(['employees-viewprofile', ] );

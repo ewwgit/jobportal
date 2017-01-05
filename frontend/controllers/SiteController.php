@@ -538,6 +538,17 @@ class SiteController extends Controller
         		Yii::$app->db->createCommand()->insert('employee_signup', [
         				'name' => $name,'surname' => $surname, 'gender' => $gender, 'dateofbirth' => $dateofbirth,
         				'mobilenumber' => $mobilenumber,'userid'=>$id])->execute();
+        		
+        		Yii::$app->getSession()->setFlash('success', [
+        				'type' => 'warning',
+        				'duration' => 20000,
+        				'icon' => 'fa fa-users',
+        				'message' => 'You Are SuccessFully Registered.',
+        				'title' => 'Success',
+        				'positonY' => 'top',
+        				'positonX' => 'center'
+        		]);
+        		
         		 
         		return $this->goHome();
         		 
@@ -564,6 +575,8 @@ class SiteController extends Controller
 
     public function actionViewprofile()
     {
+    	
+    	
     	$this->layout= '@app/views/layouts/innerpagemain';
     
     	$umodel = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
