@@ -89,7 +89,7 @@ use frontend\models\EmployeeJobapplied;
 		
 			<h4 class="margin-bottom-10">Job Posting Date</h4>
 
-		    	<?php  echo $jobinfo -> startDate?> 
+		    	<?php  echo  date('Y-m-d',strtotime( $jobinfo -> createdDate)) ?> 
 		
 		    
 	</div>
