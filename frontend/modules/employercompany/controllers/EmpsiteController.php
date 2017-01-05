@@ -34,8 +34,7 @@ class EmpsiteController extends Controller {
 	{
 	
 		$permissionsArray = [''];
-		//print_r(RolesModel::getRole());exit();
-		if(EmployerRolesModel::getRole() == 2)
+			if(EmployerRolesModel::getRole() == 2)
 		{
 			$permissionsArray = ['index','login','logout','contact','about','signup',
 					'viewprofile'
@@ -44,10 +43,7 @@ class EmpsiteController extends Controller {
 		else {
 			$permissionsArray = ['index','login','logout','contact','about','signup'];
 		}
-	
-	
-		//print_r($permissionsArray);exit();
-		return [
+			return [
 				'verbs' => [
 						'class' => VerbFilter::className(),
 						'actions' => [
@@ -116,16 +112,19 @@ class EmpsiteController extends Controller {
 	 * @return mixed
 	 */
 	public function actionLogin() {
-		/*
-		 * if (!\Yii::$app->user->isGuest) {
-		 * return $this->goHome();
-		 * }
-		 */
+	
 		$this->layout = '@app/views/layouts/employermain';
 		if ((! \Yii::$app->user->isGuest) && (Yii::$app->employer->employerroleid == 2)) {
-			//return $this->goHome ();
-			// return $this->goBack();
-			//Yii::$app->getSession ()->setFlash ( 'success', ' successfully   login ' );
+		
+			Yii::$app->getSession()->setFlash('success', [
+					'type' => 'success',
+					'duration' => 20000,
+					'icon' => 'fa fa-users',
+					'message' => 'successfully  login.',
+					'title' => 'Success',
+					'positonY' => 'top',
+					'positonX' => 'center'
+			]);
 			return Yii::$app->getResponse ()->redirect ( [
 					'employers-profile'
 			] );
@@ -172,7 +171,7 @@ class EmpsiteController extends Controller {
 	public function actionLogout() {
 		$this->layout = '@app/views/layouts/employermain';
 		$model = new LoginForm ();
-		//Yii::$app->user->logout ();
+	
 		\Yii::$app->session->remove('user.employerid');
 		\Yii::$app->session->remove('user.employerusername');
 		\Yii::$app->session->remove('user.employerpassword_hash');
@@ -198,7 +197,15 @@ class EmpsiteController extends Controller {
 		$model = new ContactForm ();
 		if ($model->load ( Yii::$app->request->post () ) && $model->validate ()) {
 			if ($model->sendEmail ( Yii::$app->params ['adminEmail'] )) {
-				Yii::$app->session->setFlash ( 'success', 'Thank you for contacting us. We will respond to you as soon as possible.' );
+			Yii::$app->getSession()->setFlash('success', [
+						'type' => 'success',
+						'duration' => 20000,
+						'icon' => 'fa fa-users',
+						'message' => 'Thank you for contacting us. We will respond to you as soon as possible.',
+						'title' => 'Success',
+						'positonY' => 'top',
+						'positonX' => 'center'
+				]);
 			} else {
 				Yii::$app->session->setFlash ( 'error', 'There was an error sending email.' );
 			}
@@ -253,7 +260,16 @@ class EmpsiteController extends Controller {
 						'userid' => $userid ,
 						'create_date'=>$date
 				] )->execute ();
-				Yii::$app->getSession ()->setFlash ( 'success', ' successfully   Registered ' );
+			
+				Yii::$app->getSession()->setFlash('success', [
+						'type' => 'success',
+						'duration' => 20000,
+						'icon' => 'fa fa-users',
+						'message' => 'successfully   Registered.',
+						'title' => 'Success',
+						'positonY' => 'top',
+						'positonX' => 'center'
+				]);
 				return Yii::$app->getResponse ()->redirect ( [ 
 						'employers'
 				] );
@@ -340,11 +356,20 @@ class EmpsiteController extends Controller {
 		$model = new PasswordResetRequestForm ();
 		if ($model->load ( Yii::$app->request->post () ) && $model->validate ()) {
 			if ($model->sendEmail ()) {
-				Yii::$app->session->setFlash ( 'success', 'Check your email for further instructions.' );
-				//return $this->goHome ();
+				
+				Yii::$app->getSession()->setFlash('success', [
+						'type' => 'success',
+						'duration' => 20000,
+						'icon' => 'fa fa-users',
+						'message' => 'Check your email for further instructions.',
+						'title' => 'Success',
+						'positonY' => 'top',
+						'positonX' => 'center'
+				]);
+			
 				return Yii::$app->getResponse ()->redirect ( [
 						'employers'
-						//'userid' => Yii::$app->employer->employerid
+						
 				] );
 				
 			} else {
@@ -357,7 +382,7 @@ class EmpsiteController extends Controller {
 						'positonY' => 'top',
 						'positonX' => 'center'
 				]);
-				//Yii::$app->session->setFlash ( 'error', 'Sorry, we are unable to reset password for email provided.' );
+			
 			}
 		}
 		return $this->render ( 'requestPasswordResetToken', [ 
@@ -381,12 +406,21 @@ class EmpsiteController extends Controller {
 		}
 		
 		if ($model->load ( Yii::$app->request->post () ) && $model->validate () && $model->resetPassword ()) {
-			Yii::$app->session->setFlash ( 'success', 'New password was saved.' );
 			
-			//return $this->goHome ();
+			Yii::$app->getSession()->setFlash('success', [
+					'type' => 'success',
+					'duration' => 20000,
+					'icon' => 'fa fa-users',
+					'message' => 'New password was saved.',
+					'title' => 'Success',
+					'positonY' => 'top',
+					'positonX' => 'center'
+			]);
+			
+			
 			return Yii::$app->getResponse ()->redirect ( [
 					'employers',
-					//'userid' => Yii::$app->employer->employerid
+					
 			] );
 		}
 		

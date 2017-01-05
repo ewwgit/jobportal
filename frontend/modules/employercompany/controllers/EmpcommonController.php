@@ -34,6 +34,7 @@ use kartik\mpdf\Pdf;
 use kartik\social\FacebookPlugin;
 use backend\models\EmployerPackages;
 use backend\models\Memberships;
+//use kartik\growl\Growl;
 
 
 
@@ -330,7 +331,16 @@ class EmpcommonController extends Controller {
 				$preferencesModel->userid = Yii::$app->employer->employerid;
 				$preferencesModel->save ();
 			}
-			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  updated' );
+			
+			Yii::$app->getSession()->setFlash('success', [
+					'type' => 'success',
+					'duration' => 20000,
+					'icon' => 'fa fa-users',
+					'message' => 'successfully  Updated.',
+					'title' => 'Success',
+					'positonY' => 'top',
+					'positonX' => 'center'
+			]);
 		
  			return Yii::$app->getResponse ()->redirect ( [ 
  					'employers-profile'
@@ -487,7 +497,16 @@ class EmpcommonController extends Controller {
 	public function actionDelete($id) {
 		$this->layout = '@app/views/layouts/employerinner';
 		$this->findModel ( $id )->delete ();
-		Yii::$app->getSession ()->setFlash ( 'success', ' successfully  Delete jobposting' );
+		
+		Yii::$app->getSession()->setFlash('success', [
+				'type' => 'success',
+				'duration' => 20000,
+				'icon' => 'fa fa-users',
+				'message' => 'successfully  Delete jobposting.',
+				'title' => 'Success',
+				'positonY' => 'top',
+				'positonX' => 'center'
+		]);
 		return Yii::$app->getResponse ()->redirect ( [ 
 				'employers-all-jobs' 
 		] );
@@ -498,7 +517,16 @@ class EmpcommonController extends Controller {
 		
 		if ($model->load ( Yii::$app->request->post () ) && $model->save ()) {
 			
-			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  Update jobposting' );
+		
+			Yii::$app->getSession()->setFlash('success', [
+					'type' => 'success',
+					'duration' => 20000,
+					'icon' => 'fa fa-users',
+					'message' => 'successfully  Update jobposting.',
+					'title' => 'Success',
+					'positonY' => 'top',
+					'positonX' => 'center'
+			]);
 			return Yii::$app->getResponse ()->redirect ( [ 
 					'employers-job-details-'.$model->id
 			] );
