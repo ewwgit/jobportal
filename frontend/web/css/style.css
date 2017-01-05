@@ -3052,7 +3052,7 @@ img.mfp-img {
 	color: #808080;
 	width: 100%;
 	height: 100%;
-	display: inline-block;
+	/*display: inline-block;*/
 }
 .resumes-list li:last-child, .job-list li:last-child {
 	border-bottom: 1px solid #e0e0e0;

@@ -6,14 +6,20 @@ use yii\helpers\BaseStringHelper;
 use frontend\models\EmployeeJobapplied;
 ?>
 
-<tr>
-	<td class="title"><a
-		href="<?= Url::to(['/site/jobdetails','id'=>$model->id])?>"><?= $model['designation'];?></td>
-	<td class="title"><?= $model['skills'];?></td>	
-	<td class="title"><?= $model['Min_Experience'];?></td>	
-	<td class="centered"><?= $model['city'];?></td>
-	<td class="title"><?= date('Y-m-d',strtotime( $model['createdDate']))?></td>
-	<?php
+
+
+
+
+
+<ul class="job-list">
+          <li class="highlighted"> 
+            <div class="job-list-content">
+              <h4> <a
+		href="<?= Url::to(['/site/jobdetails','id'=>$model->id])?>"><?= $model['rolecategory'];?> <span class="full-time">Full-Time</span></h4>
+		     <div class="job-icons"> Keyskills: <span><?= $model['skills'];?></span></div>
+              <div class="job-icons"> <span><i class="fa fa-briefcase"></i><?= $model['company_name'];?></span> <span><i class="fa fa-map-marker"></i><?= $model['Min_Experience'];?></span> 
+              <span><i class="fa fa-money"></i><?= date('Y-m-d',strtotime( $model['createdDate']))?></span>
+              <?php
 	$userId = Yii::$app->emplyoee->emplyoeeid;
 	$memberJoin = EmployeeJobapplied::getUsersjoined ( $model->id, $userId );
 	?>
@@ -30,5 +36,18 @@ use frontend\models\EmployeeJobapplied;
 	<button class="btn btn-primary applied">Applied</button>
 	</td>
 	<?php }?>
-</tr>	
+	</div>
+            
+            </div>
+            </a>
+            				
+            
+          
+          </li>
+              
+	
+				
+			</ul>
+
+	
 	
