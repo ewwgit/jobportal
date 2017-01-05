@@ -124,7 +124,11 @@ return [
     				'enablePrettyUrl' => true,
     				'showScriptName' => false,
     				'rules' => [
-    		
+    						'employees' => 'site/index',
+    						'employees-viewprofile' => 'site/viewprofile',
+    						'employees-profile-edit' => 'common/employee',
+    						'employees-applied-jobs' => 'site/myjobs',
+    						'employees-job-details-<id:\w+>' => 'site/jobdetails',
     				]
     		],
     		'pdf' => [
