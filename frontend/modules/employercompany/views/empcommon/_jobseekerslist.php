@@ -152,6 +152,11 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 			</div>
 		</div>
 	</div>
+	<style>
+	.pagination {
+       margin-left: 980px;
+  }
+</style>
 	
 	
 

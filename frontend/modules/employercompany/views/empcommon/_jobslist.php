@@ -16,6 +16,7 @@ $query = EmployeeJobapplied::find()->where("jobid = $model->id AND 	application_
 		
 ?>
 
+
 <tr>
 	<td class="title"><?= $model['designation'];?></td>
 	<td class="title"><?= $model['skills'];?></td>	
@@ -34,3 +35,9 @@ $query = EmployeeJobapplied::find()->where("jobid = $model->id AND 	application_
 		href="<?= Url::to(['/employercompany/empcommon/delete','id'=>$model->id])?>"
 		class="delete"><i class="fa fa-trash"></i> Delete</a></td>
 </tr>
+
+<style>
+.pagination {
+       margin-left: 760px;
+  }
+</style>

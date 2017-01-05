@@ -601,6 +601,11 @@ public function actionJobpostingslist() {
  					$companynameinfo;
  				}
  				else {$companynameinfo = [''];}
+ 				
+ 				$dataProvider = new ActiveDataProvider([
+ 						'pagination' => ['pageSize' =>5],
+ 						'query' => $query,
+ 				]);
  		
 		return $this->render('jobgrid', 
 				[

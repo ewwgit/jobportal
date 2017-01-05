@@ -57,7 +57,7 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
             <li><a  href="<?= Url::to(['/employercompany/empsite/login'])?>"><i class="fa fa-user"></i>Employer Zone</a></li>
 			
 	        <?php }else { ?>
-	        
+	          <li><a href="<?= Url::to(['/employercompany/package/'])?>" title="viewprofile">Employer Packages</a></li>
 	         <li><a href="<?= Url::to(['/employercompany/empcommon/jobpostingslist'])?>" title="viewprofile">Employer JobPosting</a></li>
 			    <li><a href="<?= Url::to(['/employercompany/empcommon/employercommonview'])?>" title="viewprofile">Employer Details</a></li>
                <li><a href="<?= Url::to(['empsite/logout'])?>"data-method="post" title="">Logout</a></li>
@@ -78,19 +78,15 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
       <div class="twelve columns">
       <h1><?=  $this->params ['breadcrumbs'] [] = $this->title;?></h1>
       
-         <?= 
+         You are here:<h6 style="margin-top: -31px; margin-left: 82px;"><?= 
    Breadcrumbs::widget([
+   		'homeLink' => ['label' => 'Home',
+   		'url' => Yii::$app->getHomeUrl() . 'employercompany/empsite/login'],
+    'links' => isset($this->params['breadcrumbs'] ) ? $this->params['breadcrumbs'] : [''],
+    
 
-      'links' => isset($this->params['breadcrumbs'] ) ? $this->params['breadcrumbs'] : [''],
-   	 
-//    		$this->params ['breadcrumbs'] [] = [ 
-// 		'label' => 'Home',
-// 		'url' => [ 
-// 				'/employercompany/empsite/login' 
-// 		] 
-// ];
    ]) 
-?> 
+?> </h6>
           <? /* echo Alert::widget(); */ ?>
       </div>
       
