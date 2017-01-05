@@ -83,7 +83,7 @@ class CommonController extends Controller
 								[
 										'denyCallback' => function ($rule, $action) {
 												
-											$this->redirect(Yii::$app->urlManager->createUrl(['site/login/']));
+											$this->redirect(Yii::$app->urlManager->createUrl(['employees-login']));
 										}
 								]
 								]
@@ -734,7 +734,7 @@ class CommonController extends Controller
 		
 		//	print_r($skillmodel->errors);exit();
 		
-			return Yii::$app->getResponse()->redirect(['site/viewprofile', ] );
+			return Yii::$app->getResponse()->redirect(['employees-viewprofile', ] );
 			
 		}
 		//echo 'hello';exit();

@@ -113,7 +113,7 @@ class SiteController extends Controller
     									[
     											'denyCallback' => function ($rule, $action) {
     											
-    											$this->redirect(Yii::$app->urlManager->createUrl(['site/login/']));
+    											$this->redirect(Yii::$app->urlManager->createUrl(['employees-login']));
     											}
     											]
     											]
@@ -372,7 +372,7 @@ class SiteController extends Controller
     	if ((! \Yii::$app->user->isGuest) && (Yii::$app->emplyoee->emplyoeeroleid ==3)) {
     		//return $this->goHome ();
     		return Yii::$app->getResponse ()->redirect ( [
-    				'site/index'
+    				'employees'
     				] );
     	}
     	
@@ -737,7 +737,7 @@ class SiteController extends Controller
 						'positonX' => 'right'
 				]);
 		
-				$this->redirect(['login']);
+				$this->redirect(['employees-login']);
 			}
 			else {
 				

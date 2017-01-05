@@ -15,8 +15,8 @@ use yii\web\view;
 $this->title = 'Job applied List';
 $statusnew = 'All';
 $urlnew = Yii::$app->urlManager->createUrl ( [
-			'employercompany/empcommon/employeeslist',
-			'jid' => $_GET['jid'],
+			'employers-job-applied-employees-'.$_GET['jid'],
+			
 			
 	] );
 if(isset($_GET['status']) && ($_GET['status'] != ''))
@@ -84,15 +84,15 @@ if(isset($_GET['status']) && ($_GET['status'] != ''))
 		<div class="margin-bottom-15"></div>
 	</div>
 
-	<div class="eight columns">
-		<!-- Select -->
+	<!-- <div class="eight columns">
+		
 		<select data-placeholder="Newest first" class="chosen-select-no-single">
 			<option value="">Newest first</option>
 			<option value="name">Sort by name</option>
 			<option value="rating">Sort by rating</option>
 		</select>
 		<div class="margin-bottom-35"></div>
-	</div>
+	</div> -->
 <?php 
 echo ListView::widget( [
 		'dataProvider' => $dataProvider,
@@ -186,7 +186,7 @@ $this->registerJs ( "
 		$(document.body).on('change', '.searchstatusnew' ,function(){
 		console.log('hello');
 		var applicationstausnew = $('#stanewchangenew option:selected').val();
-		window.location.replace('$urlnew&status='+applicationstausnew);
+		window.location.replace('$urlnew-'+applicationstausnew);
 		 
 		});
 		

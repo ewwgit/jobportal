@@ -21,7 +21,7 @@ $query = EmployeeJobapplied::find()->where("jobid = $model->id AND 	application_
 	<td class="title"><?= $model['skills'];?></td>	
 	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered"><a
-		href="<?= Url::to(['/employercompany/empcommon/employeeslist','jid'=>$model->id])?>"> Employees</a><b style= "color:#ec971f;"><?php echo '(' . $total_list .')' ?></b></td>
+		href="<?= Yii::$app->urlManager->createUrl ( ['employers-job-applied-employees-'.$model->id.'-All'] );?>"> Employees</a><b style= "color:#ec971f;"><?php echo '(' . $total_list .')' ?></b></td>
 		
 	<td class="title"><?= date('Y-m-d',strtotime( $model['createdDate']))?></td>	
 	

@@ -62,7 +62,7 @@ class EmpcommonController extends Controller {
 				'verbs' => [
 						'class' => VerbFilter::className(),
 						'actions' => [
-								'delete' => ['DELETE'],
+								
 						],
 				],
 				'access' => [
@@ -87,7 +87,7 @@ class EmpcommonController extends Controller {
 										[
 												'denyCallback' => function ($rule, $action) {
 													
-												$this->redirect(Yii::$app->urlManager->createUrl(['employercompany/empsite/login/']));
+												$this->redirect(Yii::$app->urlManager->createUrl(['employers']));
 												}
 												]
 												]
@@ -333,8 +333,7 @@ class EmpcommonController extends Controller {
 			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  updated' );
 		
  			return Yii::$app->getResponse ()->redirect ( [ 
- 					'employercompany/empcommon/employercommonview',
- 					'userid' => Yii::$app->employer->employerid 
+ 					'employers-profile'
  			] );
 		}
 		
@@ -404,11 +403,11 @@ class EmpcommonController extends Controller {
 						'positonY' => 'top',
 						'positonX' => 'center'
 				]);
-				return $this->redirect('jobpostingslist');
+				return $this->redirect('employers-all-jobs');
 			}
 		}
 		else {
-			$allowedjobs = 1;
+			$allowedjobs = 10;
 			$alreadyCreatedJobs = EmployerJobpostings::find()->where("userid = $userId ")->count();
 			//echo $alreadyCreatedJobs;exit();
 			if($alreadyCreatedJobs >=  $allowedjobs)
@@ -422,7 +421,7 @@ class EmpcommonController extends Controller {
 						'positonY' => 'top',
 						'positonX' => 'center'
 				]);
-				return $this->redirect('jobpostingslist');
+				return $this->redirect('employers-all-jobs');
 			}
 		}
 		$this->layout = '@app/views/layouts/employerinner';
@@ -460,7 +459,7 @@ class EmpcommonController extends Controller {
 					'positonY' => 'top',
 					'positonX' => 'center'
 			]);
-			return $this->redirect('jobpostingslist');
+			return $this->redirect('employers-all-jobs');
 			
 		} else {
 			
@@ -490,7 +489,7 @@ class EmpcommonController extends Controller {
 		$this->findModel ( $id )->delete ();
 		Yii::$app->getSession ()->setFlash ( 'success', ' successfully  Delete jobposting' );
 		return Yii::$app->getResponse ()->redirect ( [ 
-				'employercompany/empcommon/jobpostingslist' 
+				'employers-all-jobs' 
 		] );
 	}
 	public function actionUpdate($id) {
@@ -501,8 +500,7 @@ class EmpcommonController extends Controller {
 			
 			Yii::$app->getSession ()->setFlash ( 'success', ' successfully  Update jobposting' );
 			return Yii::$app->getResponse ()->redirect ( [ 
-					'employercompany/empcommon/jobpostingsview',
-					'id' => $model->id 
+					'employers-job-details-'.$model->id
 			] );
 		} else {
 			return $this->render ( 'jobpostingupdates', [ 

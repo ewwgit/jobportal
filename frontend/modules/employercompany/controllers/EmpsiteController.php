@@ -76,7 +76,7 @@ class EmpsiteController extends Controller {
 										[
 												'denyCallback' => function ($rule, $action) {
 													
-												$this->redirect(Yii::$app->urlManager->createUrl(['employercompany/empsite/login/']));
+												$this->redirect(Yii::$app->urlManager->createUrl(['employers']));
 												}
 												]
 												]
@@ -127,8 +127,7 @@ class EmpsiteController extends Controller {
 			// return $this->goBack();
 			//Yii::$app->getSession ()->setFlash ( 'success', ' successfully   login ' );
 			return Yii::$app->getResponse ()->redirect ( [
-					'employercompany/empcommon/employercommonview',
-					'userid' => Yii::$app->employer->employerid
+					'employers-profile'
 			] );
 		}
 		$model = new LoginForm ();
@@ -146,7 +145,7 @@ class EmpsiteController extends Controller {
 				\Yii::$app->session->set('user.employerupdated_at',Yii::$app->user->identity->updated_at);				
 				\Yii::$app->session->set('user.employerroleid',Yii::$app->user->identity->roleid);
 				
-				return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(['employercompany/empcommon/employercommonview']));
+				return Yii::$app->getResponse()->redirect(Yii::$app->urlManager->createUrl(['employers-profile']));
 			}
 			if($model->user->roleid == 3)
 			{
@@ -185,9 +184,7 @@ class EmpsiteController extends Controller {
 		\Yii::$app->session->remove('user.employerupdated_at');
 		\Yii::$app->session->remove('user.employerroleid');
 		
-		return $this->render ( 'login', [ 
-					'model' => $model 
-			] );
+		return $this->redirect ( 'employers' );
 		
 	}
 	
@@ -258,8 +255,7 @@ class EmpsiteController extends Controller {
 				] )->execute ();
 				Yii::$app->getSession ()->setFlash ( 'success', ' successfully   Registered ' );
 				return Yii::$app->getResponse ()->redirect ( [ 
-						'employercompany/empsite/login',
-						'userid' => Yii::$app->employer->employerid 
+						'employers'
 				] );
 				if (Yii::$app->getUser ()->login ( $user )) {
 					
@@ -347,8 +343,7 @@ class EmpsiteController extends Controller {
 				Yii::$app->session->setFlash ( 'success', 'Check your email for further instructions.' );
 				//return $this->goHome ();
 				return Yii::$app->getResponse ()->redirect ( [
-						'employercompany/empsite/login',
-						'success' => 1
+						'employers'
 						//'userid' => Yii::$app->employer->employerid
 				] );
 				
@@ -390,7 +385,7 @@ class EmpsiteController extends Controller {
 			
 			//return $this->goHome ();
 			return Yii::$app->getResponse ()->redirect ( [
-					'employercompany/empsite/login',
+					'employers',
 					//'userid' => Yii::$app->employer->employerid
 			] );
 		}
