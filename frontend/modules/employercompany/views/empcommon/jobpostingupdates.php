@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Designation;
+use kartik\select2\Select2;
 
 $this->title = 'POST A JOB';
 
@@ -88,7 +89,7 @@ select {
 											</tr>
 											
 											<tr>
-												<td>designation:<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>	</tr>
+												<td>designation:<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'],['class'=>'border']) ?>	</tr>
 											<tr>
 												<td><?= $form->field($model, 'Max_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></td>
 											</tr>
@@ -105,8 +106,22 @@ select {
 												<td><?= $form->field($model, 'jobtype')->inline()->radioList(['Full time' =>'Full time' , 'Part time' =>'Part time'],['prompt' =>'select'],['value' => $model->jobtype])?></td>
 											</tr>
 											<tr>
-												<td><?= $form->field($model, 'job_location')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select'],['value' => $model->job_location]);?></td>
-											</tr>
+												<td>
+												<?php 
+						
+                           echo  $form->field($model, 'job_location')->widget(Select2::classname(), [
+                           		                 
+                           		       'data'=>$model->alllocations,
+                           		        'options' => ['placeholder' => 'Select location', 'multiple' => true],
+                                        'pluginOptions' => [
+                                        'tags' => true,
+                                        'allowClear' => true,
+                                        'tokenSeparators' => [','],
+                                      //'maximumInputLength' => 10
+                                             ],
+                           		      //'value' => ['valu1','valu2']
+                           ])->label('Job Location');?>
+                         			</tr>
 											<tr>
 												<td><?= $form->field($model, 'status')->dropDownList(['Active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select'],['value' => $model->status]);?></td>
 											</tr>
@@ -134,3 +149,8 @@ select {
       		 
        		 </div>
 </div>
+<style>
+.border{
+border-radius: 5px;
+}
+</style>

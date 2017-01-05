@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 
 class EmployerJobpostings extends \yii\db\ActiveRecord {
+	public $alllocations;
 	public static function tableName() {
 		return 'employer_post_jobs';
 	}

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Designation;
+use kartik\select2\Select2;
 
 $this->title = ' JOB Postings';
 
@@ -71,13 +72,23 @@ select {
                    <?= $form->field($model, 'city')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select']);?>
                   </div>
                   	<div class="form-group">
+                  	<?php 
+						
+                           echo  $form->field($model, 'job_location')->widget(Select2::classname(), [
+                           		                 
+                           		     //  'data'=>$model->allskills,
+                           		        'options' => ['placeholder' => 'Select locations', 'multiple' => true],
+                                        'pluginOptions' => [
+                                        'tags' => true,
+                                        'allowClear' => true,
+                                        'tokenSeparators' => [','],
+                                      //'maximumInputLength' => 10
+                                             ],
+                           		      //'value' => ['valu1','valu2']
+                           ])->label('Job Location');?>
                     
-                   <?= $form->field($model, 'job_location')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select']);?>
-                  </div>
-                  <div class="form-group">
-                    
-                   <?= $form->field($model, 'status')->dropDownList(['Active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select']);?>
-                  </div>
+                   </div>
+                
 									<div class="form">
                     
                   <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true])?>
@@ -162,6 +173,11 @@ select {
 									<div class="form">
                     
                   <?=$form->field ( $model, 'industry_type' )->dropDownList ( [ 'Advertising/Event Management/PR' => 'Advertising/Event Management/PR','Machinery/Equipment Manufacturing/Industrial Products' => 'Machinery/Equipment Manufacturing/Industrial Products' ], [ 'prompt' => 'select your industry type' ] )?>
+                  </div>
+                    <div class="form-group">
+                    
+                    
+                   <?= $form->field($model, 'status')->dropDownList(['Active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select']);?>
                   </div>
 
 								</div>

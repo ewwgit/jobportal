@@ -245,7 +245,7 @@ class EmpcommonController extends Controller {
 				$employermodel->skills = $model->skills;
 				
 			     $employermodel = $model->skills;
-				
+			  
 					
 				if (! Empty ( $employermodel )) {
 					$array = $model->skills;
@@ -451,10 +451,21 @@ class EmpcommonController extends Controller {
 			
 			}
 			
+			$location = $model->job_location;
+			
+				
+			if (! Empty ( $location )) {
+				$array1 = $model->job_location;
+				$arraylocation = implode ( ",",$array1 );
+				//print_r($arraylocation);exit;
+				$location_comma_separated = rtrim($arraylocation,",");
+			}
+			
 			$model->createdDate = date('Y-m-d H:i:s');
 			$model->updatedDate = date('Y-m-d H:i:s');
 			$model->status = 1;
 			$model->skills = $comma_separated;
+			$model->job_location = $location_comma_separated;
 			$model->userid = Yii::$app->employer->employerid;
 			
 			$model->save ();
@@ -515,8 +526,41 @@ class EmpcommonController extends Controller {
 	public function actionUpdate($id) {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = $this->findModel ( $id );
+		$data=$model->job_location;
+			
+		if (! Empty ( $data )) {
+			$array = $model->job_location;
 		
-		if ($model->load ( Yii::$app->request->post () ) && $model->save ()) {
+				
+			$array_locations = explode( ",",$array );
+				
+				
+			$allsary = array();
+			$valuary = array();
+			foreach ($array_locations as $locationnew)
+			{
+				$allsary[$locationnew] = $locationnew;
+				$valuary[] = $locationnew;
+		
+			}
+			$model->alllocations = $allsary;
+			$model->job_location = $valuary;
+		
+		}
+		
+		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
+			
+			$location = $model->job_location;
+			
+		
+				if (! Empty ( $location )) {
+					$array = $model->job_location;
+					$array_loc = implode ( ",",$array );
+					
+				}
+			
+			$model->job_location = $array_loc;
+			$model->save ();
 			
 		
 			Yii::$app->getSession()->setFlash('success', [
