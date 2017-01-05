@@ -70,6 +70,14 @@ select {
                     
                    <?= $form->field($model, 'city')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select']);?>
                   </div>
+                  	<div class="form-group">
+                    
+                   <?= $form->field($model, 'job_location')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select']);?>
+                  </div>
+                  <div class="form-group">
+                    
+                   <?= $form->field($model, 'status')->dropDownList(['Active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select']);?>
+                  </div>
 									<div class="form">
                     
                   <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true])?>

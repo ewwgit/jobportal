@@ -32,7 +32,9 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'city',
 								'zipcode',
 								'Min_Experience',
-								'Max_Experience' 
+								'Max_Experience' ,
+								'job_location',
+								'status'
 						],
 						'required' 
 				],
@@ -60,7 +62,9 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'zipcode',
 								'Min_Experience',
 								'Max_Experience' ,
-								'userid'
+								'userid',
+								'job_location',
+								'status'
 						],
 						'safe' 
 				] 
@@ -75,6 +79,8 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 				'Max_Experience' => 'Max Experience',
 				'Description' => 'Description',
 				'jobtype' => 'Jobtype',
+				'job_location' =>'Job Location',
+				'status'=>'Status',
 			
 				'address' => 'Address',
 				'roleid' => 'Roleid',

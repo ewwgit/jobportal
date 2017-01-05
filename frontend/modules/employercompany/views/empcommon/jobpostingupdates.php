@@ -104,6 +104,12 @@ select {
 											<tr>
 												<td><?= $form->field($model, 'jobtype')->inline()->radioList(['Full time' =>'Full time' , 'Part time' =>'Part time'],['prompt' =>'select'],['value' => $model->jobtype])?></td>
 											</tr>
+											<tr>
+												<td><?= $form->field($model, 'job_location')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select'],['value' => $model->job_location]);?></td>
+											</tr>
+											<tr>
+												<td><?= $form->field($model, 'status')->dropDownList(['Active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select'],['value' => $model->status]);?></td>
+											</tr>
 	
 
 										</tbody>

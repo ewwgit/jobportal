@@ -490,6 +490,7 @@ class EmpcommonController extends Controller {
 	public function actionView($id) {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = $this->findModel ( $id );
+		//print_r($model);exit;
 		return $this->render ( 'postingview', [ 
 				'model' => $model 
 		] );
