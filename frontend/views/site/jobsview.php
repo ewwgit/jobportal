@@ -11,11 +11,12 @@ use frontend\models\EmployeeJobapplied;
 
 
 
-<ul class="job-list">
+
           <li class="highlighted"> 
+          <img src="<?php echo Yii::getAlias('@web');?>/frontend/web/images/all-categories-photo.jpg" alt="">
             <div class="job-list-content">
               <h4> <a
-		href="<?= Url::to(['/site/jobdetails','id'=>$model->id])?>"><?= $model['rolecategory'];?> <span class="full-time">Full-Time</span></h4>
+		href="<?= Url::to(['/site/jobdetails','id'=>$model->id])?>"><?= $model['rolecategory'];?></a> <span class="full-time">Full-Time</span></h4>
 		     <div class="job-icons"> Keyskills: <span><?= $model['skills'];?></span></div>
               <div class="job-icons"> <span><i class="fa fa-briefcase"></i><?= $model['company_name'];?></span> <span><i class="fa fa-map-marker"></i><?= $model['Min_Experience'];?></span> 
               <span><i class="fa fa-money"></i><?= date('Y-m-d',strtotime( $model['createdDate']))?></span>
@@ -24,22 +25,22 @@ use frontend\models\EmployeeJobapplied;
 	$memberJoin = EmployeeJobapplied::getUsersjoined ( $model->id, $userId );
 	?>
 	<?php if($memberJoin ==0){?>
-	<td class="centered">
+	
 	<button class="btn btn-primary apply_job" id="needtoapply<?=  $model->id; ?>" apljobid="<?php echo $model->id;?>">Apply this Job</button>
 	
-	</td>
+	
 	<?php
 	}
 	else {
 		?>
-	<td class="centered">
+	
 	<button class="btn btn-primary applied">Applied</button>
-	</td>
+	
 	<?php }?>
 	</div>
             
             </div>
-            </a>
+          
             				
             
           
@@ -47,7 +48,7 @@ use frontend\models\EmployeeJobapplied;
               
 	
 				
-			</ul>
+			
 
 	
 	

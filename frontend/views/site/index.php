@@ -151,6 +151,7 @@ use yii\web\view;
     <div class="eleven columns">
       <div class="padding-right">
         <h3 class="margin-bottom-25">Recent Jobs</h3>
+        <ul class="job-list">
         <?php 
 			echo ListView::widget( [
 					'dataProvider' => $dataProvider,
@@ -173,7 +174,7 @@ use yii\web\view;
 			?>  
    
   
-  
+  </ul>
  
  
        
