@@ -38,6 +38,7 @@ use backend\models\Countries;
 use backend\models\States;
 use backend\models\Cities;
 use yii\helpers\Json;
+use frontend\models\EmployeeSkills;
 //use kartik\growl\Growl;
 
 
@@ -912,11 +913,18 @@ exit;
 			
 			
 	}
-	public function actionBrowsejobs()
+	public function actionBrowseresumes()
 	{
+		$skills = 'html';
+		$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->where(['skillname' => $skills]);
+		//print_r($skillsInfo);exit();
+		$dataProvider = new ActiveDataProvider([
+				'pagination' => ['pageSize' =>5],
+				'query' => $skillsInfo,
+		]);
 		$this->layout = '@app/views/layouts/employerinner';
 		//echo "hai";exit;
-		return $this->render('browsejobs');
+		return $this->render('browseresumes',['dataProvider' => $dataProvider]);
 	
 	}
 	
