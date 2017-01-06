@@ -54,9 +54,9 @@ select {
 							src="<?php
 							if($model->profileimagenew){
 														
-							echo  Yii::getAlias('/jobportal/').$model->profileimagenew;
+							echo  Yii::getAlias('/jobportal').$model->profileimagenew;
 							}else {
-									 echo "/jobportal/frontend/web/profileimages/1483335917profile_pic.jpg" ;
+									 echo Yii::getAlias('/jobportal')."/frontend/web/images/user-iconnew.png" ;
 								      }
 								?>"
 							width="100" height="100"> </img> 

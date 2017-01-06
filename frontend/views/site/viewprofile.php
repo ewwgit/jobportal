@@ -79,7 +79,7 @@ td {
 														
 							echo isset( $empmodel->profileimage)? Yii::getAlias('/jobportal/').$empmodel->profileimage : '' ; 
 							}else {
-									 echo "/jobportal/frontend/web/profileimages/1483335917profile_pic.jpg" ;
+									 echo Yii::getAlias('/jobportal')."/frontend/web/images/user-iconnew.png" ;
 								      }
 								?>">
 	  </img> </div>
