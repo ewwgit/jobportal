@@ -33,7 +33,8 @@
         "kartik-v/yii2-social": "@dev",
         "ijackua/yii2-sharelinks-widget": "dev-master",
         "black-lamp/yii2-socialshare": "^1.7",
-        "kartik-v/yii2-widget-rating": "*"
+        "kartik-v/yii2-widget-rating": "*",
+        "kartik-v/yii2-widget-depdrop": "@dev"
        
         
     },
