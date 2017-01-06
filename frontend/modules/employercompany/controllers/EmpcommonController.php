@@ -912,6 +912,14 @@ exit;
 			
 			
 	}
+	public function actionBrowsejobs()
+	{
+		$this->layout = '@app/views/layouts/employerinner';
+		//echo "hai";exit;
+		return $this->render('browsejobs');
+	
+	}
+	
 	
 	
 }
