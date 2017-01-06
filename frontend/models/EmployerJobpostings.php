@@ -6,11 +6,17 @@ use Yii;
 use yii\db\ActiveRecord;
 
 class EmployerJobpostings extends \yii\db\ActiveRecord {
+	
 	public $alllocations;
+	public $countriesList;
+	public $statesData;
+	public $allskills;
+	
 	public static function tableName() {
 		return 'employer_post_jobs';
 	}
-	public $allskills;
+	
+	
 	public function rules() {
 		return [ 
 				[ 

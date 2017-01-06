@@ -34,6 +34,10 @@ use kartik\mpdf\Pdf;
 use kartik\social\FacebookPlugin;
 use backend\models\EmployerPackages;
 use backend\models\Memberships;
+use backend\models\Countries;
+use backend\models\States;
+use backend\models\Cities;
+use yii\helpers\Json;
 //use kartik\growl\Growl;
 
 
@@ -388,10 +392,13 @@ class EmpcommonController extends Controller {
 		] );
 	}
 	public function actionCreate() {
-		
+		$model = new EmployerJobpostings ();
 		$userId = Yii::$app->employer->employerid;
 		$presentDate = date('Y-m-d');
 		$packageInfoByUser = EmployerPackages::find()->where("userid = $userId AND status = 1 AND endDate >= '$presentDate'")->one();
+		$model->countriesList = Countries::getCountries();
+		
+		
 		//print_r($packageInfoByUser);exit();
 		if(!empty($packageInfoByUser))
 		{
@@ -435,7 +442,7 @@ class EmpcommonController extends Controller {
 			}
 		}
 		$this->layout = '@app/views/layouts/employerinner';
-		$model = new EmployerJobpostings ();
+		
 		
 		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
 			
@@ -467,7 +474,9 @@ class EmpcommonController extends Controller {
 			$model->skills = $comma_separated;
 			$model->job_location = $location_comma_separated;
 			$model->userid = Yii::$app->employer->employerid;
-			
+			$model->country = Countries::getCountryName($model->country);
+			$model->state = States::getStateName($model->state);
+			$model->city = Cities::getCityName($model->city);
 			$model->save ();
 			
 			
@@ -850,6 +859,59 @@ exit;
 		}
 	}
 	
+	public function actionStates()
+	{
+	
+		$out = [];
+		if (isset($_POST['depdrop_parents'])) {
+			$parents = $_POST['depdrop_parents'];
+			 
+			if ($parents != null) {
+				$country = $parents[0];
+				$states = Countries::getStatesByCountry($country);
+				/* $out = [
+				 ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
+				 ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
+	
+				 ]; */
+				echo Json::encode(['output'=>$states, 'selected'=>0]);
+				return;
+				 
+				 
+			}
+		}
+		 
+		echo Json::encode(['output'=>'', 'selected'=>'']);
+		 
+		 
+	}
+	
+	public function actionCities()
+	{
+	
+		$out = [];
+		if (isset($_POST['depdrop_parents'])) {
+			$parents = $_POST['depdrop_parents'];
+	
+			if ($parents != null) {
+				$state = $parents[0];
+				$cities = Countries::getCitiesByState($state);
+				/* $out = [
+				 ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
+				 ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
+	
+				 ]; */
+				echo Json::encode(['output'=>$cities, 'selected'=>0]);
+				return;
+					
+					
+			}
+		}
+			
+		echo Json::encode(['output'=>'', 'selected'=>'']);
+			
+			
+	}
 	
 	
 }
