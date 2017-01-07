@@ -27,6 +27,10 @@ class EmployeeForm extends Model {
 	public $mobilenumber;
 	public $profileimage;
 	public $profileimagenew;
+	public $country;
+	public $state;
+	public $city;
+	public $countriesList;
 	public $userid;
 	/**
 	 * * Educational Details **

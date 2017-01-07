@@ -20,6 +20,9 @@ class SignupForm extends Model {
 	public $dateofbirth;
 	public $mobilenumber;
 	public $profileimage;
+	public $country;
+	public $state;
+	public $city;
 	
 	/**
 	 * @inheritdoc

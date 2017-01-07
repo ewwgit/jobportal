@@ -20,6 +20,10 @@ use frontend\models\EmployeeSkills;
 use frontend\models\EmployeeProjects;
 use frontend\models\EmployeeEmployer;
 use frontend\models\EmployeeResume;
+use backend\models\Countries;
+use backend\models\States;
+use backend\models\Cities;
+use yii\helpers\Json;
 
 use frontend\models\EmployeeLanguages;
 
@@ -117,6 +121,7 @@ class CommonController extends Controller
 		
 		$user = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
 		$employee = EmployeeSignup :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
+		$model->countriesList = Countries::getCountries();
 		//print_r($employee);exit();
 		$jobpreference = EmployeePreferences :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
 		//print_r($jobpreference);exit();
@@ -149,7 +154,10 @@ class CommonController extends Controller
 			$model->gender = $employee->gender;
 			$empdateofbirth= date('Y-m-d', strtotime($employee->dateofbirth));
 			$model->dateofbirth = $empdateofbirth;
-        	$model->mobilenumber = $employee->mobilenumber;		
+        	$model->mobilenumber = $employee->mobilenumber;	
+        	$model->country = $employee->country;
+        	$model->state = $employee -> state;
+        	$model-> city = $employee->city;
 		}
 		
 		/* employee education details*/
@@ -313,6 +321,11 @@ class CommonController extends Controller
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$employee->profileimage = $profileimage;
 				}
+				$employee->country = Countries::getCountryName($model->country);
+				$employee->state = States::getStateName($model->state);
+				$employee->city = Cities::getCityName($model->city);
+				$empmodel->userid = Yii::$app->emplyoee->emplyoeeid ;
+				
 				  
 				$employee->update();
 				//print_r($empmodel->errors);exit();
@@ -345,6 +358,9 @@ class CommonController extends Controller
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$empmodel->profileimage = $profileimage;
 				}
+				$empmodel->country = Countries::getCountryName($model->country);
+				$empmodel->state = States::getStateName($model->state);
+				$empmodel->city = Cities::getCityName($model->city);
 				$empmodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 				//print_r($empmodel);exit();
 				$empmodel-> save();
@@ -751,6 +767,11 @@ class CommonController extends Controller
 			
 		
 	}
+	
+	
+	
+	
+	
 }
 		
 		

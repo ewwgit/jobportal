@@ -9,6 +9,8 @@ use yii\helpers\ArrayHelper;
 use backend\models\Specializations;
 use backend\models\Designation;
 use frontend\models\EmployeeForm;
+use kartik\depdrop\DepDrop;
+use yii\helpers\Url;
 
 $this->title = 'UserProfileUpdate';
 ?>
@@ -104,6 +106,36 @@ select {
 								<div class="form">
 									<h5>Mobile No</h5>
 										<?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true,'placeholder' => 'Mobile No'])->label(false)?>
+									</div>
+									<div class="form">
+									<h5>Country</h5>
+									  <?= $form->field($model, 'country')->dropDownList($model->countriesList,['prompt'=>'Select Countries'])->label(false);?>
+									</div>
+									
+									<div class="form">
+									
+									    
+                    <?php echo $form->field($model, 'state')->widget(DepDrop::classname(), [
+    'pluginOptions'=>[
+        'depends'=>['employerjobpostings-country'],
+        'placeholder'=>'Select States',
+        'url'=>Url::to(['/employercompany/empcommon/states'])
+    ]
+]);?>
+									</div>
+									
+									<div class="form">
+									
+									   
+                 
+                   <?php echo $form->field($model, 'city')->widget(DepDrop::classname(), [
+    'pluginOptions'=>[
+        'depends'=>['employerjobpostings-state'],
+        'placeholder'=>'Select Cities',
+        'url'=>Url::to(['/employercompany/empcommon/cities'])
+    ]
+]);?>
+
 									</div>
 							</div>
 						</div>
