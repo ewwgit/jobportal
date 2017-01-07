@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\widgets\ListView;
 use kartik\typeahead\TypeaheadBasic;
 use kartik\typeahead\Typeahead;
+use kartik\select2\Select2;
 
 $this->title = 'Browse Jobs';
 
@@ -30,7 +31,7 @@ select {
 	   <div class="container">
 	
            <?php $form = ActiveForm::begin([
-        'action' => Url::to(['index']),
+        'action' => Url::to(['browseresumes']),
         'method' => 'get',
         'options' => ['class' => 'form-inline form-group form-group-sm col-xs-12'],
         'fieldConfig' => [
@@ -70,17 +71,22 @@ select {
      ?>
   
        
-	   <?php 
-	
-     echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
-    'data' => 	$skillsInfonew,
-    'options' => ['placeholder' => 'Enter Skills ...'],
-    'pluginOptions' => ['highlight'=>true],
-]);
- 
-     
-     ?>
+	<?php 
+						
+                           echo  $form->field($searchModel, 'skills')->widget(Select2::classname(), [
+                           		                 
+                           		       'data'=>$skillsInfonew,
+                           		        'options' => ['placeholder' => 'Select a Skill', 'multiple' => true],
+                                        'pluginOptions' => [
+                                        'tags' => true,
+                                        'allowClear' => true,
+                                        'tokenSeparators' => [','],
+                                      //'maximumInputLength' => 10
+                                             ],
+                           		      //'value' => ['valu1','valu2']
+                           ]);?>
       
+     		
 	 
          <button><i class="fa fa-search"></i></button></nobr>
  
@@ -136,7 +142,7 @@ select {
 			
 		</ul>
 		<div class="clearfix"></div>
-
+        
 		
 
 	</div>
