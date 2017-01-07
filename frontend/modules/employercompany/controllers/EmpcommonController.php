@@ -42,6 +42,8 @@ use frontend\models\EmployeeSkills;
 use frontend\models\EmployeeJobsearch;
 use frontend\models\EmployeeEmployer;
 //use kartik\growl\Growl;
+use frontend\models\SignupForm;
+
 
 
 
@@ -1063,6 +1065,19 @@ exit;
     			'companydata' => $companydata,
     			'desdata' => $desdata,
     			'expdata' => $expdata,]);
+	
+	}
+	public function actionResumepage()
+	{
+		$model = new SignupForm();
+	
+		$this->layout = '@app/views/layouts/resumepage';
+		$userid = 1;
+		$userdata = User::find()->where(['id'=> $userid] )->joinWith('usersignup')->joinWith('education')->joinwith('employeeEmployer')->one();
+	
+	
+	
+		return $this->render('resumepage',['userdata'=>$userdata ]);
 	
 	}
 	
