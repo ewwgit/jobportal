@@ -1069,16 +1069,11 @@ exit;
     			'expdata' => $expdata,]);
 	
 	}
-	public function actionResumepage()
+	public function actionResumepage($id)
 	{
 		$model = new SignupForm();
-	
 		$this->layout = '@app/views/layouts/resumepage';
-		$userid = 1;
-		$userdata = User::find()->where(['id'=> $userid] )->joinWith('usersignup')->joinWith('education')->joinwith('employeeEmployer')->one();
-	
-	
-	
+		$userdata = User::find()->joinWith('usersignup')->joinWith('education')->joinwith('employeeEmployer')->joinwith('useremployeepreference')->where(['id'=> $id] )->one();
 		return $this->render('resumepage',['userdata'=>$userdata ]);
 	
 	}

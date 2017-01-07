@@ -9,16 +9,17 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $model->userid])->all()
 $designationInfo = EmployeeEmployer::find()->where(['userid' => $model->userid])->one();
 ?>
 
-<li><a href="resume-page.html">
-				<img src="<?= $model->usersignup->profileimage;?>" alt="">
+<div class="employeenewlicls">
+				<a
+		href="<?= Url::to(['/employercompany/empcommon/resumepage','id'=>$model->userid])?>"><img src="<?= $model->usersignup->profileimage;?>" alt=""></a>
 				<div class="resumes-list-content">
-					<h4><?= $model->usersignup->name. ' '.$model->usersignup->surname;?> <span>
+					<a href="<?= Url::to(['/employercompany/empcommon/resumepage','id'=>$model->userid])?>"><h4><?= $model->usersignup->name. ' '.$model->usersignup->surname;?> <span>
 					<?php if (isset($designationInfo->designation)){?>
 					<?= $designationInfo->designation;?>
 					<?php }else{?>
 					Not Mentioned
 					<?php }?>
-</span></h4>
+</span></h4></a>
 					<span><i class="fa fa-map-marker"></i> Melbourne</span>
 					<span><i class="fa fa-money"></i> $100 / hour</span>
 					<p>Over 8000 hours on oDesk (only Drupal related). Highly motivated, goal-oriented, hands-on senior software engineer with extensive technical skills and over 15 years of experience in software development</p>
@@ -34,4 +35,4 @@ $designationInfo = EmployeeEmployer::find()->where(['userid' => $model->userid])
 				</div>
 				</a>
 				<div class="clearfix"></div>
-			</li>
+			</div>

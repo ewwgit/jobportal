@@ -110,7 +110,7 @@ select {
      
           
           
-		<ul class="resumes-list">
+		<div class="resumes-list">
 
 			
 			
@@ -136,7 +136,7 @@ select {
 			?> 
 
 			
-		</ul>
+		</div>
 		<div class="clearfix"></div>
         
 		

@@ -6,6 +6,11 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use frontend\models\EmployeeSignup;
+use frontend\models\EmployeeSkills;
+use frontend\models\EmployeeEducation;
+use frontend\models\EmployeeEmployer;
+use frontend\models\EmployeePreferences;
 
 /**
  * User model
@@ -186,5 +191,25 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    public function getUsersignup()
+    {
+    	return $this->hasOne(EmployeeSignup::className(), ['userid' => 'id']);
+    }
+    public function getUserskills()
+    {
+    	return $this->hasOne(EmployeeSkills::className(), ['userid' => 'id']);
+    }
+    public function getEducation()
+    {
+    	return $this->hasOne(EmployeeEducation::className(), ['userid' => 'id']);
+    }
+    public function getEmployeeEmployer()
+    {
+    	return $this->hasOne(EmployeeEmployer::className(), ['userid' => 'id']);
+    }
+    public function getUseremployeepreference()
+    {
+    	return $this->hasOne(EmployeePreferences::className(), ['userid' => 'id']);
     }
 }

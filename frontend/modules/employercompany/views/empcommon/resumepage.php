@@ -17,17 +17,17 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $userdata->id])->all();
 	<div class="container">
 		<div class="ten columns">
 			<div class="resume-titlebar">
-				<img src="/jobportal/<?= $userdata->usersignup->profileimage?>">
+				<img src="/jobportal/<?php echo isset( $userdata->usersignup->profileimage)? $userdata->usersignup->profileimage : 'Not Mentioned' ;  ?>">
 				<div class="resumes-list-content">
 					<h4><?= $userdata->username?> <span>
 					
 </span></h4>
-					<span class="icons"><i class="fa fa-map-marker"></i> Mountain View, CA</span>
-					<span class="icons"><i class="fa fa-money"></i> $100 / hour</span>
+					<span class="icons"><i class="fa fa-map-marker"></i> <?php echo isset( $userdata->usersignup->state)? $userdata->usersignup->state : '' ;  ?>, <?php echo isset( $userdata->usersignup->city)? $userdata->usersignup->city : '' ;  ?></span>
+					 <span class="icons"><i class="fa fa-money"></i> <?= $userdata->useremployeepreference->experience; ?> Years</span> 
 					<span class="icons"><a href="#"><i class="fa fa-link"></i>Website</a></span>
 					
 					<span class="icons"><a href="">
-					<i class="fa fa-envelope"></i> <?= $userdata->email?>
+					<i class="fa fa-envelope"></i> <?php echo isset( $userdata->email)? $userdata->email : 'Not Mentioned' ;  ?>
 					</a>
 					
 					
@@ -47,11 +47,11 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $userdata->id])->all();
 		<div class="six columns">
 			<div class="two-buttons">
 
-				<a href="#small-dialog" class="popup-with-zoom-anim button"><i class="fa fa-envelope"></i> Send Message</a>
+				<!-- <a href="#small-dialog" class="popup-with-zoom-anim button"><i class="fa fa-envelope"></i> Send Message</a> -->
 
 				<div id="small-dialog" class="zoom-anim-dialog mfp-hide apply-popup">
 					<div class="small-dialog-headline">
-						<h2>Send Message to John Doe</h2>
+						<!-- <h2>Send Message to John Doe</h2> -->
 					</div>
 
 					<div class="small-dialog-content">
@@ -65,7 +65,7 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $userdata->id])->all();
 					</div>
 					
 				</div>
-				<a href="#" class="button dark"><i class="fa fa-star"></i> Bookmark This Resume</a>
+				<!-- <a href="#" class="button dark"><i class="fa fa-star"></i> Bookmark This Resume</a> -->
 
 
 			</div>
@@ -85,14 +85,9 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $userdata->id])->all();
 
 		<br>
 
-		<p>The <strong>Food Service Specialist</strong> will have responsibilities that include:</p>
+		<p><?= $userdata->usersignup->description;?></p>
 
-		<ul class="list-1">
-			<li>Excellent customer service skills, communication skills, and a happy, smiling attitude are essential.</li>
-			<li>Must be available to work required shifts including weekends, evenings and holidays.</li>
-			<li>Must be able to perform repeated bending, standing and reaching.</li>
-			<li>Must be able to occasionally lift up to 50 pounds</li>
-		</ul>
+		
 
 	</div>
 	</div>
@@ -109,7 +104,7 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $userdata->id])->all();
 				<small class="date"><?= $userdata->education->passingyear?></small>
 				<strong> <?= $userdata->education->highdegree?></br><?= $userdata->education->collegename?></strong>
 			</dt>
-			<dd>
+			<!-- <dd>
 				<p>Captain, why are we out here chasing comets? Maybe we better talk out here; the observation lounge has turned into a swamp. Ensign Babyface!</p>
 			</dd>
 
@@ -129,7 +124,7 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $userdata->id])->all();
 			</dt>
 			<dd>
 				<p>Phasellus vestibulum metus orci, ut facilisis dolor interdum eget. Pellentesque magna sem, hendrerit nec elit sit amet, ornare efficitur est.</p>
-			</dd>
+			</dd> -->
 
 		</dl>
 
