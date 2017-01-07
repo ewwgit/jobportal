@@ -195,8 +195,8 @@ select {
 										<?=$form->field ( $model, 'joblocation' )->dropDownList ( [ 'Hyderabad/Secundrabad' => 'Hyderabad/Secundrabad','Banglore' => 'Banglore','Chennai' => 'Chennai','Mumbai' => 'Mumbai','Pune' => 'Pune','Gurgon' => 'Gurgon','Delhi' => ' Delhi' ], [ 'prompt' => 'select your joblocation' ] )->label ( false )?>
 									</div>
 								<div class="form">
-									<h5>Experience</h5>
-										<?=$form->field ( $model, 'experience' )->dropDownList ( [ 'Fresher' => 'Fresher','1 year' => '1 year','2 year' => '2 year','3 year' => '3 year','4 year' => '4 year','5 year' => '5 year','6 year' => ' 6 year' ], [ 'prompt' => 'select your experience' ] )->label ( false )?>
+									<h5>Experience(In Years)</h5>
+										<?=$form->field ( $model, 'experience' )->dropDownList ( [ 'Fresher' => 'Fresher','1 ' => '1 ','2 ' => '2 ','3 ' => '3','4 ' => '4 ','5 ' => '5 ','6 ' => ' 6 ' ], [ 'prompt' => 'select your experience' ] )->label ( false )?>
 									</div>
 								<div class="form">
 									<h5>Job Type</h5>
