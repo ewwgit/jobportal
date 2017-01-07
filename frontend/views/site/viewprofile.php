@@ -120,6 +120,17 @@ td {
                         <td>Date of Birth :</td>
                         <td><?php echo  isset($empmodel->dateofbirth)? $empmodel->dateofbirth : 'Not Mentioned' ;    ?></td>
                       </tr>
+                       <tr>
+                        <td>Country:</td>
+                        <td><?php echo  isset($empmodel->country)? $empmodel->country : 'Not Mentioned' ;    ?></td>
+                      </tr>
+                       <td>State:</td>
+                        <td><?php echo  isset($empmodel->state)? $empmodel->state : 'Not Mentioned' ;    ?></td>
+                      </tr>
+                       <td>City:</td>
+                        <td><?php echo  isset($empmodel->city)? $empmodel->city : 'Not Mentioned' ;    ?></td>
+                      </tr>
+                      
                     </tbody>
                   </table>
                 </div>

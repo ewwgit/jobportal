@@ -113,6 +113,9 @@ class EmployeeForm extends Model {
 								'gender',
 								'dateofbirth',
 								'mobilenumber',
+								'country',
+								'state',
+								'city',
 								
 								
 								'highdegree',
@@ -202,7 +205,10 @@ class EmployeeForm extends Model {
 								'language',
 								'proficiencylevel',
 								
-								'resume'
+								'resume',
+								'country',
+								'state',
+								'city',
 								
 						
 						],

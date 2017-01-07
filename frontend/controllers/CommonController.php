@@ -290,7 +290,7 @@ class CommonController extends Controller
 		if (($model->load(Yii::$app->request->post())) && ($model->validate()) )
 		{
 			
-			
+			//print_r($model);exit();
 		
 			/* insert values into user and signup tables*/
 			
@@ -321,9 +321,10 @@ class CommonController extends Controller
 					$profileimage = '/frontend/web/profileimages/'.$imageName;
 					$employee->profileimage = $profileimage;
 				}
-				$employee->country = Countries::getCountryName($model->country);
-				$employee->state = States::getStateName($model->state);
-				$employee->city = Cities::getCityName($model->city);
+				//print_r(Countries::getCountryName($model->country));exit();
+				$employee -> country = Countries::getCountryName($model->country);
+				$employee -> state = States::getStateName($model->state);
+				$employee -> city =  Cities::getCityName($model->city);
 				$empmodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 				
 				  
