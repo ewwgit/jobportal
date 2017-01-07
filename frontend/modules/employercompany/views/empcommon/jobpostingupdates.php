@@ -76,14 +76,10 @@ select {
 												<td><?=$form->field ( $model, 'dateofestablishment' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter establish date ...' ],'pluginOptions' => [ 'autoclose' => true ,'format' => 'yyyy-mm-dd',] ] );?></td>
 											</tr>
 											<tr>
-												<td><?= $form->field($model, 'country')->dropDownList(['Afghanistan' =>'Afghanistan' , 'Brazil' =>'Brazil', 'Bulgaria' =>'Bulgaria' , 'Canada' =>'Canada' , 'India' =>'India' , 'United Kingdom' =>'United Kingdom' , 'USA' =>'USA' , 'Rome' =>'Rome'],['prompt' =>'select'],['value' => $model->country]) ?></td>
+												<td>
+												 <?= $form->field($model, 'country')->dropDownList($model->countriesList,['prompt'=>'Select Countries'],['value' => $model->country]); ?></td>
 											</tr>
-											<tr>
-												<td><?= $form->field($model, 'state')->dropDownList(['Himachal Pradesh' =>'Himachal Pradesh' , 'Andrapradesh' =>'Andrapradesh', 'Italy' =>'Italy' , 'California' =>'California' , 'Sweden' =>'Sweden' , 'Newyork' =>'Newyork' , 'parise' =>'parise'],['prompt' =>'select'],['value' => $model->state]) ?></td>
-											</tr>
-											<tr>
-												<td><?= $form->field($model, 'city')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select'],['value' => $model->city]) ?></td>
-											</tr>
+											
 											<tr>
 												<td><?= $form->field($model, 'zipcode')->textInput(['maxlength' => true],['value' => $model->zipcode])?></td>
 											</tr>

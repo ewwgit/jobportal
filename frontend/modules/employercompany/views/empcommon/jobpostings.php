@@ -68,28 +68,8 @@ select {
                   </div>
 
 									<!-- Location -->
-									<div class="form">
-                    
-                    <?php echo $form->field($model, 'state')->widget(DepDrop::classname(), [
-        'pluginOptions'=>[
-        'depends'=>['employerjobpostings-country'],
-        'placeholder'=>'Select States',
-        'url'=>Url::to(['/employercompany/empcommon/states'])
-    ]
-]);?>
-               
-                  </div>
-									<div class="form-group">
-                    
-                   
-                   <?php echo $form->field($model, 'city')->widget(DepDrop::classname(), [
-    'pluginOptions'=>[
-        'depends'=>['employerjobpostings-state'],
-        'placeholder'=>'Select Cities',
-        'url'=>Url::to(['/employercompany/empcommon/cities'])
-    ]
-]);?>
-                  </div>
+									
+									
                   	<div class="form-group">
                   	<?php 
 						

@@ -492,8 +492,8 @@ class EmpcommonController extends Controller {
 			$model->job_location = $location_comma_separated;
 			$model->userid = Yii::$app->employer->employerid;
 			$model->country = Countries::getCountryName($model->country);
-			$model->state = States::getStateName($model->state);
-			$model->city = Cities::getCityName($model->city);
+		//	$model->state = States::getStateName($model->state);
+		//	$model->city = Cities::getCityName($model->city);
 			$model->save ();
 			
 			
@@ -553,6 +553,7 @@ class EmpcommonController extends Controller {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = $this->findModel ( $id );
 		$data=$model->job_location;
+		$model->countriesList = Countries::getCountries();
 		$imageData = EmployerJobpostings::find ()->where ( [
 				'userid' => Yii::$app->employer->employerid
 		] )->one ();
@@ -604,7 +605,7 @@ class EmpcommonController extends Controller {
 					$array_loc = implode ( ",",$array );
 					
 				}
-			
+			$model->country = Countries::getCountryName($model->country);
 			$model->job_location = $array_loc;
 			$model->save ();
 			
