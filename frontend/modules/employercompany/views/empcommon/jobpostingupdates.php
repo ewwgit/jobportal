@@ -5,6 +5,7 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Designation;
 use kartik\select2\Select2;
+use kartik\file\FileInput;
 
 $this->title = 'POST A JOB';
 
@@ -36,6 +37,22 @@ select {
 				<div class="container">
 					<div class="col-md-2 col-sm-2 col-xs-2 profile_img">
 						<div class="resume-titlebar"></div>
+							<div class="form">
+						<h5>Upload Your posting image</h5>
+						<img class='image'
+						src="<?php
+							if($model->imagenew){
+														
+							echo  Yii::getAlias('/jobportal/').$model->imagenew;
+							}else {
+									 echo "/jobportal/frontend/web/profileimages/1483335917profile_pic.jpg" ;
+								      }
+								?>"
+							width="100" height="100"> </img> 
+            <?=$form->field ( $model, 'image' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => ' Image', 'allowedFileExtensions'=>['jpg','png','jpeg'] ]] ] )->label ( false );?>
+            
+               
+						</div>
 					</div>
 					<div class="col-md-9" style="">
 						<div class="row">

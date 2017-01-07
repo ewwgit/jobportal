@@ -137,6 +137,7 @@ class EmpcommonController extends Controller {
 			$model->skills = $employeData->skills;
 			$data=$model->skills;
 			
+			
 			if (! Empty ( $data )) {
 				$array = $model->skills;
 				
@@ -447,6 +448,21 @@ class EmpcommonController extends Controller {
 		
 		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
 			
+			$model->image = UploadedFile::getInstance ( $model, 'image' );
+			if(!(empty($model->image)))
+			{
+			
+				$imageName = time().$model->image->name;
+			
+				$model->image->saveAs('profileimages/'.$imageName );
+			
+			
+				$model->image = 'profileimages/'.$imageName;
+			
+				$image = '/frontend/web/profileimages/'.$imageName;
+				$model->image = $image;
+			}
+			
 	
 			
 			$skill = $model->skills;
@@ -468,7 +484,7 @@ class EmpcommonController extends Controller {
 				//print_r($arraylocation);exit;
 				$location_comma_separated = rtrim($arraylocation,",");
 			}
-			
+			//$model->image = $employermodel->image;
 			$model->createdDate = date('Y-m-d H:i:s');
 			$model->updatedDate = date('Y-m-d H:i:s');
 			$model->status = 1;
@@ -537,6 +553,12 @@ class EmpcommonController extends Controller {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = $this->findModel ( $id );
 		$data=$model->job_location;
+		$imageData = EmployerJobpostings::find ()->where ( [
+				'userid' => Yii::$app->employer->employerid
+		] )->one ();
+		if (! (empty ( $imageData ))) {
+			$model->imagenew = $imageData->image;
+		}
 			
 		if (! Empty ( $data )) {
 			$array = $model->job_location;
@@ -561,6 +583,20 @@ class EmpcommonController extends Controller {
 		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
 			
 			$location = $model->job_location;
+			$model->image = UploadedFile::getInstance ( $model, 'image' );
+			if(!(empty($model->image)))
+			{
+					
+				$imageName = time().$model->image->name;
+					
+				$model->image->saveAs('profileimages/'.$imageName );
+					
+					
+				$model->image = 'profileimages/'.$imageName;
+					
+				$image = '/frontend/web/profileimages/'.$imageName;
+				$model->image = $image;
+			}
 			
 		
 				if (! Empty ( $location )) {

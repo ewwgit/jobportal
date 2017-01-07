@@ -11,6 +11,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 	public $countriesList;
 	public $statesData;
 	public $allskills;
+	public $imagenew;
 	
 	public static function tableName() {
 		return 'employer_post_jobs';
@@ -29,14 +30,15 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'Description',
 								'jobtype',
 								
+								
 								'address',
 								'company_name',
 								'company_type',
 								'industry_type',
 								'dateofestablishment',
-								'country',
-								'state',
-								'city',
+// 								'country',
+// 								'state',
+// 								'city',
 								'zipcode',
 								'Min_Experience',
 								'Max_Experience' ,
@@ -71,7 +73,8 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'Max_Experience' ,
 								'userid',
 								'job_location',
-								'status'
+								'status',
+								'image'
 						],
 						'safe' 
 				] 
@@ -88,6 +91,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 				'jobtype' => 'Jobtype',
 				'job_location' =>'Job Location',
 				'status'=>'Status',
+				'image'=>'Image',
 			
 				'address' => 'Address',
 				'roleid' => 'Roleid',
@@ -104,11 +108,5 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 				'userid' =>'userid'
 		];
 	}
-	// public static skills($skills){
-	// if($skills){
-	// return ['skills'];
-	// }else{
-	// return [];
-	// }
-	// }
+	
 }

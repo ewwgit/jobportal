@@ -7,6 +7,7 @@ use backend\models\Designation;
 use kartik\select2\Select2;
 use kartik\depdrop\DepDrop;
 use yii\helpers\Url;
+use kartik\file\FileInput;
 
 $this->title = ' JOB Postings';
 
@@ -31,10 +32,13 @@ select {
 				<div class="container">
 
 					<div class="col-md-3 col-sm-3 col-xs-3 profile_img">
+						<div class="form">
+						<h5>jobposting image:</h5>
 
 
-						
-
+					  <?=$form->field ( $model, 'image' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => ' Image Uplode', 'allowedFileExtensions'=>['jpg','png','jpeg'] ]] ] )->label ( false );?>
+            	
+</div>
 					</div>
 					<div class="col-md-9">
 						<div class="row">
@@ -66,17 +70,14 @@ select {
 									<!-- Location -->
 									<div class="form">
                     
-                   
-                    
                     <?php echo $form->field($model, 'state')->widget(DepDrop::classname(), [
-    'pluginOptions'=>[
+        'pluginOptions'=>[
         'depends'=>['employerjobpostings-country'],
         'placeholder'=>'Select States',
         'url'=>Url::to(['/employercompany/empcommon/states'])
     ]
 ]);?>
-                    
-                    
+               
                   </div>
 									<div class="form-group">
                     
