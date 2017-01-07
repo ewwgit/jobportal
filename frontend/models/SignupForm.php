@@ -23,6 +23,7 @@ class SignupForm extends Model {
 	public $country;
 	public $state;
 	public $city;
+	public $decsription;
 	
 	/**
 	 * @inheritdoc
@@ -117,7 +118,11 @@ class SignupForm extends Model {
 								'mobilenumber',
 								'confirmpassword',
 								'email',
-								'profileimage' 
+								'profileimage', 
+								'country',
+								'state',
+								'city',
+								'description',
 						],
 						'safe' 
 				] 

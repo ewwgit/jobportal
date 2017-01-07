@@ -115,7 +115,7 @@ select {
 									<div class="form">
 									
 									    
-                    <?php echo $form->field($model, 'state')->widget(DepDrop::classname(), [
+                    <?php echo $form->field($model, 'state')->widget(DepDrop::classname(),[
     'pluginOptions'=>[
         'depends'=>['employeeform-country'],
         'placeholder'=>'Select States',
@@ -137,6 +137,14 @@ select {
 ]);?>
 
 									</div>
+									
+									
+									<div class="form">
+									<h5>Description</h5>
+										<?= $form->field($model, 'description')->textArea(['rows' => '3'])->label(false)?>
+									</div>
+									
+										
 							</div>
 						</div>
 						<div class="col-md-6">

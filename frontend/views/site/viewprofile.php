@@ -130,6 +130,11 @@ td {
                        <td>City:</td>
                         <td><?php echo  isset($empmodel->city)? $empmodel->city : 'Not Mentioned' ;    ?></td>
                       </tr>
+                        </tr>
+                       <td>Employee Description:</td>
+                        <td><?php echo  isset($empmodel->description)? $empmodel->description : 'Not Mentioned' ;    ?></td>
+                      </tr>
+                      
                       
                     </tbody>
                   </table>

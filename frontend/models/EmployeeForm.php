@@ -31,6 +31,7 @@ class EmployeeForm extends Model {
 	public $state;
 	public $city;
 	public $countriesList;
+	public $description;
 	public $userid;
 	/**
 	 * * Educational Details **
@@ -116,6 +117,7 @@ class EmployeeForm extends Model {
 								'country',
 								'state',
 								'city',
+								'description',
 								
 								
 								'highdegree',
@@ -209,6 +211,7 @@ class EmployeeForm extends Model {
 								'country',
 								'state',
 								'city',
+								'description',
 								
 						
 						],

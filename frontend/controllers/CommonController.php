@@ -155,9 +155,12 @@ class CommonController extends Controller
 			$empdateofbirth= date('Y-m-d', strtotime($employee->dateofbirth));
 			$model->dateofbirth = $empdateofbirth;
         	$model->mobilenumber = $employee->mobilenumber;	
+        	
         	$model->country = $employee->country;
-        	$model->state = $employee -> state;
+        	///print_r($model->country);exit();
+        	$model->state =  $employee->state;
         	$model-> city = $employee->city;
+        	$model -> description = $employee -> description;
 		}
 		
 		/* employee education details*/
@@ -325,6 +328,8 @@ class CommonController extends Controller
 				$employee -> country = Countries::getCountryName($model->country);
 				$employee -> state = States::getStateName($model->state);
 				$employee -> city =  Cities::getCityName($model->city);
+				print_r($model->description);
+				$employee -> description = $model -> description;
 				$empmodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 				
 				  
@@ -362,6 +367,8 @@ class CommonController extends Controller
 				$empmodel->country = Countries::getCountryName($model->country);
 				$empmodel->state = States::getStateName($model->state);
 				$empmodel->city = Cities::getCityName($model->city);
+				$empmodel->description = $model->description;
+				
 				$empmodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 				//print_r($empmodel);exit();
 				$empmodel-> save();
