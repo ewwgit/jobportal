@@ -39,6 +39,7 @@ use backend\models\States;
 use backend\models\Cities;
 use yii\helpers\Json;
 use frontend\models\EmployeeSkills;
+use frontend\models\EmployeeJobsearch;
 //use kartik\growl\Growl;
 
 
@@ -952,6 +953,61 @@ exit;
 	}
     public function actionBrowseresumes()
 	{
+		$searchModel = new EmployeeJobsearch();
+		$skillsdata = EmployerJobpostings::find()
+		->select('skills')
+		->all();
+		
+		$skillsInfonew = array();
+		if(!empty($skillsdata))
+		{
+			foreach ($skillsdata as $skillnew)
+			{
+				//echo rtrim($skillnew->skills,",");
+				$aryconvertskill = explode(",",rtrim($skillnew->skills,","));
+				for($k=0; $k < count($aryconvertskill); $k++)
+				{
+					$skillsInfonew["$aryconvertskill[$k]"] = $aryconvertskill[$k];
+				}
+			}
+		}
+		else {
+			$skillsInfonew =[''];
+		}
+		 
+		$companydata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
+		if($companydata)
+		{
+			$companydata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
+		}
+		else {
+			$companydata = [''];
+		}
+		 
+		 
+		$desdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
+		if($desdata)
+		{
+			$desdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
+		}
+		else {
+			$desdata = [''];
+		}
+		 
+		 
+		$expdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
+		if($expdata)
+		{
+			$expdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
+		}
+		else {
+			$expdata =[''];
+		}
+		//print_r($expdata);exit();
+		   
+		   
+		   
+		
 		$skills = ['html','php'];
 		$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployee')->where(['IN','skillname', $skills]);
 		//print_r($skillsInfo);exit();
@@ -961,7 +1017,10 @@ exit;
 		]);
 		$this->layout = '@app/views/layouts/employerinner';
 		//echo "hai";exit;
-		return $this->render('browseresumes',['dataProvider' => $dataProvider]);
+		return $this->render('browseresumes',['dataProvider' => $dataProvider,'searchModel' => $searchModel,'skillsInfonew' => $skillsInfonew,
+    			'companydata' => $companydata,
+    			'desdata' => $desdata,
+    			'expdata' => $expdata,]);
 	
 	}
 	

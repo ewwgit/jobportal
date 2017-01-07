@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 use yii\widgets\ListView;
+use kartik\typeahead\TypeaheadBasic;
+use kartik\typeahead\Typeahead;
 
 $this->title = 'Browse Jobs';
 
@@ -21,15 +23,91 @@ select {
 
 <div class="container">
 	<!-- Recent Jobs -->
-	<div class="eleven columns">
+  	<div class="eleven columns">
+	  
 	<div class="padding-right">
+	
+	   <div class="container">
+	
+           <?php $form = ActiveForm::begin([
+        'action' => Url::to(['index']),
+        'method' => 'get',
+        'options' => ['class' => 'form-inline form-group form-group-sm col-xs-12'],
+        'fieldConfig' => [
+            'template' => "{input}",
+        ],
+    ]); ?>
+  
+    <nobr>
+       <?php 
+  
+     echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
+    'data' => $companydata,
+    'options' => ['placeholder' => 'Enter CompanyName ...'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ ?>
+ 
+    
+	 <?php 
+	
+     echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
+    'data' => $desdata,
+    'options' => ['placeholder' => 'Enter Designation ...'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ ?>
+ 
+        <?php 
+     
+     echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
+    'data' =>$expdata,
+    'options' => ['placeholder' => 'Enter Experience ...'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ 
+     
+     ?>
+  
+       
+	   <?php 
+	
+     echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
+    'data' => 	$skillsInfonew,
+    'options' => ['placeholder' => 'Enter Skills ...'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ 
+     
+     ?>
+      
+	 
+         <button><i class="fa fa-search"></i></button></nobr>
+ 
+        
+                
+      
+          
+          
+          
+           <?php ActiveForm::end(); ?>
+           </div>
+           
+      
+    
+	
 		
 		<form action="#" method="get" class="list-search">
 			<button><i class="fa fa-search"></i></button>
 			<input type="text" placeholder="job title, keywords or company name" value=""/>
 			<div class="clearfix"></div>
 		</form>
-
+		
+		
+	
+     
+          
+          
 		<ul class="resumes-list">
 
 			
