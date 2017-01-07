@@ -43,6 +43,8 @@ use frontend\models\EmployeeJobsearch;
 use frontend\models\EmployeeEmployer;
 //use kartik\growl\Growl;
 use frontend\models\SignupForm;
+use backend\models\Designation;
+
 
 
 
@@ -989,10 +991,10 @@ exit;
 		}
 		 
 		 
-		$desdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
+		$desdata = ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name');
 		if($desdata)
 		{
-			$desdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
+			$desdata =  ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name');
 		}
 		else {
 			$desdata = [''];

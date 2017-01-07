@@ -7,6 +7,8 @@ use yii\widgets\ListView;
 use kartik\typeahead\TypeaheadBasic;
 use kartik\typeahead\Typeahead;
 use kartik\select2\Select2;
+use backend\models\Designation;
+
 
 $this->title = 'Browse Jobs';
 
@@ -42,7 +44,7 @@ select {
     <nobr>
        
  
-    
+    	
 	 <?php 
 	
      echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
@@ -51,17 +53,18 @@ select {
     'pluginOptions' => ['highlight'=>true],
 ]);
  ?>
- 
-        <?php 
+        
+       <?php  
      
-     echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
-    'data' =>$expdata,
-    'options' => ['placeholder' => 'Enter Experience ...'],
-    'pluginOptions' => ['highlight'=>true],
-]);
+        
  
-     
-     ?>
+       	?>
+       	<?=$form->field ( $searchModel, 'Min_Experience' )->dropDownList ( ['0' => '0','1' => '1','2'=> '2','3'=>'3','4' => '4','5' => '5','6'=> '6','7'=>'7',
+       
+       			'8' => '8','9' => '9','10'=> '10','11'=>'11','12' => '12','13' => '13','14'=> '14','15'=>'15']
+        
+       
+       	       			, [ 'prompt' => 'select your experience' ] )->label ( false );?>
   
        
 	<?php 
