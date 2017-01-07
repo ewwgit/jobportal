@@ -12,7 +12,7 @@ use frontend\models\EmployeeJobapplied;
 
 
 
-          <li class="highlighted"> 
+          <div class="highlighted newlicls"> 
           <img src="<?php echo Yii::getAlias('@web');?>/frontend/web/images/all-categories-photo.jpg" alt="">
             <div class="job-list-content">
               <h4> <a
@@ -44,7 +44,7 @@ use frontend\models\EmployeeJobapplied;
             				
             
           
-          </li>
+          </div>
               
 	
 				
