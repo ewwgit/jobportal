@@ -117,7 +117,7 @@ select {
 									    
                     <?php echo $form->field($model, 'state')->widget(DepDrop::classname(), [
     'pluginOptions'=>[
-        'depends'=>['employerjobpostings-country'],
+        'depends'=>['employeeform-country'],
         'placeholder'=>'Select States',
         'url'=>Url::to(['/employercompany/empcommon/states'])
     ]
@@ -130,7 +130,7 @@ select {
                  
                    <?php echo $form->field($model, 'city')->widget(DepDrop::classname(), [
     'pluginOptions'=>[
-        'depends'=>['employerjobpostings-state'],
+        'depends'=>['employeeform-state'],
         'placeholder'=>'Select Cities',
         'url'=>Url::to(['/employercompany/empcommon/cities'])
     ]
