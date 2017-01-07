@@ -40,14 +40,7 @@ select {
     ]); ?>
   
     <nobr>
-       <?php 
-  
-     echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
-    'data' => $companydata,
-    'options' => ['placeholder' => 'Enter CompanyName ...'],
-    'pluginOptions' => ['highlight'=>true],
-]);
- ?>
+       
  
     
 	 <?php 

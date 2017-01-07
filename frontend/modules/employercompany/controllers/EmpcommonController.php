@@ -40,6 +40,7 @@ use backend\models\Cities;
 use yii\helpers\Json;
 use frontend\models\EmployeeSkills;
 use frontend\models\EmployeeJobsearch;
+use frontend\models\EmployeeEmployer;
 //use kartik\growl\Growl;
 
 
@@ -953,6 +954,7 @@ exit;
 	}
     public function actionBrowseresumes()
 	{
+    	
 		$searchModel = new EmployeeJobsearch();
 		$skillsdata = EmployerJobpostings::find()
 		->select('skills')
@@ -1004,17 +1006,57 @@ exit;
 			$expdata =[''];
 		}
 		//print_r($expdata);exit();
-		   
-		   
-		   
-		
-		$skills = ['html','php'];
-		$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployee')->where(['IN','skillname', $skills]);
-		//print_r($skillsInfo);exit();
+		//print_r($_GET['EmployeeJobsearch']);exit();
+		$skills= array();
+		$isquerystirng = 0;
+		if(isset($_GET['EmployeeJobsearch']['skills']) && $_GET['EmployeeJobsearch']['skills'] != '')
+		{
+			$isquerystirng = 1;
+			$skills = $_GET['EmployeeJobsearch']['skills'];
+			$searchModel->skills = $skills;
+			if(isset($_GET['EmployeeJobsearch']['Min_Experience']) && $_GET['EmployeeJobsearch']['Min_Experience'] != '')
+			{
+				$experience = $_GET['EmployeeJobsearch']['Min_Experience'];
+				$searchModel->Min_Experience = $experience;
+				
+				$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployeepreference')->where(['IN','skillname', $skills])->andWhere("experience >= $experience ");
+			}
+			else {
+			     $skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployeepreference')->where(['IN','skillname', $skills]);
+			}
+			
+		}   
+		if(isset($_GET['EmployeeJobsearch']['designation']) && $_GET['EmployeeJobsearch']['designation'] != '')
+		{
+			$isquerystirng = 1;
+			$designation = $_GET['EmployeeJobsearch']['designation'];
+			$searchModel->designation = $designation;
+			$skillsInfo = EmployeeEmployer::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployeepreference')->where(['designation'=> $designation]);
+		}
+		if(isset($_GET['EmployeeJobsearch']['skills']) && $_GET['EmployeeJobsearch']['skills'] != '' && isset($_GET['EmployeeJobsearch']['designation']) && $_GET['EmployeeJobsearch']['designation'] != '')
+		{
+			
+			$isquerystirng = 1;
+			$skills = $_GET['EmployeeJobsearch']['skills'];
+			$designation = $_GET['EmployeeJobsearch']['designation'];
+			$searchModel->skills = $skills;
+			$searchModel->designation = $designation;
+			$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployee')->joinWith('useremployeepreference')->where(['IN','skillname', $skills])->andWhere(['designation'=> $designation]);
+		}
+		if($isquerystirng == 0)
+		{
+			$skills = [''];
+			$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployeepreference')->where(['IN','skillname', $skills]);
+				
+		}
 		$dataProvider = new ActiveDataProvider([
 				'pagination' => ['pageSize' =>5],
 				'query' => $skillsInfo,
 		]);
+		
+		
+		//print_r($skillsInfo);exit();
+		
 		$this->layout = '@app/views/layouts/employerinner';
 		//echo "hai";exit;
 		return $this->render('browseresumes',['dataProvider' => $dataProvider,'searchModel' => $searchModel,'skillsInfonew' => $skillsInfonew,
