@@ -950,10 +950,10 @@ exit;
 			
 			
 	}
-	public function actionBrowseresumes()
+    public function actionBrowseresumes()
 	{
-		$skills = 'html';
-		$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->where(['skillname' => $skills]);
+		$skills = ['html','php'];
+		$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployee')->where(['IN','skillname', $skills]);
 		//print_r($skillsInfo);exit();
 		$dataProvider = new ActiveDataProvider([
 				'pagination' => ['pageSize' =>5],

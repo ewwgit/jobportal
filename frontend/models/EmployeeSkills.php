@@ -66,5 +66,9 @@ class EmployeeSkills extends \yii\db\ActiveRecord
     {
     	return $this->hasOne(EmployeeSignup::className(), ['userid' => 'userid']);
     }
+    public function getUseremployee()
+    {
+    	return $this->hasOne(EmployeeEmployer::className(), ['userid' => 'userid']);
+    }
 }
 
