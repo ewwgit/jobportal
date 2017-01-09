@@ -34,10 +34,10 @@ class EmployeeSignup extends \yii\db\ActiveRecord {
 						[ 
 								'name',
 								'surname',
-								'gender',
+								//'gender',
 								'dateofbirth',
 								'mobilenumber',
-								'profileimage' 
+								//'profileimage' 
 						],
 						'required' 
 				],

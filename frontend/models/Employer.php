@@ -93,14 +93,14 @@ class Employer extends \yii\db\ActiveRecord
 		return [ 
 				'id' => 'ID',
 				'name' => 'Name',
-				'mobilenumber' => 'Mobilenumber',
-				'dateofbirth' => 'Dateofbirth',
+				'mobilenumber' => 'Mobile Number',
+				'dateofbirth' => 'Date of Birth',
 				'gender' => 'Gender',
 				'designation' => 'Designation',
 				'address' => 'Address',
 				'userid' => 'Userid',
 				'skills'=>'skills',
-				'profileimage' =>'profileimage',
+				'profileimage' =>'profile Image',
 				
 				'roleid' => 'Roleid' 
 		];

@@ -75,11 +75,11 @@ class EmployerEducation extends \yii\db\ActiveRecord {
 	public function attributeLabels() {
 		return [ 
 				'eduid' => 'Eduid',
-				'higherdegree' => 'Higherdegree',
+				'higherdegree' => 'Higher degree',
 				'specialization' => 'Specialization',
 				'university' => 'University',
-				'collegename' => 'Collegename',
-				'passingyear' => 'Passingyear',
+				'collegename' => 'College Name',
+				'passingyear' => 'Passing Year',
 				'userid' => 'Userid' 
 		];
 	}

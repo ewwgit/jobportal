@@ -114,6 +114,7 @@ class EmpcommonController extends Controller {
 		$educationModel = new EmployerEducation ();
 		$employmentModel = new Employement ();
 		$preferencesModel = new EmployerPreferences ();
+		//echo Yii::$app->employer->employerid;exit();
 		$userData = User::find ()->where ( [ 
 				'id' => Yii::$app->employer->employerid 
 		] )->one ();
@@ -315,6 +316,7 @@ class EmpcommonController extends Controller {
 				$employmentData->shift_timings = $model->shift_timings;
 				$employmentData->weekly_days = $model->weekly_days;
 				$employmentData->salary = $model->salary;
+				$employmentData->job_role = '';
 				$employmentData->save ();
 			} else {
 				$employmentModel->company_name = $model->company_name;
@@ -327,6 +329,7 @@ class EmpcommonController extends Controller {
 				$employmentModel->weekly_days = $model->weekly_days;
 				$employmentModel->salary = $model->salary;
 				$employmentModel->userid = Yii::$app->employer->employerid;
+				$employmentModel->job_role = '';
 				$employmentModel->save ();
 			  
 			
@@ -500,6 +503,8 @@ class EmpcommonController extends Controller {
 			$model->country = Countries::getCountryName($model->country);
 		//	$model->state = States::getStateName($model->state);
 		//	$model->city = Cities::getCityName($model->city);
+			$model->state = '';
+			$model->city = '';
 			$model->save ();
 			
 			
@@ -604,6 +609,9 @@ class EmpcommonController extends Controller {
 				$image = '/frontend/web/profileimages/'.$imageName;
 				$model->image = $image;
 			}
+			else {
+				$model->image = $model->imagenew;
+			}
 			
 		
 				if (! Empty ( $location )) {
@@ -613,6 +621,7 @@ class EmpcommonController extends Controller {
 				}
 			$model->country = Countries::getCountryName($model->country);
 			$model->job_location = $array_loc;
+			//print_r($model);exit();
 			$model->save ();
 			
 		

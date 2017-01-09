@@ -46,7 +46,16 @@ select {
 					<div class="form">
 						<h5>Upload Your Profile image</h5>
 						<img class='image'
-							src="<?php echo Yii::getAlias('/jobportal').$model->profileimagenew; ?>"
+							src="
+							
+							<?php
+							if($model->profileimagenew){
+								echo isset( $model->profileimagenew)? Url::base().$model->profileimagenew : '' ;
+							
+							}else {
+									 echo Url::base()."/frontend/web/images/user-iconnew.png" ;
+								      }
+								?>"
 							width="100" height="100"> </img> 
             <?=$form->field ( $model, 'profileimage' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => 'Profile Image', 'allowedFileExtensions'=>['jpg','png','jpeg'] ]] ] )->label ( false );?>
             
@@ -99,7 +108,7 @@ select {
 									</div>
 									
 									<div class="form">
-									designation:<?= Html::activeDropDownList($model, 'designation', ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>
+									Designation:<?= Html::activeDropDownList($model, 'designation', ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>
                                                 </div>
 							</div>
 						</div>
@@ -110,14 +119,14 @@ select {
 								</div>
 								
 								<div class="form">
-								higherdegre:<?= Html::activeDropDownList($model, 'higherdegree',ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higherdegree']) ?>	</tr>
+								Higher degre:<?= Html::activeDropDownList($model, 'higherdegree',ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higherdegree']) ?>	</tr>
 									
 									</div>
 
 								<!-- Email -->
 							
 									<div class="form">
-									specialization:<?= Html::activeDropDownList($model, 'specialization',ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization']) ?>
+									Specialization:<?= Html::activeDropDownList($model, 'specialization',ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization']) ?>
                                                 </div>
 								<!-- Email -->
 								<div class="form">

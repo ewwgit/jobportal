@@ -36,7 +36,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'company_type',
 								'industry_type',
 								'dateofestablishment',
-// 								'country',
+ 								'country',
 // 								'state',
 // 								'city',
 								'zipcode',

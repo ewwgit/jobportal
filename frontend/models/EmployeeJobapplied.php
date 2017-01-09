@@ -88,7 +88,15 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     	date_default_timezone_set('UTC');
     	$this->userid = $userId;
     	$this->jobid = $JobId;
-    	$data = Yii::$app->db->createCommand ()->insert ( 'employee_job_applied', [
+    	$employeejobapplied = new EmployeeJobapplied();
+    	$employeejobapplied->userid = $userId;
+    	$employeejobapplied->jobid = $JobId;
+    	$employeejobapplied->appliedDate = date("Y-m-d H:i:s");
+    	$employeejobapplied->rating = 0;
+    	$employeejobapplied->updatedDate = date("Y-m-d H:i:s");
+    	$employeejobapplied->updatedBy = $userId;
+    	$data = $employeejobapplied->save();
+    	/* $data = Yii::$app->db->createCommand ()->insert ( 'employee_job_applied', [
     			'userid' => $this->userid,
     			'jobid' =>  $this->jobid,
     			'appliedDate' => date("Y-m-d H:i:s") // time in India
@@ -97,7 +105,7 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     	]
     			 
     			// 'imageFile' => $filePath
-    			)->execute ();
+    			)->execute (); */
     			//Yii::$app->getSession()->setFlash('success', 'You are successfully Applied.');
     			return $data;
     

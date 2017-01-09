@@ -499,6 +499,7 @@ class SiteController extends Controller
     	$this->layout= '@app/views/layouts/innerpagemain';
     	
         $model = new SignupForm();
+        $employee_signup = new EmployeeSignup();
        //$employeesignup = new EmployeeSignup();
         if ($model->load(Yii::$app->request->post())&& $model->validate()) {
         	$checkMobile = EmployeeSignup::find()->where(['mobilenumber' => $model->mobilenumber])->count();
@@ -534,13 +535,26 @@ class SiteController extends Controller
         		
         		$id = Yii::$app->db->getLastInsertID();
         		//print_r($id);exit();
+        		$employee_signup->name= $name;
+        		$employee_signup->surname= $surname;
+        		$employee_signup->gender= $gender;
+        		$employee_signup->dateofbirth= $dateofbirth;
+        		$employee_signup->mobilenumber= $mobilenumber;
+        		$employee_signup->userid= $id;
+        		$employee_signup->country= '';
+        		$employee_signup->state= '';
+        		$employee_signup->city= '';
+        		$employee_signup->profileimage= '';
+        		$employee_signup->description= '';
+        		$employee_signup->save();
+        		//print_r($employee_signup->errors);exit();
         		
-        		Yii::$app->db->createCommand()->insert('employee_signup', [
+        		/* Yii::$app->db->createCommand()->insert('employee_signup', [
         				'name' => $name,'surname' => $surname, 'gender' => $gender, 'dateofbirth' => $dateofbirth,
-        				'mobilenumber' => $mobilenumber,'userid'=>$id])->execute();
+        				'mobilenumber' => $mobilenumber,'userid'=>$id])->execute(); */
         		
         		Yii::$app->getSession()->setFlash('success', [
-        				'type' => 'warning',
+        				'type' => 'success',
         				'duration' => 20000,
         				'icon' => 'fa fa-users',
         				'message' => 'You Are SuccessFully Registered.',
@@ -691,7 +705,7 @@ class SiteController extends Controller
 	
 	
 		$this->layout= '@app/views/layouts/innerpagemain';
-		$applied_data = EmployeeJobapplied::find()->joinWith('job');
+		$applied_data = EmployeeJobapplied::find()->joinWith('job')->where(['employee_job_applied.userid' => Yii::$app->emplyoee->emplyoeeid]);
 		//print_r($applied_data);exit();
 		
 		
@@ -755,8 +769,8 @@ class SiteController extends Controller
 			else {
 				
 				$result = array();
-				$query = User::find()->where(['id' => Yii::$app->user->id])->one();
-				$userId = Yii::$app->user->id;
+				$query = User::find()->where(['id' => Yii::$app->emplyoee->emplyoeeid])->one();
+				$userId = Yii::$app->emplyoee->emplyoeeid;
 				$JobId = $_GET['jbid'];
 				
 				$model = new EmployeeJobapplied();

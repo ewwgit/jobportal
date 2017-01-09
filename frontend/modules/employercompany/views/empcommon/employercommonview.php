@@ -41,11 +41,12 @@ $this->title = 'EmployerProfile';
 					<div class="resume-titlebar">
 						<img
 							src="<?php
-							if($employemodel->profileimage){
+							if(isset($employemodel->profileimage) &&  $employemodel->profileimage != ''){
 														
-							echo isset( $employemodel->profileimage)? Yii::getAlias('/jobportal/').$employemodel->profileimage : '' ; 
+							
+							echo isset( $employemodel->profileimage)? Url::base().$employemodel->profileimage : '' ;
 							}else {
-									 echo "/jobportal/frontend/web/profileimages/1483335917profile_pic.jpg" ;
+									  echo Url::base()."/frontend/web/images/user-iconnew.png" ;
 								      }
 								?>">
 					</div>

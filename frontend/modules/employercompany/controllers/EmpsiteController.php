@@ -230,6 +230,7 @@ class EmpsiteController extends Controller {
 	public function actionSignup() {
 		
 		$model = new EmployerSignup ();
+		$employermodel = new Employer();
 		$model->scenario = 'signup';
 		
 		$this->layout = '@app/views/layouts/employermain';
@@ -249,7 +250,20 @@ class EmpsiteController extends Controller {
 				
 				$date=$model->create_date = date ( "Y-m-d H:i:s" );
 				$userid = Yii::$app->db->getLastInsertID ();
-				Yii::$app->db->createCommand ()->insert ( 'employer', [ 
+				$employermodel->name = $name;
+				$employermodel->mobilenumber = $mobilenumber;
+				$employermodel->gender = $gender;
+				$employermodel->dateofbirth = $dateofbirth;
+				$employermodel->userid = $userid;
+				$employermodel->create_date = $date;
+				$employermodel->designation = '';
+				$employermodel->address = '';
+				$employermodel->profileimage = '';
+				$employermodel->updated_date = $date;
+				$employermodel->skills = '';
+				$employermodel->save();
+				//print_r($employermodel->errors);exit();
+				/* Yii::$app->db->createCommand ()->insert ( 'employer', [ 
 						'name' => $name,
 						'mobilenumber' => $mobilenumber,
 						'gender' => $gender,
@@ -259,7 +273,7 @@ class EmpsiteController extends Controller {
 						
 						'userid' => $userid ,
 						'create_date'=>$date
-				] )->execute ();
+				] )->execute (); */
 			
 				Yii::$app->getSession()->setFlash('success', [
 						'type' => 'success',

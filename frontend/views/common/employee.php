@@ -55,10 +55,10 @@ select {
 							
 							src="<?php
 							if($model->profileimagenew){
-														
-							echo  Yii::getAlias('/jobportal').$model->profileimagenew;
+								echo isset( $model->profileimagenew)? Url::base().$model->profileimagenew : '' ;
+							
 							}else {
-									 echo Yii::getAlias('/jobportal')."/frontend/web/images/user-iconnew.png" ;
+									 echo Url::base()."/frontend/web/images/user-iconnew.png" ;
 								      }
 								?>"
 							width="100" height="100"> </img> 

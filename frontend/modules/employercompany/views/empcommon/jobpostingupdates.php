@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use backend\models\Designation;
 use kartik\select2\Select2;
 use kartik\file\FileInput;
+use yii\helpers\Url;
 
 $this->title = 'POST A JOB';
 
@@ -42,10 +43,10 @@ select {
 						<img class='image'
 						src="<?php
 							if($model->imagenew){
-														
-							echo  Yii::getAlias('/jobportal/').$model->imagenew;
+													
+							echo isset( $model->imagenew)? Url::base().$model->imagenew : '' ;
 							}else {
-									 echo "/jobportal/frontend/web/profileimages/1483335917profile_pic.jpg" ;
+									  echo Url::base()."/frontend/web/images/user-iconnew.png" ;
 								      }
 								?>"
 							width="100" height="100"> </img> 
@@ -104,11 +105,12 @@ select {
 											<tr>
 												<td>designation:<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'],['class'=>'border']) ?>	</tr>
 											<tr>
-												<td><?= $form->field($model, 'Max_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></td>
-											</tr>
-											<tr>
 												<td><?= $form->field($model, 'Min_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></td>
 											</tr>
+											<tr>
+												<td><?= $form->field($model, 'Max_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></td>
+											</tr>
+											
 											<tr>
 												<td><?= $form->field($model, 'rolecategory')->dropDownList(['SoftWareDeveloper' =>'SoftWareDeveloper' , 'MobileDeveloper' =>'MobileDeveloper'],['prompt' =>'select'],['value' => $model->rolecategory]) ?></td>
 											</tr>
@@ -116,7 +118,9 @@ select {
 												<td><?= $form->field($model, 'Description')->textarea(['rows' => 6],['value' => $model->Description]) ?></td>
 											</tr>
 											<tr>
-												<td><?= $form->field($model, 'jobtype')->inline()->radioList(['Full time' =>'Full time' , 'Part time' =>'Part time'],['prompt' =>'select'],['value' => $model->jobtype])?></td>
+												<td><?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select jobtype'],['value' => $model->jobtype])?>
+												
+												</td>
 											</tr>
 											<tr>
 												<td>

@@ -77,9 +77,9 @@ td {
 							src="<?php
 							if($empmodel->profileimage){
 														
-							echo isset( $empmodel->profileimage)? Yii::getAlias('/jobportal/').$empmodel->profileimage : '' ; 
+							echo isset( $empmodel->profileimage)? Url::base().$empmodel->profileimage : '' ; 
 							}else {
-									 echo Yii::getAlias('/jobportal')."/frontend/web/images/user-iconnew.png" ;
+									 echo Url::base()."/frontend/web/images/user-iconnew.png" ;
 								      }
 								?>">
 	  </img> </div>
