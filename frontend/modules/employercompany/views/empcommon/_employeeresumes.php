@@ -11,9 +11,9 @@ $designationInfo = EmployeeEmployer::find()->where(['userid' => $model->userid])
 
 <div class="employeenewlicls">
 				<a
-		href="<?= Url::to(['/employercompany/empcommon/resumepage','id'=>$model->userid])?>"><img src="<?= $model->usersignup->profileimage;?>" alt=""></a>
+		href="<?= Url::to(['/employercompany/empcommon/resumepage','id'=>$model->userid])?>"><img src="<?php echo isset( $model->usersignup->profileimage) ?  $model->usersignup->profileimage:'';?>" alt=""></a>
 				<div class="resumes-list-content">
-					<a href="<?= Url::to(['/employercompany/empcommon/resumepage','id'=>$model->userid])?>"><h4><?= $model->usersignup->name. ' '.$model->usersignup->surname;?> <span>
+					<a href="<?= Url::to(['/employercompany/empcommon/resumepage','id'=>$model->userid])?>"><h4><?php echo isset($model->usersignup->name) ? $model->usersignup->name:''?> . ' '.<?php echo isset($model->usersignup->surname) ? $model->usersignup->surname : '' ;?> <span>
 					<?php if (isset($designationInfo->designation)){?>
 					<?= $designationInfo->designation;?>
 					<?php }else{?>
@@ -26,7 +26,7 @@ $designationInfo = EmployeeEmployer::find()->where(['userid' => $model->userid])
 
 					<div class="skills">
 					<?php foreach($skillsInfo as $skill){?>
-						<span><?= $skill->skillname;?></span>
+						<span><?php echo ( $skill->skillname) ? $skill->skillname:'' ;?></span>
 						<?php } ?>
 						
 					</div>

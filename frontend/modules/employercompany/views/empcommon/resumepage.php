@@ -23,7 +23,7 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $userdata->id])->all();
 					
 </span></h4>
 					<span class="icons"><i class="fa fa-map-marker"></i> <?php echo isset( $userdata->usersignup->state)? $userdata->usersignup->state : '' ;  ?>, <?php echo isset( $userdata->usersignup->city)? $userdata->usersignup->city : '' ;  ?></span>
-					 <span class="icons"><i class="fa fa-money"></i> <?= $userdata->useremployeepreference->experience; ?> Years</span> 
+					 <span class="icons"><i class="fa fa-money"></i> <?php echo ( $userdata->useremployeepreference->experience) ?  $userdata->useremployeepreference->experience : ''; ?> Years</span> 
 					<span class="icons"><a href="#"><i class="fa fa-link"></i>Website</a></span>
 					
 					<span class="icons"><a href="">
@@ -85,7 +85,7 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $userdata->id])->all();
 
 		<br>
 
-		<p><?= $userdata->usersignup->description;?></p>
+		<p><?php echo  ($userdata->usersignup->description) ? $userdata->usersignup->description : '' ;?></p>
 
 		
 
@@ -101,8 +101,8 @@ $skillsInfo = EmployeeSkills::find()->where(['userid' => $userdata->id])->all();
 		<!-- Resume Table -->
 		<dl class="resume-table">
 			<dt>
-				<small class="date"><?= $userdata->education->passingyear?></small>
-				<strong> <?= $userdata->education->highdegree?></br><?= $userdata->education->collegename?></strong>
+				<small class="date"><?php echo ( $userdata->education->passingyear) ?  $userdata->education->passingyear : '' ?></small>
+				<strong> <?= $userdata->education->highdegree?></br><?php echo ($userdata->education->collegename) ? $userdata->education->collegename : ''?></strong>
 			</dt>
 			<!-- <dd>
 				<p>Captain, why are we out here chasing comets? Maybe we better talk out here; the observation lounge has turned into a swamp. Ensign Babyface!</p>
