@@ -90,7 +90,7 @@ select {
                 
 									<div class="form">
                     
-                  <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true])?>
+                  <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true])->label('Zip Code')?>
                   </div>
 									<div class="form">
                    
@@ -138,7 +138,7 @@ select {
 									</div>
 
                   <div class="form">
-									designation:<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>
+									<?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label('Designation')?>
                                                 </div>
                
 									<div class="form" style="width: 450px;margin-left: -15px;">
@@ -148,7 +148,7 @@ select {
                   </div>
 									<div class="form">
                     
-                  <?=$form->field ( $model, 'rolecategory' )->dropDownList ( [ 'Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => ' System Admin' ], [ 'prompt' => 'select your RoleCategory ' ] )?>
+                  <?=$form->field ( $model, 'rolecategory' )->dropDownList ( [ 'Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => ' System Admin' ], [ 'prompt' => 'select your RoleCategory ' ] )->label('Role Category')?>
                   </div>
 									<div class="form">
                     
@@ -157,7 +157,7 @@ select {
                   </div>
 									<div class="form">
                     
-                   <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select jobtype'])?>
+                   <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select jobtype'])->label('Job Type')?>
                   </div>
 									
 									<div class="form">

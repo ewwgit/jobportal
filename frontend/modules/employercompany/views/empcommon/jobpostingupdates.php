@@ -68,13 +68,13 @@ select {
 												<td><?= $form->field($model, 'company_name')->textInput(['autofocus' => true],['value' => $model->company_name])?></td>
 											</tr>
 											<tr>
-												<td><?= $form->field($model, 'company_type')->inline()->radioList(['corporate' =>'Corporate' , 'consultant' =>'Consultant'],['prompt' =>'select'],['value' => $model->company_type])?></td>
+												<td> <?= $form->field($model, 'company_type')->dropDownList(['consultant' => 'consultant','corporate' => 'corporate'],['prompt'=>'select your company type'])?></td>
 											</tr>
 											<tr>
 												<td><?= $form->field($model, 'industry_type')->dropDownList(['Accounting/Consulting/Taxation' =>'Accounting/Consulting/Taxation' , 'Advertising/Event Management/PR' =>'Advertising/Event Management/PR', 'Animation / Gaming' =>'Animation / Gaming' , 'Entertainment/Media/Publishing/Dotcom' =>'Entertainment/Media/Publishing/Dotcom' , 'Banking/FinancialServices/Broking' =>'Banking/FinancialServices/Broking' , 'Software Services' =>'Software Services' , 'Machinery/Equipment Manufacturing/Industrial Products' =>'Machinery/Equipment Manufacturing/Industrial Products' , 'Education/Training/Teaching' =>'Education/Training/Teaching'],['prompt' =>'select'],['value' => $model->industry_type]) ?></td>
 											</tr>
 											<tr>
-												<td><?=$form->field ( $model, 'dateofestablishment' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter establish date ...' ],'pluginOptions' => [ 'autoclose' => true ,'format' => 'yyyy-mm-dd',] ] );?></td>
+												<td><?=$form->field ( $model, 'dateofestablishment' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter establish date ...' ],'pluginOptions' => [ 'autoclose' => true ,'format' => 'yyyy-mm-dd',] ] )->label('Date of Establishment');?></td>
 											</tr>
 											<tr>
 												<td>
@@ -82,7 +82,7 @@ select {
 											</tr>
 											
 											<tr>
-												<td><?= $form->field($model, 'zipcode')->textInput(['maxlength' => true],['value' => $model->zipcode])?></td>
+												<td><?= $form->field($model, 'zipcode')->textInput(['maxlength' => true],['value' => $model->zipcode])->label('Zip Code')?></td>
 											</tr>
 											<tr>
 												<td><?= $form->field($model, 'address')->textarea(['rows' => 6],['value' => $model->address]) ?></td>
@@ -103,7 +103,7 @@ select {
 											</tr>
 											
 											<tr>
-												<td>designation:<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'],['class'=>'border']) ?>	</tr>
+												<td><?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label('Designation')?> </td>	</tr>
 											<tr>
 												<td><?= $form->field($model, 'Min_Experience')->dropDownList(['0 year' => '0 year', ' 1 year' => '1 year','2 year' => '2 years','3 years' =>'3 years', '4 years'=>'4 years',' 5 years' =>' 5 years' ,' 6 years' => ' 6 years', '7 years' =>'7 years',])?></td>
 											</tr>
@@ -112,13 +112,13 @@ select {
 											</tr>
 											
 											<tr>
-												<td><?= $form->field($model, 'rolecategory')->dropDownList(['SoftWareDeveloper' =>'SoftWareDeveloper' , 'MobileDeveloper' =>'MobileDeveloper'],['prompt' =>'select'],['value' => $model->rolecategory]) ?></td>
+												<td><?= $form->field($model, 'rolecategory')->dropDownList(['SoftWareDeveloper' =>'SoftWareDeveloper' , 'MobileDeveloper' =>'MobileDeveloper'],['prompt' =>'select'],['value' => $model->rolecategory])->label('Role Category') ?></td>
 											</tr>
 											<tr>
 												<td><?= $form->field($model, 'Description')->textarea(['rows' => 6],['value' => $model->Description]) ?></td>
 											</tr>
 											<tr>
-												<td><?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select jobtype'],['value' => $model->jobtype])?>
+												<td><?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select jobtype'],['value' => $model->jobtype])->label('Job Type')?>
 												
 												</td>
 											</tr>

@@ -104,11 +104,12 @@ select {
 								</div>
 									<div class="form">
 									
-								    <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])?>
+								    <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])->label('Mobile Number')?>
 									</div>
 									
 									<div class="form">
-									Designation:<?= Html::activeDropDownList($model, 'designation', ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>
+									 <?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label('Designation')?>
+									
                                                 </div>
 							</div>
 						</div>
@@ -119,27 +120,28 @@ select {
 								</div>
 								
 								<div class="form">
-								Higher degre:<?= Html::activeDropDownList($model, 'higherdegree',ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higherdegree']) ?>	</tr>
-									
+								
+									<?= $form->field($model, 'higherdegree')->dropDownList(ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higher degree'])->label('Higher Degree');?>
 									</div>
 
 								<!-- Email -->
 							
 									<div class="form">
-									Specialization:<?= Html::activeDropDownList($model, 'specialization',ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization']) ?>
+									
+									<?= $form->field($model, 'specialization')->dropDownList(ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization'])->label('Specialization');?>
                                                 </div>
 								<!-- Email -->
 								<div class="form">
-								    <?= $form->field($model, 'university')->textInput(['autofocus' => true])?>
+								    <?= $form->field($model, 'university')->textInput(['autofocus' => true])->label('University')?>
 									</div>
 								<!-- Title -->
 								<div class="form">
 									
-										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])?>
+										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label('College Name')?>
 									</div>
 								<div class="form">
 									
-											<?= $form->field($model, 'passingyear')->dropDownList(['2010' => '2010', ' 2011' => '2011','2012' => '2012','2013' =>'2013', '2014'=>'2014',' 2015' =>' 2015' ,'2016' => ' 2016', '2017' =>'2017',],['prompt' =>'select Year'])?>
+											<?= $form->field($model, 'passingyear')->dropDownList(['2010' => '2010', ' 2011' => '2011','2012' => '2012','2013' =>'2013', '2014'=>'2014',' 2015' =>' 2015' ,'2016' => ' 2016', '2017' =>'2017',],['prompt' =>'select Year'])->label('Passing Year')?>
 									
 									</div>
 							</div>
