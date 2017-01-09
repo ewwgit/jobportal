@@ -496,7 +496,7 @@ class EmpcommonController extends Controller {
 			//$model->image = $employermodel->image;
 			$model->createdDate = date('Y-m-d H:i:s');
 			$model->updatedDate = date('Y-m-d H:i:s');
-			$model->status = 1;
+			$model->status = 'active';
 			$model->skills = $comma_separated;
 			$model->job_location = $location_comma_separated;
 			$model->userid = Yii::$app->employer->employerid;
@@ -565,6 +565,7 @@ class EmpcommonController extends Controller {
 		$model = $this->findModel ( $id );
 		$data=$model->job_location;
 		$model->countriesList = Countries::getCountries();
+		$model->country = Countries::getCountryId($model->country);
 		$imageData = EmployerJobpostings::find ()->where ( [
 				'userid' => Yii::$app->employer->employerid
 		] )->one ();
@@ -638,6 +639,7 @@ class EmpcommonController extends Controller {
 					'employers-job-details-'.$model->id
 			] );
 		} else {
+			
 			return $this->render ( 'jobpostingupdates', [ 
 					'model' => $model
 					

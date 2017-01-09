@@ -140,7 +140,7 @@ select {
                            ])->label('Job Location');?>
                          			</tr>
 											<tr>
-												<td><?= $form->field($model, 'status')->dropDownList(['Active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select'],['value' => $model->status]);?></td>
+												<td><?= $form->field($model, 'status')->dropDownList(['active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select'],['value' => $model->status]);?></td>
 											</tr>
 	
 

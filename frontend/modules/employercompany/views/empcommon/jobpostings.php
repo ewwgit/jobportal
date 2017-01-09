@@ -176,7 +176,7 @@ select {
                     <div class="form-group">
                     
                     
-                   <?= $form->field($model, 'status')->dropDownList(['Active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select']);?>
+                   <?= $form->field($model, 'status')->dropDownList(['active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select']);?>
                   </div>
 
 								</div>
