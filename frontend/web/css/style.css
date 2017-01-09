@@ -6206,3 +6206,35 @@ div.layout-style {
 	z-index: 1011;
 	transition: all 0.2s ease-in-out;
 }
+
+.newlicls
+{
+	
+	border-top: 1px solid #e0e0e0;
+	position: relative;
+	z-index: 99;
+	padding: 10px; 0px;
+	background-color: #fbfbfb;
+}
+.newlicls:hover {
+	background-color: rgba(38,174,97,0.05);
+	border-color: rgba(38,174,97,0.7);
+	z-index: 1011;
+	transition: all 0.2s ease-in-out;
+}
+
+.employeenewlicls
+{
+	
+	border-top: 1px solid #e0e0e0;
+	position: relative;
+	z-index: 99;
+	padding: 10px; 0px;
+	background-color: #fbfbfb;
+}
+.employeenewlicls:hover {
+	background-color: rgba(38,174,97,0.05);
+	border-color: rgba(38,174,97,0.7);
+	z-index: 1011;
+	transition: all 0.2s ease-in-out;
+}
