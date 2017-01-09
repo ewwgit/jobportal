@@ -328,7 +328,7 @@ class CommonController extends Controller
 				$employee -> country = Countries::getCountryName($model->country);
 				$employee -> state = States::getStateName($model->state);
 				$employee -> city =  Cities::getCityName($model->city);
-				print_r($model->description);
+				//print_r($model->description);
 				$employee -> description = $model -> description;
 				$empmodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 				
