@@ -13,6 +13,7 @@ use kartik\depdrop\DepDrop;
 use yii\helpers\Url;
 
 $this->title = 'UserProfileUpdate';
+
 ?>
 <style>
 .required {
@@ -116,6 +117,7 @@ select {
 									
 									    
                     <?php echo $form->field($model, 'state')->widget(DepDrop::classname(),[
+                    		'data'=>$model->statesData,
     'pluginOptions'=>[
         'depends'=>['employeeform-country'],
         'placeholder'=>'Select States',
@@ -129,6 +131,7 @@ select {
 									   
                  
                    <?php echo $form->field($model, 'city')->widget(DepDrop::classname(), [
+                   		'data'=>$model->citiesData,
     'pluginOptions'=>[
         'depends'=>['employeeform-state'],
         'placeholder'=>'Select Cities',

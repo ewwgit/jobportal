@@ -50,4 +50,10 @@ class States extends \yii\db\ActiveRecord
     	->one();
     	return $statesModel['name'];
     }
+    public static function getStateId($stateName)
+    {
+    	$statesModel = States::find()->select(['id'])->asArray()->where(['name'=>$stateName])
+    	->one();
+    	return $statesModel['id'];
+    }
 }

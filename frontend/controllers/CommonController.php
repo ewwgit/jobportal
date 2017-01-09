@@ -144,7 +144,10 @@ class CommonController extends Controller
 		{
 		     $model->email = $user->email;
 		}
-		
+		$model->statesData = [];
+		$model->state =  '';
+		$model->city = '';
+		$model->citiesData = [];
 		if(!(empty($employee)))
 		{
 			$model->profileimagenew = $employee->profileimage;
@@ -155,12 +158,29 @@ class CommonController extends Controller
 			$empdateofbirth= date('Y-m-d', strtotime($employee->dateofbirth));
 			$model->dateofbirth = $empdateofbirth;
         	$model->mobilenumber = $employee->mobilenumber;	
+        	if($employee->country != '')
+        	{
+        		$model->country = Countries::getCountryId($employee->country);
+        		$model->statesData = Countries::getStatesByCountryview($model->country);
+        		$model->state =  States::getStateId($employee->state);
+        	}
+        	else{
+        		$model->country = $employee->country;
+        		$model->statesData = [];
+        		$model->state =  '';
+        	}
+        	if($model->state != '')
+        	{
+        		
+        		$model->citiesData = Cities::getCiteslist($model->state);
+        		$model->city = Cities::getCityId($employee->city);
+        		
+        	}
         	
-        	$model->country = $employee->country;
-        	///print_r($model->country);exit();
-        	$model->state =  $employee->state;
-        	$model-> city = $employee->city;
-        	$model -> description = $employee -> description;
+//         	/print_r($model->statesData);exit();
+        	//$model->state =  $employee->state;
+        	//$model->city = $employee->city;
+        	$model ->description = $employee -> description;
 		}
 		
 		/* employee education details*/
@@ -754,7 +774,7 @@ class CommonController extends Controller
 			
 			
 			Yii::$app->getSession()->setFlash('success', [
-					'type' => 'warning',
+					'type' => 'success',
 					'duration' => 20000,
 					'icon' => 'fa fa-users',
 					'message' => 'You Are SuccessFully Updated.',

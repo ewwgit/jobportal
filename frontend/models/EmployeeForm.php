@@ -96,6 +96,9 @@ class EmployeeForm extends Model {
 	
 	
 	public $resume;
+	public $statesData;
+	public $citiesData;
+	
 	
 	
 	
@@ -212,6 +215,8 @@ class EmployeeForm extends Model {
 								'state',
 								'city',
 								'description',
+								'statesData',
+								'citiesData',
 								
 						
 						],
