@@ -14,9 +14,9 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 ?>
 
 <tr>
-	<td class="title"><?= $jobmaster_data['skills'];?></td>
-	<td class="title"><?= $jobmaster_data['designation'];?></td>	
-	<td class="title"><?= $jobmaster_data['company_name'];?></td>	
+	<td class="title"><?php echo isset( $jobmaster_data['skills']) ? $jobmaster_data['skills'] : '' ;?></td>
+	<td class="title"><?php echo isset( $jobmaster_data['designation']) ?  $jobmaster_data['designation'] : '' ;?></td>	
+	<td class="title"><?php echo isset( $jobmaster_data['company_name']) ? $jobmaster_data['company_name'] : '' ;?></td>	
 	
-	<td class="title"><?= $applied_data['appliedDate'];?></td>
+	<td class="title"><?php echo isset( $applied_data['appliedDate']) ? $applied_data['appliedDate'] : '' ;?></td>
 	</tr>

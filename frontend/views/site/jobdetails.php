@@ -10,8 +10,8 @@ use frontend\models\EmployeeJobapplied;
 <div id="titlebar">
 	<div class="container">
 		<div class="ten columns">
-			<span><a href="#"> <?php echo   $jobinfo -> rolecategory;  ?> Category </a></span>
-			<h2><?php  echo $jobinfo -> skills ?> Developers<span class="full-time"><?php echo   $jobinfo -> jobtype;  ?></span></h2>
+			<span><a href="#"> <?php echo isset($jobinfo -> rolecategory) ? $jobinfo -> rolecategory : '' ;  ?> Category </a></span>
+			<h2><?php  echo isset($jobinfo -> skills) ? $jobinfo -> skills:'' ?> Developers<span class="full-time"><?php echo  isset($jobinfo -> jobtype) ? $jobinfo -> jobtype:'';  ?></span></h2>
 		</div>
 
 		<div class="six columns">
@@ -63,7 +63,7 @@ use frontend\models\EmployeeJobapplied;
 		<div class="company-info">
 			<img src="" alt="company image">
 			<div class="content">
-				<h4><?php  echo $jobinfo -> company_name?></h4>
+				<h4><?php  echo isset($jobinfo -> company_name) ? $jobinfo -> company_name : '' ?></h4>
 				<span><a href="#"><i class="fa fa-link"></i> Website</a></span>
 				<span><a href="#"><i class="fa fa-twitter"></i> @kingrestaurants</a></span>
 			</div>
@@ -77,19 +77,19 @@ use frontend\models\EmployeeJobapplied;
 		<br>
 		
 
-		<p><?php echo  $jobinfo -> Description;  ?></p>
-		<p><?php  echo $jobinfo -> Min_Experience?> - 
+		<p><?php echo  isset( $jobinfo -> Description) ? $jobinfo -> Description : '';  ?></p>
+		<p><?php  echo isset($jobinfo -> Min_Experience) ? $jobinfo -> Min_Experience : ''?> - 
     <?php echo $jobinfo -> Max_Experience?></p>
 		
 		<br>
 
 		<h4 class="margin-bottom-10">Key Skills</h4>
-		<?php  echo $jobinfo -> skills ?> 
+		<?php  echo isset($jobinfo -> skills) ? $jobinfo -> skills : ''  ?> 
 		
 		
 			<h4 class="margin-bottom-10">Job Posting Date</h4>
 
-		    	<?php  echo  date('Y-m-d',strtotime( $jobinfo -> createdDate)) ?> 
+		    	<?php  echo isset($jobinfo -> createdDate)? date('Y-m-d',strtotime( $jobinfo -> createdDate)) : '' ?> 
 		
 		    
 	</div>
@@ -110,21 +110,21 @@ use frontend\models\EmployeeJobapplied;
 						<i class="fa fa-map-marker"></i>
 						<div>
 							<strong>Location:</strong>
-							<span><?php echo  $jobinfo -> city;  ?></span>
+							<span><?php echo  isset($jobinfo -> city) ? $jobinfo -> city : '' ;  ?></span>
 						</div>
 					</li>
 					<li>
 						<i class="fa fa-user"></i>
 						<div>
 							<strong>Job Title:</strong>
-							<span><?php echo   $jobinfo -> rolecategory;  ?></span>
+							<span><?php echo   isset( $jobinfo -> rolecategory) ? $jobinfo -> rolecategory:'';  ?></span>
 						</div>
 					</li>
 					<li>
 						<i class="fa fa-user"></i>
 						<div>
 							<strong>Industry Type:</strong>
-							<span><?php echo   $jobinfo -> industry_type;  ?></span>
+							<span><?php echo  isset( $jobinfo -> industry_type) ?  $jobinfo -> industry_type:'';  ?></span>
 						</div>
 					</li>
 					<li>
@@ -132,21 +132,21 @@ use frontend\models\EmployeeJobapplied;
 						<i class="fa fa-user"></i>
 						<div>
 							<strong>Company Type:</strong>
-							<span><?php echo   $jobinfo -> company_type;  ?></span>
+							<span><?php echo  isset( $jobinfo -> company_type) ? $jobinfo -> company_type:'' ;  ?></span>
 						</div>
 					</li>
 					<li>
 						<i class="fa fa-clock-o"></i>
 						<div>
 							<strong>Establishment Date:</strong>
-							<span><?php echo  $jobinfo -> dateofestablishment;  ?></span>
+							<span><?php echo isset( $jobinfo -> dateofestablishment) ? $jobinfo -> dateofestablishment : '' ;  ?></span>
 						</div>
 					</li>
 					<li>
 						<i class="fa fa-money"></i>
 						<div>
 							<strong>Salary:</strong>
-							<span><?php echo   $jobinfo -> CTC;  ?></span>
+							<span><?php echo  isset( $jobinfo -> CTC) ? $jobinfo -> CTC : '';  ?></span>
 						</div>
 					</li>
 				</ul>
