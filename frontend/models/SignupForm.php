@@ -23,7 +23,7 @@ class SignupForm extends Model {
 	public $country;
 	public $state;
 	public $city;
-	public $decsription;
+	public $description;
 	
 	/**
 	 * @inheritdoc
