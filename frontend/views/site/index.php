@@ -14,7 +14,7 @@ use yii\widgets\ListView;
 use kartik\growl\Growl;
 use kartik\typeahead\TypeaheadBasic;
 use kartik\typeahead\Typeahead;
-use kartik\select2\Select2;
+//use kartik\select2\Select2;
 use yii\web\view;
 ?>
 <style>
@@ -101,22 +101,26 @@ use yii\web\view;
  
      
      ?>
-     	<?php 
-						
-                           echo  $form->field($searchModel, 'skills')->widget(Select2::classname(), [
-                           		                 
-                           		       'data'=>$skillsInfo,
-                           		        'options' => ['placeholder' => 'Select a Skill', 'multiple' => true],
-                                        'pluginOptions' => [
-                                        'tags' => true,
-                                        'allowClear' => true,
-                                        'tokenSeparators' => [','],
-                                      //'maximumInputLength' => 10
-                                             ],
-                           		      //'value' => ['valu1','valu2']
-                           ]);?>
+     
+     
+        <?php 
+     
+     echo $form->field($searchModel, 'skills')->widget(TypeaheadBasic::classname(), [
+    'data' =>$skillsInfo,
+    'options' => ['placeholder' => 'Enter Skills...'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ 
+     
+     ?>
+     
+     
+     
+     
+     
+   		
       
-  
+ 
        
 	  
       
