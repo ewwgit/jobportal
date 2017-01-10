@@ -153,38 +153,74 @@ select {
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
-									<h4>Add Your Educational Details</h4>
+									<h4>Add Your Project Details</h4>
 								</div>
 								<div class="form">
-									<h5>Highdegree</h5>
-									
-									<?= Html::activeDropDownList($model, 'highdegree',ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higherdegree']) ?>
+									<h5>Project Title</h5>
+										<?= $form->field($model, 'projecttitle')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+
+								<!-- Email -->
+								<div class="form">
+									<h5>Project Start Date</h5>
+										<?=$form->field ( $model, 'projectstartdate' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter project start date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
 										
 									</div>
 
 								<!-- Email -->
 								<div class="form">
-									<h5>Specialization</h5>
-										<?= Html::activeDropDownList($model, 'specialization',ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization']) ?>
-									</div>
-
-								<!-- Email -->
-								<div class="form">
-									<h5>University</h5>
-										<?= $form->field($model, 'university')->textInput(['autofocus' => true])->label(false)?>
+									<h5>Project End Date</h5>
+										<?=$form->field ( $model, 'projectenddate' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter project end date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
+										
 									</div>
 
 								<!-- Title -->
 								<div class="form">
-									<h5>Collegename</h5>
-										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false)?>
+									<h5>Project Location</h5>
+										<?= $form->field($model, 'projectlocation')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 								<div class="form">
-									<h5>Passingyear</h5>
-										<?= $form->field($model, 'passingyear')->textInput(['autofocus' => true])->label(false)?>
+									<h5>Employement Type</h5>
+											<?= $form->field($model, 'employementtype')->inline()->radioList(['FullTime'=>'FullTime','PartTime'=>'PartTime','ContractualProject' =>'ContractualProject'])->label(false)?>
+									</div>
+								<div class="form">
+									<h5>Project Description</h5>
+										<?= $form->field($model, 'projectdescription')->textArea(['rows' => '2'])->label(false)?>
+									</div>
+								<div class="form">
+									<h5>Role</h5>
+									<?= Html::activeDropDownList($model, 'role',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select role in project']) ?>
+										
+									</div>
+								<div class="form">
+									<h5>Role Description</h5>
+										<?= $form->field($model, 'roledescription')->textArea(['rows' => '3'])->label(false)?>
+									</div>
+								<div class="form">
+									<h5>Teamsize</h5>
+										<?=$form->field ( $model, 'teamsize' )->dropDownList ( [ '1' => '1','2' => '2','3' => '3','4' => '4','5' => '5','6' => '6','7' => '7','8' => '8','9' => '9','10' => '10','11' => '11','12' => '12' ], [ 'prompt' => 'Select' ] )->label ( false )?>
+									</div>
+								<div class="form">
+									<h5>Skills Used</h5>
+									
+											<?php 
+						
+                           echo  $form->field($model, 'skillsused')->widget(Select2::classname(), [
+                           		                 
+                           		       'data'=>$model->allskills,
+                           		        'options' => ['placeholder' => 'Select a Skill', 'multiple' => true],
+                                        'pluginOptions' => [
+                                        'tags' => true,
+                                        'allowClear' => true,
+                                        'tokenSeparators' => [','],
+                                      //'maximumInputLength' => 10
+                                             ],
+                           		      //'value' => ['valu1','valu2']
+                           ])->label(false);?>
 									</div>
 							</div>
 						</div>
+						
 					</div>
 					<div class="row">
 						<div class="col-md-6">
@@ -240,70 +276,35 @@ select {
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
-									<h4>Add Your Project Details</h4>
+									<h4>Add Your Educational Details</h4>
 								</div>
 								<div class="form">
-									<h5>Project Title</h5>
-										<?= $form->field($model, 'projecttitle')->textInput(['autofocus' => true])->label(false)?>
-									</div>
-
-								<!-- Email -->
-								<div class="form">
-									<h5>Project Start Date</h5>
-										<?=$form->field ( $model, 'projectstartdate' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter project start date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
+									<h5>Highdegree</h5>
+									
+									<?= Html::activeDropDownList($model, 'highdegree',ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higherdegree']) ?>
 										
 									</div>
 
 								<!-- Email -->
 								<div class="form">
-									<h5>Project End Date</h5>
-										<?=$form->field ( $model, 'projectenddate' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter project end date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
-										
+									<h5>Specialization</h5>
+										<?= Html::activeDropDownList($model, 'specialization',ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization']) ?>
+									</div>
+
+								<!-- Email -->
+								<div class="form">
+									<h5>University</h5>
+										<?= $form->field($model, 'university')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 
 								<!-- Title -->
 								<div class="form">
-									<h5>Project Location</h5>
-										<?= $form->field($model, 'projectlocation')->textInput(['autofocus' => true])->label(false)?>
+									<h5>Collegename</h5>
+										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 								<div class="form">
-									<h5>Employement Type</h5>
-											<?= $form->field($model, 'employementtype')->inline()->radioList(['FullTime'=>'FullTime','PartTime'=>'PartTime','ContractualProject' =>'ContractualProject'])->label(false)?>
-									</div>
-								<div class="form">
-									<h5>Project Description</h5>
-										<?= $form->field($model, 'projectdescription')->textArea(['rows' => '3'])->label(false)?>
-									</div>
-								<div class="form">
-									<h5>Role</h5>
-									<?= Html::activeDropDownList($model, 'role',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select role in project']) ?>
-										
-									</div>
-								<div class="form">
-									<h5>Role Description</h5>
-										<?= $form->field($model, 'roledescription')->textArea(['rows' => '3'])->label(false)?>
-									</div>
-								<div class="form">
-									<h5>Teamsize</h5>
-										<?=$form->field ( $model, 'teamsize' )->dropDownList ( [ '1' => '1','2' => '2','3' => '3','4' => '4','5' => '5','6' => '6','7' => '7','8' => '8','9' => '9','10' => '10','11' => '11','12' => '12' ], [ 'prompt' => 'Select' ] )->label ( false )?>
-									</div>
-								<div class="form">
-									<h5>Skills Used</h5>
-									
-											<?php 
-						
-                           echo  $form->field($model, 'skillsused')->widget(Select2::classname(), [
-                           		                 
-                           		       'data'=>$model->allskills,
-                           		        'options' => ['placeholder' => 'Select a Skill', 'multiple' => true],
-                                        'pluginOptions' => [
-                                        'tags' => true,
-                                        'allowClear' => true,
-                                        'tokenSeparators' => [','],
-                                      //'maximumInputLength' => 10
-                                             ],
-                           		      //'value' => ['valu1','valu2']
-                           ])->label('false');?>
+									<h5>Passingyear</h5>
+										<?= $form->field($model, 'passingyear')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 							</div>
 						</div>
@@ -324,7 +325,7 @@ select {
 									</div>
 										<div class="form">
 											<h5>Last Used</h5>
-										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'options' => [$alreadySkills->lastused => ['Selected'=>'selected']],'prompt' => 'select your skill lastused year ' ] )->label ( false )?>
+										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( ['2017' => '2017', '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'options' => [$alreadySkills->lastused => ['Selected'=>'selected']],'prompt' => 'select your skill lastused year ' ] )->label ( false )?>
 									</div>
 										<div class="form">
 											<h5>Skill Experience(IN Years)</h5>
@@ -345,7 +346,7 @@ select {
 									</div>
 									<div class="form">
 										<h5>Last Used</h5>
-										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'prompt' => 'select your skill lastused year ' ] )->label(false)?>
+										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( ['2017' => '2017','2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'prompt' => 'select your skill lastused year ' ] )->label(false)?>
 									</div>
 									<div class="form">
 										<h5>Skill Experience(IN Years)</h5>
@@ -365,7 +366,7 @@ select {
 									</div>
 										<div class="form">
 											<h5>Last Used</h5>
-										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( [ '2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'prompt' => 'select your skill lastused year ' ] )->label(false)?>
+										<?=$form->field ( $model, 'lastused[]' )->dropDownList ( ['2017' => '2017','2016' => '2016','2015' => '2015','2014' => '2014','2013' => '2013','2012' => '2012','2011' => '2011','2010' => '2010','2009' => '2009','2008' => '2008','2007' => '2007','2006' => '2006','2005' => '2005','2004' => '2004','2003' => '2003','2002' => '2002','2001' => '2001','2000' => '2000','1999' => '1999','1998' => '1998','1997' => '1997','1996' => '1996','1995' => '1995' ], [ 'prompt' => 'select your skill lastused year ' ] )->label(false)?>
 									</div>
 										<div class="form">
 											<h5>Skill Experience(In Years)</h5>
