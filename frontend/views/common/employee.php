@@ -189,7 +189,8 @@ select {
 									</div>
 								<div class="form">
 									<h5>Role</h5>
-									<?= Html::activeDropDownList($model, 'role',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select role in project']) ?>
+									
+									<?= $form->field($model, 'role')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select role in project'])->label(false);?>
 										
 									</div>
 								<div class="form">
@@ -233,9 +234,10 @@ select {
 										<?=$form->field ( $model, 'functionalarea' )->dropDownList ( [ 'IT Software-ApplicationProgramming' => 'IT Software-ApplicationProgramming','IT Software-Mainframe' => 'IT Software-Mainframe','IT Software-Mobile' => 'IT Software-Mobile','IT Software-System Programming' => 'IT Software-System Programming','IT Software-Telecom' => 'IT Software-Telecom','IT Hardware' => 'IT Hardware' ], [ 'prompt' => 'select your functionalArea' ] )->label ( false )?>
 									</div>
 								<div class="form">
-									<h5>Jobrole</h5>
+									<h5>Job role</h5>
 										
-										<?= Html::activeDropDownList($model, 'jobrole',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select jobrole']) ?>
+										
+										<?= $form->field($model, 'jobrole')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select job role'])->label(false);?>
 									</div>
 								<div class="form">
 									<h5>Job Location</h5>
@@ -268,7 +270,8 @@ select {
 									</div>
 								<div class="form">
 									<h5>Designation</h5>
-									<?= Html::activeDropDownList($model, 'designation',ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation']) ?>
+									
+									<?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label(false);?>
 										
 									</div>
 							</div>
@@ -279,16 +282,18 @@ select {
 									<h4>Add Your Educational Details</h4>
 								</div>
 								<div class="form">
-									<h5>Highdegree</h5>
+									<h5>Higher Degree</h5>
 									
-									<?= Html::activeDropDownList($model, 'highdegree',ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higherdegree']) ?>
+									
+									<?= $form->field($model, 'highdegree')->dropDownList(ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higher degree'])->label(false);?>
 										
 									</div>
 
 								<!-- Email -->
 								<div class="form">
 									<h5>Specialization</h5>
-										<?= Html::activeDropDownList($model, 'specialization',ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization']) ?>
+										
+										<?= $form->field($model, 'specialization')->dropDownList(ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization'])->label(false);?>
 									</div>
 
 								<!-- Email -->
