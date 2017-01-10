@@ -147,6 +147,7 @@ return [
     						'employers-logout' => 'employercompany/empsite/logout',
     						'employers-request-password-reset' => 'employercompany/empsite/request-password-reset',
     						'employers-request-password-reset' => 'employercompany/empsite/reset-password',
+    						'employers-browse-resume' => 'employercompany/empcommon/browseresumes',
     				]
     		],
     		'pdf' => [
