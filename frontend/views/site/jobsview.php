@@ -26,7 +26,7 @@ $locations = str_replace(",","-",$model->job_location);
 								?>" alt="">
             <div class="job-list-content">
               <h4> <a
-		href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>"> <?php echo isset( $model->rolecategory) ? $model['rolecategory']:'';?> </a> <span class="full-time">Full-Time</span></h4>
+		href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>"> <?php echo isset( $model->designation) ? $model['designation']:'';?> </a> <span class="full-time">Full-Time</span></h4>
 		     <div class="job-icons"> Keyskills: <span><?php echo isset( $model->skills) ? $model['skills']:'';?> </span></div>
               <div class="job-icons"> <span><i class="fa fa-briefcase"></i> <?php echo isset( $model->company_name) ? $model['company_name']:'';?> </span> <span><i class="fa fa-map-marker"></i>    <?= $model['Min_Experience'];?>  </span> 
               <span><i class="fa fa-money"></i> <?php echo isset( $model->createdDate) ? date('Y-m-d',strtotime( $model['createdDate'])):''?>  </span>

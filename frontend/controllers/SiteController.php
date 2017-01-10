@@ -31,6 +31,8 @@ use common\models\User;
 use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
 use yii\db\Query ;
+use frontend\models\JobSkills;
+use yii\data\ArrayDataProvider;
 /**
  * Site controller
  */
@@ -313,7 +315,11 @@ class SiteController extends Controller
     				//echo 'hello2';exit();
     				$paramInfo = Yii::$app->request->queryParams;
     				$paramInfo['r'] = 'site/index';    				
-    				$paramInfo['EmployeeJobsearch']['skills'] = $skillsInfonew[0]['skillname'];
+    				$paramInfo['EmployeeJobsearch']['skills'] = $skillsInfonew;
+    				for($m=0; $m < count($skillsInfonew); $m++)
+    				{
+    					$paramInfo['EmployeeJobsearch']['skills'][$m] = $skillsInfonew[$m]['skillname'];
+    				}
     				//print_r($paramInfo);exit();
     				$dataProvider = $searchModel->search($paramInfo);
     			}
@@ -333,8 +339,11 @@ class SiteController extends Controller
     				//echo 'hello2';exit();
     				$paramInfo = Yii::$app->request->queryParams;
     				$paramInfo['r'] = 'site/index';
-    				$paramInfo['EmployeeJobsearch']['skills'] = $skillsInfonew[0]['skillname'];
-    				//print_r($paramInfo);exit();
+    				for($m=0; $m < count($skillsInfonew); $m++)
+    				{
+    				$paramInfo['EmployeeJobsearch']['skills'][$m] = $skillsInfonew[$m]['skillname'];
+    				}
+    				//print_r($paramInfo['EmployeeJobsearch']['skills']);exit();
     				$dataProvider = $searchModel->search($paramInfo);
     			}
     			else
@@ -804,4 +813,6 @@ class SiteController extends Controller
 			}	
 		
 	}
+	
+	
 }

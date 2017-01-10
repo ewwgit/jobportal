@@ -44,6 +44,7 @@ use frontend\models\EmployeeEmployer;
 //use kartik\growl\Growl;
 use frontend\models\SignupForm;
 use backend\models\Designation;
+use frontend\models\JobSkills;
 
 
 
@@ -484,6 +485,7 @@ class EmpcommonController extends Controller {
 			
 			}
 			
+			
 			$location = $model->job_location;
 			
 				
@@ -506,6 +508,20 @@ class EmpcommonController extends Controller {
 			$model->state = '';
 			$model->city = '';
 			$model->save ();
+			
+			if(!empty($skill))
+			{
+				for($n=0;$n < count($skill);$n++)
+				{
+					if($skill[$n] != '')
+					{
+					$jobSkills = new JobSkills();
+					$jobSkills->jobid = $model->id;
+					$jobSkills->skill_name = $skill[$n] ;
+					$jobSkills->save();
+					}
+				}
+			}
 			
 			
 			Yii::$app->getSession()->setFlash('success', [
@@ -624,6 +640,21 @@ class EmpcommonController extends Controller {
 			$model->job_location = $array_loc;
 			//print_r($model);exit();
 			$model->save ();
+			JobSkills::deleteAll( ['jobid' => $model->id]);
+			$skill = $model->skills;
+			if(!empty($skill))
+			{
+				for($n=0;$n < count($skill);$n++)
+				{
+					if($skill[$n] != '')
+					{
+						$jobSkills = new JobSkills();
+						$jobSkills->jobid = $model->id;
+						$jobSkills->skill_name = $skill[$n] ;
+						$jobSkills->save();
+					}
+				}
+			}
 			
 		
 			Yii::$app->getSession()->setFlash('success', [

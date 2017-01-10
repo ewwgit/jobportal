@@ -51,16 +51,14 @@ class EmployeeJobsearch extends EmployerJobpostings {
 			
 			return $dataProvider;
 		}
-		
-		
+		if(!empty($this->skills))
+		{
+		$query->joinWith('jobnew', false, 'INNER JOIN')->where(['IN', 'skill_name', $this->skills]);
+		}
 		$query->andFilterWhere ( [ 
 				'like',
 				'rolecategory',
 				$this->rolecategory 
-		] )->andFilterWhere ( [ 
-				'like',
-				'skills',
-				$this->skills 
 		] )->andFilterWhere ( [ 
 				'like',
 				'designation',

@@ -109,4 +109,9 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 		];
 	}
 	
+	public function getJobnew()
+	{
+		return $this->hasOne(JobSkills::className(), ['jobid' => 'id']);
+	}
+	
 }
