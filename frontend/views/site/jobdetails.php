@@ -61,7 +61,14 @@ use frontend\models\EmployeeJobapplied;
 		
 		<!-- Company Info -->
 		<div class="company-info">
-			<img src="" alt="company image">
+			<img src="<?php
+							if($jobinfo->imagenew){
+													
+							echo isset( $jobinfo->imagenew)? Url::base().$jobinfo->imagenew : '' ;
+							}else {
+									  echo Url::base()."/frontend/web/images/user-iconnew.png" ;
+								      }
+								?>" alt="company image">
 			<div class="content">
 				<h4><?php  echo isset($jobinfo -> company_name) ? $jobinfo -> company_name : '' ?></h4>
 				<span><a href="#"><i class="fa fa-link"></i> Website</a></span>

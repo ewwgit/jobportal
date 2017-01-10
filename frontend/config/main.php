@@ -128,7 +128,7 @@ return [
     						'employees-viewprofile' => 'site/viewprofile',
     						'employees-profile-edit' => 'common/employee',
     						'employees-applied-jobs' => 'site/myjobs',
-    						'employees-job-details-<id:\w+>' => 'site/jobdetails',
+    						'<slug:>/employees-job-details-<id:\w+>' => 'site/jobdetails',
     						'employees-signup' => 'site/signup',
     						'employees-login' => 'site/login',
     						'employees-logout' => 'site/logout',

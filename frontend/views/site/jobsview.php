@@ -4,6 +4,9 @@ use yii\web\View;
 use yii\helpers\Url;
 use yii\helpers\BaseStringHelper;
 use frontend\models\EmployeeJobapplied;
+//print_r($model);exit();
+$locations = str_replace(",","-",$model->job_location);
+
 ?>
 
 
@@ -13,10 +16,17 @@ use frontend\models\EmployeeJobapplied;
 
 
           <div class="highlighted newlicls"> 
-          <img src="<?php echo Yii::getAlias('@web');?>/frontend/web/images/all-categories-photo.jpg" alt="">
+          <img src="<?php
+							if($model->imagenew){
+													
+							echo isset( $model->imagenew)? Url::base().$model->imagenew : '' ;
+							}else {
+									  echo Url::base()."/frontend/web/images/user-iconnew.png" ;
+								      }
+								?>" alt="">
             <div class="job-list-content">
               <h4> <a
-		href="<?= Url::to(['/site/jobdetails','id'=>$model->id])?>"> <?php echo isset( $model->rolecategory) ? $model['rolecategory']:'';?> </a> <span class="full-time">Full-Time</span></h4>
+		href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>"> <?php echo isset( $model->rolecategory) ? $model['rolecategory']:'';?> </a> <span class="full-time">Full-Time</span></h4>
 		     <div class="job-icons"> Keyskills: <span><?php echo isset( $model->skills) ? $model['skills']:'';?> </span></div>
               <div class="job-icons"> <span><i class="fa fa-briefcase"></i> <?php echo isset( $model->company_name) ? $model['company_name']:'';?> </span> <span><i class="fa fa-map-marker"></i>    <?= $model['Min_Experience'];?>  </span> 
               <span><i class="fa fa-money"></i> <?php echo isset( $model->createdDate) ? date('Y-m-d',strtotime( $model['createdDate'])):''?>  </span>
