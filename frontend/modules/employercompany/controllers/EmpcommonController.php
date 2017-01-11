@@ -163,6 +163,7 @@ class EmpcommonController extends Controller {
 				$model->allskills = $allsary;
 				$model->skills = $valuary;
 				
+				
 			}
 			
 		}
@@ -470,6 +471,9 @@ class EmpcommonController extends Controller {
 			
 				$image = '/frontend/web/profileimages/'.$imageName;
 				$model->image = $image;
+			}else{
+				$model->image = '';
+				
 			}
 			
 	
@@ -550,7 +554,7 @@ class EmpcommonController extends Controller {
 		]
 		 );
 	}
-	public function actionView($id) {
+	public function actionView($id){
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = $this->findModel ( $id );
 		//print_r($model);exit;
@@ -581,11 +585,18 @@ class EmpcommonController extends Controller {
 		$data=$model->job_location;
 		$model->countriesList = Countries::getCountries();
 		$model->country = Countries::getCountryId($model->country);
-		$imageData = EmployerJobpostings::find ()->where ( [
+		$postingsData = EmployerJobpostings::find ()->where ( [
 				'userid' => Yii::$app->employer->employerid
 		] )->one ();
-		if (! (empty ( $imageData ))) {
-			$model->imagenew = $imageData->image;
+		
+		if (! (empty ( $postingsData ))) 
+		{
+			$model->imagenew = $postingsData->image;
+			
+				
+		}else{
+			$model->imagenew = '';
+			
 		}
 			
 		if (! Empty ( $data )) {

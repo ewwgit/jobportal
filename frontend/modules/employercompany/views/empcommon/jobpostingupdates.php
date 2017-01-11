@@ -4,12 +4,22 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Designation;
+use frontend\models\JobSkills;
 use kartik\select2\Select2;
 use kartik\depdrop\DepDrop;
 use yii\helpers\Url;
 use kartik\file\FileInput;
 
 $this->title = ' JOB Postings';
+$jobskills = JobSkills::find()->select('skill_name')->asArray()->where(['jobid' => $model->id])->all();
+
+if(!empty($jobskills) )
+{
+	foreach ($jobskills as $skill)
+	{
+		
+	}
+}
 
 ?>
 <style>
@@ -97,13 +107,15 @@ select {
                   <?= $form->field($model, 'CTC')->textInput(['autofocus' => true])->label(false)?>	
                   </div>
                        <h5> Skills</h5>
-                  <?php if(!empty($model->allSkills)){?>
+                  <?php 
+                 // print_r($model->allskills);
+                 if(!empty($jobskills) ){?>
 									<div id="alreadyinfo">
-									<?php foreach ($model->allSkills as $alreadySkills){?>
+									<?php foreach ($jobskills as $skill){?>
 										<div class="form-table" id="customFields1">
 											<div class="form">
 												
-										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true,'value' => $alreadySkills->skillname])->label(false)?>	
+										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true,'value' => $skill['skill_name']])->label(false)?>	
 									</div>
 
 											<a href="javascript:void(0);" class="button gray remCF"

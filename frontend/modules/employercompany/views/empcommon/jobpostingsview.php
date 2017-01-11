@@ -49,7 +49,6 @@ $this->title = 'Postings View';
 											<td>Company Type:</td>
 											<td><?php echo  $postings->company_type;  ?></td>
 										</tr>
-
 										<tr>
 											<td>Industry Type:</td>
 											<td><?php echo  $postings->industry_type;  ?></td>
@@ -59,15 +58,13 @@ $this->title = 'Postings View';
 											<td><?php echo  $postings->company_profile;  ?></td>
 										</tr>
 										<tr>
-											<td>Company Profile:</td>
+											<td>Min Salary:</td>
 											<td><?php echo  $postings->min_salary;  ?></td>
 										</tr>
-										
 										<tr>
 											<td>Establishment Date:</td>
 											<td><?php echo  $postings->dateofestablishment;  ?></td>
 										</tr>
-
 										<tr>
 											<td>Country:</td>
 											<td><?php echo  $postings->country;  ?></td>
@@ -129,8 +126,7 @@ $this->title = 'Postings View';
 											<td>Status:</td>
 											<td><?php echo  $postings->status;  ?></td>
 										</tr>
-										
-									</tbody>
+										</tbody>
 								</table>
 							</div>
 						</div>

@@ -18,6 +18,10 @@ return [
 				'employercompany' => [
 						'class' => 'app\modules\employercompany\employercompany',
 				],
+				'company' => [
+						'class' => 'app\modules\company\company',
+				],
+				
 				'social' => [
 						// the module class
 						'class' => 'kartik\social\Module',
