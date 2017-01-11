@@ -70,13 +70,18 @@ $this->title = 'EmployerProfile';
 										</tr>
 
 										<tr>
-											<td>Your Name:</td>
-											<td><?php echo isset($employemodel->name) ? $employemodel->name : ' Not Mentioned' ;?></td>
+											<td>First Name:</td>
+											<td><?php echo isset($employemodel->first_name) ? $employemodel->first_name : ' Not Mentioned' ;?></td>
+										</tr>
+										<tr>
+											<td>Last Name:</td>
+											<td><?php echo isset($employemodel->last_name) ? $employemodel->last_name : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
 											<td>Your designation:</td>
 											<td><?php echo isset($employemodel->designation) ? $employemodel->designation : ' Not Mentioned' ;?></td>
 										</tr>
+										
 
 										<tr>
 											<td>Gender:</td>
@@ -87,12 +92,20 @@ $this->title = 'EmployerProfile';
 											<td><?php echo isset($employemodel->mobilenumber) ? $employemodel->mobilenumber : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
+											<td>Landline:</td>
+											<td><?php echo isset($employemodel->landline) ? $employemodel->landline : ' Not Mentioned' ;?></td>
+										</tr>
+										<tr>
 											<td>Dateof Birth:</td>
 											<td><?php echo isset($employemodel->dateofbirth) ? $employemodel->dateofbirth : ' Not Mentioned' ;?></td>
 										</tr>
 										<tr>
-											<td>address:</td>
+											<td>Address:</td>
 											<td><?php echo isset($employemodel->address) ? $employemodel->address : ' Not Mentioned' ;?></td>
+										</tr>
+										<tr>
+											<td>Description:</td>
+											<td><?php echo isset($employemodel->description) ? $employemodel->description : ' Not Mentioned' ;?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -139,7 +152,7 @@ $this->title = 'EmployerProfile';
 								<table class="table table-user-information ">
 									<tbody>
 									<tr>
-											<td>Job title:</td>
+											<td>Company name:</td>
 											<td><?php echo isset($employmentmodel->company_name) ? $employmentmodel->company_name  : 'Not Mentioned';?></td>
 										</tr>
 										<tr>
@@ -215,7 +228,7 @@ $this->title = 'EmployerProfile';
 									<tbody>
 									
 									<tr>
-											<td>skill's:</td>
+											<td>Skill's:</td>
 											<td><?php echo isset($employemodel->skills) ? $employemodel->skills : 'Not Mentioned';?></td>
 											<td></td>
 										</tr>

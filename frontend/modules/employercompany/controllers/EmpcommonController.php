@@ -122,11 +122,9 @@ class EmpcommonController extends Controller {
 		$employeData = Employer::find ()->where ( [ 
 				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
-
 		$educationData = EmployerEducation::find ()->Where ( [ 
 				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
-
 		$employmentData = Employement::find ()->Where ( [ 
 				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
@@ -135,12 +133,15 @@ class EmpcommonController extends Controller {
 		] )->one ();
 		
 		if (! (empty ( $employeData ))) {
-			$model->name = $employeData->name;
+			$model->first_name = $employeData->first_name;
+			$model->last_name = $employeData->last_name;
 			$model->designation = $employeData->designation;
 			$model->gender = $employeData->gender;
 			$model->dateofbirth = $employeData->dateofbirth;
 			$model->mobilenumber = $employeData->mobilenumber;
+			$model->landline = $employeData->landline;
 			$model->address = $employeData->address;
+			$model->description = $employeData->description;
 			$model->profileimagenew = $employeData->profileimage;
 			$model->skills = $employeData->skills;
 			$data=$model->skills;
@@ -149,9 +150,7 @@ class EmpcommonController extends Controller {
 			if (! Empty ( $data )) {
 				$array = $model->skills;
 				
-			
 				$array_skills = explode( ",",$array );
-			
 			
 			$allsary = array();
 			$valuary = array();

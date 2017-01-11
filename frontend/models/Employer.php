@@ -38,7 +38,8 @@ class Employer extends \yii\db\ActiveRecord
 						[ 
 								'username',
 								'email',
-								'name',
+								'first_name',
+								'last_name',
 								'mobilenumber',
 								'address',
 								'gender',
@@ -52,6 +53,7 @@ class Employer extends \yii\db\ActiveRecord
 				// [['name', 'gender', 'mobilenumber', 'designation', 'address', 'dateofbirth'], 'required'],
 				[ 
 						[ 
+								'landline',
 								'mobilenumber',
 								'userid' 
 						],
@@ -59,10 +61,17 @@ class Employer extends \yii\db\ActiveRecord
 				],
 				[ 
 						[ 
-								'name' 
+								'first_name' 
 						],
 						'string',
 						'max' => 225 
+				],
+				[
+				[
+						'last_name'
+				],
+				'string',
+				'max' => 225
 				],
 				[
 				['profileimage'],'file'],
@@ -71,14 +80,17 @@ class Employer extends \yii\db\ActiveRecord
 						[ 
 								'username',
 								'email',
-								'name',
+								'first_name',
+								'last_name',
 								'mobilenumber',
 								'address',
 								'gender',
 								'dateofbirth',
 								'designation',
 								'profileimage',
-								'skills'
+								'skills',
+								'landline',
+								'description'
 						],
 						'safe' 
 				] 
@@ -92,7 +104,8 @@ class Employer extends \yii\db\ActiveRecord
 	public function attributeLabels() {
 		return [ 
 				'id' => 'ID',
-				'name' => 'Name',
+				'first_name' => 'First Name',
+				'last_name' => 'Last Name',
 				'mobilenumber' => 'Mobile Number',
 				'dateofbirth' => 'Date of Birth',
 				'gender' => 'Gender',
@@ -100,6 +113,8 @@ class Employer extends \yii\db\ActiveRecord
 				'address' => 'Address',
 				'userid' => 'Userid',
 				'skills'=>'skills',
+				'landline'=>'Landline',
+				'description'=>'Description',
 				'profileimage' =>'profile Image',
 				
 				'roleid' => 'Roleid' 

@@ -14,7 +14,7 @@ use backend\models\Designation;
 use backend\models\Degrees;
 $this->title = 'Employer Profile';
 
-$this->params ['breadcrumbs'] [] = $this->title;
+
 ?>
 <style>
 .required {
@@ -71,44 +71,62 @@ select {
 								</div>
 								<!-- Email -->
 								<div class="form">
+								<h5>First Name</h5>
 									
-										<?= $form->field($model, 'name')->textInput(['autofocus' => true])?>
+										<?= $form->field($model, 'first_name')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+									<div class="form">
+									<h5>Last Name</h5>
+										<?= $form->field($model, 'last_name')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 
 								<!-- Email -->
 								<div class="form">
-									
-									  <?= $form->field($model, 'username')->textInput(['autofocus' => true])?>
+									<h5>User Name</h5>
+									  <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 
 								<!-- Title -->
 								<div class="form">
-									
-										<?= $form->field($model, 'email')->textInput(['autofocus' => true])?>
+									<h5>Email</h5>
+										<?= $form->field($model, 'email')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 
 								<!-- Location -->
 								<div class="form">
-									
-											<?= $form->field($model, 'address')->textInput(['autofocus' => true])?>
+									<h5>Address</h5>
+											<?= $form->field($model, 'address')->textarea(['rows' => 1])->label(false)?>
 									</div>
 								<div class="form-group">
 									
-										
-									 <?= $form->field($model, 'gender')->inline()->radioList(['male'=>'Male','female'=>'Female'],['prompt' =>'<---select gender--->'])?>
+										<h5>Gender</h5>
+									 <?= $form->field($model, 'gender')->inline()->radioList(['male'=>'Male','female'=>'Female'],['prompt' =>'<---select gender--->'])->label(false)?>
 									</div>
 								<div class="form">
+								<h5>Date of birth</h5>
 							     <?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter Establish date ...' ],'pluginOptions' => [ 'autoclose' => true ,'format' => 'yyyy-mm-dd',] ] )->label(false);?>  
             
 								 
 								</div>
 									<div class="form">
+										<h5>Mobile Number</h5>
 									
-								    <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])->label('Mobile Number')?>
+								    <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+									<div class="form">
+									<h5>Landline</h5>
+									
+								    <?= $form->field($model, 'landline')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 									
 									<div class="form">
-									 <?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label('Designation')?>
+									<h5>Designation</h5>
+									 <?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label(false)?>
+									
+                                                </div>
+                                                <div class="form">
+                                                <h5>Description</h5>
+									 <?= $form->field($model, 'description')->textarea(['rows' => 6])->label(false)?>
 									
                                                 </div>
 							</div>
@@ -120,28 +138,29 @@ select {
 								</div>
 								
 								<div class="form">
-								
-									<?= $form->field($model, 'higherdegree')->dropDownList(ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higher degree'])->label('Higher Degree');?>
+								 <h5>Higher degree</h5>
+									<?= $form->field($model, 'higherdegree')->dropDownList(ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higher degree'])->label(false)?>
 									</div>
 
 								<!-- Email -->
 							
 									<div class="form">
-									
-									<?= $form->field($model, 'specialization')->dropDownList(ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization'])->label('Specialization');?>
+									 <h5>Specialization</h5>
+									<?= $form->field($model, 'specialization')->dropDownList(ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization'])->label(false)?>
                                                 </div>
 								<!-- Email -->
 								<div class="form">
-								    <?= $form->field($model, 'university')->textInput(['autofocus' => true])->label('University')?>
+								 <h5>University</h5>
+								    <?= $form->field($model, 'university')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 								<!-- Title -->
 								<div class="form">
-									
-										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label('College Name')?>
+									 <h5>College name</h5>
+										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 								<div class="form">
-									
-											<?= $form->field($model, 'passingyear')->dropDownList(['2010' => '2010', ' 2011' => '2011','2012' => '2012','2013' =>'2013', '2014'=>'2014',' 2015' =>' 2015' ,'2016' => ' 2016', '2017' =>'2017',],['prompt' =>'select Year'])->label('Passing Year')?>
+									<h5>Passing year</h5>
+											<?= $form->field($model, 'passingyear')->dropDownList(['2010' => '2010', ' 2011' => '2011','2012' => '2012','2013' =>'2013', '2014'=>'2014',' 2015' =>' 2015' ,'2016' => ' 2016', '2017' =>'2017',],['prompt' =>'select Year'])->label(false)?>
 									
 									</div>
 							</div>
@@ -155,17 +174,17 @@ select {
 								</div>
 								
 								<div class="form">
-									
-										<?=$form->field ( $model, 'job_role' )->dropDownList ( [ 'Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => 'System Admin' ], [ 'prompt' => 'select your jobrole' ] )?>
+									<h5>Job role</h5>
+										<?=$form->field ( $model, 'job_role' )->dropDownList ( [ 'Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => 'System Admin' ], [ 'prompt' => 'select your jobrole' ] )->label(false)?>
 									</div>
 								<div class="form">
-									
-										<?=$form->field ( $model, 'job_location' )->dropDownList ( [ 'Hyderabad/Secundrabad' => 'Hyderabad/Secundrabad','Banglore' => 'Banglore','Chennai' => 'Chennai','Mumbai' => 'Mumbai','Pune' => 'Pune','Gurgon' => 'Gurgon','Delhi' => ' Delhi' ], [ 'prompt' => 'select your joblocation' ] )?>
+									<h5>Job location</h5>
+										<?=$form->field ( $model, 'job_location' )->dropDownList ( [ 'Hyderabad/Secundrabad' => 'Hyderabad/Secundrabad','Banglore' => 'Banglore','Chennai' => 'Chennai','Mumbai' => 'Mumbai','Pune' => 'Pune','Gurgon' => 'Gurgon','Delhi' => ' Delhi' ], [ 'prompt' => 'select your joblocation' ] )->label(false)?>
 									</div>
 								
 								<div class="form">
-									
-										<?= $form->field($model, 'expected_salary')->dropDownList(['20k-30k' => '20k-30k', ' 30k-40k' => '30k-40k','50k-60k' => '50k-60k','60k-70k' =>'60k-70k', '70k-80k'=>'70k-80k',' 80k-90k' =>'80k-90k' ,])?>
+									<h5>Expected salary</h5>
+										<?= $form->field($model, 'expected_salary')->dropDownList(['20k-30k' => '20k-30k', ' 30k-40k' => '30k-40k','50k-60k' => '50k-60k','60k-70k' =>'60k-70k', '70k-80k'=>'70k-80k',' 80k-90k' =>'80k-90k' ,])->label(false)?>
 								
 									</div>
 							</div>
@@ -176,50 +195,50 @@ select {
 									<h4>Add Your Employement Details</h4>
 								</div>
 								<div class="form">
-									
-									<?= $form->field($model, 'company_name')?>	
+									<h5>Company name</h5>
+									<?= $form->field($model, 'company_name')->label(false)?>
 									</div>
 					
 								<div class="form">
-									
-									<?= $form->field($model, 'job_title')?>	
+									<h5>Job title</h5>
+									<?= $form->field($model, 'job_title')->label(false)?>
 									</div>
 
 								<!-- Email -->
 								<div class="form">
-									
-									  <?= $form->field($model, 'job_type')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select'])?>
+									<h5>Job type</h5>
+									  <?= $form->field($model, 'job_type')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select'])->label(false)?>
 									</div>
 
 								<!-- Email -->
 								<div class="form">
-									
-									 <?= $form->field($model, 'job_description')->textarea(['rows' => 6])?>
+									<h5>Job discription</h5>
+									 <?= $form->field($model, 'job_description')->textarea(['rows' => 6])->label(false)?>
 									</div>
 
 								<!-- Title -->
 								<div class="form">
-									
-									 <?= $form->field($model, 'experience')->dropDownList(['6Months' =>'6Months' , '1year' =>'1year', '2years' =>'2years' , '3years' =>'3years' , '4years' =>'4years'],['prompt' =>'select','id' => 'employerform-highdegree'])?> 
+									<h5>Experience</h5>
+									 <?= $form->field($model, 'experience')->dropDownList(['6Months' =>'6Months' , '1year' =>'1year', '2years' =>'2years' , '3years' =>'3years' , '4years' =>'4years'],['prompt' =>'select','id' => 'employerform-highdegree'])->label(false)?>
 									</div>
 								
 								<div class="form">
-									
-									 <?= $form->field($model, 'shift_timings')->inline()->radioList(['DayShift' =>'DayShift' , 'NightShift' =>'NightShift'])?>
+									<h5>Shift timings</h5>
+									 <?= $form->field($model, 'shift_timings')->inline()->radioList(['DayShift' =>'DayShift' , 'NightShift' =>'NightShift'])->label(false)?>
 									</div>
 								<div class="form">
-									
-									 <?= $form->field($model, 'work_location')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select','id' => 'employerform-highdegree'])?>
+									<h5>Work location</h5>
+									 <?= $form->field($model, 'work_location')->dropDownList(['Hyderabad' =>'Hyderabad' , 'Banglore' =>'Banglore', 'Vizag' =>'Vizag' , 'edfd' =>'edfd' , 'erf' =>'erf'],['prompt' =>'select','id' => 'employerform-highdegree'])->label(false)?>
 									</div>
 								<div class="form">
-									
-										 <?= $form->field($model, 'weekly_days')->textInput(['maxlength' => true])?>
+									<h5>Weekly working days</h5>
+										 <?= $form->field($model, 'weekly_days')->textInput(['maxlength' => true])->label(false)?>
 									</div>
 				
 				
 								<div class="form">
-									
-										 <?= $form->field($model, 'salary')->textInput(['maxlength' => true])?>
+									<h5>Salary</h5>
+										 <?= $form->field($model, 'salary')->textInput(['maxlength' => true])->label(false)?>
 									</div>
 								
 							</div>
@@ -231,6 +250,7 @@ select {
 								<div class="title-underlined">
 									<h4>Add Your Skills Details</h4>
 								</div>
+								<h5>Skills</h5>
 								<?php 
 						
                            echo  $form->field($model, 'skills')->widget(Select2::classname(), [
@@ -244,7 +264,7 @@ select {
                                       //'maximumInputLength' => 10
                                              ],
                            		      //'value' => ['valu1','valu2']
-                           ])->label('Skills');?>
+                           ])->label(false)?>
 							</div>
 						</div>
 				
