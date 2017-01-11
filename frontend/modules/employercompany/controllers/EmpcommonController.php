@@ -637,10 +637,20 @@ class EmpcommonController extends Controller {
 				}
 			$model->country = Countries::getCountryName($model->country);
 			$model->job_location = $array_loc;
+			
+			$skill = $model->skills;
+				
+			if (! Empty ( $skill )) {
+			
+				$array = $model->skills;
+				$aryconvertskill1 = implode ( ",", $array );
+				$comma_separated = rtrim($aryconvertskill1,",");
+					
+			}
 			//print_r($model);exit();
 			$model->save ();
 			JobSkills::deleteAll( ['jobid' => $model->id]);
-			$skill = $model->skills;
+			
 			if(!empty($skill))
 			{
 				for($n=0;$n < count($skill);$n++)
