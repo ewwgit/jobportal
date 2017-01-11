@@ -9,6 +9,7 @@ use kartik\select2\Select2;
 use kartik\depdrop\DepDrop;
 use yii\helpers\Url;
 use kartik\file\FileInput;
+use yii\web\view;
 
 $this->title = ' JOB Postings';
 $jobskills = JobSkills::find()->select('skill_name')->asArray()->where(['jobid' => $model->id])->all();
@@ -226,27 +227,42 @@ select {
 </div>
 
 
-<script src="<?php echo Yii::getAlias('@web');?>/frontend/web/scripts/jquery.js" type="text/javascript"></script>
-<script type="text/javascript">
-     $(document).ready(function(){
-	$(".addCF1").on('click',function(){
+
+
+	
+	<?php 
+
+$this->registerJs ( "
+		
+		$(document.body).on('click', '.remCF2' ,function(){
+		 $(this).parent().remove();
+		
+		
+		});
+		
+		$(document.body).on('click', '.remCF' ,function(){
+		 $(this).parent().remove();
+		
+		
+		});
+		
+		$(document.body).on('click', '.addCF1',function(){
 		var dync = $('#dynamiccontent').html();
 		//console.log(dync);
-		$("#customFields1").append(dync);
+		$('#customFields1').append(dync);
 	});
-    $("#customFields1").on('click','.remCF',function(){
-        $(this).parent().remove();
-    });
-
-    $(".addCF2").on('click',function(){
-		var dync = $('#dynamiccontent-lan').html();
+		
+		$(document.body).on('click', '.addCF2',function(){
+        var dync = $('#dynamiccontent-lan').html();
 		//console.log(dync);
-		$("#customFields1-lan").append(dync);
+		$('#customFields1-lan').append(dync);
 	});
-    $("#customFields1-lan").on('click','.remCF2',function(){
-        $(this).parent().remove();
-    });
-});
-	</script>
+		
+		
+		
+		
+
+		", View::POS_READY, 'my-options2' );
+?>
 
 
