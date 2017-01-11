@@ -20,6 +20,17 @@ $this->title = 'Postings View';
 			<div class="container">
 				<div class="col-md-3 col-sm-3 col-xs-3 profile_img">
 					<div class="resume-titlebar"></div>
+					<div class="resume-titlebar">
+						<img
+							src="<?php
+							if($postings->image){
+														
+							echo isset( $postings->image)? Yii::getAlias('/jobportal/').$postings->image : '' ; 
+							}else {
+									 echo "/jobportal/frontend/web/profileimages/post_job.jpg" ;
+								      }
+								?>">
+					</div>
 				</div>
 				<div class="col-md-9">
 					<div class="row">
@@ -44,6 +55,15 @@ $this->title = 'Postings View';
 											<td><?php echo  $postings->industry_type;  ?></td>
 										</tr>
 										<tr>
+											<td>Company Profile:</td>
+											<td><?php echo  $postings->company_profile;  ?></td>
+										</tr>
+										<tr>
+											<td>Company Profile:</td>
+											<td><?php echo  $postings->min_salary;  ?></td>
+										</tr>
+										
+										<tr>
 											<td>Establishment Date:</td>
 											<td><?php echo  $postings->dateofestablishment;  ?></td>
 										</tr>
@@ -52,14 +72,7 @@ $this->title = 'Postings View';
 											<td>Country:</td>
 											<td><?php echo  $postings->country;  ?></td>
 										</tr>
-										<tr>
-											<td>State:</td>
-											<td><?php echo  $postings->state;  ?></td>
-										</tr>
-										<tr>
-											<td>City:</td>
-											<td><?php echo  $postings->city;  ?></td>
-										</tr>
+										
 										<tr>
 											<td>Zipcode:</td>
 											<td><?php echo  $postings->zipcode;  ?></td>
@@ -90,11 +103,11 @@ $this->title = 'Postings View';
 										</tr>
 										<tr>
 											<td>Max Experience:</td>
-											<td><?php echo  $postings->Max_Experience;  ?></td>
+											<td><?php echo  $postings->Max_Experience;  ?> years </td>
 										</tr>
 										<tr>
 											<td>Min Experience:</td>
-											<td><?php echo  $postings->Min_Experience;  ?></td>
+											<td><?php echo  $postings->Min_Experience;  ?> years </td>
 										</tr>
 										<tr>
 											<td>RoleCategory:</td>
@@ -107,6 +120,14 @@ $this->title = 'Postings View';
 										<tr>
 											<td>Job Type:</td>
 											<td><?php echo  $postings->jobtype;  ?></td>
+										</tr>
+										<tr>
+											<td>Job Location:</td>
+											<td><?php echo  $postings->job_location;  ?></td>
+										</tr>
+										<tr>
+											<td>Status:</td>
+											<td><?php echo  $postings->status;  ?></td>
 										</tr>
 										
 									</tbody>
