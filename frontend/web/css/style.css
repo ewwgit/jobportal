@@ -765,7 +765,7 @@ a.button.gray.app-link.opened, .upload-btn, button, input[type="button"], input[
 	transition: all 0.2s ease-in-out;
 }
 button {
-	padding: 12px 18px;
+	padding: 4px 18px;
 }
 .button.gray {
 	background-color: #f2f2f2;

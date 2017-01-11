@@ -30,7 +30,16 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 
 <!-- Name / Avatar -->
 <div class="info">
-<img src="<?php echo isset( $signupdata->profileimage)? Yii::getAlias('/jobportal').$signupdata->profileimage : '' ;  ?>" alt="">
+                           <img
+							src="<?php
+							if($signupdata->profileimage){
+														
+							echo isset( $signupdata->profileimage)? Yii::getAlias('/jobportal/').$signupdata->profileimage : '' ; 
+							}else {
+									 echo "/jobportal/frontend/web/images/user-iconnew.png" ;
+								      }
+								?>">
+
 <span><?php echo isset( $UserData->username)? $UserData->username : 'Not Mentioned' ;  ?></span>
 					<ul>
 					
