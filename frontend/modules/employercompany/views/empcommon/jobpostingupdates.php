@@ -5,25 +5,20 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Designation;
 use kartik\select2\Select2;
-use kartik\file\FileInput;
+use kartik\depdrop\DepDrop;
 use yii\helpers\Url;
+use kartik\file\FileInput;
 
-$this->title = 'POST A JOB';
+$this->title = ' JOB Postings';
 
 ?>
 <style>
-.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
-	.table>tbody>tr>td, .table>tfoot>tr>td {
-	border: none;
-	width: 100%;
+.required {
+	color: #333 !important;
 }
 
 select {
 	height: 40px !important;
-}
-
-.required {
-	color: #333 !important;
 }
 </style>
 <div class="site-signup">
@@ -39,19 +34,10 @@ select {
 					<div class="col-md-3 col-sm-3 col-xs-3 profile_img">
 						<div class="form">
 						<h5>jobposting image:</h5>
-						<img class='image'
-						src="<?php
-							if($model->imagenew){
-														
-							echo  Yii::getAlias('/jobportal/').$model->imagenew;
-							}else {
-									 echo "/jobportal/frontend/web/profileimages/post_job.jpg" ;
-								      }
-								?>"
-							width="100" height="100"> </img> 
 
 
-	 <?=$form->field ( $model, 'image' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => ' Image', 'allowedFileExtensions'=>['jpg','png','jpeg'] ]] ] )->label ( false );?>	
+					  <?=$form->field ( $model, 'image' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => ' Image Uplode', 'allowedFileExtensions'=>['jpg','png','jpeg'] ]] ] )->label ( false );?>
+            	
 </div>
 					</div>
 					<div class="col-md-9">
@@ -61,71 +47,36 @@ select {
 									<div class="title-underlined">
 										<h4>Employer Job Postings</h4>
 									</div>
-									<table class="table table-user-information ">
-										<tbody>
-											<tr>
-												<td><h5>Company name</h5><?= $form->field($model, 'company_name')->textInput(['autofocus' => true],['value' => $model->company_name])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td><h5>Company type</h5><?= $form->field($model, 'company_type')->inline()->radioList(['corporate' =>'Corporate' , 'consultant' =>'Consultant'],['prompt' =>'select'],['value' => $model->company_type])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td><h5>Industry type</h5><?= $form->field($model, 'industry_type')->dropDownList(['Accounting/Consulting/Taxation' =>'Accounting/Consulting/Taxation' , 'Advertising/Event Management/PR' =>'Advertising/Event Management/PR', 'Animation / Gaming' =>'Animation / Gaming' , 'Entertainment/Media/Publishing/Dotcom' =>'Entertainment/Media/Publishing/Dotcom' , 'Banking/FinancialServices/Broking' =>'Banking/FinancialServices/Broking' , 'Software Services' =>'Software Services' , 'Machinery/Equipment Manufacturing/Industrial Products' =>'Machinery/Equipment Manufacturing/Industrial Products' , 'Education/Training/Teaching' =>'Education/Training/Teaching'],['prompt' =>'select'],['value' => $model->industry_type])->label ( false );?>	</td>
-											</tr>
-											<tr>
-											<td>   <h5>Company profile</h5><?= $form->field($model, 'company_profile')->textarea(['rows' => 4],['value' => $model->company_profile])->label ( false );?></td>
-											</tr>
-											<tr>
-											<td><h5>Min salary</h5><?= $form->field($model, 'min_salary')->dropDownList(['20,000' => '20,000', ' 30,000' => '30,000','40,000' => '40,000','50,000' =>'50,000', '60,000'=>'60,000',' 70,000' =>'70,000' ,],['value' => $model->min_salary])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td><h5>Date of establishment</h5><?=$form->field ( $model, 'dateofestablishment' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter establish date ...' ],'pluginOptions' => [ 'autoclose' => true ,'format' => 'yyyy-mm-dd',] ] )->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td>
-												 <h5>Country</h5><?= $form->field($model, 'country')->dropDownList($model->countriesList,['prompt'=>'Select Countries'],['value' => $model->country])->label ( false );?>	</td>
-											</tr>
-											
-											<tr>
-												<td><h5>Zipcode</h5><?= $form->field($model, 'zipcode')->textInput(['maxlength' => true],['value' => $model->zipcode])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td><h5>Address</h5><?= $form->field($model, 'address')->textarea(['rows' => 6],['value' => $model->address])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td><h5>Skills</h5>
-												<?= $form->field($model, 'skills')->textInput(['autofocus' => true],['value' => $model->skills])->label ( false );?>	</td>
-											</tr>
-											
-											<tr>
-												<td>
-											 <h5>Designation</h5><?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'],['value' => $model->designation])->label ( false );?>	
-                                                </td>
-												</tr>
-											<tr>
-												<td><h5>Max experience</h5><?= $form->field($model, 'Max_Experience')->dropDownList(['0' => '0', '1' => '1','2' => '2','3' =>'3', '4'=>'4',' 5' =>' 5' ,' 6' => ' 6', '7' =>'7','8' =>'8','9' =>'9','10' =>'10'])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td><h5>Mine experience</h5><?= $form->field($model, 'Min_Experience')->dropDownList(['0' => '0', '1' => '1','2' => '2','3' =>'3', '4'=>'4',' 5' =>' 5' ,' 6' => ' 6', '7' =>'7','8' =>'8','9' =>'9','10' =>'10'])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td><h5>Role category</h5><?= $form->field($model, 'rolecategory')->dropDownList(['SoftWareDeveloper' =>'SoftWareDeveloper' , 'MobileDeveloper' =>'MobileDeveloper'],['prompt' =>'select'],['value' => $model->rolecategory])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td><h5>Description</h5><?= $form->field($model, 'Description')->textarea(['rows' => 6],['value' => $model->Description])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td><h5>Job type</h5><?= $form->field($model, 'jobtype')->inline()->radioList(['Full time' =>'Full time' , 'Part time' =>'Part time'],['prompt' =>'select'],['value' => $model->jobtype])->label ( false );?>	</td>
-											</tr>
-											<tr>
-												<td>
-												<h5>Job location</h5>
-												<?php 
+									<!-- Email -->
+									<div class="form">
+                    <h5>Company name</h5>
+                  <?= $form->field($model, 'company_name')->textInput(['autofocus' => true])->label(false)?>	
+                  </div>
+
+									<!-- Email -->
+									<div class="form">
+                    <h5>Date of establishment</h5>
+                <?=$form->field ( $model, 'dateofestablishment' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter Establish date ...' ],'pluginOptions' => [ 'autoclose' => true ,'format' => 'yyyy-mm-dd',] ] )->label(false)?>	
+            
+                  </div>
+
+									<!-- Title -->
+									<div class="form">
+                    
+                    <h5>Country </h5>
+                   <?= $form->field($model, 'country')->dropDownList($model->countriesList,['prompt'=>'Select Countries'])->label(false)?>	
+                  </div>
+
+									<!-- Location -->
+									
+							     <h5>Job location</h5>		
+                  	<div class="form-group">
+                  	<?php 
 						
                            echo  $form->field($model, 'job_location')->widget(Select2::classname(), [
                            		                 
-                           		       'data'=>$model->alllocations,
-                           		        'options' => ['placeholder' => 'Select location', 'multiple' => true],
+                           		     //  'data'=>$model->allskills,
+                           		        'options' => ['placeholder' => 'Select locations', 'multiple' => true],
                                         'pluginOptions' => [
                                         'tags' => true,
                                         'allowClear' => true,
@@ -133,17 +84,111 @@ select {
                                       //'maximumInputLength' => 10
                                              ],
                            		      //'value' => ['valu1','valu2']
-                           ])->label ( false );?>	
-                         			</tr>
-											<tr>
-												<td><h5>Status</h5><?= $form->field($model, 'status')->dropDownList(['Active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select'],['value' => $model->status])->label ( false );?>	</td>
-											</tr>
-											
-	
-										</tbody>
-									</table>
+                           ])->label(false)?>	
+                    
+                   </div>
+                
+									<div class="form">
+                         <h5>Zipcode </h5>
+                  <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true])->label(false)?>	
+                  </div>
+									<div class="form">
+                        <h5>CTC </h5>
+                  <?= $form->field($model, 'CTC')->textInput(['autofocus' => true])->label(false)?>	
+                  </div>
+                       <h5> Skills</h5>
+                  <?php if(!empty($model->allSkills)){?>
+									<div id="alreadyinfo">
+									<?php foreach ($model->allSkills as $alreadySkills){?>
+										<div class="form-table" id="customFields1">
+											<div class="form">
+												
+										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true,'value' => $alreadySkills->skillname])->label(false)?>	
+									</div>
+
+											<a href="javascript:void(0);" class="button gray remCF"
+												style="text-decoration: none; margin-top: 1em;"><i
+												class="fa fa-plus-circle"></i> Remove</a>
+										</div>
+										<?php }?>
+									</div>
+									<?php }else{ ?>
 									
-								
+									<div class="form-table" id="customFields1">
+										<div class="form">
+											
+										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])->label(false)?>	
+									</div>
+
+									</div>
+									<?php } ?>
+									<a href="javascript:void(0);" class="button gray addCF1"
+										style="text-decoration: none; margin-top: 1em;"><i
+										class="fa fa-plus-circle"></i> Add Skills</a>
+									<div id="dynamiccontent" style="display: none;">
+										<div class="form-table" id="customFields1">
+											<div class="form">
+												
+										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])->label(false)?>	
+									</div>
+
+											<a href="javascript:void(0);" class="button gray remCF"
+												style="text-decoration: none; margin-top: 1em;"><i
+												class="fa fa-plus-circle"></i> Remove</a>
+										</div>
+									</div>
+
+                  <div class="form">
+                       <h5>Designation </h5>
+									<?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label(false)?>	
+                                                </div>
+               
+									<div class="form" style="width: 450px;margin-left: -15px;">
+					<div class=" col-md-6">
+					     <h5> Min experience </h5><?= $form->field($model, 'Min_Experience')->dropDownList(['0' => '0', '1' => '1','2' => '2','3' =>'3', '4'=>'4',' 5' =>' 5' ,' 6' => ' 6', '7' =>'7','8' =>'8','9' =>'9','10' =>'10'],['prompt'=>'select your MinExperience'])->label(false)?></div>
+                 
+                  <div class=" col-md-6" style="padding-left: 0px;">     <h5> Max experience</h5><?= $form->field($model, 'Max_Experience')->dropDownList(['0' => '0', '1' => '1','2' => '2','3' =>'3', '4'=>'4','5' =>'5' ,'6' => '6', '7' =>'7','8' =>'8','9' =>'9','10' =>'10'],['prompt'=>'select your MaxExperience'])->label(false)?></div>
+                  </div>
+									<div class="form">
+                         <h5> Role category</h5>
+                  <?=$form->field ( $model, 'rolecategory' )->dropDownList ( ['Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => ' System Admin' ], [ 'prompt' => 'select your RoleCategory ' ] )->label(false)?>	
+                  </div>
+									<div class="form">
+                         <h5> Description</h5>
+                  <?= $form->field($model, 'Description')->textarea(['rows' => 1])->label(false)?>	
+                    
+                  </div>
+									<div class="form">
+                         <h5>Job type </h5>
+                   <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select jobtype'])->label(false)?>	
+                  </div>
+									
+									<div class="form">
+                         <h5>Address </h5>
+                 <?= $form->field($model, 'address')->textarea(['rows' => 0])->label(false)?>	
+                  </div>
+
+									<div class="form">
+                         <h5>Company type </h5>
+                  <?= $form->field($model, 'company_type')->dropDownList(['consultant' => 'consultant','corporate' => 'corporate'],['prompt'=>'select your company type'])->label(false)?>	
+                  </div>
+									<div class="form">
+                         <h5> Industry type</h5>
+                  <?=$form->field ( $model, 'industry_type' )->dropDownList ( [ 'Advertising/Event Management/PR' => 'Advertising/Event Management/PR','Machinery/Equipment Manufacturing/Industrial Products' => 'Machinery/Equipment Manufacturing/Industrial Products' ], [ 'prompt' => 'select your industry type' ] )->label(false)?>	
+                  </div>
+                  <div class="form">
+                         <h5> Company profile</h5>
+                  <?= $form->field($model, 'company_profile')->textarea(['rows' => 4])->label(false)?>	
+                  </div>
+                  <div class="form">
+                         <h5> Min salary</h5>
+                  <?= $form->field($model, 'min_salary')->dropDownList(['20,000' => '20,000', ' 30,000' => '30,000','40,000' => '40,000','50,000' =>'50,000', '60,000'=>'60,000',' 70,000' =>'70,000' ,],['prompt' =>'select salary'])->label(false)?>
+                  </div>
+                    <div class="form-group">
+                    
+                         <h5> Status</h5>
+                   <?= $form->field($model, 'status')->dropDownList(['active' =>'Active' , 'inactive' =>'In-Active'],['prompt' =>'select'])->label(false)?>
+                  </div>
 
 								</div>
 							</div>
@@ -169,5 +214,27 @@ select {
 </div>
 
 
+<script src="<?php echo Yii::getAlias('@web');?>/frontend/web/scripts/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+     $(document).ready(function(){
+	$(".addCF1").on('click',function(){
+		var dync = $('#dynamiccontent').html();
+		//console.log(dync);
+		$("#customFields1").append(dync);
+	});
+    $("#customFields1").on('click','.remCF',function(){
+        $(this).parent().remove();
+    });
+
+    $(".addCF2").on('click',function(){
+		var dync = $('#dynamiccontent-lan').html();
+		//console.log(dync);
+		$("#customFields1-lan").append(dync);
+	});
+    $("#customFields1-lan").on('click','.remCF2',function(){
+        $(this).parent().remove();
+    });
+});
+	</script>
 
 

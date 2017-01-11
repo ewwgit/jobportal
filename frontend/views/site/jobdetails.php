@@ -3,15 +3,27 @@ use yii\helpers\Html;
 use yii\web\View;
 use yii\helpers\Url;
 use yii\helpers\BaseStringHelper;
-$this->title = 'Job Complete Details';
 use frontend\models\EmployeeJobapplied;
+use frontend\models\JobSkills;
+$this->title = 'Job Complete Details';
+
+$jobskills = JobSkills::find()->select('skill_name')->asArray()->where(['jobid' => $jobinfo->id])->all();
+
+$skills = '';
+if(!empty($jobskills) )
+{
+	foreach ($jobskills as $skill)
+	{
+		$skills .= $skill['skill_name'].', ';
+	}
+}
 ?>
 
 <div id="titlebar">
 	<div class="container">
 		<div class="ten columns">
 			<span><a href="#"> <?php echo isset($jobinfo -> rolecategory) ? $jobinfo -> rolecategory : '' ;  ?> Category </a></span>
-			<h2><?php  echo isset($jobinfo -> skills) ? $jobinfo -> skills:'' ?> Developers<span class="full-time"><?php echo  isset($jobinfo -> jobtype) ? $jobinfo -> jobtype:'';  ?></span></h2>
+			<h2><?php  echo $skills; ?> Developers<span class="full-time"><?php echo  isset($jobinfo -> jobtype) ? $jobinfo -> jobtype:'';  ?></span></h2>
 		</div>
 
 		<div class="six columns">
@@ -91,7 +103,7 @@ use frontend\models\EmployeeJobapplied;
 		<br>
 
 		<h4 class="margin-bottom-10">Key Skills</h4>
-		<?php  echo isset($jobinfo -> skills) ? $jobinfo -> skills : ''  ?> 
+		<?php  echo $skills;  ?> 
 		
 		
 			<h4 class="margin-bottom-10">Job Posting Date</h4>
