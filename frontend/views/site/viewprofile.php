@@ -184,11 +184,11 @@ td {
                   <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                        <td> FunctionalArea :</td>
+                        <td> Functional Area :</td>
                         <td><?php echo isset($jobmodel->functionalarea) ?  $jobmodel->functionalarea : 'Not Mentioned'  ;?></td>
                       </tr>
                       <tr>
-                        <td>JobRole :</td>
+                        <td>Job Role :</td>
                         <td><?php echo isset( $jobmodel->jobrole) ?  $jobmodel->jobrole : 'Not Mentioned'  ;  ?></td>
                       </tr>
                       <tr>
@@ -301,8 +301,8 @@ td {
                   	 <table class="table table-user-information ">
                   	 <tbody>
                       <tr>
-                       <td style="width: 40% !important; font-weight: bold;"> SkillName :</td>
-                          <td style="width: 25% !important; font-weight: bold;">Lastused :</td>
+                       <td style="width: 40% !important; font-weight: bold;"> Skill  Name :</td>
+                          <td style="width: 25% !important; font-weight: bold;">Last Used :</td>
                             <td style="width: 32% !important; font-weight: bold;">Experience :</td>
                             </tr>
                   <?php foreach ($skillmodel as $alreadySkills){?>
@@ -328,10 +328,10 @@ td {
                    <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                        <td style="width: 40% !important; font-weight: bold;">SkillName :</td>
+                        <td style="width: 40% !important; font-weight: bold;">Skill Name :</td>
                         <td style="width: 40% !important;"><?php echo  'Not Mentioned' ;?></td>
                  
-                        <td style="width: 25% !important; font-weight: bold;">Lastused :</td>
+                        <td style="width: 25% !important; font-weight: bold;">Last Used :</td>
                         <td style="width: 25% !important;"><?php echo 'Not Mentioned' ;?></td>
                      
                         <td style="width: 32% !important; font-weight: bold;">Experience :</td>

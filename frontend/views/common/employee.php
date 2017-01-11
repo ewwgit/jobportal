@@ -114,7 +114,7 @@ select {
 									</div>
 									
 									<div class="form">
-									
+									<h5>State</h5>
 									    
                     <?php echo $form->field($model, 'state')->widget(DepDrop::classname(),[
                     		'data'=>$model->statesData,
@@ -123,12 +123,12 @@ select {
         'placeholder'=>'Select States',
         'url'=>Url::to(['/employercompany/empcommon/states'])
     ]
-]);?>
+])->label(false);?>
 									</div>
 									
 									<div class="form">
 									
-									   
+									   <h5>City</h5>
                  
                    <?php echo $form->field($model, 'city')->widget(DepDrop::classname(), [
                    		'data'=>$model->citiesData,
@@ -137,7 +137,7 @@ select {
         'placeholder'=>'Select Cities',
         'url'=>Url::to(['/employercompany/empcommon/cities'])
     ]
-]);?>
+])->label(false);?>
 
 									</div>
 									
@@ -198,7 +198,7 @@ select {
 										<?= $form->field($model, 'roledescription')->textArea(['rows' => '3'])->label(false)?>
 									</div>
 								<div class="form">
-									<h5>Teamsize</h5>
+									<h5>Team Size</h5>
 										<?=$form->field ( $model, 'teamsize' )->dropDownList ( [ '1' => '1','2' => '2','3' => '3','4' => '4','5' => '5','6' => '6','7' => '7','8' => '8','9' => '9','10' => '10','11' => '11','12' => '12' ], [ 'prompt' => 'Select' ] )->label ( false )?>
 									</div>
 								<div class="form">
@@ -234,7 +234,7 @@ select {
 										<?=$form->field ( $model, 'functionalarea' )->dropDownList ( [ 'IT Software-ApplicationProgramming' => 'IT Software-ApplicationProgramming','IT Software-Mainframe' => 'IT Software-Mainframe','IT Software-Mobile' => 'IT Software-Mobile','IT Software-System Programming' => 'IT Software-System Programming','IT Software-Telecom' => 'IT Software-Telecom','IT Hardware' => 'IT Hardware' ], [ 'prompt' => 'select your functionalArea' ] )->label ( false )?>
 									</div>
 								<div class="form">
-									<h5>Job role</h5>
+									<h5>Job Role</h5>
 										
 										
 										<?= $form->field($model, 'jobrole')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select job role'])->label(false);?>
@@ -304,11 +304,11 @@ select {
 
 								<!-- Title -->
 								<div class="form">
-									<h5>Collegename</h5>
+									<h5>College Name</h5>
 										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 								<div class="form">
-									<h5>Passingyear</h5>
+									<h5>Passing Year</h5>
 										<?= $form->field($model, 'passingyear')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 							</div>
@@ -401,7 +401,7 @@ select {
 										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true,'value' => $alreadylanguage->language])->label(false)?>
 									</div>
 									<div class="form">
-										<h5>Proficiencylevel</h5>
+										<h5>Proficiency Level</h5>
 										<?= $form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'options' => [$alreadylanguage->proficiencylevel => ['Selected'=>'selected']], 'prompt' => 'Select' ] )->label ( false )?>
 									</div>
 									<div class="form">
@@ -427,7 +427,7 @@ select {
 										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 									<div class="form">
-										<h5>Proficiencylevel</h5>
+										<h5>Proficiency Level</h5>
 										<?= $form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
 									</div>
 									
@@ -450,7 +450,7 @@ select {
 										 <?= $form->field($model, 'language[]')->textInput(['autofocus' => true])->label(false)?>
 									</div>
 									<div class="form">
-										<h5>Proficiencylevel</h5>
+										<h5>Proficiency Level</h5>
 										<?= $form->field ( $model, 'proficiencylevel[]' )->dropDownList ( [ 'Beginner' => 'Beginner','Proficient' => 'Proficient','Expert' => 'Expert' ], [ 'prompt' => 'Select' ] )->label ( false )?>
 									</div>
 									
