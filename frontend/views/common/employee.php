@@ -11,6 +11,7 @@ use backend\models\Designation;
 use frontend\models\EmployeeForm;
 use kartik\depdrop\DepDrop;
 use yii\helpers\Url;
+use yii\web\view;
 
 $this->title = 'UserProfileUpdate';
 
@@ -517,32 +518,49 @@ select {
 	</div>
 	
 	<script type="text/javascript">
-     $(document).ready(function(){
-	$(".addCF1").on('click',function(){
+     
+	</script> 
+	
+	<?php 
+
+$this->registerJs ( "
+		
+		$(document.body).on('click', '.remCF2' ,function(){
+		 $(this).parent().remove();
+		
+		
+		});
+		
+		$(document.body).on('click', '.remCF' ,function(){
+		 $(this).parent().remove();
+		
+		
+		});
+		
+		$(document.body).on('click', '.addCF1',function(){
 		var dync = $('#dynamiccontent').html();
 		//console.log(dync);
-		$("#customFields1").append(dync);
+		$('#customFields1').append(dync);
 	});
-    $("#customFields1").on('click','.remCF',function(){
-        $(this).parent().remove();
-    });
-
-    $(".addCF2").on('click',function(){
+		
+		$(document.body).on('click', '.addCF2',function(){
         var k = $('.abilitycls').length;
-        var muchk = '<div class="form abilitycls"><h5>Ability</h5><div class="form-group field-employeeform-ability-'+k+'"><div><input type="hidden" name="EmployeeForm[ability]['+k+']" value=""><div id="employeeform-ability-'+k+'"><label class="checkbox-inline"><input type="checkbox" name="EmployeeForm[ability]['+k+'][]" value="Read"> Read</label><label class="checkbox-inline"><input type="checkbox" name="EmployeeForm[ability]['+k+'][]" value="Write"> Write</label><label class="checkbox-inline"><input type="checkbox" name="EmployeeForm[ability]['+k+'][]" value="Speak"> Speak</label></div><p class="help-block help-block-error"></p></div></div></div>';
-        //$( "#dynamiccontent-lannew" ).find('.dyncabilityinner').html(muchk);
-       var dyid = "dynactid"+k;
-        $('.dyncabilityinner').html('<div id="'+dyid+'"></div>');
+        var muchk = '<div class=\"form abilitycls\"><h5>Ability</h5><div class=\"form-group field-employeeform-ability-'+k+'\"><div><input type=\"hidden\" name=\"EmployeeForm[ability]['+k+']\" value=\"\"><div id=\"employeeform-ability-'+k+'\"><label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"EmployeeForm[ability]['+k+'][]\" value=\"Read\"> Read</label><label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"EmployeeForm[ability]['+k+'][]\" value=\"Write\"> Write</label><label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"EmployeeForm[ability]['+k+'][]\" value=\"Speak\"> Speak</label></div><p class=\"help-block help-block-error\"></p></div></div></div>';
+        
+       var dyid = 'dynactid'+k;
+        $('.dyncabilityinner').html('<div id=\"'+dyid+'\"></div>');
         var dync = $('#dynamiccontent-lannew').html();
 		//console.log(dync);
-		$("#customFields1-lan").append(dync);
-		$("#"+dyid).html(muchk);
+		$('#customFields1-lan').append(dync);
+		$('#'+dyid).html(muchk);
 	});
-    $("#customFields1-lan").on('click','.remCF2',function(){
-        $(this).parent().remove();
-    });
-});
-	</script> 
+		
+		
+		
+		
+
+		", View::POS_READY, 'my-options2' );
+?>
     <?php ActiveForm::end(); ?>
   </div>
 
