@@ -648,6 +648,7 @@ class EmpcommonController extends Controller {
 					
 			}
 			//print_r($model);exit();
+			$model->skills = $comma_separated;
 			$model->save ();
 			JobSkills::deleteAll( ['jobid' => $model->id]);
 			
