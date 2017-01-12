@@ -592,9 +592,7 @@ class EmpcommonController extends Controller {
 		if (! (empty ( $postingsData ))) 
 		{
 			$model->imagenew = $postingsData->image;
-			
-				
-		}else{
+          }else{
 			$model->imagenew = '';
 			
 		}
