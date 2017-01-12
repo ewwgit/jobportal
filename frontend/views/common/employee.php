@@ -322,9 +322,9 @@ select {
 									<h4>Add Your Skills Details</h4>
 								</div>
 									<?php if(!empty($model->allSkills)){?>
-									<div id="alreadyinfo">
+									<div id="alreadyinfonew">
 									<?php foreach ($model->allSkills as $alreadySkills){?>
-										<div class="form-table" id="customFields1">
+										<div class="form-table customexternalcls" id="customFields1">
 										<div class="form">
 											<h5>Skill Name</h5>
 										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true,'value' => $alreadySkills->skillname])->label(false)?>
@@ -342,10 +342,10 @@ select {
 											class="fa fa-minus-circle"></i> Remove</a>
 									</div>
 										<?php }?>
-									</div>
+									
 									<?php }else{ ?>
 									
-									<div class="form-table" id="customFields1">
+									<div class="form-table customexternalcls" id="customFields1">
 									<div class="form">
 										<h5>Skill Name</h5>
 										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true])->label(false)?>
@@ -361,11 +361,12 @@ select {
 
 								</div>
 									<?php } ?>
+									</div>
 									<a href="javascript:void(0);" class="button gray addCF1"
 									style="text-decoration: none; margin-top: 1em;"><i
 									class="fa fa-plus-circle"></i> Add Skills</a>
 								<div id="dynamiccontent" style="display: none;">
-									<div class="form-table" id="customFields1">
+									<div class="form-table customexternalcls" id="customFields1">
 										<div class="form">
 											<h5>Skill Name</h5>
 										<?= $form->field($model, 'skillname[]')->textInput(['autofocus' => true])->label(false)?>
@@ -540,7 +541,8 @@ $this->registerJs ( "
 		$(document.body).on('click', '.addCF1',function(){
 		var dync = $('#dynamiccontent').html();
 		//console.log(dync);
-		$('#customFields1').append(dync);
+		$('#alreadyinfonew .customexternalcls').last().append(dync);
+		
 	});
 		
 		$(document.body).on('click', '.addCF2',function(){
