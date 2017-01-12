@@ -58,21 +58,28 @@ class EmployerForm extends Model {
 	/**
 	 * Employer
 	 */
-	public $name;
+	public $first_name;
+	public $last_name;
 	public $gender;
 	public $mobilenumber;
+	public $landline;
 	public $designation;
 	public $address;
 	public $dateofbirth;
 	public $profileimage;
 	public $profileimagenew;
 	public $allskills;
+	public $description;
+	
+	
+	
 	public function rules() {
 		return [ 
 				[ 
 						[ 
 						
-						'name',
+						'first_name',
+						'last_name',
 						'gender',
 						'mobilenumber',
 						'designation',
@@ -110,7 +117,12 @@ class EmployerForm extends Model {
 						],
 						'required' 
 				], 
-				['name',
+				['first_name',
+				'match',
+				'pattern' =>'/^[a-zA-Z0-9]+$/',
+				'message' => 'username can only contain alphanumeric characters.'
+						],
+				['last_name',
 				'match',
 				'pattern' =>'/^[a-zA-Z0-9]+$/',
 				'message' => 'username can only contain alphanumeric characters.'
@@ -122,7 +134,8 @@ class EmployerForm extends Model {
 				
 				[ 
 						[ 
-								'name',
+								'first_name',
+								'last_name',
 								'gender',
 								'mobilenumber',
 								'designation',
@@ -157,7 +170,9 @@ class EmployerForm extends Model {
 								'collegename',
 								'university',
 								'specialization',
-								'higherdegree' 
+								'higherdegree' ,
+								'landline',
+								'description'
 						]
 					
 						
