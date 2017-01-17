@@ -114,39 +114,6 @@ $this->title = 'EmployerProfile';
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
-									<h4>Employer Education:</h4>
-								</div>
-								<table class="table table-user-information ">
-									<tbody>
-										<tr>
-											<td>Highest Degree:</td>
-											<td><?php echo isset($edumodel->higherdegree) ? $edumodel->higherdegree : ' Not Mentioned' ;?></td>
-										</tr>
-										<tr>
-											<td>Specialization:</td>
-											<td><?php echo isset($edumodel->specialization) ? $edumodel->specialization : 'Not Mentioned ';?></td>
-										</tr>
-										<tr>
-											<td>Your University:</td>
-											<td><?php echo isset($edumodel->university) ? $edumodel->university : 'Not Mentioned ';?></td>
-										</tr>
-										<tr>
-											<td>Your College Name:</td>
-											<td><?php echo isset($edumodel->collegename) ? $edumodel->collegename : 'Not Mentioned ';?></td>
-										</tr>
-										<tr>
-											<td>Passing Year:</td>
-											<td><?php echo isset($edumodel->passingyear) ? $edumodel->passingyear : 'Not Mentioned ';?></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-								<div class="col-md-6">
-							<div class="margin-bottom-20">
-								<div class="title-underlined">
 									<h4>Employer employment</h4>
 								</div>
 								<table class="table table-user-information ">
@@ -193,7 +160,41 @@ $this->title = 'EmployerProfile';
 								</table>
 							</div>
 						</div>
-					
+						
+					</div>
+					<div class="row">
+								
+					<div class="col-md-6">
+							<div class="margin-bottom-20">
+								<div class="title-underlined">
+									<h4>Employer Education:</h4>
+								</div>
+								<table class="table table-user-information ">
+									<tbody>
+										<tr>
+											<td>Highest Degree:</td>
+											<td><?php echo isset($edumodel->higherdegree) ? $edumodel->higherdegree : ' Not Mentioned' ;?></td>
+										</tr>
+										<tr>
+											<td>Specialization:</td>
+											<td><?php echo isset($edumodel->specialization) ? $edumodel->specialization : 'Not Mentioned ';?></td>
+										</tr>
+										<tr>
+											<td>Your University:</td>
+											<td><?php echo isset($edumodel->university) ? $edumodel->university : 'Not Mentioned ';?></td>
+										</tr>
+										<tr>
+											<td>Your College Name:</td>
+											<td><?php echo isset($edumodel->collegename) ? $edumodel->collegename : 'Not Mentioned ';?></td>
+										</tr>
+										<tr>
+											<td>Passing Year:</td>
+											<td><?php echo isset($edumodel->passingyear) ? $edumodel->passingyear : 'Not Mentioned ';?></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">

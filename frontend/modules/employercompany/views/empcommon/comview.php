@@ -95,7 +95,7 @@ select {
 								<!-- Location -->
 								<div class="form">
 									<h5>Address</h5>
-											<?= $form->field($model, 'address')->textarea(['rows' => 1])->label(false)?>
+											<?= $form->field($model, 'address')->textarea(['rows' => 6])->label(false)?>
 									</div>
 								<div class="form-group">
 									
@@ -130,44 +130,6 @@ select {
 									
                                                 </div>
 							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="margin-bottom-20">
-								<div class="title-underlined">
-									<h4>Add Your Educational Details</h4>
-								</div>
-								
-								<div class="form">
-								 <h5>Higher degree</h5>
-									<?= $form->field($model, 'higherdegree')->dropDownList(ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higher degree'])->label(false)?>
-									</div>
-
-								<!-- Email -->
-							
-									<div class="form">
-									 <h5>Specialization</h5>
-									<?= $form->field($model, 'specialization')->dropDownList(ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization'])->label(false)?>
-                                                </div>
-								<!-- Email -->
-								<div class="form">
-								 <h5>University</h5>
-								    <?= $form->field($model, 'university')->textInput(['autofocus' => true])->label(false)?>
-									</div>
-								<!-- Title -->
-								<div class="form">
-									 <h5>College name</h5>
-										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false)?>
-									</div>
-								<div class="form">
-									<h5>Passing year</h5>
-											<?= $form->field($model, 'passingyear')->dropDownList(['2010' => '2010', ' 2011' => '2011','2012' => '2012','2013' =>'2013', '2014'=>'2014',' 2015' =>' 2015' ,'2016' => ' 2016', '2017' =>'2017',],['prompt' =>'select Year'])->label(false)?>
-									
-									</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
 									<h4>Add Your Job Preferences Details</h4>
@@ -213,7 +175,7 @@ select {
 								<!-- Email -->
 								<div class="form">
 									<h5>Job discription</h5>
-									 <?= $form->field($model, 'job_description')->textarea(['rows' => 6])->label(false)?>
+									 <?= $form->field($model, 'job_description')->textarea(['rows' => 4])->label(false)?>
 									</div>
 
 								<!-- Title -->
@@ -242,9 +204,41 @@ select {
 									</div>
 								
 							</div>
+							
+							<div class="margin-bottom-20">
+								<div class="title-underlined">
+									<h4>Add Your Educational Details</h4>
+								</div>
+								
+								<div class="form">
+								 <h5>Higher degree</h5>
+									<?= $form->field($model, 'higherdegree')->dropDownList(ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higher degree'])->label(false)?>
+									</div>
+
+								<!-- Email -->
+							
+									<div class="form">
+									 <h5>Specialization</h5>
+									<?= $form->field($model, 'specialization')->dropDownList(ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization'])->label(false)?>
+                                                </div>
+								<!-- Email -->
+								<div class="form">
+								 <h5>University</h5>
+								    <?= $form->field($model, 'university')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+								<!-- Title -->
+								<div class="form">
+									 <h5>College name</h5>
+										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+								<div class="form">
+									<h5>Passing year</h5>
+											<?= $form->field($model, 'passingyear')->dropDownList(['2010' => '2010', ' 2011' => '2011','2012' => '2012','2013' =>'2013', '2014'=>'2014',' 2015' =>' 2015' ,'2016' => ' 2016', '2017' =>'2017',],['prompt' =>'select Year'])->label(false)?>
+									
+									</div>
+							</div>
+
 						</div>
-					</div>
-					<div class="row">
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
@@ -267,6 +261,13 @@ select {
                            ])->label(false)?>
 							</div>
 						</div>
+					</div>
+					<div class="row">
+						
+						
+					</div>
+					<div class="row">
+						
 				
 					</div>
 

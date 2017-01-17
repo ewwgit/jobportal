@@ -143,105 +143,6 @@ td {
               <div class="col-md-6">
                 <div class="margin-bottom-20">
                   <div  class="title-underlined">
-                    <h4>Education Details</h4>
-                  </div>
-                  
-                 <table class="table table-user-information ">
-                    <tbody>
-                      <tr>
-                        <td >Highest Degree :</td>
-                     
-                        <td><?php echo  isset($edumodel->highdegree) ? $edumodel->highdegree : 'Not Mentioned' ;?></td>
-                      </tr>
-                      <tr>
-                        <td>Highest Degree Specialization :</td>
-                        <td><?php echo  isset($edumodel->specialization) ? $edumodel->specialization : 'Not Mentioned' ; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Your University :</td>
-                        <td><?php echo  isset($edumodel->university) ? $edumodel->university : 'Not Mentioned' ; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Your College Name :</td>
-                        <td><?php echo  isset($edumodel->collegename) ? $edumodel->collegename : 'Not Mentioned' ; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Passing Year</td>
-                        <td><?php echo  isset($edumodel->passingyear) ? $edumodel->passingyear : 'Not Mentioned' ; ?></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="margin-bottom-20">
-                  <div  class="title-underlined">
-                    <h4>Your Job Preferences Details</h4>
-                  </div>
-             
-                  <table class="table table-user-information ">
-                    <tbody>
-                      <tr>
-                        <td> Functional Area :</td>
-                        <td><?php echo isset($jobmodel->functionalarea) ?  $jobmodel->functionalarea : 'Not Mentioned'  ;?></td>
-                      </tr>
-                      <tr>
-                        <td>Job Role :</td>
-                        <td><?php echo isset( $jobmodel->jobrole) ?  $jobmodel->jobrole : 'Not Mentioned'  ;  ?></td>
-                      </tr>
-                      <tr>
-                        <td>Preferd Location :</td>
-                        <td><?php echo isset( $jobmodel->joblocation) ?  $jobmodel->joblocation : 'Not Mentioned'  ; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Your Selected Expeience :</td>
-                        <td><?php echo isset( $jobmodel->experience) ?  $jobmodel->experience : 'Not Mentioned'  ;?></td>
-                      </tr>
-                      <tr>
-                        <td>Job Type :</td>
-                        <td><?php echo isset( $jobmodel->jobtype) ?  $jobmodel->jobtype : 'Not Mentioned'  ; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Your Expected Salary :</td>
-                        <td><?php echo  isset($jobmodel->expectedsalary) ?  $jobmodel->expectedsalary : 'Not Mentioned'  ;  ?></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  
-                  
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="margin-bottom-20">
-                  <div  class="title-underlined">
-                    <h4>Your Employer Details</h4>
-                  </div>
-                  
-                  <table class="table table-user-information ">
-                    <tbody>
-                      <tr>
-                        <td>Your Employer :</td>
-                        <td><?php echo isset($employermodel->employername) ? $employermodel->employername : 'Not Mentioned'; ?></td>
-                      </tr>
-                      <tr>
-                        <td>Employer Type :</td>
-                        <td><?php echo isset( $employermodel->employertype) ? $employermodel->employertype : 'Not Mentioned';  ?></td>
-                      </tr>
-                      <tr>
-                        <td>Employer Designation :</td>
-                        <td><?php echo  isset($employermodel->designation)  ? $employermodel->designation : 'Not Mentioned';  ?></td>
-                      </tr> 
-                    </tbody>
-                  </table>
-                </div>
-                </div>
-              </div>
-              <div class="row">
-              <div class="col-md-6">
-                <div class="margin-bottom-20">
-                  <div  class="title-underlined">
                     <h4>Your Project Details</h4>
                   </div>
                   <table class="table table-user-information ">
@@ -290,6 +191,107 @@ td {
                   </table>
                 </div>
               </div>
+            </div>
+            <div class="row">
+            <div class="col-md-6">
+                <div class="margin-bottom-20">
+                  <div  class="title-underlined">
+                    <h4>Education Details</h4>
+                  </div>
+                  
+                 <table class="table table-user-information ">
+                    <tbody>
+                      <tr>
+                        <td >Highest Degree :</td>
+                     
+                        <td><?php echo  isset($edumodel->highdegree) ? $edumodel->highdegree : 'Not Mentioned' ;?></td>
+                      </tr>
+                      <tr>
+                        <td>Highest Degree Specialization :</td>
+                        <td><?php echo  isset($edumodel->specialization) ? $edumodel->specialization : 'Not Mentioned' ; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Your University :</td>
+                        <td><?php echo  isset($edumodel->university) ? $edumodel->university : 'Not Mentioned' ; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Your College Name :</td>
+                        <td><?php echo  isset($edumodel->collegename) ? $edumodel->collegename : 'Not Mentioned' ; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Passing Year</td>
+                        <td><?php echo  isset($edumodel->passingyear) ? $edumodel->passingyear : 'Not Mentioned' ; ?></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+                <div class="col-md-6">
+                <div class="margin-bottom-20">
+                  <div  class="title-underlined">
+                    <h4>Your Job Preferences Details</h4>
+                  </div>
+             
+                  <table class="table table-user-information ">
+                    <tbody>
+                      <tr>
+                        <td> Functional Area :</td>
+                        <td><?php echo isset($jobmodel->functionalarea) ?  $jobmodel->functionalarea : 'Not Mentioned'  ;?></td>
+                      </tr>
+                      <tr>
+                        <td>Job Role :</td>
+                        <td><?php echo isset( $jobmodel->jobrole) ?  $jobmodel->jobrole : 'Not Mentioned'  ;  ?></td>
+                      </tr>
+                      <tr>
+                        <td>Preferd Location :</td>
+                        <td><?php echo isset( $jobmodel->joblocation) ?  $jobmodel->joblocation : 'Not Mentioned'  ; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Your Selected Expeience :</td>
+                        <td><?php echo isset( $jobmodel->experience) ?  $jobmodel->experience : 'Not Mentioned'  ;?></td>
+                      </tr>
+                      <tr>
+                        <td>Job Type :</td>
+                        <td><?php echo isset( $jobmodel->jobtype) ?  $jobmodel->jobtype : 'Not Mentioned'  ; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Your Expected Salary :</td>
+                        <td><?php echo  isset($jobmodel->expectedsalary) ?  $jobmodel->expectedsalary : 'Not Mentioned'  ;  ?></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  
+                </div>
+              </div>
+              </div>
+              <div class="row">
+              
+              <div class="col-md-6">
+                <div class="margin-bottom-20">
+                  <div  class="title-underlined">
+                    <h4>Your Employer Details</h4>
+                  </div>
+                  
+                  <table class="table table-user-information ">
+                    <tbody>
+                      <tr>
+                        <td>Your Employer :</td>
+                        <td><?php echo isset($employermodel->employername) ? $employermodel->employername : 'Not Mentioned'; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Employer Type :</td>
+                        <td><?php echo isset( $employermodel->employertype) ? $employermodel->employertype : 'Not Mentioned';  ?></td>
+                      </tr>
+                      <tr>
+                        <td>Employer Designation :</td>
+                        <td><?php echo  isset($employermodel->designation)  ? $employermodel->designation : 'Not Mentioned';  ?></td>
+                      </tr> 
+                    </tbody>
+                  </table>
+                </div>
+                </div>
 
               <div class="col-md-6">
                 <div class="margin-bottom-20">
@@ -302,8 +304,8 @@ td {
                   	 <tbody>
                       <tr>
                        <td style="width: 40% !important; font-weight: bold;"> Skill  Name :</td>
-                          <td style="width: 25% !important; font-weight: bold;">Last Used :</td>
-                            <td style="width: 32% !important; font-weight: bold;">Experience :</td>
+                          <td style="width: 30% !important; font-weight: bold;">Last Used :</td>
+                            <td style="width: 30% !important; font-weight: bold;">Experience :</td>
                             </tr>
                   <?php foreach ($skillmodel as $alreadySkills){?>
                  
@@ -312,10 +314,10 @@ td {
                         <td style="width: 40% !important;"><?php echo  $alreadySkills->skillname ;?></td>
                      
                      
-                        <td style="width: 25% !important;"><?php echo  $alreadySkills->lastused; ?></td>
+                        <td style="width: 30% !important;"><?php echo  $alreadySkills->lastused; ?></td>
                       
                        
-                        <td style="width: 32% !important;"><?php echo  $alreadySkills->skillexperience ;?></td>
+                        <td style="width: 30% !important;"><?php echo  $alreadySkills->skillexperience ;?></td>
                          </tr>
                       
                          <?php }?>
@@ -331,11 +333,11 @@ td {
                         <td style="width: 40% !important; font-weight: bold;">Skill Name :</td>
                         <td style="width: 40% !important;"><?php echo  'Not Mentioned' ;?></td>
                  
-                        <td style="width: 25% !important; font-weight: bold;">Last Used :</td>
-                        <td style="width: 25% !important;"><?php echo 'Not Mentioned' ;?></td>
+                        <td style="width: 40% !important; font-weight: bold;">Last Used :</td>
+                        <td style="width: 40% !important;"><?php echo 'Not Mentioned' ;?></td>
                      
-                        <td style="width: 32% !important; font-weight: bold;">Experience :</td>
-                        <td style="width: 32% !important;"><?php echo  'Not Mentioned' ;?></td>
+                        <td style="width: 40% !important; font-weight: bold;">Experience :</td>
+                        <td style="width: 40% !important;"><?php echo  'Not Mentioned' ;?></td>
                       </tr>
                     </tbody>
                   </table>
@@ -353,9 +355,9 @@ td {
                   	 <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                  	       <td style="width: 25% !important; font-weight: bold;">Language :</td>
+                  	       <td style="width: 30% !important; font-weight: bold;">Language :</td>
                   	            <td style="width: 35% !important; font-weight: bold;">Proficiency Level :</td>
-                  	            <td style="width: 38% !important; font-weight: bold;">Ability:</td>
+                  	            <td style="width: 35% !important; font-weight: bold;">Ability:</td>
                   	            </tr>
                   <?php foreach ($languagemodel as $alreadylanguages){?>
                  
@@ -366,7 +368,7 @@ td {
                         <td style="width: 35% !important;"><?php echo  $alreadylanguages->proficiencylevel ;  ?></td>
                     
                        
-                         <td style="width: 38% !important;"><?php echo  $alreadylanguages->ability;   ?></td>
+                         <td style="width: 40% !important;"><?php echo  $alreadylanguages->ability;   ?></td>
                       </tr> 
                   
                     <?php }?>
@@ -376,14 +378,14 @@ td {
                    <table class="table table-user-information ">
                     <tbody>
                       <tr>
-                        <td style="width: 25% !important; font-weight: bold;">Language :</th>
-                        <td style="width: 25% !important;"><?php echo 'Not Mentioned';?></td>
+                        <td style="width: 40% !important; font-weight: bold;">Language :</th>
+                        <td style="width: 40% !important;"><?php echo 'Not Mentioned';?></td>
                     
-                        <th style="width: 35% !important; font-weight: bold;">Proficiency Level :</th>
-                        <td style="width: 35% !important;"><?php echo  'Not Mentioned';  ?></td>
+                        <th style="width: 40% !important; font-weight: bold;">Proficiency Level :</th>
+                        <td style="width: 40% !important;"><?php echo  'Not Mentioned';  ?></td>
                     
-                        <th style="width: 38% !important; font-weight: bold;">Ability :</th>
-                        <td style="width: 38% !important;"><?php echo 'Not Mentioned';   ?></td>
+                        <th style="width: 40% !important; font-weight: bold;">Ability :</th>
+                        <td style="width: 40% !important;"><?php echo 'Not Mentioned';   ?></td>
                       </tr>
                     </tbody>
                   </table>
