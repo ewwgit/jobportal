@@ -25,7 +25,7 @@ $this->title = 'Postings View';
 							src="<?php
 							if($postings->image){
 														
-							echo isset( $postings->image)? Yii::getAlias('/jobportal/').$postings->image : '' ; 
+							echo isset( $postings->image)? Url::base().$postings->image : '' ; 
 							}else {
 									 echo "/jobportal/frontend/web/profileimages/post_job.jpg" ;
 								      }
