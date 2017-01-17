@@ -15,7 +15,6 @@ use yii\web\view;
 
 $this->title = 'UserProfileUpdate';
 
-
 ?>
 <style>
 .required {
@@ -25,6 +24,13 @@ $this->title = 'UserProfileUpdate';
 select {
 	height: 40px !important;
 }
+.btn {
+	padding: 6px 3px;
+}
+.file-footer-caption {
+	width: 228px;
+}
+
 </style>
 <div id="titlebar" class="single">
 	<div class="container">
