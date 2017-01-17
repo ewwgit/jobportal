@@ -585,14 +585,11 @@ class EmpcommonController extends Controller {
 		$data=$model->job_location;
 		$model->countriesList = Countries::getCountries();
 		$model->country = Countries::getCountryId($model->country);
-		$postingsData = EmployerJobpostings::find ()->where ( [
-				'userid' => Yii::$app->employer->employerid
-		] )->one ();
 		
-		if (! (empty ( $postingsData ))) 
-		{
+		
+		
 			
-			$model->skills = $postingsData->skills;
+			$model->skills = $model->skills;
 			$data=$model->skills;
 				
 				
@@ -614,11 +611,8 @@ class EmpcommonController extends Controller {
 			
 			
 			}
-			$model->imagenew = $postingsData->image;
-          }else{
-			$model->imagenew = '';
-			
-		}
+			$model->imagenew = $model->image;
+          
 			
 		if (! Empty ( $data )) {
 			$array = $model->job_location;

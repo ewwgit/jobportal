@@ -117,11 +117,7 @@ select {
                        <h5>Skills</h5>
                        
 								<?php 
-								$jobskills = JobSkills::find()->select('skill_name')->asArray()->where(['jobid' => $model->id])->all();
-							//print_r($jobskills);
-								if(!empty($jobskills) ){
-									foreach ($jobskills as $skill)
-									{
+								
 										
 										echo  $form->field($model, 'skills')->widget(Select2::classname(), [
 												
@@ -137,7 +133,7 @@ select {
 											
 												
 										])->label(false);
-									}}?>
+									?>
 								
 						
                          
