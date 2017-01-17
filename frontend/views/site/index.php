@@ -24,6 +24,10 @@ use yii\web\view;
 .growl-warning {
 	margin-top: 175px !important;
 }
+.btn btn-primary apply_job {
+	background-color: none !important;
+	float: right;
+}
 </style>
  
   <?php foreach (Yii::$app->session->getAllFlashes() as $message):; ?>
@@ -76,7 +80,7 @@ use yii\web\view;
   
      echo $form->field($searchModel, 'company_name')->widget(TypeaheadBasic::classname(), [
     'data' => $companydata,
-    'options' => ['placeholder' => 'Enter CompanyName ...'],
+    'options' => ['placeholder' => 'Enter CompanyName ...','class'=>'mdcls'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  ?>
@@ -86,7 +90,7 @@ use yii\web\view;
 	
      echo $form->field($searchModel, 'designation')->widget(TypeaheadBasic::classname(), [
     'data' => $desdata,
-    'options' => ['placeholder' => 'Enter Designation ...'],
+    'options' => ['placeholder' => 'Enter Designation ...','class'=>'mdcls'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  ?>
@@ -95,7 +99,7 @@ use yii\web\view;
      
      echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [
     'data' =>$expdata,
-    'options' => ['placeholder' => 'Enter Experience ...'],
+    'options' => ['placeholder' => 'Enter Experience ...','class'=>'mdcls'],
     'pluginOptions' => ['highlight'=>true],
 ]);
  
