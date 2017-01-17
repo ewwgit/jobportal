@@ -51,7 +51,15 @@ select {
 					<div class="col-md-3 col-sm-3 col-xs-3 profile_img">
 						<div class="form">
 						<h5>jobposting image:</h5>
-
+                          <img
+							src="<?php
+							if($model->image){
+														
+							echo isset( $model->image)? Yii::getAlias('/jobportal/').$model->image : '' ; 
+							}else {
+									 echo "/jobportal/frontend/web/profileimages/post_job.jpg" ;
+								      }
+								?>">
 
 					  <?=$form->field ( $model, 'image' )->widget ( FileInput::classname (), [ 'options' => [ 'accept' => 'image/*' ],'pluginOptions' =>[[ 'browseLabel' => ' Image Uplode', 'allowedFileExtensions'=>['jpg','png','jpeg'] ]] ] )->label ( false );?>
             	
