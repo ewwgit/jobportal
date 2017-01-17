@@ -12,15 +12,15 @@ use kartik\file\FileInput;
 use yii\web\view;
 
 $this->title = ' JOB Postings';
-$jobskills = JobSkills::find()->select('skill_name')->asArray()->where(['jobid' => $model->id])->all();
+// $jobskills = JobSkills::find()->select('skill_name')->asArray()->where(['jobid' => $model->id])->all();
 
-if(!empty($jobskills) )
-{
-	foreach ($jobskills as $skill)
-	{
+// if(!empty($jobskills) )
+// {
+// 	foreach ($jobskills as $skill)
+// 	{
 		
-	}
-}
+// 	}
+// }
 
 ?>
 <style>
@@ -113,49 +113,38 @@ select {
                         <h5>CTC </h5>
                   <?= $form->field($model, 'CTC')->textInput(['autofocus' => true])->label(false)?>	
                   </div>
-                       <h5> Skills</h5>
-                  <?php 
-                 // print_r($model->allskills);
-                 if(!empty($jobskills) ){?>
-									<div id="alreadyinfo">
-									<?php foreach ($jobskills as $skill){?>
-										<div class="form-table" id="customFields1">
-											<div class="form">
+                    <div class="form">
+                       <h5>Skills</h5>
+                       
+								<?php 
+								$jobskills = JobSkills::find()->select('skill_name')->asArray()->where(['jobid' => $model->id])->all();
+							//print_r($jobskills);
+								if(!empty($jobskills) ){
+									foreach ($jobskills as $skill)
+									{
+										
+										echo  $form->field($model, 'skills')->widget(Select2::classname(), [
 												
-										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true,'value' => $skill['skill_name']])->label(false)?>	
-									</div>
-
-											<a href="javascript:void(0);" class="button gray remCF"
-												style="text-decoration: none; margin-top: 1em;"><i
-												class="fa fa-plus-circle"></i> Remove</a>
-										</div>
-										<?php }?>
-									</div>
-									<?php }else{ ?>
-									
-									<div class="form-table" id="customFields1">
-										<div class="form">
+												//'value' => $skill['skill_name'],
+												'data' => $model->allskills,
+												'options' => ['placeholder' => 'Select a Skill', 'multiple' => true],
+												'pluginOptions' => [
+														'tags' => true,
+														'allowClear' => true,
+														'tokenSeparators' => [','],
+												//	'	maximumInputLength' => 10
+												],
 											
-										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])->label(false)?>	
-									</div>
-
-									</div>
-									<?php } ?>
-									<a href="javascript:void(0);" class="button gray addCF1"
-										style="text-decoration: none; margin-top: 1em;"><i
-										class="fa fa-plus-circle"></i> Add Skills</a>
-									<div id="dynamiccontent" style="display: none;">
-										<div class="form-table" id="customFields1">
-											<div class="form">
 												
-										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])->label(false)?>	
-									</div>
+										])->label(false);
+									}}?>
+								
+						
+                         
 
-											<a href="javascript:void(0);" class="button gray remCF"
-												style="text-decoration: none; margin-top: 1em;"><i
-												class="fa fa-plus-circle"></i> Remove</a>
-										</div>
-									</div>
+                           
+                           
+                </div>
 
                   <div class="form">
                        <h5>Designation </h5>

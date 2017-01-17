@@ -102,47 +102,25 @@ select {
                         <h5>CTC </h5>
                   <?= $form->field($model, 'CTC')->textInput(['autofocus' => true])->label(false)?>	
                   </div>
-                       <h5> Skills</h5>
-                  <?php if(!empty($model->allSkills)){?>
-									<div id="alreadyinfo">
-									<?php foreach ($model->allSkills as $alreadySkills){?>
-										<div class="form-table" id="customFields1">
-											<div class="form">
-												
-										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true,'value' => $alreadySkills->skillname])->label(false)?>	
-									</div>
-
-											<a href="javascript:void(0);" class="button gray remCF"
-												style="text-decoration: none; margin-top: 1em;"><i
-												class="fa fa-plus-circle"></i> Remove</a>
-										</div>
-										<?php }?>
-									</div>
-									<?php }else{ ?>
-									
-									<div class="form-table" id="customFields1">
-										<div class="form">
-											
-										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])->label(false)?>	
-									</div>
-
-									</div>
-									<?php } ?>
-									<a href="javascript:void(0);" class="button gray addCF1"
-										style="text-decoration: none; margin-top: 1em;"><i
-										class="fa fa-plus-circle"></i> Add Skills</a>
-									<div id="dynamiccontent" style="display: none;">
-										<div class="form-table" id="customFields1">
-											<div class="form">
-												
-										<?= $form->field($model, 'skills[]')->textInput(['autofocus' => true])->label(false)?>	
-									</div>
-
-											<a href="javascript:void(0);" class="button gray remCF"
-												style="text-decoration: none; margin-top: 1em;"><i
-												class="fa fa-plus-circle"></i> Remove</a>
-										</div>
-									</div>
+                <div class="form">
+                       <h5>Skills</h5>
+								<?php 
+						
+                           echo  $form->field($model, 'skills')->widget(Select2::classname(), [
+                           		                 
+                           		    //   'data'=>$model->allskills,
+                           		        'options' => ['placeholder' => 'Select a Skill', 'multiple' => true],
+                                        'pluginOptions' => [
+                                        'tags' => true,
+                                        'allowClear' => true,
+                                        'tokenSeparators' => [','],
+                                      //'maximumInputLength' => 10
+                                             ],
+                           		      //'value' => ['valu1','valu2']
+                           ])->label(false)?>
+                           
+                           
+                </div>
 
                   <div class="form">
                        <h5>Designation </h5>

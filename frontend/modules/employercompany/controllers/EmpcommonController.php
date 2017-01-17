@@ -591,6 +591,29 @@ class EmpcommonController extends Controller {
 		
 		if (! (empty ( $postingsData ))) 
 		{
+			
+			$model->skills = $postingsData->skills;
+			$data=$model->skills;
+				
+				
+			if (! Empty ( $data )) {
+				$array = $model->skills;
+			
+				$array_skills = explode( ",",$array );
+					
+				$allsary = array();
+				$valuary = array();
+				foreach ($array_skills as $skillnew)
+				{
+					$allsary[$skillnew] = $skillnew;
+					$valuary[] = $skillnew;
+			
+				}
+				$model->allskills = $allsary;
+				$model->skills = $valuary;
+			
+			
+			}
 			$model->imagenew = $postingsData->image;
           }else{
 			$model->imagenew = '';

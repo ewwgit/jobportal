@@ -66,15 +66,17 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'industry_type',
 								'dateofestablishment',
 								'country',
-// 								'state',
-// 								'city',
+                               // 'state',
+                              // 'city',
 								'zipcode',
 								'Min_Experience',
 								'Max_Experience' ,
 								'userid',
 								'job_location',
 								'status',
-								'image'
+								'image',
+								'company_profile',
+								'min_salary'
 						],
 						'safe' 
 				] 
@@ -92,7 +94,6 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 				'job_location' =>'Job Location',
 				'status'=>'Status',
 				'image'=>'Image',
-			
 				'address' => 'Address',
 				'roleid' => 'Roleid',
 				'CTC' => 'CTC',

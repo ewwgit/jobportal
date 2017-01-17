@@ -154,7 +154,7 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
             <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
             <li><a class="linkedin-footer" href="#"><i class="icon-linkedin"></i></a></li>
           </ul>
-          <div class="copyrights">©  Copyright 2015 by <a href="#">Work Scout</a>. All Rights Reserved.</div>
+          <div class="copyrights">&copy; Copyright 2015 by <a href="#">Work Scout</a>. All Rights Reserved.</div>
         </div>
       </div>
     </div>
