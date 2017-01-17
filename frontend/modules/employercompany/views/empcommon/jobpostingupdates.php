@@ -179,6 +179,17 @@ select {
                          <h5> Min salary</h5>
                   <?= $form->field($model, 'min_salary')->dropDownList(['20,000' => '20,000', ' 30,000' => '30,000','40,000' => '40,000','50,000' =>'50,000', '60,000'=>'60,000',' 70,000' =>'70,000' ,],['prompt' =>'select salary'])->label(false)?>
                   </div>
+                  
+                   <div class="form-group">
+                    
+                         <h5> Salery Type</h5>
+                   <?= $form->field($model, 'sal_type')->dropDownList(['Per-annum' =>'Per-annum' , 'Per-monthly' =>'Per-monthly'],['prompt' =>'Salery Type'])->label(false)?>
+                  </div>
+                  <div class="form-group">
+                    
+                         <h5> Currency</h5>
+                   <?= $form->field($model, 'currency')->dropDownList(['INR' =>'INR' , 'USD' =>'USD'],['prompt' =>'Currency'])->label(false)?>
+                  </div>
                     <div class="form-group">
                     
                          <h5> Status</h5>

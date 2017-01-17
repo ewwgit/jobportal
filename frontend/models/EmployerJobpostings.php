@@ -43,7 +43,9 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'Min_Experience',
 								'Max_Experience' ,
 								'job_location',
-								'status'
+								'status',
+								'sal_type',
+								'currency'
 						],
 						'required' 
 				],
