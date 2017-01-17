@@ -128,8 +128,8 @@ if(!empty($jobskills) )
 					<li>
 						<i class="fa fa-map-marker"></i>
 						<div>
-							<strong>Location:</strong>
-							<span><?php echo  isset($jobinfo -> city) ? $jobinfo -> city : '' ;  ?></span>
+							<strong> Job Location:</strong>
+							<span><?php echo  isset($jobinfo -> job_location) ? $jobinfo -> job_location : '' ;  ?></span>
 						</div>
 					</li>
 					<li>
