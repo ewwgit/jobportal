@@ -24,10 +24,8 @@ if(!empty($jobskills) )
 
 
 
-
           <div class="highlighted newlicls"> 
-          <a
-		href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>"><img src="<?php
+          <img src="<?php
 							if($model->imagenew){
 													
 							echo isset( $model->imagenew)? Url::base().$model->imagenew : '' ;
@@ -35,7 +33,6 @@ if(!empty($jobskills) )
 									  echo Url::base()."/frontend/web/images/user-iconnew.png" ;
 								      }
 								?>" alt="">
-								</a>
             <div class="job-list-content">
               <h4> <a
 		href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>"> <?php echo isset( $model->designation) ? $model['designation']:'';?> </a> <span class="full-time">Full-Time</span></h4>
@@ -48,7 +45,7 @@ if(!empty($jobskills) )
 	?>
 	<?php if($memberJoin ==0){?>
 	
-	<a href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>" class="btn btn-primary apply_jobnew" style ="float:right;" id="needtoapply<?=  $model->id; ?>" apljobid="<?php echo $model->id;?>">Apply this Job</a>
+	<button class="btn btn-primary apply_job"  id="needtoapply<?=  $model->id; ?>" apljobid="<?php echo $model->id;?>">Apply this Job</button>
 	
 	
 	<?php
@@ -56,7 +53,7 @@ if(!empty($jobskills) )
 	else {
 		?>
 	
-	<a href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>" class="btn btn-primary appliednew" style ="float:right;">Applied</a>
+	<button class="btn btn-primary applied pull-right">Applied</button>
 	
 	<?php }?>
 	</div>
@@ -70,7 +67,9 @@ if(!empty($jobskills) )
               
 	
 				
-			
+
+
+
 
 	
 	
