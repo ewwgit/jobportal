@@ -32,6 +32,9 @@ class EmployeeForm extends Model {
 	public $city;
 	public $countriesList;
 	public $description;
+	public $noticeperiod;
+	public $createdDate;
+	public $updatedDate;
 	public $userid;
 	/**
 	 * * Educational Details **
@@ -183,6 +186,8 @@ class EmployeeForm extends Model {
 								'gender',
 								'dateofbirth',
 								'mobilenumber' ,
+								'noticeperiod',
+								'updatedDate',
 								
 								
 								'highdegree',

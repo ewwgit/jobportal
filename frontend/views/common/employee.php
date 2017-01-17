@@ -263,7 +263,12 @@ select {
 									<h5>Expected Salary</h5>
 										<?= $form->field($model, 'expectedsalary')->textInput(['autofocus' => true])->label(false)?>
 									</div>
+									<div class="form">
+									<h5>Notice Period</h5>
+										<?=$form->field ( $model, 'noticeperiod' )->dropDownList ( [ '30days ' => '30days ','45days ' => '45days','60days ' => '60days','75days' => '75days ', ], [ 'prompt' => 'select your notice period' ] )->label ( false )?>
+									</div>
 							</div>
+							
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
 									<h4>Add Your Employer Details</h4>

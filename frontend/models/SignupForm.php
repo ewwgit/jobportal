@@ -24,6 +24,9 @@ class SignupForm extends Model {
 	public $state;
 	public $city;
 	public $description;
+	public $noticeperiod;
+	public $createdDate;
+	public $updatedDate;
 	
 	/**
 	 * @inheritdoc
@@ -123,6 +126,9 @@ class SignupForm extends Model {
 								'state',
 								'city',
 								'description',
+								'noticeperiod',
+								'createdDate',
+								'updatedDate',
 						],
 						'safe' 
 				] 

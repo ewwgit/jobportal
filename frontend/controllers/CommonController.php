@@ -181,6 +181,7 @@ class CommonController extends Controller
         	//$model->state =  $employee->state;
         	//$model->city = $employee->city;
         	$model ->description = $employee -> description;
+        	$model -> noticeperiod = $employee -> noticeperiod;
 		}
 		
 		/* employee education details*/
@@ -350,6 +351,8 @@ class CommonController extends Controller
 				$employee -> city =  Cities::getCityName($model->city);
 				//print_r($model->description);
 				$employee -> description = $model -> description;
+				$employee-> noticeperiod = $model-> noticeperiod;
+				$employee -> updatedDate = date("Y-m-d H:i:s");
 				$empmodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 				
 				  
@@ -388,7 +391,8 @@ class CommonController extends Controller
 				$empmodel->state = States::getStateName($model->state);
 				$empmodel->city = Cities::getCityName($model->city);
 				$empmodel->description = $model->description;
-				
+				$empmodel->noticeperiod = $model->noticeperiod;
+				$empmodel -> updatedDate = date("Y-m-d H:i:s");
 				$empmodel->userid = Yii::$app->emplyoee->emplyoeeid ;
 				//print_r($empmodel);exit();
 				$empmodel-> save();
@@ -627,11 +631,12 @@ class CommonController extends Controller
 				if(isset($language))
 				{
 					$languageary=$model->language;
+					//print_r($model->language);exit();
 					$proficiencyary=$model->proficiencylevel;
 					$langabilityary=$model->ability;
 					
-					//print_r($model->ability);exit();
-					//print_r($skillnameary);exit();
+				     //print_r($model->ability);exit();
+					//print_r($languageary);exit();
 					//$newskillname = array();
 					if(!empty($languageary))
 					{

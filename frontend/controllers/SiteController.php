@@ -536,6 +536,7 @@ class SiteController extends Controller
         		$gender = $model->gender;
         		$dateofbirth = date('Y-m-d', strtotime($model->dateofbirth));
         		$mobilenumber=$model->mobilenumber;
+        		$createdDate = date("Y-m-d H:i:s");
         		
         		
         		
@@ -549,6 +550,7 @@ class SiteController extends Controller
         		$employee_signup->gender= $gender;
         		$employee_signup->dateofbirth= $dateofbirth;
         		$employee_signup->mobilenumber= $mobilenumber;
+        		$employee_signup->createdDate = $createdDate;
         		$employee_signup->userid= $id;
         		$employee_signup->country= '';
         		$employee_signup->state= '';
