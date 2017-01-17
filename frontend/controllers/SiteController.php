@@ -358,6 +358,11 @@ class SiteController extends Controller
     	{
     	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
     	}
+    	$spotlightData = EmployerJobpostings::find()->where(['status' => 'Active'])->orderBy('id')->limit(10);
+    	$spotlightDataProvider = new ActiveDataProvider([
+    			'pagination' => false,
+    			'query' => $spotlightData,
+    	]);
     	return $this->render('index', [
     			'dataProvider' => $dataProvider,
     			'searchModel' => $searchModel,
@@ -365,6 +370,7 @@ class SiteController extends Controller
     			'companydata' => $companydata,
     			'desdata' => $desdata,
     			'expdata' => $expdata,
+    			'spotlightDataProvider' => $spotlightDataProvider
     	]);
     	}
     	
