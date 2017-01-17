@@ -31,7 +31,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'jobtype',
 								
 								
-								'address',
+								
 								'company_name',
 								'company_type',
 								'industry_type',
@@ -39,7 +39,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
  								'country',
 // 								'state',
 // 								'city',
-								'zipcode',
+								
 								'Min_Experience',
 								'Max_Experience' ,
 								'job_location',
@@ -47,9 +47,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 						],
 						'required' 
 				],
-				[
-						['zipcode',],'integer'
-				],
+				
 				[ 
 						[ 
 								'CTC',
@@ -60,7 +58,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'Description',
 								'jobtype',
 								
-								'address',
+								
 								'company_name',
 								'company_type',
 								'industry_type',
@@ -68,7 +66,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'country',
                                // 'state',
                               // 'city',
-								'zipcode',
+								
 								'Min_Experience',
 								'Max_Experience' ,
 								'userid',
@@ -94,7 +92,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 				'job_location' =>'Job Location',
 				'status'=>'Status',
 				'image'=>'Image',
-				'address' => 'Address',
+				
 				'roleid' => 'Roleid',
 				'CTC' => 'CTC',
 				'rolecategory' => 'Rolecategory',
@@ -105,7 +103,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 				'country' => 'Country',
 				'state' => 'State',
 				'city' => 'City',
-				'zipcode' => 'Zipcode',
+				
 				'userid' =>'userid'
 		];
 	}

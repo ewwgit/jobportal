@@ -21,15 +21,13 @@ class JobpostSearch extends EmployerJobpostings {
 								'Description',
 								'jobtype',
 								
-								'address',
+								
 								'company_name',
 								'company_type',
 								'industry_type',
 								'dateofestablishment',
 								'country',
-								'state',
-								'city',
-								'zipcode',
+								
 								'userid'
 						],
 						'safe' 

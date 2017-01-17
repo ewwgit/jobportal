@@ -20,15 +20,13 @@ class EmployeeJobsearch extends EmployerJobpostings {
 								'Max_Experience',
 								'Description',
 								'jobtype',
-								'address',
+								
 								'company_name',
 								'company_type',
 								'industry_type',
 								'dateofestablishment',
 								'country',
-								'state',
-								'city',
-								'zipcode' 
+								
 						],
 						'safe' 
 				] 

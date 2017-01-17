@@ -70,14 +70,7 @@ $this->title = 'Postings View';
 											<td><?php echo  $postings->country;  ?></td>
 										</tr>
 										
-										<tr>
-											<td>Zipcode:</td>
-											<td><?php echo  $postings->zipcode;  ?></td>
-										</tr>
-										<tr>
-											<td>Address:</td>
-											<td><?php echo  $postings->address;  ?></td>
-										</tr>
+										
 										
 									</tbody>
 								</table>

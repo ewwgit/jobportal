@@ -94,10 +94,7 @@ select {
                     
                    </div>
                 
-									<div class="form">
-                         <h5>Zipcode </h5>
-                  <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true])->label(false)?>	
-                  </div>
+									
 									<div class="form">
                         <h5>CTC </h5>
                   <?= $form->field($model, 'CTC')->textInput(['autofocus' => true])->label(false)?>	
@@ -147,10 +144,7 @@ select {
                    <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select jobtype'])->label(false)?>	
                   </div>
 									
-									<div class="form">
-                         <h5>Address </h5>
-                 <?= $form->field($model, 'address')->textarea(['rows' => 0])->label(false)?>	
-                  </div>
+									
 
 									<div class="form">
                          <h5>Company type </h5>
