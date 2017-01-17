@@ -73,10 +73,12 @@ $jobmaster_data = EmployerJobpostings::find()->where(['id' => $model->jobid])->o
 					<div class="select-grid applicationstatus" id="selectbx<?php echo $model->jobUid;?>">
 						<select data-placeholder="Application Status" class="chosen-select-no-single">
 							<option value="New" <?php echo $model->application_status == 'New' ? 'selected' : ''; ?>>New</option>
+							<option value="Scheduled" <?php echo $model->application_status == 'Scheduled' ? 'selected' : ''; ?>>Scheduled</option>
 							<option value="Interviewed" <?php echo $model->application_status == 'Interviewed' ? 'selected' : ''; ?>>Interviewed</option>
 							
 							<option value="Hired" <?php echo $model->application_status == 'Hired' ? 'selected' : ''; ?>>Hired</option>
 							<option value="Archived" <?php echo $model->application_status == 'Archived' ? 'selected' : ''; ?>>Archived</option>
+							<option value="Rejected" <?php echo $model->application_status == 'Rejected' ? 'selected' : ''; ?>>Rejected</option>
 						</select>
 					</div>
 

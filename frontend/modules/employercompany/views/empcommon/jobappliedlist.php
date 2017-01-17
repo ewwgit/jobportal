@@ -76,10 +76,12 @@ if(isset($_GET['status']) && ($_GET['status'] != ''))
 		<select data-placeholder="Filter by status " id="stanewchangenew" class="chosen-select-no-single searchstatusnew">
 			<option value="All">All</option>
 			<option value="New" <?php echo $statusnew == 'New' ? 'selected' : ''; ?>>New</option>
+			<option value="Scheduled" <?php echo $model->application_status == 'Scheduled' ? 'selected' : ''; ?>>Scheduled</option>
 							<option value="Interviewed" <?php echo $statusnew == 'Interviewed' ? 'selected' : ''; ?>>Interviewed</option>
 							
 							<option value="Hired" <?php echo $statusnew == 'Hired' ? 'selected' : ''; ?>>Hired</option>
 							<option value="Archived" <?php echo $statusnew == 'Archived' ? 'selected' : ''; ?>>Archived</option>
+							<option value="Rejected" <?php echo $model->application_status == 'Rejected' ? 'selected' : ''; ?>>Rejected</option>
 		</select>
 		<div class="margin-bottom-15"></div>
 	</div>
