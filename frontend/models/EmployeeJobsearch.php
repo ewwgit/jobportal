@@ -10,6 +10,7 @@ use frontend\models\EmployerJobpostings;
 class EmployeeJobsearch extends EmployerJobpostings {
 	
 	public $skills;
+	public $job_location;
 	public function rules() {
 		return [ 
 				[ 
@@ -21,7 +22,7 @@ class EmployeeJobsearch extends EmployerJobpostings {
 								'Max_Experience',
 								'Description',
 								'jobtype',
-								
+								'job_location',
 								'company_name',
 								'company_type',
 								'industry_type',
@@ -37,7 +38,7 @@ class EmployeeJobsearch extends EmployerJobpostings {
 		return Model::scenarios ();
 	}
 	public function search($params) {
-		$query = EmployerJobpostings::find ();
+		$query = EmployerJobpostings::find ()->joinWith('jobnew', false, 'INNER JOIN')->joinWith('joblocation', false, 'INNER JOIN');
 		
 		$dataProvider = new ActiveDataProvider ( [ 
 				'query' => $query 
@@ -52,8 +53,12 @@ class EmployeeJobsearch extends EmployerJobpostings {
 		}
 		if(!empty($this->skills))
 		{
-		$query->joinWith('jobnew', false, 'INNER JOIN')->where(['IN', 'skill_name', $this->skills]);
+		$query->andWhere(['IN', 'skill_name', $this->skills]);
 		}
+		if(!empty($this->job_location))
+		{
+			$query->andWhere(['IN', 'location', $this->job_location]);
+		} 
 		$query->andFilterWhere ( [ 
 				'like',
 				'rolecategory',

@@ -53,6 +53,6 @@ class JobLocations extends \yii\db\ActiveRecord
      */
     public function getJob()
     {
-        return $this->hasOne(EmployerPostJobs::className(), ['id' => 'jobid']);
+        return $this->hasOne(EmployerJobpostings::className(), ['id' => 'jobid']);
     }
 }

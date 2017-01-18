@@ -1060,8 +1060,8 @@ exit;
 	{
     	
 		$searchModel = new EmployeeJobsearch();
-		$skillsdata = EmployerJobpostings::find()
-		->select('skills')
+		$skillsdata = JobSkills::find()
+		->select('skill_name')
 		->all();
 		
 		$skillsInfonew = array();
@@ -1070,7 +1070,7 @@ exit;
 			foreach ($skillsdata as $skillnew)
 			{
 				//echo rtrim($skillnew->skills,",");
-				$aryconvertskill = explode(",",rtrim($skillnew->skills,","));
+				$aryconvertskill = explode(",",rtrim($skillnew->skill_name,","));
 				for($k=0; $k < count($aryconvertskill); $k++)
 				{
 					$skillsInfonew["$aryconvertskill[$k]"] = $aryconvertskill[$k];

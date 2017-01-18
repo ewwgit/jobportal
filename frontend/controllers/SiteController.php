@@ -33,6 +33,8 @@ use yii\data\ActiveDataProvider;
 use yii\db\Query ;
 use frontend\models\JobSkills;
 use yii\data\ArrayDataProvider;
+use frontend\models\JobLocations;
+use backend\models\RolesCategory;
 /**
  * Site controller
  */
@@ -261,6 +263,28 @@ class SiteController extends Controller
     		$skillsInfo =[''];
     	}
     	
+    	
+    	$locationdata = JobLocations::find()
+    	->select('location')
+    	->all();
+    	
+    	$locationsInfo = array();
+    	if(!empty($locationdata))
+    	{
+    		foreach ($locationdata as $locationnew)
+    		{
+    			//echo rtrim($skillnew->skills,",");
+    			$aryconvertlocation = explode(",",rtrim($locationnew->location,","));
+    			for($m=0; $m < count($aryconvertlocation); $m++)
+    			{
+    				$locationsInfo["$aryconvertlocation[$m]"] = $aryconvertlocation[$m];
+    			}
+    		}
+    	}
+    	else {
+    		$locationsInfo =[''];
+    	}
+    	
     	$companydata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
     	if($companydata)
     	{
@@ -370,7 +394,8 @@ class SiteController extends Controller
     			'companydata' => $companydata,
     			'desdata' => $desdata,
     			'expdata' => $expdata,
-    			'spotlightDataProvider' => $spotlightDataProvider
+    			'spotlightDataProvider' => $spotlightDataProvider,
+    			'locationsInfo' => $locationsInfo
     	]);
     	}
     	
@@ -820,6 +845,27 @@ class SiteController extends Controller
 				return $this->render('index'); */
 			}	
 		
+	}
+	
+	public function actionLocations()
+	{
+		$query = JobLocations::find()->select('location');
+		$dataProvider = new ActiveDataProvider([
+				'pagination' =>  [
+        'pageSize' => 100,
+    ],
+				'query' => $query,
+		]);
+	}
+	public function actionCategories()
+	{
+		$query = RolesCategory::find()->select('role_name');
+		$dataProvider = new ActiveDataProvider([
+				'pagination' =>  [
+						'pageSize' => 100,
+				],
+				'query' => $query,
+		]);
 	}
 	
 	

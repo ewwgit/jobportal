@@ -95,6 +95,21 @@ use yii\web\view;
 ]);
  ?>
  
+ <?php 
+						
+                           echo  $form->field($searchModel, 'job_location')->widget(Select2::classname(), [
+                           		                 
+                           		       'data'=>$locationsInfo,
+                           		        'options' => ['placeholder' => 'Enter location...', 'multiple' => true],
+                                        'pluginOptions' => [
+                                        'tags' => true,
+                                        'allowClear' => true,
+                                        'tokenSeparators' => [','],
+                                      //'maximumInputLength' => 10
+                                             ],
+                           		      //'value' => ['valu1','valu2']
+                           ]);?>
+ 
         <?php 
      
      echo $form->field($searchModel, 'Min_Experience')->widget(TypeaheadBasic::classname(), [

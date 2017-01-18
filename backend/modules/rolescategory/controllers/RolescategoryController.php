@@ -3,8 +3,8 @@
 namespace app\modules\rolescategory\controllers;
 
 use Yii;
-use app\models\RolesCategory;
-use app\models\RolesCategorySearch;
+use backend\models\RolesCategory;
+use backend\models\RolesCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

@@ -138,6 +138,8 @@ return [
     						'employees-logout' => 'site/logout',
     						'employees-request-password-reset' => 'site/request-password-reset',
     						'employees-reset-assword' => 'site/reset-password',
+    						'employees-job-locations' => 'site/locations',
+    						'employees-job-role-categories' => 'site/categories',
     						
     						'employers' => 'employercompany/empsite/login',
     						'employers-signup' => 'employercompany/empsite/signup',
