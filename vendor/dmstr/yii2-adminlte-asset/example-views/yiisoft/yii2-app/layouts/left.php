@@ -38,6 +38,8 @@
                 	['label' => 'Specializations', 'icon' => 'fa fa-sun-o', 'url' => ['/specializations/specializations/']],
                 	['label' => 'Memberships', 'icon' => 'fa fa-sun-o', 'url' => ['/memberships/memberships/']],
                 	['label' => 'EmployerPackages', 'icon' => 'fa fa-sun-o', 'url' => ['/employerpackages/employerpackages/']],
+                	['label' => 'RoleCategory', 'icon' => 'fa fa-bookmark', 'url' => ['/rolescategory/rolescategory/']],
+                	['label' => 'IndustryType', 'icon' => 'fa fa-bookmark', 'url' => ['/industrytype/industrytype/']],
                    
                    
                 ],

@@ -37,6 +37,10 @@ return [
     				'class' => 'app\modules\rolescategory\rolescategory',
     		],
     		
+    		'industrytype' => [
+    				'class' => 'app\modules\industrytype\industrytype',
+    		],
+    		
     ],
     'components' => [
         'request' => [
