@@ -13,6 +13,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 	public $allskills;
 	public $imagenew;
 	public $skills;
+	public $job_location;
 	
 	public static function tableName() {
 		return 'employer_post_jobs';
