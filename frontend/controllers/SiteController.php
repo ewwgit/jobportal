@@ -35,6 +35,7 @@ use frontend\models\JobSkills;
 use yii\data\ArrayDataProvider;
 use frontend\models\JobLocations;
 use backend\models\RolesCategory;
+use backend\models\Designation;
 /**
  * Site controller
  */
@@ -285,24 +286,27 @@ class SiteController extends Controller
     		$locationsInfo =[''];
     	}
     	
-    	$companydata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
-    	if($companydata)
+    	$companydata =  ArrayHelper::map(EmployerJobpostings::find()->where(['status' => 'Active'])->all(), 'company_name','company_name');
+    	if(empty($companydata))
     	{
-    		$companydata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
-    	}
-    	else {
     		$companydata = [''];
     	}
     	
     	
-    	$desdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
-    	if($desdata)
+    	
+    	$desdata =  ArrayHelper::map(Designation::find()->where(['status' => 'Active'])->all(), 'name','name');
+    	if(empty($desdata))
     	{
-    		$desdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'designation','designation');
-    	}
-    	else {
     		$desdata = [''];
     	}
+    	
+    	
+    	$roleCategorydata =  ArrayHelper::map(RolesCategory::find()->where(['status' => 'Active'])->all(), 'role_name','role_name');
+    	if(empty($roleCategorydata))
+    	{
+    		$roleCategorydata = [''];
+    	}
+    	
     	
     	
     	$expdata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'Min_Experience','Min_Experience');
@@ -395,7 +399,8 @@ class SiteController extends Controller
     			'desdata' => $desdata,
     			'expdata' => $expdata,
     			'spotlightDataProvider' => $spotlightDataProvider,
-    			'locationsInfo' => $locationsInfo
+    			'locationsInfo' => $locationsInfo,
+    			'roleCategorydata' => $roleCategorydata
     	]);
     	}
     	

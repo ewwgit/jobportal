@@ -94,6 +94,14 @@ use yii\web\view;
     'pluginOptions' => ['highlight'=>true],
 ]);
  ?>
+ <?php 
+	
+     echo $form->field($searchModel, 'rolecategory')->widget(TypeaheadBasic::classname(), [
+    'data' => $roleCategorydata,
+    'options' => ['placeholder' => 'Enter Role Category ...','class'=>'mdcls'],
+    'pluginOptions' => ['highlight'=>true],
+]);
+ ?>
  
  <?php 
 						
