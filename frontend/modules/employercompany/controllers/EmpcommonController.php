@@ -529,7 +529,7 @@ class EmpcommonController extends Controller {
 					{
 						$jobLocations = new JobLocations();
 						$jobLocations->jobid = $model->id;
-						$jobLocations->location = $skill[$k] ;
+						$jobLocations->location = $locationsnew[$k] ;
 						$jobLocations->save();
 					}
 				}
@@ -705,7 +705,7 @@ class EmpcommonController extends Controller {
 					{
 						$jobLocations = new JobLocations();
 						$jobLocations->jobid = $model->id;
-						$jobLocations->location = $skill[$k] ;
+						$jobLocations->location = $locationsnew[$k] ;
 						$jobLocations->save();
 					}
 				}
