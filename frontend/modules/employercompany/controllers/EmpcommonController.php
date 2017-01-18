@@ -502,7 +502,7 @@ class EmpcommonController extends Controller {
 			$model->createdDate = date('Y-m-d H:i:s');
 			$model->updatedDate = date('Y-m-d H:i:s');
 			$model->status = 'active';
-			$model->skills = $comma_separated;
+			//$model->skills = $comma_separated;
 			$model->job_location = $location_comma_separated;
 			$model->userid = Yii::$app->employer->employerid;
 			$model->country = Countries::getCountryName($model->country);
@@ -674,7 +674,7 @@ class EmpcommonController extends Controller {
 					
 			}
 			//print_r($model);exit();
-			$model->skills = $comma_separated;
+			//$model->skills = $comma_separated;
 			$model->save ();
 			JobSkills::deleteAll( ['jobid' => $model->id]);
 			
@@ -734,7 +734,7 @@ public function actionJobpostingslist() {
 		
 	
 	 			$skillsdata = EmployerJobpostings::find()
- 				->select('skills')
+ 				->select('skill_name')->joinWith('jobnew', true, 'INNER JOIN')
 				->where(['userid' => Yii::$app->employer->employerid])->all();
  				
 				$skillsInfo = array();
@@ -743,7 +743,7 @@ public function actionJobpostingslist() {
  					foreach ($skillsdata as $skillnew)
  					{
  						//echo rtrim($skillnew->skills,",");
- 						$aryconvertskill = explode(",",rtrim($skillnew->skills,","));
+ 						$aryconvertskill = explode(",",rtrim($skillnew['jobnew']['skill_name'],","));
  						for($k=0; $k < count($aryconvertskill); $k++)
  						{
  							$skillsInfo[$aryconvertskill[$k]] = $aryconvertskill[$k];

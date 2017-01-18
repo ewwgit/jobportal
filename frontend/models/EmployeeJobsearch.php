@@ -9,6 +9,7 @@ use frontend\models\EmployerJobpostings;
 
 class EmployeeJobsearch extends EmployerJobpostings {
 	
+	public $skills;
 	public function rules() {
 		return [ 
 				[ 
