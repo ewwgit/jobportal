@@ -36,11 +36,11 @@ class EmployersList extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'mobilenumber', 'dateofbirth', 'gender', 'designation', 'address', 'userid', 'profileimage', 'create_date', 'updated_date', 'skills'], 'required'],
+            [['first_name','last_name', 'mobilenumber', 'dateofbirth', 'gender', 'designation', 'address', 'userid', 'profileimage', 'create_date', 'updated_date', 'skills'], 'required'],
             [['mobilenumber', 'userid'], 'integer'],
             [['dateofbirth', 'create_date', 'updated_date'], 'safe'],
             [['gender', 'address'], 'string'],
-            [['name'], 'string', 'max' => 225],
+            [['first_name','last_name'], 'string', 'max' => 225],
             [['designation', 'skills'], 'string', 'max' => 100],
             [['profileimage'], 'string', 'max' => 200],
         ];
@@ -53,7 +53,8 @@ class EmployersList extends \yii\db\ActiveRecord
     {
         return [
             'employerid' => 'Employerid',
-            'name' => 'Name',
+            'first_name' => 'Last Name',
+        	'last_name' => 'First Name',
             'mobilenumber' => 'Mobilenumber',
             'dateofbirth' => 'Dateofbirth',
             'gender' => 'Gender',

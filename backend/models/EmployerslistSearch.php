@@ -19,7 +19,7 @@ class EmployerslistSearch extends EmployersList
     {
         return [
             [['employerid', 'mobilenumber', 'userid'], 'integer'],
-            [['name', 'dateofbirth', 'gender', 'designation', 'address', 'profileimage', 'create_date', 'updated_date', 'skills'], 'safe'],
+            [['first_name','last_name', 'dateofbirth', 'gender', 'designation', 'address', 'profileimage', 'create_date', 'updated_date', 'skills'], 'safe'],
         ];
     }
 
@@ -67,7 +67,9 @@ class EmployerslistSearch extends EmployersList
             'updated_date' => $this->updated_date,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
+        $query
+            ->andFilterWhere(['like', 'first_name', $this->first_name])
+            ->andFilterWhere(['like', 'last_name', $this->last_name])
             ->andFilterWhere(['like', 'gender', $this->gender])
             ->andFilterWhere(['like', 'designation', $this->designation])
             ->andFilterWhere(['like', 'address', $this->address])

@@ -29,7 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'employerid',
-            'name',
+            'first_name',
+        	'last_name',
             'mobilenumber',
             'dateofbirth',
             'gender:ntext',
