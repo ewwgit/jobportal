@@ -65,7 +65,10 @@ class RolescategoryController extends Controller
     {
         $model = new RolesCategory();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())){ 
+        	$model->createdDate = date('Y-m-d H:i:s');
+        
+        	$model->save();
             return $this->redirect(['view', 'id' => $model->roleId]);
         } else {
             return $this->render('create', [
@@ -84,7 +87,9 @@ class RolescategoryController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+        	$model->updatedDate = date('Y-m-d H:i:s');
+        	$model->save();
             return $this->redirect(['view', 'id' => $model->roleId]);
         } else {
             return $this->render('update', [

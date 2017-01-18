@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div
 	class="roles-category-view">
 
-	<h1><?= Html::encode($this->title) ?></h1>
+	
 
 	<p>
         <?= Html::a('Update', ['update', 'id' => $model->roleId], ['class' => 'btn btn-primary']) ?>

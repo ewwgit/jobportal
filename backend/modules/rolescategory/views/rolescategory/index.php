@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div
 	class="roles-category-index">
 
-	<h1><?= Html::encode($this->title) ?></h1>
+	
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'roleId',
+         //   'roleId',
             'role_name',
             'status',
             'description:ntext',

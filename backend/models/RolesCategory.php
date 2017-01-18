@@ -30,7 +30,7 @@ class RolesCategory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['role_name', 'status', 'description', 'createdDate', 'updatedDate'], 'required'],
+            [['role_name', 'status', 'description'], 'required'],
             [['status', 'description'], 'string'],
             [['createdDate', 'updatedDate'], 'safe'],
             [['role_name'], 'string', 'max' => 200],
