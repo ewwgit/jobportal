@@ -140,9 +140,9 @@ class EmpcommonController extends Controller {
 			$model->gender = $employeData->gender;
 			$model->dateofbirth = $employeData->dateofbirth;
 			$model->mobilenumber = $employeData->mobilenumber;
-			$model->landline = $employeData->landline;
 			$model->address = $employeData->address;
 			$model->description = $employeData->description;
+			$model->landline = $employeData->landline;
 			$model->profileimagenew = $employeData->profileimage;
 			$model->skills = $employeData->skills;
 			$data=$model->skills;
@@ -206,8 +206,11 @@ class EmpcommonController extends Controller {
 		if (($model->load ( Yii::$app->request->post () )) && ($model->validate ())) {
 			
 			if (! (empty ( $employeData ))) {
-				$employeData->name = $model->name;
+				$employeData->first_name = $model->first_name;
+				$employeData->last_name = $model->last_name;
 				$employeData->designation = $model->designation;
+				$employeData->description = $model->description;
+			    $employeData->landline = $model->landline;
 				$employeData->gender = $model->gender;
 				$companyDataa = date ( 'Y-m-d', strtotime ( $model->dateofbirth ) );
 				$employeData->dateofbirth = $companyDataa;

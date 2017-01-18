@@ -13,7 +13,8 @@ class EmployerSignup extends Model {
 	public $email;
 	public $password;
 	public $confirmpassword;
-	public $name;
+	public $first_name;
+	public $last_name;
 	public $mobilenumber;
 	public $dateofbirth;
 	public $gender;
@@ -45,12 +46,20 @@ class EmployerSignup extends Model {
 						'required','on' => 'signup' 
 				],
 				[
-				        'name',
+				        'first_name',
 				        'trim'
 						],
 				[
-				        'name',
+				        'first_name',
 				        'required','on' => 'signup'
+						],
+				[
+				'last_name',
+				'trim'
+						],
+						[
+								'last_name',
+								'required','on' => 'signup'
 						],
 				[ 
 						'username',
@@ -141,7 +150,8 @@ class EmployerSignup extends Model {
 						[ 
 								'username',
 								'email',
-								'name',
+								'first_name',
+								'last_name',
 								'mobilenumber',
 								'confirmpassword',
 								'gender',

@@ -49,8 +49,13 @@ select {
 				</p>
 				
             	 <p class="form-row form-row-wide">
-					<label for="username">Name: 
-              <?= $form->field($model, 'name')->textInput(['autofocus' => true, 'placeholder' => 'Name', 'class' => 'fa fa-user'])->label(false)?>
+					<label for="username">First Name: 
+              <?= $form->field($model, 'first_name')->textInput(['autofocus' => true, 'placeholder' => 'Name', 'class' => 'fa fa-user'])->label(false)?>
+              </label>
+				</p>
+				 <p class="form-row form-row-wide">
+					<label for="username">Last Name: 
+              <?= $form->field($model, 'last_name')->textInput(['autofocus' => true, 'placeholder' => 'Name', 'class' => 'fa fa-user'])->label(false)?>
               </label>
 				</p>
 				

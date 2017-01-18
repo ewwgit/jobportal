@@ -242,7 +242,8 @@ class EmpsiteController extends Controller {
 			
 				$this->layout = '@app/views/layouts/employermain';
 				
-				$name = $model->name;
+				$firstname = $model->first_name;
+				$lastname = $model->last_name;
 				$mobilenumber = $model->mobilenumber;
 				$dateofbirth = date ( 'Y-m-d', strtotime ( $model->dateofbirth ) );
 				$gender = $model->gender;
@@ -250,7 +251,8 @@ class EmpsiteController extends Controller {
 				
 				$date=$model->create_date = date ( "Y-m-d H:i:s" );
 				$userid = Yii::$app->db->getLastInsertID ();
-				$employermodel->name = $name;
+				$employermodel->first_name = $firstname;
+				$employermodel->last_name = $lastname;
 				$employermodel->mobilenumber = $mobilenumber;
 				$employermodel->gender = $gender;
 				$employermodel->dateofbirth = $dateofbirth;
