@@ -561,7 +561,7 @@ class EmpcommonController extends Controller {
 	}
 
 	public function actionJobpostingsview($id) {
-		$this->layout = '@app/views/layouts/employerinner';
+		$this->layout = '@app/views/layouts/postingsinner';
 		$postings = $this->findModel ( $id );
 		return $this->render ( 'jobpostingsview', [ 
 				'postings' => $postings 

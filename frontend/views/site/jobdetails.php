@@ -5,6 +5,8 @@ use yii\helpers\Url;
 use yii\helpers\BaseStringHelper;
 use frontend\models\EmployeeJobapplied;
 use frontend\models\JobSkills;
+use frontend\models\JobLocations;
+
 $this->title = 'Job Complete Details';
 
 $jobskills = JobSkills::find()->select('skill_name')->asArray()->where(['jobid' => $jobinfo->id])->all();
@@ -15,6 +17,16 @@ if(!empty($jobskills) )
 	foreach ($jobskills as $skill)
 	{
 		$skills .= $skill['skill_name'].', ';
+	}
+}
+$joblocations = JobLocations::find()->select('location')->asArray()->where(['jobid' => $jobinfo->id])->all();
+
+$locations = '';
+if(!empty($joblocations) )
+{
+	foreach ($joblocations as $locationnew)
+	{
+		$locations .= $locationnew['location'].', ';
 	}
 }
 ?>
@@ -97,8 +109,12 @@ if(!empty($jobskills) )
 		
 
 		<p><?php echo  isset( $jobinfo -> Description) ? $jobinfo -> Description : '';  ?></p>
+		<p class="margin-reset">
+			<strong>Experience</strong>
+		</p>
+		
 		<p><?php  echo isset($jobinfo -> Min_Experience) ? $jobinfo -> Min_Experience : ''?> - 
-    <?php echo $jobinfo -> Max_Experience?></p>
+    <?php echo $jobinfo -> Max_Experience?> Years</p>
 		
 		<br>
 
@@ -129,7 +145,7 @@ if(!empty($jobskills) )
 						<i class="fa fa-map-marker"></i>
 						<div>
 							<strong> Job Location:</strong>
-							<span><?php echo  isset($jobinfo -> job_location) ? $jobinfo -> job_location : '' ;  ?></span>
+							<span><?php echo  $locations;  ?></span>
 						</div>
 					</li>
 					<li>
@@ -165,7 +181,10 @@ if(!empty($jobskills) )
 						<i class="fa fa-money"></i>
 						<div>
 							<strong>Salary:</strong>
-							<span><?php echo  isset( $jobinfo -> CTC) ? $jobinfo -> CTC : '';  ?></span>
+							<span><?php echo  isset( $jobinfo -> currency) ? $jobinfo -> currency : '';  ?>
+							<?php echo  isset( $jobinfo -> min_salary) ? $jobinfo -> min_salary : '';  ?> - 
+							<?php echo  isset( $jobinfo -> CTC) ? $jobinfo -> CTC : '';  ?> 
+							<?php echo  isset( $jobinfo -> sal_type) ? $jobinfo -> sal_type : '';  ?></span>
 						</div>
 					</li>
 				</ul>
