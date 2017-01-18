@@ -30,9 +30,9 @@ class JobLocations extends \yii\db\ActiveRecord
     {
         return [
             [['jobid', 'location'], 'required'],
-            [['jobid'], 'integer'],
-            [['location'], 'string', 'max' => 200],
-            [['jobid'], 'exist', 'skipOnError' => true, 'targetClass' => EmployerPostJobs::className(), 'targetAttribute' => ['jobid' => 'id']],
+            /* [['jobid'], 'integer'],
+            [['location'], 'string', 'max' => 200], */
+            /* [['jobid'], 'exist', 'skipOnError' => true, 'targetClass' => EmployerPostJobs::className(), 'targetAttribute' => ['jobid' => 'id']], */
         ];
     }
 
