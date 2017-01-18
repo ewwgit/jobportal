@@ -19,7 +19,7 @@ $query = EmployeeJobapplied::find()->where("jobid = $model->id AND 	application_
 
 <tr>
 	<td class="title"><?= $model['designation'];?></td>
-	<td class="title"><?= $model['skills'];?></td>	
+	<td class="title"></td>	
 	<td class="title"><?= $model['Min_Experience'];?></td>	
 	<td class="centered"><a
 		href="<?= Yii::$app->urlManager->createUrl ( ['employers-job-applied-employees-'.$model->id.'-All'] );?>"> Employees</a><b style= "color:#ec971f;"><?php echo '(' . $total_list .')' ?></b></td>

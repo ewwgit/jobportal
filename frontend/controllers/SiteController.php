@@ -240,8 +240,8 @@ class SiteController extends Controller
     	$this->layout= '@app/views/layouts/main';
     	$model = new EmployeeJobapplied();
     	$searchModel = new EmployeeJobsearch();    	
-    	$skillsdata = EmployerJobpostings::find()
-    	->select('skills')
+    	$skillsdata = JobSkills::find()
+    	->select('skill_name')
     	->all();
     	 
     	$skillsInfo = array();
@@ -250,7 +250,7 @@ class SiteController extends Controller
     		foreach ($skillsdata as $skillnew)
     		{
     			//echo rtrim($skillnew->skills,",");
-    			$aryconvertskill = explode(",",rtrim($skillnew->skills,","));
+    			$aryconvertskill = explode(",",rtrim($skillnew->skill_name,","));
     			for($k=0; $k < count($aryconvertskill); $k++)
     			{
     				$skillsInfo["$aryconvertskill[$k]"] = $aryconvertskill[$k];

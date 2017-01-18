@@ -12,6 +12,7 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 	public $statesData;
 	public $allskills;
 	public $imagenew;
+	public $skills;
 	
 	public static function tableName() {
 		return 'employer_post_jobs';
@@ -43,7 +44,9 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'Min_Experience',
 								'Max_Experience' ,
 								'job_location',
-								'status'
+								'status',
+								'sal_type',
+								'currency'
 						],
 						'required' 
 				],

@@ -8,13 +8,13 @@ use yii\data\ActiveDataProvider;
 use frontend\models\EmployerJobpostings;
 
 class JobpostSearch extends EmployerJobpostings {
-	
+	public $skills;
 	public function rules() {
 		return [ 
 				[ 
 						[ 
 								'rolecategory',
-								'skills',
+								
 								'designation',
 								'Min_Experience',
 								'Max_Experience',
@@ -65,10 +65,6 @@ class JobpostSearch extends EmployerJobpostings {
 				'like',
 				'rolecategory',
 				$this->rolecategory 
-		] )->andFilterWhere ( [ 
-				'like',
-				'skills',
-				$this->skills 
 		] )->andFilterWhere ( [ 
 				'like',
 				'designation',
