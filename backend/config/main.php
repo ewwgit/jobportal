@@ -26,13 +26,15 @@ return [
     		],
     		'specializations' => [
     				'class' => 'app\modules\specializations\specializations',
-    				 
     		],
     		'memberships' => [
     				'class' => 'app\modules\memberships\memberships',
     		],
     		'employerpackages' => [
     				'class' => 'app\modules\employerpackages\employerpackages',
+    		],
+    		'rolescategory' => [
+    				'class' => 'app\modules\rolescategory\rolescategory',
     		],
     		
     ],
