@@ -249,9 +249,7 @@ class EmpcommonController extends Controller {
 
 			else {
 				
-				
-				$employermodel->first_name = $model->first_name;
-				$employermodel->last_name = $model->last_name;
+				$employermodel->name = $model->name;
 				
 				$employermodel->designation = $model->designation;
 				$employermodel->gender = $model->gender;
@@ -596,57 +594,41 @@ class EmpcommonController extends Controller {
 	public function actionUpdate($id) {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = $this->findModel ( $id );
-		$data=$model->job_location;
+		//$data=$model->job_location;
 		$model->countriesList = Countries::getCountries();
 		$model->country = Countries::getCountryId($model->country);
-		
-		
-		
-			
-			$model->skills = $model->skills;
-			$data=$model->skills;
-				
-				
-			if (! Empty ( $data )) {
-				$array = $model->skills;
-			
-				$array_skills = explode( ",",$array );
-					
-				$allsary = array();
-				$valuary = array();
-				foreach ($array_skills as $skillnew)
-				{
-					$allsary[$skillnew] = $skillnew;
-					$valuary[] = $skillnew;
-			
-				}
-				$model->allskills = $allsary;
-				$model->skills = $valuary;
-			
-			
-			}
-			$model->imagenew = $model->image;
-          
-			
-		if (! Empty ( $data )) {
-			$array = $model->job_location;
-		
-				
-			$array_locations = explode( ",",$array );
-				
-				
-			$allsary = array();
-			$valuary = array();
-			foreach ($array_locations as $locationnew)
+		$skillsdata = JobSkills::find()->where(['jobid' => $id])->all();
+		$skillarray = [];
+		$allskillarray = [];
+		if(!empty($skillsdata))
+		{
+			foreach ($skillsdata as $skillsnew)
 			{
-				$allsary[$locationnew] = $locationnew;
-				$valuary[] = $locationnew;
-		
+				$skillarray[] = $skillsnew->skill_name;
+				$allskillarray[$skillsnew->skill_name] = $skillsnew->skill_name;
 			}
-			$model->alllocations = $allsary;
-			$model->job_location = $valuary;
-		
 		}
+		$model->skills = $skillarray;
+		$model->allskills = $allskillarray;
+		
+		
+		$locationdata = JobLocations::find()->where(['jobid' => $id])->all();
+		$joblocationarray = [];
+		$alllocationarray = [];
+		if(!empty($locationdata))
+		{
+			foreach ($locationdata as $locationnew)
+			{
+				$joblocationarray[] = $locationnew->location;
+				$alllocationarray[$locationnew->location] = $locationnew->location;
+			}
+		}
+		$model->job_location = $joblocationarray;
+		$model->alllocations = $alllocationarray;
+		
+		
+		
+		$model->imagenew = $model->image;
 		
 		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
 			
