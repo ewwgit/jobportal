@@ -45,6 +45,7 @@ use frontend\models\EmployeeEmployer;
 use frontend\models\SignupForm;
 use backend\models\Designation;
 use frontend\models\JobSkills;
+use frontend\models\JobLocations;
 
 
 
@@ -491,19 +492,13 @@ class EmpcommonController extends Controller {
 			
 			$location = $model->job_location;
 			
-				
-			if (! Empty ( $location )) {
-				$array1 = $model->job_location;
-				$arraylocation = implode ( ",",$array1 );
-				//print_r($arraylocation);exit;
-				$location_comma_separated = rtrim($arraylocation,",");
-			}
+			
 			//$model->image = $employermodel->image;
 			$model->createdDate = date('Y-m-d H:i:s');
 			$model->updatedDate = date('Y-m-d H:i:s');
 			$model->status = 'active';
 			//$model->skills = $comma_separated;
-			$model->job_location = $location_comma_separated;
+			
 			$model->userid = Yii::$app->employer->employerid;
 			$model->country = Countries::getCountryName($model->country);
 		//	$model->state = States::getStateName($model->state);
@@ -522,6 +517,20 @@ class EmpcommonController extends Controller {
 					$jobSkills->jobid = $model->id;
 					$jobSkills->skill_name = $skill[$n] ;
 					$jobSkills->save();
+					}
+				}
+			}
+			
+			if (! empty ( $model->job_location )) {
+				$locationsnew = $model->job_location;
+				for($k=0;$k < count($locationsnew); $k++)
+				{
+					if($locationsnew[$k] != '')
+					{
+						$jobLocations = new JobLocations();
+						$jobLocations->jobid = $model->id;
+						$jobLocations->location = $skill[$k] ;
+						$jobLocations->save();
 					}
 				}
 			}
@@ -636,7 +645,7 @@ class EmpcommonController extends Controller {
 		
 		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
 			
-			$location = $model->job_location;
+			
 			$model->image = UploadedFile::getInstance ( $model, 'image' );
 			if(!(empty($model->image)))
 			{
@@ -656,13 +665,9 @@ class EmpcommonController extends Controller {
 			}
 			
 		
-				if (! Empty ( $location )) {
-					$array = $model->job_location;
-					$array_loc = implode ( ",",$array );
-					
-				}
+				
 			$model->country = Countries::getCountryName($model->country);
-			$model->job_location = $array_loc;
+			
 			
 			$skill = $model->skills;
 				
@@ -688,6 +693,20 @@ class EmpcommonController extends Controller {
 						$jobSkills->jobid = $model->id;
 						$jobSkills->skill_name = $skill[$n] ;
 						$jobSkills->save();
+					}
+				}
+			}
+			JobLocations::deleteAll( ['jobid' => $model->id]);
+			if (! empty ( $model->job_location )) {
+				$locationsnew = $model->job_location;
+				for($k=0;$k < count($locationsnew); $k++)
+				{
+					if($locationsnew[$k] != '')
+					{
+						$jobLocations = new JobLocations();
+						$jobLocations->jobid = $model->id;
+						$jobLocations->location = $skill[$k] ;
+						$jobLocations->save();
 					}
 				}
 			}
