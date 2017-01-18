@@ -249,7 +249,9 @@ class EmpcommonController extends Controller {
 
 			else {
 				
-				$employermodel->name = $model->name;
+				
+				$employermodel->first_name = $model->first_name;
+				$employermodel->last_name = $model->last_name;
 				
 				$employermodel->designation = $model->designation;
 				$employermodel->gender = $model->gender;
