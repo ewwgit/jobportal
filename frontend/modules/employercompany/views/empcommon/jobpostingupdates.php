@@ -29,7 +29,7 @@ $this->title = ' JOB Postings';
 }
 
 select {
-	height: 40px !important;
+	height: 34px !important;
 }
 .btn {
 	padding: 6px 3px;
@@ -113,11 +113,6 @@ select {
                     
                    </div>
                 
-									
-									<div class="form">
-                        <h5>CTC </h5>
-                  <?= $form->field($model, 'CTC')->textInput(['autofocus' => true])->label(false)?>	
-                  </div>
                     <div class="form">
                        <h5>Skills</h5>
                        
@@ -151,17 +146,17 @@ select {
                        <h5>Designation </h5>
 									<?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label(false)?>	
                                                 </div>
-               
+               <div class="form">
+                         <h5> Role category</h5>
+                  <?=$form->field ( $model, 'rolecategory' )->dropDownList ( ['Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => ' System Admin' ], [ 'prompt' => 'select your RoleCategory ' ] )->label(false)?>	
+                  </div>
 									<div class="form" style="width: 450px;margin-left: -15px;">
 					<div class=" col-md-6">
 					     <h5> Min experience </h5><?= $form->field($model, 'Min_Experience')->dropDownList(['0' => '0', '1' => '1','2' => '2','3' =>'3', '4'=>'4',' 5' =>' 5' ,' 6' => ' 6', '7' =>'7','8' =>'8','9' =>'9','10' =>'10'],['prompt'=>'select your MinExperience'])->label(false)?></div>
                  
                   <div class=" col-md-6" style="padding-left: 0px;">     <h5> Max experience</h5><?= $form->field($model, 'Max_Experience')->dropDownList(['0' => '0', '1' => '1','2' => '2','3' =>'3', '4'=>'4','5' =>'5' ,'6' => '6', '7' =>'7','8' =>'8','9' =>'9','10' =>'10'],['prompt'=>'select your MaxExperience'])->label(false)?></div>
                   </div>
-									<div class="form">
-                         <h5> Role category</h5>
-                  <?=$form->field ( $model, 'rolecategory' )->dropDownList ( ['Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => ' System Admin' ], [ 'prompt' => 'select your RoleCategory ' ] )->label(false)?>	
-                  </div>
+									
 									<div class="form">
                          <h5> Description</h5>
                   <?= $form->field($model, 'Description')->textarea(['rows' => 1])->label(false)?>	
@@ -172,31 +167,40 @@ select {
                    <?= $form->field($model, 'jobtype')->inline()->radioList(['full time' =>'Full time' , 'part time' =>'Part time','consultant'=>'Consultant'],['prompt' =>'select jobtype'])->label(false)?>	
                   </div>
 									
-									
-
-									
-									<div class="form">
-                         <h5> Industry type</h5>
-                  <?=$form->field ( $model, 'industry_type' )->dropDownList ( [ 'Advertising/Event Management/PR' => 'Advertising/Event Management/PR','Machinery/Equipment Manufacturing/Industrial Products' => 'Machinery/Equipment Manufacturing/Industrial Products' ], [ 'prompt' => 'select your industry type' ] )->label(false)?>	
+									<div class=" form">
+                         <h5> Company type</h5>
+                  <?= $form->field($model, 'company_type')->dropDownList(['consultant' => 'consultant','corporate' => 'corporate'],['prompt'=>'select your company type'])->label(false)?>	
                   </div>
                   <div class="form">
+                  <h5> Industry type</h5>
+                  <?=$form->field ( $model, 'industry_type' )->dropDownList ( [ 'Advertising/Event Management/PR' => 'Advertising/Event Management/PR','Machinery/Equipment Manufacturing/Industrial Products' => 'Machinery/Equipment Manufacturing/Industrial Products' ], [ 'prompt' => 'select your industry type' ] )->label(false)?>	
+                  </div>
+                   <div class=" form">
                          <h5> Company profile</h5>
                   <?= $form->field($model, 'company_profile')->textarea(['rows' => 4])->label(false)?>	
                   </div>
-                  <div class="form">
-                         <h5> Min salary</h5>
-                  <?= $form->field($model, 'min_salary')->dropDownList(['20,000' => '20,000', ' 30,000' => '30,000','40,000' => '40,000','50,000' =>'50,000', '60,000'=>'60,000',' 70,000' =>'70,000' ,],['prompt' =>'select salary'])->label(false)?>
+                  <div class="form" style="width: 450px;margin-left: -15px;">
+					<div class=" col-md-6">
+					     <h5> Min Sal </h5>
+					     <?= $form->field($model, 'min_salary')->textInput(['autofocus' => true])->label(false)?>
+					     </div>
+                 
+                  	<div class=" col-md-6" style="padding-left: 0px;">     
+                  		<h5> Max Sal</h5>
+                  		<?= $form->field($model, 'CTC')->textInput(['autofocus' => true])->label(false)?>
+                  	</div>
                   </div>
-                  
-                   <div class="form-group">
+                  <div class="form" style="width: 450px;margin-left: -15px;">
+                   <div class=" col-md-6">
                     
                          <h5> Salery Type</h5>
                    <?= $form->field($model, 'sal_type')->dropDownList(['Per-annum' =>'Per-annum' , 'Per-monthly' =>'Per-monthly'],['prompt' =>'Salery Type'])->label(false)?>
                   </div>
-                  <div class="form-group">
+                  <div class=" col-md-6" style="padding-left: 0px;"> 
                     
                          <h5> Currency</h5>
                    <?= $form->field($model, 'currency')->dropDownList(['INR' =>'INR' , 'USD' =>'USD'],['prompt' =>'Currency'])->label(false)?>
+                  </div>
                   </div>
                     <div class="form-group">
                     

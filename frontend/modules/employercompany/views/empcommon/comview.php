@@ -24,6 +24,12 @@ $this->title = 'Employer Profile';
 select {
 	height: 40px !important;
 }
+.btn {
+	padding: 6px 3px;
+}
+.file-footer-caption {
+	width: 228px;
+}
 </style>
 
 

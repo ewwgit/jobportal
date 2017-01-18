@@ -288,47 +288,6 @@ select {
 										
 									</div>
 							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="margin-bottom-20">
-								<div class="title-underlined">
-									<h4>Add Your Educational Details</h4>
-								</div>
-								<div class="form">
-									<h5>Higher Degree</h5>
-									
-									
-									<?= $form->field($model, 'highdegree')->dropDownList(ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higher degree'])->label(false);?>
-										
-									</div>
-
-								<!-- Email -->
-								<div class="form">
-									<h5>Specialization</h5>
-										
-										<?= $form->field($model, 'specialization')->dropDownList(ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization'])->label(false);?>
-									</div>
-
-								<!-- Email -->
-								<div class="form">
-									<h5>University</h5>
-										<?= $form->field($model, 'university')->textInput(['autofocus' => true])->label(false)?>
-									</div>
-
-								<!-- Title -->
-								<div class="form">
-									<h5>College Name</h5>
-										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false)?>
-									</div>
-								<div class="form">
-									<h5>Passing Year</h5>
-										<?= $form->field($model, 'passingyear')->textInput(['autofocus' => true])->label(false)?>
-									</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
 									<h4>Add Your Skills Details</h4>
@@ -401,6 +360,43 @@ select {
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
+									<h4>Add Your Educational Details</h4>
+								</div>
+								<div class="form">
+									<h5>Higher Degree</h5>
+									
+									
+									<?= $form->field($model, 'highdegree')->dropDownList(ArrayHelper::map(Degrees::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select higher degree'])->label(false);?>
+										
+									</div>
+
+								<!-- Email -->
+								<div class="form">
+									<h5>Specialization</h5>
+										
+										<?= $form->field($model, 'specialization')->dropDownList(ArrayHelper::map(Specializations::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select specialization'])->label(false);?>
+									</div>
+
+								<!-- Email -->
+								<div class="form">
+									<h5>University</h5>
+										<?= $form->field($model, 'university')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+
+								<!-- Title -->
+								<div class="form">
+									<h5>College Name</h5>
+										<?= $form->field($model, 'collegename')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+								<div class="form">
+									<h5>Passing Year</h5>
+										<?= $form->field($model, 'passingyear')->textInput(['autofocus' => true])->label(false)?>
+									</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="margin-bottom-20">
+								<div class="title-underlined">
 									<h4>Add Your Other Details or Known Languages</h4>
 								</div>
 								
@@ -423,12 +419,12 @@ select {
 										<?php 
 										$checkedAry = explode(",",$alreadylanguage->ability);
 										$model->ability[$p] = $checkedAry;?>
-										<?= $form->field($model, 'ability['.$p.']')->inline(true)->checkboxList(['Read' => 'Read','Write' => 'Write', 'Speak' => 'Speak']) ?>
+										<?= $form->field($model, 'ability['.$p.']')->inline(true)->checkboxList(['Read' => 'Read','Write' => 'Write', 'Speak' => 'Speak'])->label(false) ?>
 									</div>
 									
 									<a href="javascript:void(0);" class="button gray remCF2"
 											style="text-decoration: none; margin-top: 1em;"><i
-											class="fa fa-plus-circle"></i> Remove</a>
+											class="fa fa-minus-circle"></i> Remove</a>
 								</div>
 								<?php $p++;?>
 								<?php }?>
@@ -488,6 +484,10 @@ select {
 								
 								
 							</div>
+					</div>
+					<div class="row">
+						
+						
 						<div class="col-md-6">
 							<div class="margin-bottom-20">
 								<div class="title-underlined">
