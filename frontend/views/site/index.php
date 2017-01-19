@@ -180,7 +180,7 @@ use yii\web\view;
      
           <!-- Browse Jobs -->
        <!-- Browse Jobs -->
-          <div class="browse-jobs"> Browse job offers by <a href="browse-categories.html"> category</a> or <a href="#">location</a> </div>
+          <div class="browse-jobs"> Browse job offers by <a href="browse-categories.html"> category</a> or <a href="<?= Url::to(['/site/locations'])?>" title="locations">location</a> </div>
           
           <!-- Announce -->
           <div class="announce"> We  have over <strong>15 000</strong> job offers for you! </div>

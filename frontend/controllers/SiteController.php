@@ -854,12 +854,17 @@ class SiteController extends Controller
 	
 	public function actionLocations()
 	{
+		$this->layout= '@app/views/layouts/innerpagemain';
 		$query = JobLocations::find()->select('location');
 		$dataProvider = new ActiveDataProvider([
 				'pagination' =>  [
         'pageSize' => 100,
     ],
 				'query' => $query,
+		]);
+		
+			return $this->render ( 'locations', [
+					'dataProvider' => $dataProvider,
 		]);
 	}
 	public function actionCategories()
