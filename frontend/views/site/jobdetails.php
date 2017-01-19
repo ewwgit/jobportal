@@ -29,6 +29,7 @@ if(!empty($joblocations) )
 		$locations .= $locationnew['location'].', ';
 	}
 }
+$jobUrl =  Url::to([str_replace(" ","-",$jobinfo->designation).'-'.str_replace(" ","-",$jobinfo->rolecategory).'-'.str_replace(" ","-",$jobinfo->company_name).str_replace(" ","-",$locations).'-'.str_replace(" ","-",$jobinfo->Min_Experience).'-to-'.str_replace(" ","-",$jobinfo->Max_Experience).'-years'.'/employees-job-details-'.$jobinfo->id]);
 ?>
 
 <div id="titlebar">
@@ -61,7 +62,7 @@ if(!empty($joblocations) )
 <p class="form-row form-row-wide">Social Share buttons :</p>
 <?= \bl\socialShare\widgets\SocialShareWidget::widget([
         'componentId' => 'socialShare',
-        'url' => Url::toRoute(['empcommon/facebook'], true),
+        'url' => $jobUrl,
         'title' => 'Job Portal',
         'description' => 'Job seekers can browse through job openings posted by employers and apply for positions through the Job Portal....',
         'image' => Url::toRoute(['frontend/web/images/logo.png'], true)
