@@ -284,7 +284,7 @@ use yii\web\view;
         <div class="testimonials-slider">
           <ul class="slides">
             <li>
-              <p>I have already heard back about the internship I applied through Job Finder, that's the fastest job reply I've ever gotten and it's so much better than waiting weeks to hear back. <span>Collis Ta’eed, Envato</span></p>
+              <p>I have already heard back about the internship I applied through Job Finder, that's the fastest job reply I've ever gotten and it's so much better than waiting weeks to hear back. <span>Collis Ta'eed, Envato</span></p>
             </li>
             <li>
               <p>Nam eu eleifend nulla. Duis consectetur sit amet risus sit amet venenatis. Pellentesque pulvinar ante a tincidunt placerat. Donec dapibus efficitur arcu, a rhoncus lectus egestas elementum. <span>John Doe</span></p>

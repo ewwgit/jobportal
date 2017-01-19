@@ -36,7 +36,7 @@ AppAsset::register($this);
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="<?php echo Yii::getAlias('@web');?>/frontend/web/images/logo.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?php echo Yii::$app->getHomeUrl(); ?>"><img src="<?php echo Url::base();?>/frontend/web/images/logo.png" alt="Work Scout" /></a></h1>
         </div>
         
         <!-- Menu -->
@@ -166,7 +166,7 @@ AppAsset::register($this);
             <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
             <li><a class="linkedin-footer" href="#"><i class="icon-linkedin"></i></a></li>
           </ul>
-          <div class="copyrights">©  Copyright 2016 by <a href="#">Anaghasoftech</a>. All Rights Reserved.</div>
+          <div class="copyrights">&copy; Copyright 2016 by <a href="#">Anaghasoftech</a>. All Rights Reserved.</div>
         </div>
       </div>
     </div>

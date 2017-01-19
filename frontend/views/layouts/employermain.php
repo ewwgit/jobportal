@@ -81,7 +81,7 @@ label.upload-btn i{color:#fff !important; margin-right:2px !important;}
         
         <!-- Logo -->
         <div id="logo">
-          <h1><a href="<?= Url::to(['/employercompany/empsite/login'])?>"><img src="<?php echo Yii::getAlias('@web');?>/frontend/web/images/logo.png" alt="Work Scout" /></a></h1>
+          <h1><a href="<?= Url::to(['/employercompany/empsite/login'])?>"><img src="<?php echo Url::base();?>/frontend/web/images/logo.png" alt="Work Scout" /></a></h1>
         </div>
       
          <nav id="navigation" class="menu" >
