@@ -180,7 +180,9 @@ use yii\web\view;
      
           <!-- Browse Jobs -->
        <!-- Browse Jobs -->
-          <div class="browse-jobs"> Browse job offers by <a href="browse-categories.html"> category</a> or <a href="<?= Url::to(['/site/locations'])?>" title="locations">location</a> </div>
+       <?php $locationUrl = Yii::$app->urlManager->createUrl(['employees-job-locations']);?>
+       <?php $categoryUrl = Yii::$app->urlManager->createUrl(['employees-job-role-categories']);?>
+          <div class="browse-jobs"> Browse job offers by <a href="<?= $categoryUrl; ?>"> category</a> or <a href="<?= $locationUrl; ?>" title="locations">location</a> </div>
           
           <!-- Announce -->
           <div class="announce"> We  have over <strong>15 000</strong> job offers for you! </div>
