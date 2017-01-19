@@ -15,7 +15,7 @@ $this->title = 'Browse By Locations';
     <div id="titlebar" class="single">
     <div class="container">
       <div class="twelve columns">
-        <h2>Profile Information</h2>
+        <h2>Location Information</h2>
         <nav id="breadcrumbs">
           <ul>
             <li>You are here:</li>
