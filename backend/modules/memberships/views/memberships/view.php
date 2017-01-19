@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'duration',
             'cost',
+        	'currency',
             'type',
             'num_of_jobs_posting',
             'status',

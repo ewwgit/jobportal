@@ -20,6 +20,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'duration')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'cost')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'currency')->dropDownList([ 'INR' => 'INR', 'USD' => 'USD', ], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'type')->dropDownList([ 'Monthly' => 'Monthly', 'Yearly' => 'Yearly', ], ['prompt' => '']) ?>
 

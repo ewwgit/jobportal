@@ -36,7 +36,7 @@ class Memberships extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'duration', 'cost', 'type', 'num_of_jobs_posting', 'status'], 'required'],
+            [['name', 'description', 'duration', 'cost', 'currency', 'type', 'num_of_jobs_posting', 'status'], 'required'],
             [['description', 'type', 'status'], 'string'],
             [['createdDate', 'updatedDate'], 'safe'],
             [['createdBy', 'updatedBy'], 'integer'],
@@ -55,6 +55,7 @@ class Memberships extends \yii\db\ActiveRecord
             'description' => 'Description',
             'duration' => 'Duration',
             'cost' => 'Cost',
+        	'currency' => 'Currency',
             'type' => 'Type',
             'num_of_jobs_posting' => 'Num Of Jobs Posting',
             'status' => 'Status',
