@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Designation;
+use backend\models\RolesCategory;
 use kartik\select2\Select2;
 use kartik\depdrop\DepDrop;
 use yii\helpers\Url;
@@ -122,7 +123,7 @@ select {
                                                 </div>
                <div class="form">
                          <h5> Role category</h5>
-                  <?=$form->field ( $model, 'rolecategory' )->dropDownList ( ['Software Developer' => 'Software Developer','System Analyst' => 'System Analyst','Project Lead' => 'Project Lead','Testing Engineer' => 'Testing Engineer','Database Designer' => 'Database Designer','Product Manager' => 'Product Manager','System Admin' => ' System Admin' ], [ 'prompt' => 'select your RoleCategory ' ] )->label(false)?>	
+                  <?=$form->field ( $model, 'rolecategory' )->dropDownList(ArrayHelper::map(RolesCategory::find()->where(['status'=>'Active'])->all(), 'role_name', 'role_name'),['prompt' =>'select Roles Category'])->label(false)?>	
                   </div>
 									<div class="form" style="width: 450px;margin-left: -15px;">
 					<div class=" col-md-6">
