@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'duration')->textInput(['maxlength' => true]) ?>
+   
 
     <?= $form->field($model, 'cost')->textInput(['maxlength' => true]) ?>
     

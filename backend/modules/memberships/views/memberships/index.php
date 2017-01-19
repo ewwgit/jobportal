@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'mem_id',
             'name',
             'description:ntext',
-            'duration',
+            /* 'duration', */
             'cost',
             // 'type',
             // 'num_of_jobs_posting',

@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'mem_id',
             'name',
             'description:ntext',
-            'duration',
+            /* 'duration', */
             'cost',
         	'currency',
             'type',
