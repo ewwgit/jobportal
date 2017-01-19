@@ -869,12 +869,17 @@ class SiteController extends Controller
 	}
 	public function actionCategories()
 	{
+		$this->layout= '@app/views/layouts/innerpagemain';
 		$query = RolesCategory::find()->select('role_name');
 		$dataProvider = new ActiveDataProvider([
 				'pagination' =>  [
 						'pageSize' => 100,
 				],
 				'query' => $query,
+		]);
+		
+		return $this->render ( 'categories', [
+				'dataProvider' => $dataProvider,
 		]);
 	}
 	
