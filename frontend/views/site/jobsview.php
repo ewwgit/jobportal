@@ -34,7 +34,7 @@ if(!empty($joblocations) )
 }
 ?>
 
-
+<?php $jobUrl =  Url::to([str_replace(" ","-",$model->designation).'-'.str_replace(" ","-",$model->rolecategory).'-'.str_replace(" ","-",$model->company_name).str_replace(" ","-",$locations).'-'.str_replace(" ","-",$model->Min_Experience).'-to-'.str_replace(" ","-",$model->Max_Experience).'-years'.'/employees-job-details-'.$model->id]);?>
 
 
 
@@ -43,7 +43,7 @@ if(!empty($joblocations) )
 
           <div class="highlighted newlicls"> 
           <a
-		href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>"><img src="<?php
+		href="<?= $jobUrl;?>"><img src="<?php
 							if($model->imagenew){
 													
 							echo isset( $model->imagenew)? Url::base().$model->imagenew : '' ;
@@ -54,7 +54,7 @@ if(!empty($joblocations) )
 								</a>
             <div class="job-list-content">
               <h4> <a
-		href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>"> <?php echo isset( $model->designation) ? $model['designation']:'';?> </a> <span class="full-time">Full-Time</span></h4>
+		href="<?= $jobUrl;?>"> <?php echo isset( $model->designation) ? $model['designation']:'';?> </a> <span class="full-time">Full-Time</span></h4>
 		 <div class="job-icons"> <span><i class="fa fa-briefcase"></i> <?php echo isset( $model->company_name) ? $model['company_name']:'';?> </span></div>
 		     <div class="job-icons"> Keyskills: <span><?php echo $skills;?> </span></div>
 		      <div class="job-icons"> Experience: <span><?php  echo isset($model -> Min_Experience) ? $model -> Min_Experience : ''?> - 
@@ -72,7 +72,7 @@ if(!empty($joblocations) )
 	?>
 	<?php if($memberJoin ==0){?>
 	
-	<a href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>" class="btn btn-primary apply_jobnew" style ="float:right;" id="needtoapply<?=  $model->id; ?>" apljobid="<?php echo $model->id;?>">Apply this Job</a>
+	<a href="<?= $jobUrl;?>" class="btn btn-primary apply_jobnew" style ="float:right;" id="needtoapply<?=  $model->id; ?>" apljobid="<?php echo $model->id;?>">Apply this Job</a>
 	
 	
 	<?php
@@ -80,7 +80,7 @@ if(!empty($joblocations) )
 	else {
 		?>
 	
-	<a href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>" class="btn btn-primary appliednew" style ="float:right;">Applied</a>
+	<a href="<?= $jobUrl;?>" class="btn btn-primary appliednew" style ="float:right;">Applied</a>
 	
 	<?php }?>
 	</div>

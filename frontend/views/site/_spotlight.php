@@ -18,12 +18,12 @@ if(!empty($jobskills) )
 	}
 }
 ?>
-
+<?php $jobUrl =  Url::to([str_replace(" ","-",$model->designation).'-'.str_replace(" ","-",$model->rolecategory).'-'.str_replace(" ","-",$model->company_name).str_replace(" ","-",$locations).'-'.str_replace(" ","-",$model->Min_Experience).'-to-'.str_replace(" ","-",$model->Max_Experience).'-years'.'/employees-job-details-'.$model->id]);?>
  <li>
                 <div class="job-spotlight"> <a href="#">
                  <h4> <a
-		href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>"> <?php echo isset( $model->designation) ? $model['designation']:'';?> </a> <span class="full-time"><?php echo isset( $model->jobtype) ? $model['jobtype']:'';?></span></h4>
+		href="<?= $jobUrl; ?>"> <?php echo isset( $model->designation) ? $model['designation']:'';?> </a> <span class="full-time"><?php echo isset( $model->jobtype) ? $model['jobtype']:'';?></span></h4>
                   </a> <span><i class="fa fa-briefcase"></i>  <?php echo isset( $model->company_name) ? $model['company_name']:'';?></span> <span><i class="fa fa-map-marker"></i> New York</span> <span><i class="fa fa-money"></i> $20 / hour</span>
                   <p><?php echo BaseStringHelper::truncate($model->Description, 116,'')?></p>
-                  <a href="<?= Url::to([$model->designation.'-'.$model->rolecategory.'-'.$model->company_name.$locations.'-'.$model->Min_Experience.'-to-'.$model->Max_Experience.'-years'.'/employees-job-details-'.$model->id])?>" class="button">Apply For This Job</a> </div>
+                  <a href="<?= $jobUrl; ?>" class="button">Apply For This Job</a> </div>
               </li>
