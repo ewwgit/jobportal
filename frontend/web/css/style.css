@@ -85,6 +85,7 @@ header.transparent .sf-with-ul::after {
 #banner.with-transparent-header .search-container {
 	padding: 190px 0;
 	margin-top: 45px;
+	float: left;
 }
 #banner.with-transparent-header:before {
 	background-color: linear-gradient(20deg, #5e009f 0%, #095886 60%, #095886 100%) !important;
