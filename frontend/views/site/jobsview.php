@@ -54,7 +54,8 @@ if(!empty($joblocations) )
 								</a>
             <div class="job-list-content">
               <h4> <a
-		href="<?= $jobUrl;?>"> <?php echo isset( $model->designation) ? $model['designation']:'';?> </a> <span class="full-time">Full-Time</span></h4>
+		href="<?= $jobUrl;?>"> <?php echo isset( $model->designation) ? $model['designation']:'';?> </a> <span class="full-time">
+<?= $model->jobtype; ?></span></h4>
 		 <div class="job-icons"> <span><i class="fa fa-briefcase"></i> <?php echo isset( $model->company_name) ? $model['company_name']:'';?> </span></div>
 		     <div class="job-icons"> Keyskills: <span><?php echo $skills;?> </span></div>
 		      <div class="job-icons"> Experience: <span><?php  echo isset($model -> Min_Experience) ? $model -> Min_Experience : ''?> - 

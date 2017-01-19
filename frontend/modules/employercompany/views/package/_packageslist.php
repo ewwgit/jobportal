@@ -18,13 +18,16 @@ if(!empty($packageInfoByUser))
 <div class="plan color-1  four columns testmemapp <?= $activecls; ?>" id="newmne<?= $model->mem_id;?>" isactivenew ="<?= $isactivcls;?>">
 		<div class="plan-price">
 			<h3><?= $model->name;?></h3>
-			<span class="plan-currency">$</span>
+			<span class="plan-currency">
+			<?php if($model->currency == 'USD'){ echo '$';}?>
+			<?php if($model->currency == 'INR'){ echo '&#8377;';}?>
+			</span>
 			<span class="value"><?= $model->cost;?></span>
 			
 		</div>
 		<div class="plan-features">
 			<ul>
-				<li>Duration: <?= $model->duration;?> Days</li>
+				<li>Package Type: <?= $model->type;?> </li>
 				<li>Number of jobs Posted: <?= $model->num_of_jobs_posting;?></li>
 				
 			</ul>
