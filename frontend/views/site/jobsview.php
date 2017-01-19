@@ -58,6 +58,7 @@ if(!empty($joblocations) )
 <?= $model->jobtype; ?></span></h4>
 		 <div class="job-icons"> <span><i class="fa fa-briefcase"></i> <?php echo isset( $model->company_name) ? $model['company_name']:'';?> </span></div>
 		     <div class="job-icons"> Keyskills: <span><?php echo $skills;?> </span></div>
+		     <div class="job-icons"> RoleCategory: <span><?php echo isset($model -> rolecategory) ? $model -> rolecategory : '' ;  ?> </span></div>
 		      <div class="job-icons"> Experience: <span><?php  echo isset($model -> Min_Experience) ? $model -> Min_Experience : ''?> - 
     <?php echo $model -> Max_Experience?> Years </span></div>
     
