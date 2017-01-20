@@ -4,6 +4,7 @@ use yii\web\View;
 use yii\helpers\Url;
 use yii\helpers\BaseStringHelper;
 use frontend\models\EmployeeJobapplied;
+use frontend\models\JobSkills;
 
 $applied_data = EmployeeJobapplied::find()->where(['userid' => $model->userid])->one();
 
@@ -12,6 +13,17 @@ $applied_data = EmployeeJobapplied::find()->where(['userid' => $model->userid])-
 
 $query = EmployeeJobapplied::find()->where("jobid = $model->id AND 	application_status != 'Deleted'")->count();
 		 $total_list=$query;
+		 
+		 $jobskills = JobSkills::find()->select('skill_name')->asArray()->where(['jobid' => $model->id])->all();
+		 
+		 $skills = '';
+		 if(!empty($jobskills) )
+		 {
+		 	foreach ($jobskills as $skill)
+		 	{
+		 		$skills .= $skill['skill_name'].', ';
+		 	}
+		 }
 	
 		
 ?>
@@ -19,8 +31,9 @@ $query = EmployeeJobapplied::find()->where("jobid = $model->id AND 	application_
 
 <tr>
 	<td class="title"><?= $model['designation'];?></td>
-	<td class="title"></td>	
+	<td class="title">	<?php echo $skills?>	</td>	
 	<td class="title"><?= $model['Min_Experience'];?></td>	
+
 	<td class="centered"><a
 		href="<?= Yii::$app->urlManager->createUrl ( ['employers-job-applied-employees-'.$model->id.'-All'] );?>"> Employees</a><b style= "color:#ec971f;"><?php echo '(' . $total_list .')' ?></b></td>
 		

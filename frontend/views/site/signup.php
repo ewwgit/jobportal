@@ -48,34 +48,35 @@ $this->title = 'Signup';
 ]); ?>
          
           <p class="form-row form-row-wide">
-            
-              <?= $form->field($model, 'name')->textInput(['autofocus' => true])?>
+            	<h5>Name</h5>
+              <?= $form->field($model, 'name')->textInput(['autofocus' => true])->label(false);?>
            
-           
-             <?= $form->field($model, 'surname')->textInput(['autofocus' => true])?>
+              <h5>Sur Name</h5>
+             <?= $form->field($model, 'surname')->textInput(['autofocus' => true])->label(false);?>
                 
-            
-              <?= $form->field($model, 'username')->textInput(['autofocus' => true])?>
+               <h5>User Name</h5>
+              <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label(false);?>
            
           </p>
 				<p class="form-row form-row-wide">
-           
-             <?= $form->field($model, 'email')->textInput(['autofocus' => true])?>
+                <h5>Email</h5>
+             <?= $form->field($model, 'email')->textInput(['autofocus' => true])->label(false);?>
             
           </p>
 				<p class="form-row form-row-wide">
-           
-             <?= $form->field($model, 'password')->passwordInput()?>
+                 <h5>Password</h5>
+             <?= $form->field($model, 'password')->passwordInput()->label(false);?>
             
           </p>
 				<p class="form-row form-row-wide">
-            
-               <?= $form->field($model, 'confirmpassword')->passwordInput()?>
+                    <h5>Confirm Password</h5>
+               <?= $form->field($model, 'confirmpassword')->passwordInput()->label(false);?>
            
           </p>
-				<p class="form-row form-row-wide">   
-          
-                 <?= $form->field($model, 'gender')->inline()->radioList(['male'=>'Male','female'=>'Female'],['prompt' =>'<---select gender--->'])?>
+				<p class="form-row form-row-wide">  
+				 
+                   <h5>Gender</h5>
+                 <?= $form->field($model, 'gender')->inline()->radioList(['male'=>'Male','female'=>'Female'],['prompt' =>'<---select gender--->'])->label(false);?>
 
           </p>
 
@@ -83,12 +84,14 @@ $this->title = 'Signup';
 				
 				
 				<div class="form-group">
-				<?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )?>
+				  <h5>Date Of Birth</h5>
+				<?=$form->field ( $model, 'dateofbirth' )->widget ( DatePicker::classname (), [ 'options' => [ 'placeholder' => 'Enter birth date ...' ],'pluginOptions' => [ 'autoclose' => true ] ] )->label(false);?>
           </p>
 
 					<p class="form-row form-row-wide">
-           
-                  <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])?>
+                     
+                      <h5>Mobile Number</h5>
+                  <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true])->label(false);?>
            
           </p>
           
