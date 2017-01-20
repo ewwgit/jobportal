@@ -17,6 +17,7 @@ use frontend\models\EmployerJobpostings;
 
 
 
+
 ?>
  
     <div id="titlebar" class="single">
