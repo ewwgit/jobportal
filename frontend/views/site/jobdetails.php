@@ -29,7 +29,7 @@ if(!empty($joblocations) )
 		$locations .= $locationnew['location'].', ';
 	}
 }
-$jobUrl =  Url::to([str_replace(" ","-",$jobinfo->designation).'-'.str_replace(" ","-",$jobinfo->rolecategory).'-'.str_replace(" ","-",$jobinfo->company_name).str_replace(" ","-",$locations).'-'.str_replace(" ","-",$jobinfo->Min_Experience).'-to-'.str_replace(" ","-",$jobinfo->Max_Experience).'-years'.'/employees-job-details-'.$jobinfo->id]);
+$jobUrl = 'http://expertwebworx.in'. Url::to([str_replace(" ","-",$jobinfo->designation).'-'.str_replace(" ","-",$jobinfo->rolecategory).'-'.str_replace(" ","-",$jobinfo->company_name).str_replace(" ","-",$locations).'-'.str_replace(" ","-",$jobinfo->Min_Experience).'-to-'.str_replace(" ","-",$jobinfo->Max_Experience).'-years'.'/employees-job-details-'.$jobinfo->id]);
 ?>
 
 <div id="titlebar">
