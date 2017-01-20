@@ -551,8 +551,9 @@ $this->registerJs ( "
 		});
 		
 		$(document.body).on('click', '.addCF1',function(){
+		
 		var dync = $('#dynamiccontent').html();
-		//console.log(dync);
+		console.log(dync);
 		$('#alreadyinfonew .customexternalcls').last().append(dync);
 		
 	});
