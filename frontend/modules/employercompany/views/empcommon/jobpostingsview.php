@@ -207,20 +207,21 @@ if(!empty($joblocations) )
 
 		</div>
 
-	</div>
+	
 	<!-- Widgets / End -->
-
-
-</div>
-								
-							
-
-				<div class="clearfix"></div>
+	<div class="clearfix"></div>
 			<div class="divider margin-top-0 padding-reset"></div>
           <?= Html::a('Back', ['/employercompany/empcommon/jobpostingslist'], ['class'=>'btn btn-primary button border fw margin-top-10'])?>
-			</div>
-		</div>
-	</div>
+			
+
+		</div>	
+							
+							
+
+			
+			
+		
+	
 </div>
 
 

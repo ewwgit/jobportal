@@ -28,7 +28,6 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'rolecategory',
 								'skills',
 								'designation',
-								
 								'Description',
 								'jobtype',
 								
@@ -47,10 +46,36 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'job_location',
 								'status',
 								'sal_type',
-								'currency'
+								'currency',
+							
+								'job_title'
+								
 						],
 						'required' 
 				],
+				[
+				'email',
+				'trim'
+						],
+						[
+								'email',
+								'required'
+						],
+						[
+								'email',
+								'email'
+						],
+						[
+								'email',
+								'string',
+								'max' => 255
+						],
+						[
+								'email',
+								'unique',
+								'targetClass' => '\common\models\User',
+								'message' => 'This email address has already been taken.'
+						],
 				
 				[ 
 						[ 
@@ -78,7 +103,10 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 								'status',
 								'image',
 								'company_profile',
-								'min_salary'
+								'min_salary',
+								'website',
+								'email',
+								'job_title'
 						],
 						'safe' 
 				] 
@@ -107,6 +135,9 @@ class EmployerJobpostings extends \yii\db\ActiveRecord {
 				'country' => 'Country',
 				'state' => 'State',
 				'city' => 'City',
+				'website' =>'Website',
+				'email' =>'email',
+				'job_title' =>'Job Title',
 				
 				'userid' =>'userid'
 		];
