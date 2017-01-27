@@ -26,7 +26,7 @@ select {
 
 <div class="container">
 	<!-- Recent Jobs -->
-  	<div class="eleven columns">
+ <div class="eleven columns">
 	  
 	<div class="padding-right">
 	
@@ -54,11 +54,7 @@ select {
 ]);
  ?>
         
-       <?php  
      
-        
- 
-       	?>
        	<?=$form->field ( $searchModel, 'Min_Experience' )->dropDownList ( ['0' => '0','1' => '1','2'=> '2','3'=>'3','4' => '4','5' => '5','6'=> '6','7'=>'7',
        
        			'8' => '8','9' => '9','10'=> '10','11'=>'11','12' => '12','13' => '13','14'=> '14','15'=>'15']
@@ -81,7 +77,42 @@ select {
                                              ],
                            		      //'value' => ['valu1','valu2']
                            ]);?>
-      
+                           
+                           
+                           
+                           
+       	<?php 
+						
+                           echo  $form->field($searchModel, 'job_location')->widget(Select2::classname(), [
+                           		                 
+                           		       'data'=>$locInfonew,
+                           		        'options' => ['placeholder' => 'Enter location...', 'multiple' => true],
+                                        'pluginOptions' => [
+                                        'tags' => true,
+                                        'allowClear' => true,
+                                        'tokenSeparators' => [','],
+                                      //'maximumInputLength' => 10
+                                             ],
+                           		      //'value' => ['valu1','valu2']
+                           ]);?>
+                           
+       	<?=$form->field ($model, 'noticeperiod' )->dropDownList ( ['30days' => '30days','45days' => '45days','60days'=> '60days','75days'=>'75days',]
+        
+       
+       	       			, [ 'prompt' => 'select your noticeperiod' ] )->label ( false );?>
+  
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+ 
      		
 	 
          <button><i class="fa fa-search"></i></button></nobr>
@@ -149,6 +180,8 @@ select {
 	<div class="five columns">
 
 		<!-- Sort by -->
+<br>
+<br>
 		<div class="widget">
 			<h4>Sort by</h4>
 

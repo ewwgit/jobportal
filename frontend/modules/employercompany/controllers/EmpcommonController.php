@@ -41,11 +41,13 @@ use yii\helpers\Json;
 use frontend\models\EmployeeSkills;
 use frontend\models\EmployeeJobsearch;
 use frontend\models\EmployeeEmployer;
+use frontend\models\EmployeePreferences;
 //use kartik\growl\Growl;
 use frontend\models\SignupForm;
 use backend\models\Designation;
 use frontend\models\JobSkills;
 use frontend\models\JobLocations;
+use frontend\models\EmployeeSignup;
 
 
 
@@ -1046,6 +1048,7 @@ exit;
 	{
     	
 		$searchModel = new EmployeeJobsearch();
+		$model = new EmployeeSignup();
 		$skillsdata = JobSkills::find()
 		->select('skill_name')
 		->all();
@@ -1066,7 +1069,30 @@ exit;
 		else {
 			$skillsInfonew =[''];
 		}
-		 
+		
+		
+		$locdata = JobLocations::find()
+		->select('location')
+		->all();
+		
+		$locInfonew = array();
+		if(!empty($locdata))
+		{
+			foreach ($locdata as $locnew)
+			{
+				//echo rtrim($skillnew->skills,",");
+				$aryconvertloc = explode(",",rtrim($locnew->location,","));
+				for($k=0; $k < count($aryconvertloc); $k++)
+				{
+					$locInfonew["$aryconvertloc[$k]"] = $aryconvertloc[$k];
+				}
+			}
+		}
+		else {
+			$locInfonew =[''];
+		}
+		
+		
 		$companydata =  ArrayHelper::map(EmployerJobpostings::find()->all(), 'company_name','company_name');
 		if($companydata)
 		{
@@ -1095,7 +1121,18 @@ exit;
 		else {
 			$expdata =[''];
 		}
-		//print_r($expdata);exit();
+		
+		
+		
+		
+		
+	
+    	
+		
+		
+		
+		
+	//print_r($expdata);exit();
 		//print_r($_GET['EmployeeJobsearch']);exit();
 		$skills= array();
 		$isquerystirng = 0;
@@ -1115,7 +1152,32 @@ exit;
 			     $skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployeepreference')->where(['IN','skillname', $skills]);
 			}
 			
-		}   
+		}
+		
+		
+		if(isset($_GET['EmployeeJobsearch']['job_location']) && $_GET['EmployeeJobsearch']['job_location'] != '')
+		{
+			$isquerystirng = 1;
+			$location = $_GET['EmployeeJobsearch']['job_location'];
+			$searchModel->job_location = $location;
+			$skillsInfo = EmployeePreferences::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployee')->where(['joblocation'=> $location]);
+		}
+		
+		if(isset($_GET['EmployeeSignup']['noticeperiod']) && $_GET['EmployeeSignup']['noticeperiod'] != '')
+		{
+			$isquerystirng = 1;
+			$noticeperiod = $_GET['EmployeeSignup']['noticeperiod'];
+			$model->noticeperiod = $noticeperiod;
+			$skillsInfo = EmployeeSignup::find()->joinWith('user')->joinWith('useremployee')->joinWith('useremployeepreference')->where(['noticeperiod'=> $noticeperiod]);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		if(isset($_GET['EmployeeJobsearch']['designation']) && $_GET['EmployeeJobsearch']['designation'] != '')
 		{
 			$isquerystirng = 1;
@@ -1123,6 +1185,29 @@ exit;
 			$searchModel->designation = $designation;
 			$skillsInfo = EmployeeEmployer::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployeepreference')->where(['designation'=> $designation]);
 		}
+		
+		
+		
+		if(isset($_GET['EmployeeJobsearch']['job_location']) && $_GET['EmployeeJobsearch']['job_location'] != '')
+		{
+			$isquerystirng = 1;
+			$location = $_GET['EmployeeJobsearch']['job_location'];
+			$searchModel->job_location = $location;
+			$skillsInfo = EmployeePreferences::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployee')->where(['joblocation'=> $location]);
+		}
+
+		if(isset($_GET['EmployeeSignup']['noticeperiod']) && $_GET['EmployeeSignup']['noticeperiod'] != '')
+		{
+			$isquerystirng = 1;
+			$noticeperiod = $_GET['EmployeeSignup']['noticeperiod'];
+			$model->noticeperiod = $noticeperiod;
+			$skillsInfo = EmployeeSignup::find()->joinWith('user')->joinWith('useremployee')->joinWith('useremployeepreference')->where(['noticeperiod'=> $noticeperiod]);
+		} 
+			 
+
+	
+		
+		
 		if(isset($_GET['EmployeeJobsearch']['skills']) && $_GET['EmployeeJobsearch']['skills'] != '' && isset($_GET['EmployeeJobsearch']['designation']) && $_GET['EmployeeJobsearch']['designation'] != '')
 		{
 			
@@ -1133,6 +1218,35 @@ exit;
 			$searchModel->designation = $designation;
 			$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployee')->joinWith('useremployeepreference')->where(['IN','skillname', $skills])->andWhere(['designation'=> $designation]);
 		}
+		
+		
+		
+
+		if(isset($_GET['EmployeeJobsearch']['skills']) && $_GET['EmployeeJobsearch']['skills'] != '' && isset($_GET['EmployeeJobsearch']['job_location']) && $_GET['EmployeeJobsearch']['job_location'] != '')
+		{
+				
+			$isquerystirng = 1;
+			$skills = $_GET['EmployeeJobsearch']['skills'];
+			$location = $_GET['EmployeeJobsearch']['job_location'];
+			$searchModel->skills = $skills;
+			$searchModel->job_location = $location;
+			$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployee')->joinWith('useremployeepreference')->where(['IN','skillname', $skills])->andWhere(['joblocation'=> $location]);
+		}
+		
+		if(isset($_GET['EmployeeJobsearch']['skills']) && $_GET['EmployeeJobsearch']['skills'] != '' && isset($_GET['EmployeeJobsearch']['noticeperiod']) && $_GET['EmployeeJobsearch']['noticeperiod'] != '')
+		{
+		
+			$isquerystirng = 1;
+			$skills = $_GET['EmployeeJobsearch']['skills'];
+			$noticeperiod = $_GET['EmployeeSignup']['noticeperiod'];
+			$searchModel->skills = $skills;
+			$model->noticeperiod = $noticeperiod;
+			$skillsInfo = EmployeeSkills::find()->joinWith('user')->joinWith('usersignup')->joinWith('useremployee')->joinWith('useremployeepreference')->where(['IN','skillname', $skills])->andWhere(['noticeperiod'=> $noticeperiod]);
+		}
+		
+		
+		
+		
 		if($isquerystirng == 0)
 		{
 			$skills = [''];
@@ -1149,10 +1263,10 @@ exit;
 		
 		$this->layout = '@app/views/layouts/employerinner';
 		//echo "hai";exit;
-		return $this->render('browseresumes',['dataProvider' => $dataProvider,'searchModel' => $searchModel,'skillsInfonew' => $skillsInfonew,
+		return $this->render('browseresumes',['dataProvider' => $dataProvider,'searchModel' => $searchModel,'model' => $model , 'skillsInfonew' => $skillsInfonew,
     			'companydata' => $companydata,
     			'desdata' => $desdata,
-    			'expdata' => $expdata,]);
+    			'expdata' => $expdata,'locInfonew' =>$locInfonew]);
 	
 	}
 	public function actionResumepage($id)

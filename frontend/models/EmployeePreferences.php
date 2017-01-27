@@ -4,6 +4,8 @@ namespace frontend\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use common\models\User;
+
 
 /**
  * This is the model class for table "employee_signup".
@@ -57,6 +59,25 @@ class EmployeePreferences extends \yii\db\ActiveRecord
         	
         		
         ];
+    }
+    
+    
+    public function getUser()
+    {
+    	return $this->hasOne(User::className(), ['id' => 'userid']);
+    }
+    public function getUsersignup()
+    {
+    	return $this->hasOne(EmployeeSignup::className(), ['userid' => 'userid']);
+    }
+    public function getUseremployee()
+    {
+    	return $this->hasOne(EmployeeEmployer::className(), ['userid' => 'userid']);
+    }
+    
+    public function getUseremployeepreference()
+    {
+    	return $this->hasOne(EmployeePreferences::className(), ['userid' => 'userid']);
     }
 }
 
