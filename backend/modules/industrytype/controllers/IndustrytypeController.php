@@ -3,8 +3,8 @@
 namespace app\modules\industrytype\controllers;
 
 use Yii;
-use app\models\Industrytype;
-use app\models\IndustrytypeSearch;
+use backend\models\Industrytype;
+use backend\models\IndustrytypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

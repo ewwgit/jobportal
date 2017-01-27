@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EmployerslistSearch */
+/* @var $searchModel app\models\EmployeeslistSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Employers Lists';
+$this->title = 'Employees Lists';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="employers-list-index">
+<div class="employees-list-index">
 
     
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Employers List', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Employees List', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,19 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-           // 'employerid',
-            'first_name',
-        	'last_name',
-            'mobilenumber',
-            'dateofbirth',
-            'gender:ntext',
-            // 'designation',
-            // 'address:ntext',
-            // 'userid',
-            // 'profileimage',
-            // 'create_date',
-            // 'updated_date',
-            // 'skills',
+            //'id',
+            'username',
+        	'first_name',
+            //'auth_key',
+           // 'password_hash',
+           // 'password_reset_token',
+             'email:email',
+             //'status',
+             'created_at',
+             'updated_at',
+            // 'roleid',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

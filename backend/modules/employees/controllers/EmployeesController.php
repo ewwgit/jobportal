@@ -36,7 +36,10 @@ class EmployeesController extends Controller
     public function actionIndex()
     {
         $searchModel = new EmployeeslistSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    
+        $params = Yii::$app->request->queryParams;
+        $params['roleid'] = 3;
+        $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

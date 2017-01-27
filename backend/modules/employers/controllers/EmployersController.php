@@ -36,14 +36,15 @@ class EmployersController extends Controller
     public function actionIndex()
     {
         $searchModel = new EmployerslistSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+       $params = Yii::$app->request->queryParams;
+        $params['roleid'] = 2;
+        $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
-
     /**
      * Displays a single EmployersList model.
      * @param integer $id
@@ -64,6 +65,8 @@ class EmployersController extends Controller
     public function actionCreate()
     {
         $model = new EmployersList();
+//         $var=EmployersList::find()->joinWith('employer')->joinWith(['user', 'user.employer'])->all();
+//         print_r($var);exit;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->employerid]);

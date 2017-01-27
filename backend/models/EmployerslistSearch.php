@@ -15,11 +15,11 @@ class EmployerslistSearch extends EmployersList
     /**
      * @inheritdoc
      */
-    public function rules()
+ public function rules()
     {
         return [
-            [['employerid', 'mobilenumber', 'userid'], 'integer'],
-            [['first_name','last_name', 'dateofbirth', 'gender', 'designation', 'address', 'profileimage', 'create_date', 'updated_date', 'skills'], 'safe'],
+            [['id', 'status', 'created_at', 'updated_at', 'roleid'], 'integer'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email'], 'safe'],
         ];
     }
 
@@ -41,7 +41,13 @@ class EmployerslistSearch extends EmployersList
      */
     public function search($params)
     {
-        $query = EmployersList::find();
+    	if(isset($params['roleid']) & $params['roleid'] != '')
+    	{
+        $query = EmployersList::find()->where(['roleid' => $params['roleid']]);
+    	}
+    	else {
+    		$query = EmployersList::find();
+    	}
 
         // add conditions that should always apply here
 
@@ -59,23 +65,20 @@ class EmployerslistSearch extends EmployersList
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'employerid' => $this->employerid,
-            'mobilenumber' => $this->mobilenumber,
-            'dateofbirth' => $this->dateofbirth,
-            'userid' => $this->userid,
-            'create_date' => $this->create_date,
-            'updated_date' => $this->updated_date,
+            'id' => $this->id,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'roleid' => $this->roleid,
         ]);
 
-        $query
-            ->andFilterWhere(['like', 'first_name', $this->first_name])
-            ->andFilterWhere(['like', 'last_name', $this->last_name])
-            ->andFilterWhere(['like', 'gender', $this->gender])
-            ->andFilterWhere(['like', 'designation', $this->designation])
-            ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'profileimage', $this->profileimage])
-            ->andFilterWhere(['like', 'skills', $this->skills]);
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
+            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
+            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
+            ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;
     }
 }
+	

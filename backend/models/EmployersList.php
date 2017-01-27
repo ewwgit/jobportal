@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use frontend\models\EmployerForm;
 
 /**
  * This is the model class for table "employer".
@@ -25,9 +26,10 @@ class EmployersList extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public static function tableName()
+	public $first_name;
+ public static function tableName()
     {
-        return 'employer';
+        return 'user';
     }
 
     /**
@@ -36,13 +38,13 @@ class EmployersList extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['first_name','last_name', 'mobilenumber', 'dateofbirth', 'gender', 'designation', 'address', 'userid', 'profileimage', 'create_date', 'updated_date', 'skills'], 'required'],
-            [['mobilenumber', 'userid'], 'integer'],
-            [['dateofbirth', 'create_date', 'updated_date'], 'safe'],
-            [['gender', 'address'], 'string'],
-            [['first_name','last_name'], 'string', 'max' => 225],
-            [['designation', 'skills'], 'string', 'max' => 100],
-            [['profileimage'], 'string', 'max' => 200],
+            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'roleid'], 'required'],
+            [['status', 'created_at', 'updated_at', 'roleid'], 'integer'],
+            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['auth_key'], 'string', 'max' => 32],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+            [['password_reset_token'], 'unique'],
         ];
     }
 
@@ -52,19 +54,21 @@ class EmployersList extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'employerid' => 'Employerid',
-            'first_name' => 'Last Name',
-        	'last_name' => 'First Name',
-            'mobilenumber' => 'Mobilenumber',
-            'dateofbirth' => 'Dateofbirth',
-            'gender' => 'Gender',
-            'designation' => 'Designation',
-            'address' => 'Address',
-            'userid' => 'Userid',
-            'profileimage' => 'Profileimage',
-            'create_date' => 'Create Date',
-            'updated_date' => 'Updated Date',
-            'skills' => 'Skills',
+            'id' => 'ID',
+            'username' => 'Username',
+            'auth_key' => 'Auth Key',
+            'password_hash' => 'Password Hash',
+            'password_reset_token' => 'Password Reset Token',
+            'email' => 'Email',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'roleid' => 'Roleid',
         ];
     }
+    public function getEmployer()
+    {
+    	return $this->hasOne(EmployerForm::className(), ['userid' => 'employerid']);
+    }
 }
+	

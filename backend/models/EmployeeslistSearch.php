@@ -41,7 +41,13 @@ class EmployeeslistSearch extends EmployeesList
      */
     public function search($params)
     {
-        $query = EmployeesList::find();
+    	if(isset($params['roleid']) & $params['roleid'] != '')
+    	{
+        $query = EmployeesList::find()->where(['roleid' => $params['roleid']]);
+    	}
+    	else {
+    		$query = EmployeesList::find();
+    	}
 
         // add conditions that should always apply here
 

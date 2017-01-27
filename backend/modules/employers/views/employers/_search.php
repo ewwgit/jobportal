@@ -4,41 +4,36 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\EmployerslistSearch */
+/* @var $model app\models\EmployeeslistSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="employers-list-search">
+<div class="employees-list-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'employerid') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'first_name') ?>
-      <?= $form->field($model, 'last_name') ?>
+    <?= $form->field($model, 'username') ?>
 
-    <?= $form->field($model, 'mobilenumber') ?>
+    <?= $form->field($model, 'auth_key') ?>
 
-    <?= $form->field($model, 'dateofbirth') ?>
+    <?= $form->field($model, 'password_hash') ?>
 
-    <?= $form->field($model, 'gender') ?>
+    <?= $form->field($model, 'password_reset_token') ?>
 
-    <?php // echo $form->field($model, 'designation') ?>
+    <?php // echo $form->field($model, 'email') ?>
 
-    <?php // echo $form->field($model, 'address') ?>
+    <?php // echo $form->field($model, 'status') ?>
 
-    <?php // echo $form->field($model, 'userid') ?>
+    <?php // echo $form->field($model, 'created_at') ?>
 
-    <?php // echo $form->field($model, 'profileimage') ?>
+    <?php // echo $form->field($model, 'updated_at') ?>
 
-    <?php // echo $form->field($model, 'create_date') ?>
-
-    <?php // echo $form->field($model, 'updated_date') ?>
-
-    <?php // echo $form->field($model, 'skills') ?>
+    <?php // echo $form->field($model, 'roleid') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
