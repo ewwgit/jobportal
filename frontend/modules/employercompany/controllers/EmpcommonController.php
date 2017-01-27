@@ -414,6 +414,7 @@ class EmpcommonController extends Controller {
 	public function actionCreate() {
 		$model = new EmployerJobpostings ();
 		$userId = Yii::$app->employer->employerid;
+		$this->layout = '@app/views/layouts/resumepage';
 		$presentDate = date('Y-m-d');
 		$packageInfoByUser = EmployerPackages::find()->where("userid = $userId AND status = 1 AND endDate >= '$presentDate'")->one();
 		$model->countriesList = Countries::getCountries();
@@ -461,7 +462,7 @@ class EmpcommonController extends Controller {
 				return $this->redirect('employers-all-jobs');
 			}
 		}
-		$this->layout = '@app/views/layouts/employerinner';
+		
 		
 		
 		if (($model->load ( Yii::$app->request->post () )) && $model->validate ()) {
@@ -596,7 +597,7 @@ class EmpcommonController extends Controller {
 		] );
 	}
 	public function actionUpdate($id) {
-		$this->layout = '@app/views/layouts/employerinner';
+		$this->layout = '@app/views/layouts/resumepage';
 		$model = $this->findModel ( $id );
 		//$data=$model->job_location;
 		$model->countriesList = Countries::getCountries();

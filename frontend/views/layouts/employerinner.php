@@ -149,10 +149,14 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
         <div class="sixteen columns">
           <h4>Follow Us</h4>
           <ul class="social-icons">
-            <li><a class="facebook-footer" href="#"><i class="icon-facebook"></i></a></li>
-            <li><a class="twitter-footer" href="#"><i class="icon-twitter"></i></a></li>
-            <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-            <li><a class="linkedin-footer" href="#"><i class="icon-linkedin"></i></a></li>
+            <li><a class="facebook-footer" href="https://www.facebook.com/jobportal-1159301224119499"
+								target="_blank" title="Facebook"><i class="icon-facebook"></i></a></li>
+            <li><a class="twitter-footer" href="https://twitter.com/jobportal" target="_blank"
+								title="Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a class="gplus" href="https://plus.google.com/jobportal-604006204304-vjl6qpcvb32fb1dsufoh1sjujpijdvfq.apps.googleusercontent.com"
+								target="_blank" title="Google+"><i class="icon-gplus"></i></a></li>
+            <li><a class="linkedin-footer" href="https://www.linkedin.com/jobportal-81b871j1q04ctq"
+								target="_blank" title="Linkedin"><i class="icon-linkedin"></i></a></li>
           </ul>
           <div class="copyrights">&copy; Copyright 2015 by <a href="#">Work Scout</a>. All Rights Reserved.</div>
         </div>
