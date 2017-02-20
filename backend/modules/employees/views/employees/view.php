@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Update', ['employeeupdate', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -24,19 +24,45 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+      <?php if($model->employee->profileimage != ''){?>
+  <?php $imgeurl = str_replace("backend","frontend",Yii::getAlias('@web')).$model->employee->profileimage;?>
+						 		
+						 		<?php } ?>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'username',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
+
             'email:email',
+        		['attribute'=>'profileimage',
+        		'format' => 'html',
+        		'value'=>Html::img($model->employee->profileimage ? $imgeurl : '@web/images/user-iconnew.png',['width' => '150px','height' => '150px']),
+        		 
+        		//'htmlOptions'=>array('width'=>'40px'),
+        		],
+        		'employee.name',
+        		'employee.surname',
+        		'employee.dateofbirth',
+        		'employee.mobilenumber',
+        		'employee.gender',
+        		
             'status',
             'created_at',
             'updated_at',
+        		[
+        		'attribute'=>'employee.updatedDate',
+        		'label' => 'Updated Date',
+        		'format' =>  ['date', 'php:m/d/Y H:i:s'],
+        		
+        		],
+        		[
+        				'attribute'=>'employee.createdDate',
+        				'label' => 'Created Date',
+        				'format' =>  ['date', 'php:m/d/Y H:i:s'],
+        		
+        		],
             'roleid',
         ],
     ]) ?>

@@ -110,10 +110,12 @@ class EmpcommonController extends Controller {
 												]
 												];
 	}
-	public function actionEmployer() {
+	public function actionEmployer()
+	               {
 		$this->layout = '@app/views/layouts/employerinner';
 		$model = new EmployerForm ();
 		$employerSignup = new EmployerSignup ();
+		$signupmodel = new SignupForm();
 		$employermodel = new Employer ();
 		$educationModel = new EmployerEducation ();
 		$employmentModel = new Employement ();
@@ -122,6 +124,7 @@ class EmpcommonController extends Controller {
 		$userData = User::find ()->where ( [ 
 				'id' => Yii::$app->employer->employerid 
 		] )->one ();
+		
 		$employeData = Employer::find ()->where ( [ 
 				'userid' => Yii::$app->employer->employerid 
 		] )->one ();
@@ -137,6 +140,7 @@ class EmpcommonController extends Controller {
 		
 		if (! (empty ( $employeData ))) {
 			$model->first_name = $employeData->first_name;
+			
 			$model->last_name = $employeData->last_name;
 			$model->designation = $employeData->designation;
 			$model->gender = $employeData->gender;
@@ -185,8 +189,7 @@ class EmpcommonController extends Controller {
 		}
  		if (! (empty ( $skillsData ))) {
  			$model->skills = $skillsData->skills;
- 			
- 	 		}
+ 			}
 		
 		if (! (empty ( $employmentData ))) {
 			$model->company_name = $employmentData->company_name;
@@ -209,6 +212,7 @@ class EmpcommonController extends Controller {
 			
 			if (! (empty ( $employeData ))) {
 				$employeData->first_name = $model->first_name;
+				
 				$employeData->last_name = $model->last_name;
 				$employeData->designation = $model->designation;
 				$employeData->description = $model->description;
@@ -220,11 +224,8 @@ class EmpcommonController extends Controller {
 				$employeData->address = $model->address;
 				$model->profileimage = UploadedFile::getInstance ( $model, 'profileimage' );
 				$employeData->skills = $model->skills;
-
                 $skill = $model->skills;
-                  
-	
-				if (! Empty ( $skill )) {
+               if (! Empty ( $skill )) {
 					$array = $model->skills;
 					$array_skills = implode ( ",",$array );
 				}
@@ -239,7 +240,7 @@ class EmpcommonController extends Controller {
 				
 					$model->profileimage = 'profileimages/'.$imageName;
 				
-					$profileimage = '/frontend/web/profileimages/'.$imageName;
+					$profileimage = '/profileimages/'.$imageName;
 					$employeData->profileimage = $profileimage;
 				
 				}
@@ -253,6 +254,8 @@ class EmpcommonController extends Controller {
 				
 				
 				$employermodel->first_name = $model->first_name;
+			
+				
 				$employermodel->last_name = $model->last_name;
 				
 				$employermodel->designation = $model->designation;
@@ -286,7 +289,7 @@ class EmpcommonController extends Controller {
 						
 					$model->profileimage = 'profileimages/'.$imageName;
 				
-					$profileimage = '/frontend/web/profileimages/'.$imageName;
+					$profileimage = '/profileimages/'.$imageName;
 					$employermodel->profileimage = $profileimage;
 				}
 				
@@ -314,6 +317,22 @@ class EmpcommonController extends Controller {
 				$educationModel->save ();
 				
 			}
+			
+			
+			if(!(empty($userData)))
+			{
+				$userData->email = $model->email;
+				
+			
+				
+				$userData-> save();
+			}else {
+				$employerSignup->email = $model->email;
+			
+				$employerSignup-> save();
+			}
+			
+			
 		
 			if (! (empty ( $employmentData ))) {
 				$employmentData->company_name = $model->company_name;
@@ -581,7 +600,12 @@ class EmpcommonController extends Controller {
 	}
 	public function actionDelete($id) {
 		$this->layout = '@app/views/layouts/employerinner';
-		$this->findModel ( $id )->delete ();
+		
+		$deletejobpostings=$this->findModel ( $id )->delete();
+		
+// 		$posting = $deletejobpostings->designation;
+// 		$posting->delete();
+// 		$deletejobpostings->delete();
 		
 		Yii::$app->getSession()->setFlash('success', [
 				'type' => 'success',

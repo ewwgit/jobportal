@@ -20,7 +20,7 @@ class EmployeeSignup extends \yii\db\ActiveRecord {
 	/**
 	 * @inheritdoc
 	 */
-	
+	public $resume;
 	public static function tableName() {
 		return 'employee_signup';
 	}

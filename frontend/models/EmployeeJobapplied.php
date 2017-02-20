@@ -30,7 +30,7 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
         return [
             [['userid', 'jobid', 'appliedDate'], 'required'],
             [['userid', 'jobid'], 'integer'],
-            [['appliedDate'], 'safe']
+            [['appliedDate','resid'], 'safe']
         ];
     }
 
@@ -57,6 +57,10 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     {
     	return $this->hasOne(EmployerJobpostings::className(), ['id' => 'jobid']);
     }
+//     public function getresume()
+//     {
+//     	return $this->hasOne(EmployeeResume::className(), ['id' => 'resid']);
+//     }
     
     /**
      * @return \yii\db\ActiveQuery
@@ -70,8 +74,9 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     
     	$this->userid = $userId;
     	$this->jobid = $JobId;
+    
     	$allJobsUserobj = EmployeeJobapplied::find()->select(['jobid'])
-    	->where(['userid'=>$this->userid ,'jobid'=>$this->jobid])->count();
+    	->where(['userid'=>$this->userid ,'jobid'=>$this->jobid ])->count();
     	//$data = ArrayHelper::toArray($allJobsUserobj, ['jobid','userid']);
     	/* echo $allJobsUserobj;exit();
     	$JobsUserData = @$data[0]['jobid']; */
@@ -81,16 +86,18 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     
     }
     
-    public function insertQuery($userId, $JobId)
+    public function insertQuery($userId, $JobId, $resId)
     {
     	 
     	date_default_timezone_set('Asia/Calcutta');
     	date_default_timezone_set('UTC');
     	$this->userid = $userId;
     	$this->jobid = $JobId;
+    	
     	$employeejobapplied = new EmployeeJobapplied();
     	$employeejobapplied->userid = $userId;
     	$employeejobapplied->jobid = $JobId;
+    	
     	$employeejobapplied->appliedDate = date("Y-m-d H:i:s");
     	$employeejobapplied->rating = 0;
     	$employeejobapplied->updatedDate = date("Y-m-d H:i:s");
@@ -114,7 +121,10 @@ class EmployeeJobapplied extends \yii\db\ActiveRecord
     public static function getUsersjoined($JobId,$userId)
     {
     	$memberJoined = EmployeeJobapplied::find()
-    	->where(['jobid' => $JobId,'userid'=>$userId])
+    	->where(['jobid' => $JobId,
+    			 'userid'=>$userId,
+    			
+    	])
     	->count();
     
     	return $memberJoined;

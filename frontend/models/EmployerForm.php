@@ -137,6 +137,7 @@ class EmployerForm extends Model {
 								'first_name',
 								'last_name',
 								'gender',
+								'email',
 								'mobilenumber',
 								'designation',
 								'address',

@@ -5,6 +5,12 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'My Yii Application';
+// IF NOT LOGGED IN, GO TO LOGIN SCREEN
+if(Yii::app()->user->isGuest)
+{
+	$this->redirect(Yii::app()->homeUrl);
+	// IF NOT LOGGED IN, GO TO LOGIN SCREEN
+}
 ?>
 <div class="container">
     <div class="my-account">

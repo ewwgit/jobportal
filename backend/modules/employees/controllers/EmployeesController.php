@@ -8,6 +8,7 @@ use app\models\EmployeeslistSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\EmployeeSignup;
 
 /**
  * EmployeesController implements the CRUD actions for EmployeesList model.
@@ -59,16 +60,14 @@ class EmployeesController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new EmployeesList model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new EmployeesList();
+       
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        	$model->createdDate = date('Y-m-d H:i:s');
+        	$model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -77,17 +76,13 @@ class EmployeesController extends Controller
         }
     }
 
-    /**
-     * Updates an existing EmployeesList model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        	$model->updatedDate = date('Y-m-d H:i:s');
+        	$model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -95,13 +90,74 @@ class EmployeesController extends Controller
             ]);
         }
     }
+    public function actionEmployeeupdate($id)
+    {
+    	 
+    	$model = new EmployeeSignup();
+    	$employeeData = EmployeeSignup::find()->where(['userid'=> $id])->one();
+    	$userData = EmployeesList::find()->where(['id' => $id])->one();
+    	//print_r($userData);exit;
+    
+    	 
+    	if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+    
+    
+    		$model->userid = $id;
+    		$userExist = EmployeeSignup::find()->where(['userid'=>$id])->one();
+    		if($userExist != NULL){
+    			 
+    			$userExist->username = $model->username;
+    			$userExist->email = $model->email;
+    			$userExist->name = $model->name;
+    	    	$userExist->surname = $model->surname;
+    		    
+    		    $userExist->dateofbirth = $model->dateofbirth;
+    		    $userExist->mobilenumber = $model->mobilenumber;
+    			$userExist->status = $model->status;
+    			$userExist->roleid = $model->roleid;
+    			$userExist->updatedDate = date('Y-m-d H:i:s');
+    			$date = $userExist->updatedDate;
+    			$userExist->updatedDate = $date;
+    
+    			 
+    			$userExist->save();
+    			Yii::$app->getSession()->setFlash('success', 'You are successfully Updated Your Profile.');
+    			return $this->redirect(['index']);
+    		}
+    		else {
+    			 
+    			$model->save();
+    			//print_r($model);exit();
+    			Yii::$app->getSession()->setFlash('success', 'You are successfully Updated Your Profile.');
+    			return $this->redirect(['index']);
+    		}
+    
+    	}else {
+    		$model->username = $userData->username;
+    		$model->email = $userData->email;
+    		$model->name = $employeeData->name;
+    		$model->surname = $employeeData->surname;
+    		$model->userid = $employeeData['userid'];
+    		$model->dateofbirth = $employeeData->dateofbirth;
+    		$model->mobilenumber = $employeeData->mobilenumber;
+    		
+    		$model->status = $userData->status;
+    		$model->roleid = $userData->roleid;
+    		$userData->updatedDate = date('Y-m-d H:i:s');
+    		 
+    		$date=$userData->updatedDate;
+    		//print_r($date);exit;
+    		 
+    		$model->updatedDate = $date;
+    		//	print_r($model->updatedDate);exit;
+    		return $this->render('update', ['model' => $model,]);
+    	}
+    
+    
+    }
+    
 
-    /**
-     * Deletes an existing EmployeesList model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
+    
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -109,13 +165,7 @@ class EmployeesController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the EmployeesList model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return EmployeesList the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+   
     protected function findModel($id)
     {
         if (($model = EmployeesList::findOne($id)) !== null) {

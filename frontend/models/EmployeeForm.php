@@ -158,6 +158,7 @@ class EmployeeForm extends Model {
 								'roledescription',
 								'teamsize',
 								'skillsused',
+								'resume'
 								
 							
 								

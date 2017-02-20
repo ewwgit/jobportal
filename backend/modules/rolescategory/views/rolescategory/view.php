@@ -33,8 +33,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'role_name',
             'status',
             'description:ntext',
-            'createdDate',
-            'updatedDate',
+          [
+        		'attribute'=>'updatedDate',
+        		'label' => 'Updated Date',
+        		'format' =>  ['date', 'php:m/d/Y H:i:s'],
+        		
+        		],
+        		[
+        		'attribute'=>'createdDate',
+        		'label' => 'Created Date',
+        		'format' =>  ['date', 'php:m/d/Y H:i:s'],
+        		
+        		],
         ],
     ]) ?>
 

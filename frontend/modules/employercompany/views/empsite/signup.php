@@ -16,14 +16,20 @@ $this->title = 'Signup';
 select {
 	height: 40px !important;
 }
+#in-active {
+	color: #aaa!important;
+}
+#active {
+	color: #159ddd!important;
+}
 </style>
 <div class="my-account">
 	<div class="site-signup">
 		<ul class="tabs-nav">
-			<li class="in-active"><a
+			<li id="in-active"><a
 				href="<?= Url::to(['/employercompany/empsite/login'])?>"
 				title="login">Login</a></li>
-			<li class="active"><a
+			<li id="active"><a
 				href="<?= Url::to(['/employercompany/empsite/signup'])?>"
 				title="signup">Register</a></li>
 		</ul>
@@ -32,7 +38,7 @@ select {
 
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
             <p class="form-row form-row-wide">
-					<label for="username">Username: 
+					<label for="username">User Name: 
               <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'placeholder' => 'Username',])->label(false)?>
               </label>
 				</p>
@@ -43,19 +49,19 @@ select {
               </label>
 				</p>
 				<p class="form-row form-row-wide">
-					<label for="username">ConformPassword: 
+					<label for="username">Conform Password: 
               <?= $form->field($model, 'confirmpassword')->passwordInput() ->label(false)?>
               </label>
 				</p>
 				
             	 <p class="form-row form-row-wide">
 					<label for="username">First Name: 
-              <?= $form->field($model, 'first_name')->textInput(['autofocus' => true, 'placeholder' => 'Name', 'class' => 'fa fa-user'])->label(false)?>
+              <?= $form->field($model, 'first_name')->textInput(['autofocus' => true, 'placeholder' => 'First Name',])->label(false)?>
               </label>
 				</p>
 				 <p class="form-row form-row-wide">
 					<label for="username">Last Name: 
-              <?= $form->field($model, 'last_name')->textInput(['autofocus' => true, 'placeholder' => 'Name', 'class' => 'fa fa-user'])->label(false)?>
+              <?= $form->field($model, 'last_name')->textInput(['autofocus' => true, 'placeholder' => 'Last Name', ])->label(false)?>
               </label>
 				</p>
 				
@@ -66,7 +72,7 @@ select {
 				</p>
 
 				<p class="form-row form-row-wide">
-					<label for="username">MobileNumber:
+					<label for="username">Mobile Number:
               <?= $form->field($model, 'mobilenumber')->textInput(['autofocus' => true,'placeholder' => 'Mobilenumber',])->label(false)?>
               </label>
 				</p>

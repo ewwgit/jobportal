@@ -136,7 +136,7 @@ class CommonController extends Controller
 		$language = EmployeeLanguages :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->all();
 		$model->alllanguages = $language;
 		$resume = EmployeeResume :: find ()->Where (['userid' => Yii::$app->emplyoee->emplyoeeid])->one();
-		
+		//print_r($resume);exit;
 		
 		/* assign values from database to fields*/
 		/*employeesignup details*/
@@ -144,6 +144,13 @@ class CommonController extends Controller
 		{
 		     $model->email = $user->email;
 		}
+		if (!(empty($resume)))
+		{
+			$model->resume = $resume->resume;
+			
+			
+		}
+		//print_r($resume->resume);exit();
 		$model->statesData = [];
 		$model->state =  '';
 		$model->city = '';
@@ -342,7 +349,7 @@ class CommonController extends Controller
 					 
 					$model->profileimage = 'profileimages/'.$imageName;
 					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
-					$profileimage = '/frontend/web/profileimages/'.$imageName;
+					$profileimage = '/profileimages/'.$imageName;
 					$employee->profileimage = $profileimage;
 				}
 				//print_r(Countries::getCountryName($model->country));exit();
@@ -384,7 +391,7 @@ class CommonController extends Controller
 					
 					$model->profileimage = 'profileimages/'.$imageName;
 					//$uploadedFile->saveAs(Yii::app()->basePath.'/../banner/'.$fileName);
-					$profileimage = '/frontend/web/profileimages/'.$imageName;
+					$profileimage = '/profileimages/'.$imageName;
 					$empmodel->profileimage = $profileimage;
 				}
 				$empmodel->country = Countries::getCountryName($model->country);

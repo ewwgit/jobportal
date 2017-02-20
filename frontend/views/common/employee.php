@@ -401,6 +401,7 @@ select {
 								</div>
 								
 								<?php $p=0;?>
+								
 								<?php if(!empty($model->alllanguages)){?>
 									<div id="alreadyinfo">
 									<?php foreach ($model->alllanguages as $alreadylanguage){?>
@@ -495,13 +496,16 @@ select {
 								</div>
 								<div class="form">
 									<h5>Resume</h5>
+									
+						
 										
                       <?php
-							
+                          
 							echo $form->field ( $model, 'resume' )->widget ( FileInput::classname (), [ 
 									'options' => [ 
 											'accept' => 'csv/*' 
 									],
+									'data'=>[( $model->resume)? Url::base().$model->resume : ''] ,
 									'pluginOptions' => [ 
 											'browseClass' => 'btn btn-primary',
 											'uploadClass' => 'btn btn-info',
@@ -515,6 +519,9 @@ select {
 											
 									] 
 							] )->label ( false );
+							echo isset( $model->resume)? Url::base().$model->resume : '' ;
+							
+							
 							?>
                      
 									</div>

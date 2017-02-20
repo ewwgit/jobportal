@@ -392,6 +392,7 @@ class SiteController extends Controller
     			'query' => $spotlightData,
     	]);
     	return $this->render('index', [
+    			'model' => $model,
     			'dataProvider' => $dataProvider,
     			'searchModel' => $searchModel,
     			'skillsInfo' => $skillsInfo,
@@ -720,6 +721,81 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionChangepassword()
+    {
+    	$this->layout= '@app/views/layouts/innerpagemain';
+    
+//     	$modeluser = User::find ()->where ( [
+//     			'id' => Yii::$app->employee->employeeid
+//     	] )->one ();
+    	$modeluser = User::find ()->Where (['id' => Yii::$app->emplyoee->emplyoeeid])->one();
+    
+    	$model = new ChangePasswordForm();
+    	if($model->load(Yii::$app->request->post())){
+    		//validate
+    		if($model->validate()){
+    			try{
+    				$modeluser->password = $_POST['ChangePasswordForm']['password'];
+    
+    				$modeluser->password_hash = $model->resetPassword($modeluser->password);
+    
+    				if($modeluser->save()){
+    					/*  Yii::$app->getSession()->setFlash(
+    					 'success','Password changed'
+    					);  */
+    					Yii::$app->getSession()->setFlash('success', [
+    							'type' => 'success',
+    							'duration' => 12000,
+    							'icon' => 'fa fa-check',
+    							'message' => 'Your password is successfully changed.',
+    							'title' => 'Success',
+    							'positonY' => 'top',
+    							'positonX' => 'center'
+    					]);
+    					return $this->redirect(['login']);
+    					 
+    					/*return $this->render('changePassword',[
+    					 'model'=>$model
+    					]);  */
+    					//return $this->redirect(['index']);
+    				}else{
+    					Yii::$app->getSession()->setFlash('danger', [
+    							'type' => 'danger',
+    							'duration' => 12000,
+    							'icon' => 'fa fa-users',
+    							'message' => 'Password not changed.',
+    							'title' => 'Errors',
+    							'positonY' => 'top',
+    							'positonX' => 'center'
+    					]);
+    					 
+    					 
+    				}
+    			}catch(Exception $e){
+    				Yii::$app->getSession()->setFlash('danger', [
+    						'type' => 'danger',
+    						'duration' => 12000,
+    						'icon' => 'fa fa-users',
+    						'message' => $e->getMessage(),
+    						'title' => 'Errors',
+    						'positonY' => 'top',
+    						'positonX' => 'center'
+    				]);
+    
+    				return $this->render('change_password',[
+    						'model'=>$model
+    				]);
+    			}
+    
+    		}else{
+    			return $this->render('change_password',['model'=>$model]);
+    		}
+    		 
+    	}else{
+    		return $this->render('change_password',['model'=>$model]);
+    	}
+    
+    }
     
    
     
@@ -817,15 +893,27 @@ class SiteController extends Controller
 				
 				$result = array();
 				$query = User::find()->where(['id' => Yii::$app->emplyoee->emplyoeeid])->one();
-				$userId = Yii::$app->emplyoee->emplyoeeid;
+			    $userId = Yii::$app->emplyoee->emplyoeeid;
 				$JobId = $_GET['jbid'];
+// 				$model = new EmployeeResume();
+// 				$checkresume = $model->checkQuery($userId, $resId);
+// 				$model->resid = $checkresume;
+				
+// 				if($checkresume->resume != ''){
+					
+// 					$result['resume'] = ' ';
+// 					$result['message'] = 'dont have resume';
+// 				}
 				
 				$model = new EmployeeJobapplied();
 				$checkJobs = $model->checkQuery($userId, $JobId);
+			
+				//print_r($checkJobs);exit;
 				$model->jobid = $checkJobs;
 				$UserSelectJob =  $model->jobid;			
 				
-				if($checkJobs = 1)
+			
+				if($checkJobs == 1)
 				{
 					$model = $model->insertQuery($userId, $JobId);
 					$result['status'] = 1;
@@ -835,6 +923,8 @@ class SiteController extends Controller
 					$result['status'] = 0;
 					$result['message'] = 'Already Applied';
 				}
+
+				
 				return json_encode($result);
 				/* Yii::$app->getSession()->setFlash('success', [
 						'type' => 'success',

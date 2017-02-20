@@ -38,8 +38,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'type',
             'num_of_jobs_posting',
             'status',
-            'createdDate',
-            'updatedDate',
+           [
+        		'attribute'=>'updatedDate',
+        		'label' => 'Updated Date',
+        		'format' =>  ['date', 'php:m/d/Y H:i:s'],
+        		
+        		],
+        		[
+        		'attribute'=>'createdDate',
+        		'label' => 'Created Date',
+        		'format' =>  ['date', 'php:m/d/Y H:i:s'],
+        		
+        		],
             'createdBy',
             'updatedBy',
         ],

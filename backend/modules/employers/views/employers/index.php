@@ -2,12 +2,14 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\web\View;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EmployeeslistSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Employees Lists';
+$this->title = 'Employers Lists';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="employees-list-index">
@@ -16,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Employees List', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php // Html::a('Create Employees List', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,17 +28,35 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'username',
-        	'first_name',
-            //'auth_key',
-           // 'password_hash',
-           // 'password_reset_token',
+        	    //'first_name',
+               //'auth_key',
+              //'password_hash',
+             //'password_reset_token',
              'email:email',
              //'status',
-             'created_at',
-             'updated_at',
+//              'created_at',
+//              'updated_at',
             // 'roleid',
+        		'createdDate',
+        		'updatedDate',
+        		
+        		
 
-            ['class' => 'yii\grid\ActionColumn'],
+             ['class' => 'yii\grid\ActionColumn',
+            		'template' => ' {view}{update}{delete} ',
+            		'buttons' => [
+            			
+            				'update' => function ($url,$data) {
+            				$url = Url::to(['/employers/employers/employerupdate','id'=>$data->id]);
+            				return Html::a(
+            						'<span class="glyphicon glyphicon-pencil"></span>',
+            						$url);
+            				},
+            				
+            		
+            				],
+    ],
         ],
     ]); ?>
 </div>
+

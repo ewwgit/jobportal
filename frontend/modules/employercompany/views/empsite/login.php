@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 use kartik\growl\Growl;
+$this->title = 'login';
 ?>
 <?php foreach (Yii::$app->session->getAllFlashes() as $message):; ?>
             <?php

@@ -1943,17 +1943,25 @@ img.mfp-img {
 	text-transform: uppercase;
 }
 .tabs-nav li a:hover {
+	
 }
 .tab-reviews {
 	color: #aaa;
 }
-.tabs-nav li.active .tab-reviews {
+/*.tabs-nav li.active .tab-reviews {
+	
 	color: #fff;
 }
-.tabs-nav li.active a {
+.tabs-nav li .in-active a {
 	background-color: #159ddd;
-	color: #fff;
+	color: #aaa!important;
 }
+.tabs-nav li .active a {
+	background-color: #159ddd!important;
+	
+}*/
+
+
 .tab-content {
 	padding: 15px 0px;
 }

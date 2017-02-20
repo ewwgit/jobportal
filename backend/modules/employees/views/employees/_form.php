@@ -2,35 +2,56 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\EmployeesList */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+
 <div class="employees-list-form">
 
     <?php $form = ActiveForm::begin(); ?>
+      <div class="form-group col-lg-6 col-sm-12">
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?></div>
 
-    <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
+   
+  <div class="form-group col-lg-6 col-sm-12">
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?></div>
+     <div class="form-group col-lg-6 col-sm-12">
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?></div>
+     <div class="form-group col-lg-6 col-sm-12">
+    <?= $form->field($model, 'surname')->textInput(['maxlength' => true]) ?></div>
+     <div class="form-group col-lg-6 col-sm-12">
+    <?= $form->field($model, 'userid')->textInput(['maxlength' => true]) ?></div>
+    
+    <div class="form-group col-lg-6 col-sm-12">
+    <?= $form->field($model, 'dateofbirth')->widget(DatePicker::classname(),[
+														'options' => ['placeholder' => 'Enter birth date ...'],
+														'name'  => 'from_date',
+														'value' => $model->dateofbirth,
+														'pluginOptions' => [
+																'autoclose'=>true,
+																'format' => 'yyyy-mm-dd',
+																'todayHighlight' => true
+														]
+												]);?>
+	</div>
+    <div class="form-group col-lg-6 col-sm-12">
+    <?= $form->field($model, 'mobilenumber')->textInput(['maxlength' => true]) ?></div>
+      <div class="form-group col-lg-6 col-sm-12">
 
-    <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
+   <?= $form->field($model, 'status')->dropDownList([ '10' => 'Active', '0' => 'In-active', ], ['prompt' => '']) ?></div>
 
-    <?= $form->field($model, 'password_reset_token')->textInput(['maxlength' => true]) ?>
+  <div class="form-group col-lg-6 col-sm-12">
+   
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'roleid')->textInput() ?></div>
+    
 
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'roleid')->textInput() ?>
-
-    <div class="form-group">
+     <div class="form-group col-lg-6 col-sm-12">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 

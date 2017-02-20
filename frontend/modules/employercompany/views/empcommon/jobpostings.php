@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Designation;
+use backend\models\Industrytype;
 use backend\models\RolesCategory;
 use kartik\select2\Select2;
 use kartik\depdrop\DepDrop;
@@ -63,7 +64,8 @@ $this->title = ' JOB Postings';
 			
 			<div class="form">
 				<h5>Designation</h5>
-		<?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label(false)?>			</div>
+		<?= $form->field($model, 'designation')->dropDownList(ArrayHelper::map(Designation::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select designation'])->label(false)?>	
+				</div>
 			<div class="form">
 				<h5>Skills</h5>
 				<?php 
@@ -180,7 +182,9 @@ $this->title = ' JOB Postings';
 		<?= $form->field($model, 'company_type')->dropDownList(['consultant' => 'consultant','corporate' => 'corporate'],['prompt'=>'select your company type'])->label(false)?>				</div>
 			<div class="form">
 				<h5>Industry Type <span>(optional)</span></h5>
- <?=$form->field ( $model, 'industry_type' )->dropDownList ( [ 'Advertising/Event Management/PR' => 'Advertising/Event Management/PR','Machinery/Equipment Manufacturing/Industrial Products' => 'Machinery/Equipment Manufacturing/Industrial Products' ], [ 'prompt' => 'select your industry type' ] )->label(false)?>	                    </div>
+					 <?= $form->field($model, 'industry_type')->dropDownList(ArrayHelper::map(Industrytype::find()->where(['status'=>'Active'])->all(), 'name', 'name'),['prompt' =>'select Industrytype'])->label(false)?>
+					
+                    </div>
                     <div class="form">
 				<h5>Company Profile</h5>
 				 <?= $form->field($model, 'company_profile')->textarea(['rows' => 4])->label(false)?>	

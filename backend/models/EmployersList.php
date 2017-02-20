@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use frontend\models\EmployerForm;
+use frontend\models\Employer;
 
 /**
  * This is the model class for table "employer".
@@ -27,6 +27,8 @@ class EmployersList extends \yii\db\ActiveRecord
      * @inheritdoc
      */
 	public $first_name;
+	public $last_name;
+	public $profileimage;
  public static function tableName()
     {
         return 'user';
@@ -38,19 +40,21 @@ class EmployersList extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'roleid'], 'required'],
+            [['username',  'email', 'roleid'], 'required'],
             [['status', 'created_at', 'updated_at', 'roleid'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['username',  'email'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
             [['email'], 'unique'],
-            [['password_reset_token'], 'unique'],
+        		[[ 'first_name',
+        				'last_name',
+        				'profileimage'
+        				
+        		],'safe' ],
+            //[['password_reset_token'], 'unique'],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
@@ -68,7 +72,8 @@ class EmployersList extends \yii\db\ActiveRecord
     }
     public function getEmployer()
     {
-    	return $this->hasOne(EmployerForm::className(), ['userid' => 'employerid']);
+    	return $this->hasOne(Employer::className(), ['userid' => 'id']);
     }
+   
 }
 	

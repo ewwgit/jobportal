@@ -67,7 +67,8 @@ class EmployerpackagesController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
         	
-            $model->createdDate = date('Y-m-d H:i:s');
+           $model->createdDate = date('Y-m-d H:i:s');
+        	$model->createdBy = Yii::$app->user->id;
         
         	
         	$model->save();
@@ -90,7 +91,8 @@ class EmployerpackagesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-        	$model->createdDate = date('Y-m-d H:i:s');
+        	$model->updatedDate = date('Y-m-d H:i:s');
+        	$model->updatedBy = Yii::$app->user->id;
         	
         	$model->save();
             return $this->redirect(['view', 'id' => $model->employer_pid]);

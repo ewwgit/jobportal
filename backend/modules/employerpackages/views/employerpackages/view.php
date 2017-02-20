@@ -35,7 +35,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'startDate',
             'endDate',
             'status',
-            'createdDate',
+           
+        		[
+        		'attribute'=>'updatedDate',
+        		'label' => 'Updated Date',
+        		'format' =>  ['date', 'php:m/d/Y H:i:s'],
+        		
+        		],
+        		[
+        		'attribute'=>'createdDate',
+        		'label' => 'Created Date',
+        		'format' =>  ['date', 'php:m/d/Y H:i:s'],
+        		
+        		],
+        		'createdBy',
+        		'updatedBy',
         ],
     ]) ?>
 
