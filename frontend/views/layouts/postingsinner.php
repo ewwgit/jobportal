@@ -61,6 +61,7 @@ label.upload-btn i{color:#fff !important; margin-right:20px !important;}
 	          <li><a href="<?= Url::to(['/employercompany/package/'])?>" title="viewprofile">Employer Packages</a></li>
 	         <li><a href="<?= Url::to(['/employercompany/empcommon/jobpostingslist'])?>" title="viewprofile">Employer JobPosting</a></li>
 			    <li><a href="<?= Url::to(['/employercompany/empcommon/employercommonview'])?>" title="viewprofile">Employer Details</a></li>
+			    <li><a href="<?= Url::to(['/employercompany/empsite/changepassword'])?>" title="viewprofile">Change Password</a></li>
                <li><a href="<?= Url::to(['empsite/logout'])?>"data-method="post" title="">Logout</a></li>
                  
 		    <?php } ?>

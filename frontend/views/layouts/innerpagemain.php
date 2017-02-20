@@ -88,6 +88,7 @@ AppAsset::register($this);
                  
                <li><a href="<?= Url::to(['site/viewprofile'])?>" title="viewprofile">Profile Information</a></li>
                 <li><a href="<?= Url::to(['site/myjobs'])?>" title="applicationhistory">Application History</a></li>
+                <li><a href="<?= Url::to(['/site/changepassword'])?>" title="viewprofile">Change Password</a></li>
                  <li><a href="<?= Url::to(['/site/logout'])?>"
             data-method="post" title="">Log Out</a></li>
             </ul>
