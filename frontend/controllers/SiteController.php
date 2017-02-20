@@ -23,6 +23,7 @@ use frontend\models\EmployerJobpostings;
 use frontend\models\EmployeeJobsearch;
 use frontend\models\EmployeeJobapplied;
 use yii\helpers\ArrayHelper;
+use frontend\models\ChangePasswordForm;
 
 use frontend\models\RolesModel;
 
