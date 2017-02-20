@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use frontend\models\ChangePasswordForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\EmployerSignup;
@@ -249,7 +250,8 @@ class EmpsiteController extends Controller {
 				$gender = $model->gender;
 				
 				
-				$date=$model->create_date = date ( "Y-m-d H:i:s" );
+			    $model->create_date = date ( "Y-m-d H:i:s" );
+			    $model ->save();
 				$userid = Yii::$app->db->getLastInsertID ();
 				$employermodel->first_name = $firstname;
 				$employermodel->last_name = $lastname;
@@ -257,11 +259,11 @@ class EmpsiteController extends Controller {
 				$employermodel->gender = $gender;
 				$employermodel->dateofbirth = $dateofbirth;
 				$employermodel->userid = $userid;
-				$employermodel->create_date = $date;
+				$employermodel->create_date = $model->create_date;
 				$employermodel->designation = '';
 				$employermodel->address = '';
 				$employermodel->profileimage = '';
-				$employermodel->updated_date = $date;
+			//	$employermodel->create_date = $date;
 				$employermodel->skills = '';
 				$employermodel->save();
 				//print_r($employermodel->errors);exit();
@@ -326,47 +328,7 @@ class EmpsiteController extends Controller {
 				'employeData' => $employeData 
 		] );
 	}
-	public function actionMounika() {
-		$this->layout = '@app/views/layouts/employermain';
-		$model = new EmployerSignup ();
-		
-		$userData = User::find ()->where ( [ 
-				'id' => Yii::$app->employer->employerid 
-		] )->one ();
-		print_r ( Yii::$app->employer->employerid );
-		$employeData = Employer::find ()->where ( [ 
-				'id' => Yii::$app->employer->employerid 
-		] )->one ();
-		
-		
-		$model->username = $userData ['username'];
-		$model->email = $userData ['email'];
-		
-		$model->name = $employeData ['name'];
-		
-		$model->designation = $employeData ['designation'];
-		$model->gender = $employeData ['gender'];
-		$model->dateofbirth = $employeData ['dateofbirth'];
-		$model->mobilenumber = $employeData ['mobilenumber'];
-		$model->address = $employeData ['address'];
-		
-		
-		$jobmodel = EmployerCompany::find ()->Where ( [ 
-				'userid' => Yii::$app->employer->employerid 
-		] )->one ();
-		$edumodel = EmployerEducation::find ()->Where ( [ 
-				'userid' => Yii::$app->employer->employerid 
-		] )->one ();
-		$empmodel = EmployerPreferences::find ()->Where ( [ 
-				'userid' => Yii::$app->employer->employerid 
-		] )->one ();
-		return $this->render ( '/site/viewprofile', [ 
-				'model' => $model,
-				'jobmodel' => $jobmodel,
-				'edumodel' => $edumodel,
-				'empmodel' => $empmodel 
-		] );
-	}
+	
 	public function actionRequestPasswordReset() {
 		$this->layout = '@app/views/layouts/employermain';
 		$model = new PasswordResetRequestForm ();
@@ -384,9 +346,12 @@ class EmpsiteController extends Controller {
 				]);
 			
 				return Yii::$app->getResponse ()->redirect ( [
-						'employers'
+						'request-password-reset',
+						'success' => 1
 						
 				] );
+				
+			
 				
 			} else {
 				Yii::$app->getSession()->setFlash('danger', [
@@ -444,6 +409,81 @@ class EmpsiteController extends Controller {
 				'model' => $model 
 		] );
 	}
+public function actionChangepassword()
+		{
+	       $this->layout = '@app/views/layouts/employermain';
+	          	      
+	          	      $modeluser = User::find ()->where ( [ 
+				 'id' => Yii::$app->employer->employerid 
+		              ] )->one ();
+	          	      
+	          	      $model = new ChangePasswordForm();
+	          	      if($model->load(Yii::$app->request->post())){
+	          	      	//validate
+	          	      	if($model->validate()){
+		          	      		try{
+		          	      			$modeluser->password = $_POST['ChangePasswordForm']['password'];
+		          	      			
+		          	      			$modeluser->password_hash = $model->resetPassword($modeluser->password);
+		          	      			
+		          	      			if($modeluser->save()){
+		          	      			  /*  Yii::$app->getSession()->setFlash(
+		          	      				 'success','Password changed'
+		          	      				);  */
+		          	      				Yii::$app->getSession()->setFlash('success', [
+						'type' => 'success',
+						'duration' => 12000,
+						'icon' => 'fa fa-check',
+						'message' => 'Your password is successfully changed.',
+						'title' => 'Success',
+						'positonY' => 'top',
+						'positonX' => 'center'
+				]);
+		          	      				return $this->redirect(['login']);
+		          	      				
+		          	      				/*return $this->render('changePassword',[
+		          	      				 'model'=>$model
+		          	      				  ]);  */
+		          	      				//return $this->redirect(['index']);
+		          	      			}else{
+		          	      				Yii::$app->getSession()->setFlash('danger', [
+    					'type' => 'danger',
+    					'duration' => 12000,
+    					'icon' => 'fa fa-users',
+    					'message' => 'Password not changed.',
+    					'title' => 'Errors',
+    					'positonY' => 'top',
+    					'positonX' => 'center'
+    			]);
+		          	      				
+		          	      				
+		          	      			}
+		          	      		}catch(Exception $e){
+		          	      			Yii::$app->getSession()->setFlash('danger', [
+		          	      					'type' => 'danger',
+		          	      					'duration' => 12000,
+		          	      					'icon' => 'fa fa-users',
+		          	      					'message' => $e->getMessage(),
+		          	      					'title' => 'Errors',
+		          	      					'positonY' => 'top',
+		          	      					'positonX' => 'center'
+		          	      			]);
+		          	      			
+		          	      			return $this->render('change_password',[
+		          	      					'model'=>$model
+		          	      			]);
+		          	      		}
+		          	      		 
+	          	      	}else{
+	          	      		return $this->render('change_password',['model'=>$model]);
+	          	      	}
+	          	      	
+	          	     }else{
+			    		return $this->render('change_password',['model'=>$model]);
+			    }
+			     
+		}
+		
 	public function actionEmpsite() {
 		$this->layout = '@app/views/layouts/employermain';
 		$model = new EmployerSignup ();
